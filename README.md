@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/SebDez/luciole-reactjs.svg?branch=master)](https://travis-ci.org/SebDez/luciole-reactjs)
 [![Coverage Status](https://coveralls.io/repos/github/SebDez/luciole-reactjs/badge.svg?branch=master)](https://coveralls.io/github/SebDez/luciole-reactjs?branch=master)
-![Docs coverage](https://doc.esdoc.org/github.com/SebDez/luciole-reactjs/badge.svg)
+[![Documentation Coverage](https://doc.esdoc.org/github.com/SebDez/luciole-reactjs/badge.svg)](https://doc.esdoc.org/github.com/SebDez/luciole-reactjs/)
 
 # luciole-reactjs
 The reactjs frontend for luciole game
