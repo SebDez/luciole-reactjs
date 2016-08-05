@@ -1,0 +1,4 @@
+{
+  "source": "./src/app",
+  "destination": "./documentation"
+}
