@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/HomePageActions';
+import * as authActions from '../actions/AuthActions';
 import Header from './../components/Header';
 import Footer from './../components/Footer';
 
@@ -14,7 +15,8 @@ import Footer from './../components/Footer';
 export const App = (props) => {
     return (
     <div className="appContainer">
-      <Header/>
+      <Header
+      logUser={props.authActions.logUser} />
       Mon token : {props.user.token}
       {props.children}
       <Footer/>
@@ -27,6 +29,7 @@ export const App = (props) => {
  */
 App.propTypes = {
   actions: PropTypes.object.isRequired,
+  authActions: PropTypes.object.isRequired,
   user:PropTypes.object.isRequired
 };
 
@@ -37,7 +40,7 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    user : state.app.user
+    user : state.auth.user
   };
 }
 
@@ -48,7 +51,8 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
+    authActions: bindActionCreators(authActions, dispatch)
   };
 }
 

@@ -1,5 +1,5 @@
 export default {
   user:{
-    token:'montoken'
+    token:null
   }
 };
