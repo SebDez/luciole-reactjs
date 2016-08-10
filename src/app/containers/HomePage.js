@@ -45,6 +45,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+HomePage.mapStateToProps=mapStateToProps;
+HomePage.mapDispatchToProps=mapDispatchToProps;
+
 /**
  * Connect the component to access global state object
  * @param  {Function} mapStateToProps    Function to map state to props

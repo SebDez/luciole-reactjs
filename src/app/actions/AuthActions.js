@@ -14,7 +14,7 @@ export function logUser(login, password) {
  * Accepts the new token to put in Redux store
  * Returns a new action that can be managed by Redux
  */
-const getRefreshTokenAction = token => {
+export function getRefreshTokenAction (token){
   return {
     type: Constants.SET_TOKEN_ASYNC_SUCCESS,
   token}
