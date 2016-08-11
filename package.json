@@ -41,8 +41,7 @@
     "react-router": "2.6.0",
     "react-router-redux": "4.0.5",
     "redux": "3.5.2",
-    "redux-thunk": "2.1.0",
-    "superagent": "2.1.0"
+    "redux-thunk": "2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "6.3.7",

@@ -2,6 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../actions/HomePageActions';
+import Navbar from './../components/Navbar';
 
 /**
  * HomePage container, used to define the composition of the Home Page
@@ -12,6 +13,7 @@ import * as actions from '../actions/HomePageActions';
 export const HomePage = (props) => {
   return (
     <div>
+      <Navbar/>
     This is my home page
     </div>
   );

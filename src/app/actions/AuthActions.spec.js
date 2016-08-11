@@ -1,6 +1,8 @@
 import { expect } from 'chai';
-import * as ActionCreators from './AuthActions';
+import * as actions from './AuthActions';
 import sinon from 'sinon';
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 
 describe('AuthActions', () => {
 
@@ -15,7 +17,7 @@ describe('AuthActions', () => {
         token: 'mytoken'
       };
 
-      expect(ActionCreators.getRefreshTokenAction('mytoken')).to.deep.equal(expected);
+      expect(actions.getRefreshTokenAction('mytoken')).to.deep.equal(expected);
     });
   });
 

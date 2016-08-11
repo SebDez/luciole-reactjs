@@ -1,5 +1,4 @@
 import Constants from './../constants/constants';
-import request from 'superagent';
 
 export function logUser(login, password) {
   return dispatch => {
