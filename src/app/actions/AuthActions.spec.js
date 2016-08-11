@@ -1,8 +1,6 @@
 import { expect } from 'chai';
 import * as actions from './AuthActions';
 import sinon from 'sinon';
-import configureMockStore from 'redux-mock-store'
-import thunk from 'redux-thunk'
 
 describe('AuthActions', () => {
 

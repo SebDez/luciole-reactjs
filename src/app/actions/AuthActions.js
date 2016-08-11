@@ -8,6 +8,15 @@ export function logUser(login, password) {
  }
 }
 
+export function disconnectUser(router) {
+  return dispatch => {
+   setTimeout(() => {
+     dispatch(disconnectUserAction())
+     router.push('/')
+   }, 2000)
+ }
+}
+
 /**
  * Create an action with the SET_TOKEN_ASYNC_SUCCESS type
  * Accepts the new token to put in Redux store
@@ -17,4 +26,9 @@ export function getRefreshTokenAction (token){
   return {
     type: Constants.SET_TOKEN_ASYNC_SUCCESS,
   token}
+}
+
+
+export function disconnectUserAction (){
+  return {type: Constants.DISCONNECT_ASYNC_SUCCESS}
 }

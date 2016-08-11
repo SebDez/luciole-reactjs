@@ -12,9 +12,16 @@ chai.use(sinonChai);
 chai.use(spies);
 
 describe('Header', () => {
-  const props ={
-    logUser : ()=>{ return 0; }
-  }
+
+  let props;
+
+  beforeEach(()=>{
+    props ={
+      logUser : ()=>{ return 0; },
+      disconnectUser : ()=>{ return 0; },
+      auth:{}
+    }
+  })
 
   describe('Render', () => {
 
@@ -46,6 +53,22 @@ describe('Header', () => {
     it('Should have show-grid class', () => {
       const wrapper = shallow(<Header {...props}/>);
       expect(wrapper.find('.show-grid')).to.have.length(1);
+    });
+
+    it('Should have only one input field', () => {
+      const wrapper = shallow(<Header {...props}/>);
+      expect(wrapper.find('input')).to.have.length(1);
+    });
+
+    it('Should have login input if user not logged', () => {
+      const wrapper = shallow(<Header {...props}/>);
+      expect(wrapper.find('input#login')).to.have.length(1);
+    });
+
+    it('Should have disconnect input if user not logged', () => {
+      props.auth={ user :{token : 'ok'}}
+      const wrapper = shallow(<Header {...props}/>);
+      expect(wrapper.find('input#disconnect')).to.have.length(1);
     });
   });
 

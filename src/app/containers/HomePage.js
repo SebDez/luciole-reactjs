@@ -4,6 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../actions/HomePageActions';
 import Navbar from './../components/Navbar';
 
+import AuthService from './../services/AuthService';
+
 /**
  * HomePage container, used to define the composition of the Home Page
  * This function will render the container
@@ -11,21 +13,21 @@ import Navbar from './../components/Navbar';
  * @return {Object} React component tree
  */
 export const HomePage = (props) => {
+
+  let optionalElement;
+
+  if(AuthService.isConnected(props)){
+    optionalElement = (<Navbar/>);
+  }
+
   return (
     <div>
-      <Navbar/>
+      {optionalElement}
     This is my home page
     </div>
   );
 };
 
-/**
- * The container properties' types
- * @type {Object}
- */
-HomePage.propTypes = {
-  actions: PropTypes.object.isRequired
-};
 
 /**
  * Map the global state into props
@@ -33,7 +35,9 @@ HomePage.propTypes = {
  * @return {Object}       The container props
  */
 function mapStateToProps(state) {
-  return {};
+  return {
+    auth :state.auth
+  };
 }
 
 /**
@@ -46,6 +50,15 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(actions, dispatch)
   };
 }
+
+/**
+ * The container properties' types
+ * @type {Object}
+ */
+HomePage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
+};
 
 HomePage.mapStateToProps=mapStateToProps;
 HomePage.mapDispatchToProps=mapDispatchToProps;

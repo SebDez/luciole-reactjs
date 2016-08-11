@@ -16,8 +16,10 @@ export const App = (props) => {
     return (
     <div className="appContainer">
       <Header
-      logUser={props.authActions.logUser} />
-      Mon token : {props.user.token}
+      logUser={props.authActions.logUser}
+      disconnectUser={props.authActions.disconnectUser}
+      auth={props.auth}/>
+    Mon token : {props.auth.user.token}
       {props.children}
       <Footer/>
     </div>);
@@ -30,8 +32,9 @@ export const App = (props) => {
 App.propTypes = {
   actions: PropTypes.object.isRequired,
   authActions: PropTypes.object.isRequired,
-  user:PropTypes.object.isRequired
+  auth:PropTypes.object.isRequired
 };
+
 
 /**
  * Map the global state into props
@@ -40,7 +43,7 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    user : state.auth.user
+    auth : state.auth
   };
 }
 

@@ -6,6 +6,8 @@ import HomePage from './app/containers/HomePage';
 import KingdomDashboard from './app/containers/KingdomDashboard';
 import NotFoundPage from './app/components/NotFoundPage.js';
 
+import AuthService from './app/services/AuthService';
+
 export default (store) => {
   return  (
     <Route path="/" component={App} >
@@ -19,7 +21,7 @@ export default (store) => {
 export const checkAuth = (store) => {
   return (location, replaceWith) => {
     const state = store.getState();
-    if(!state.auth || !state.auth.user || !state.auth.user.token){
+    if(!AuthService.isConnected(state)){
       replaceWith({pathname:'/'})
     }
   }
