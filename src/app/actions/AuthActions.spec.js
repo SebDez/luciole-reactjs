@@ -19,4 +19,11 @@ describe('AuthActions', () => {
     });
   });
 
+  describe('disconnectUserAction ', () => {
+    it('should create an action to get token', () => {
+      const expected = {type: 'DISCONNECT_ASYNC_SUCCESS'};
+      expect(actions.disconnectUserAction()).to.deep.equal(expected);
+    });
+  });
+
 });

@@ -24,4 +24,11 @@ describe('AuthReducer', () => {
       });
     });
 
+    describe('DISCONNECT_ASYNC_SUCCESS', () => {
+      it('Should return a new state without user token ', () => {
+        action={type:'DISCONNECT_ASYNC_SUCCESS'};
+        expect(AuthReducer(state, action).user.token).to.equals(null);
+      });
+    });
+
 });
