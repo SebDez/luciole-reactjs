@@ -36,7 +36,7 @@ export const HomePage = (props) => {
  */
 function mapStateToProps(state) {
   return {
-    auth :state.auth
+    auth :state.application.auth
   };
 }
 

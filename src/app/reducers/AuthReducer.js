@@ -11,7 +11,7 @@ const handleActions = {
   }
 }
 
-const AuthReducer = (state = initialState , action) => {
+const AuthReducer = (state = initialState.user , action) => {
   return handleActions[action.type] ? handleActions[action.type](state, action) : state
 }
 

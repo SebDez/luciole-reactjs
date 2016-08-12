@@ -1,5 +1,14 @@
 import Constants from './../constants/constants';
 
+
+export function openLoginModal() {
+  return {type: 'openmodal'}
+}
+
+export function closeLoginModal() {
+  return {type: 'closemodal'}
+}
+
 export function logUser(login, password) {
   return dispatch => {
    setTimeout(() => {

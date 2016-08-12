@@ -15,11 +15,8 @@ import Footer from './../components/Footer';
 export const App = (props) => {
     return (
     <div className="appContainer">
-      <Header
-      logUser={props.authActions.logUser}
-      disconnectUser={props.authActions.disconnectUser}
-      auth={props.auth}/>
-    Mon token : {props.auth.user.token}
+      <Header/>
+      Mon token : {props.auth.token}
       {props.children}
       <Footer/>
     </div>);
@@ -43,7 +40,8 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    auth : state.auth
+    auth : state.application.auth,
+    app : state.application.app
   };
 }
 
