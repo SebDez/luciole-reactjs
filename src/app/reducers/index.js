@@ -11,8 +11,10 @@ import AuthReducer from './AuthReducer';
  const rootReducer = combineReducers({
    i18n: i18nReducer,
    routing: routerReducer,
-   app:AppReducer,
-   auth:AuthReducer
+   application :combineReducers({
+      auth : AuthReducer,
+      app: AppReducer
+   })
  });
 
 /**

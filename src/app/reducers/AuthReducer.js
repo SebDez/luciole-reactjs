@@ -5,10 +5,13 @@ import initialState from './../store/initialState';
 const handleActions = {
   [Constants.SET_TOKEN_ASYNC_SUCCESS]: (state, action) => {
     return objectAssign({}, state, {user:{token:action.token}});
+  },
+  [Constants.DISCONNECT_ASYNC_SUCCESS]: (state) => {
+    return objectAssign({}, state, {user:{token:null}});
   }
 }
 
-const AuthReducer = (state = initialState , action) => {
+const AuthReducer = (state = initialState.user , action) => {
   return handleActions[action.type] ? handleActions[action.type](state, action) : state
 }
 

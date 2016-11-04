@@ -1,7 +1,10 @@
 import React, {PropTypes} from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Grid, Row, Col} from 'react-bootstrap';
+import { I18n } from 'react-redux-i18n';
+
 import GameTitle from './../components/GameTitle';
+import Auth from './../components/auth/Auth';
 
 /**
  * Header Component
@@ -17,11 +20,6 @@ class Header extends React.Component {
     super(props, context);
     /**@type {Object}*/
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.openLoginView = this.openLoginView.bind(this);
-  }
-
-  openLoginView(){
-    this.props.logUser('login', 'password');
   }
 
   /**
@@ -34,7 +32,9 @@ class Header extends React.Component {
           <Grid>
            <Row className="show-grid">
              <Col xs={10}><GameTitle/></Col>
-             <Col xs={2}><input type="submit" value="Login" onClick={this.openLoginView}/></Col>
+             <Col xs={2}>
+                 <Auth/>
+            </Col>
            </Row>
          </Grid>
       </div>
@@ -46,9 +46,7 @@ class Header extends React.Component {
  * The component properties' types
  * @type {Object}
  */
-Header.propTypes = {
-  logUser : PropTypes.func.isRequired,
-};
+Header.propTypes = {};
 
 /**
  * Export the component

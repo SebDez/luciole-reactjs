@@ -1,9 +1,27 @@
 import Constants from './../constants/constants';
 
+
+export function openLoginModal() {
+  return {type: 'openmodal'}
+}
+
+export function closeLoginModal() {
+  return {type: 'closemodal'}
+}
+
 export function logUser(login, password) {
   return dispatch => {
    setTimeout(() => {
      dispatch(getRefreshTokenAction('My new token'))
+   }, 2000)
+ }
+}
+
+export function disconnectUser(router) {
+  return dispatch => {
+   setTimeout(() => {
+     dispatch(disconnectUserAction())
+     router.push('/')
    }, 2000)
  }
 }
@@ -17,4 +35,9 @@ export function getRefreshTokenAction (token){
   return {
     type: Constants.SET_TOKEN_ASYNC_SUCCESS,
   token}
+}
+
+
+export function disconnectUserAction (){
+  return {type: Constants.DISCONNECT_ASYNC_SUCCESS}
 }

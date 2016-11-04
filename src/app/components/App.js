@@ -15,9 +15,8 @@ import Footer from './../components/Footer';
 export const App = (props) => {
     return (
     <div className="appContainer">
-      <Header
-      logUser={props.authActions.logUser} />
-      Mon token : {props.user.token}
+      <Header/>
+      Mon token : {props.auth.token}
       {props.children}
       <Footer/>
     </div>);
@@ -30,8 +29,9 @@ export const App = (props) => {
 App.propTypes = {
   actions: PropTypes.object.isRequired,
   authActions: PropTypes.object.isRequired,
-  user:PropTypes.object.isRequired
+  auth:PropTypes.object.isRequired
 };
+
 
 /**
  * Map the global state into props
@@ -40,7 +40,8 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    user : state.auth.user
+    auth : state.application.auth,
+    app : state.application.app
   };
 }
 

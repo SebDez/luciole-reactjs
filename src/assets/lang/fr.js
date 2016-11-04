@@ -5,6 +5,10 @@ export default {
   		},
   		kingdomPage:{
   			linkTo:'Royaume'
+  		},
+  		header:{
+  			login:'Se connecter',
+  			logout:'Se déconnecter'
   		}
   },
   date: {

@@ -9,8 +9,11 @@ describe('App', () => {
 
   const props = {
     actions:{},
-    authActions:{logUser:()=>{return 0;}},
-    user:{token:'token'}
+    authActions:{
+      logUser:()=>{return 0;},
+      disconnectUser:()=>{return 0;}
+    },
+    auth:{user:{token:'token'}}
   };
 
   describe('Render', () => {
@@ -33,7 +36,7 @@ describe('App', () => {
   describe('mapStateToProps', () => {
     it('Should return object with user', () => {
       const state = {auth:{user:'user1'}}
-      expect(App.mapStateToProps(state).user).to.equal('user1');
+      expect(App.mapStateToProps(state).auth.user).to.equal('user1');
     });
   });
 
