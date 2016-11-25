@@ -7,25 +7,23 @@
   },
   "scripts": {
     "docs": "esdoc -c esdoc.json",
-    "preinstall": "node tools/nodeVersionCheck.js",
-    "setup": "node tools/setup/setupMessage.js && npm install && node tools/setup/setup.js",
-    "remove-demo": "babel-node tools/removeDemo.js",
-    "start-message": "babel-node tools/startMessage.js",
     "prestart": "npm-run-all --parallel start-message remove-dist",
+    "start-message": "babel-node tools/startMessage.js",
     "start": "npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
-    "lint:watch": "npm run lint -- --watch",
+    "lint:watch": "npm run lint:standard -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint && npm run test",
+    "prebuild": "npm run clean-dist && npm run lint:standard && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
     "test": "mocha tools/testSetup.js \"src/app/**/*.js\" --reporter progress",
     "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" --reporter progress",
     "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly _mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
-    "open:cover": "npm run test:cover && open coverage/index.html"
+    "open:cover": "npm run test:cover && open coverage/index.html",
+    "lint:standard": "standard ./src/**/*.js --verbose"
   },
   "author": "SebDez",
   "license": "MIT",
@@ -47,6 +45,7 @@
     "superagent": "2.1.0"
   },
   "devDependencies": {
+    "standard": "^7.1.1",
     "autoprefixer": "6.3.7",
     "babel-cli": "6.11.4",
     "babel-core": "6.11.4",
@@ -101,5 +100,18 @@
   "repository": {
     "type": "git",
     "url": ""
-  }
+  },
+  "standard": {
+    "globals": [
+      "before",
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "it",
+      "expect"
+    ],
+    "ignore": [
+      "webpack-public-path.js"
+    ]
+}
 }

@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React /* , { PropTypes }*/ from 'react'
+import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
 
 /**
  * App container, used to define the whole app
@@ -9,25 +9,24 @@ import {bindActionCreators} from 'redux';
  * @return {Object} React component tree
  */
 export const App = (props) => {
-    return (
-    <div className="appContainer">
-    </div>);
-};
+  return (
+    <div className='appContainer'>
+    </div>)
+}
 
 /**
  * The container properties' types
  * @type {Object}
  */
-App.propTypes = {};
-
+App.propTypes = {}
 
 /**
  * Map the global state into props
  * @param  {Object} state The global state
  * @return {Object}       The container props
  */
-function mapStateToProps(state) {
-  return {};
+function mapStateToProps (state) {
+  return {}
 }
 
 /**
@@ -35,12 +34,12 @@ function mapStateToProps(state) {
  * @param  {Object} dispatch The global dispatch
  * @return {Object}       The container props
  */
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {}
 }
 
-App.mapStateToProps=mapStateToProps;
-App.mapDispatchToProps=mapDispatchToProps;
+App.mapStateToProps = mapStateToProps
+App.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -51,4 +50,4 @@ App.mapDispatchToProps=mapDispatchToProps;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App)
