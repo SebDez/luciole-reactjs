@@ -1,10 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../actions/HomePageActions';
-import * as authActions from '../actions/AuthActions';
-import Header from './../components/Header';
-import Footer from './../components/Footer';
 
 /**
  * App container, used to define the whole app
@@ -15,10 +11,6 @@ import Footer from './../components/Footer';
 export const App = (props) => {
     return (
     <div className="appContainer">
-      <Header/>
-      Mon token : {props.auth.token}
-      {props.children}
-      <Footer/>
     </div>);
 };
 
@@ -26,11 +18,7 @@ export const App = (props) => {
  * The container properties' types
  * @type {Object}
  */
-App.propTypes = {
-  actions: PropTypes.object.isRequired,
-  authActions: PropTypes.object.isRequired,
-  auth:PropTypes.object.isRequired
-};
+App.propTypes = {};
 
 
 /**
@@ -39,10 +27,7 @@ App.propTypes = {
  * @return {Object}       The container props
  */
 function mapStateToProps(state) {
-  return {
-    auth : state.application.auth,
-    app : state.application.app
-  };
+  return {};
 }
 
 /**
@@ -51,10 +36,7 @@ function mapStateToProps(state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch),
-    authActions: bindActionCreators(authActions, dispatch)
-  };
+  return {}
 }
 
 App.mapStateToProps=mapStateToProps;

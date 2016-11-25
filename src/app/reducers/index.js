@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 import {routerReducer} from 'react-router-redux';
 import {i18nReducer } from 'react-redux-i18n';
-import AppReducer from './AppReducer';
-import AuthReducer from './AuthReducer';
 
 /**
  * Get the root reducer object
@@ -10,14 +8,10 @@ import AuthReducer from './AuthReducer';
  */
  const rootReducer = combineReducers({
    i18n: i18nReducer,
-   routing: routerReducer,
-   application :combineReducers({
-      auth : AuthReducer,
-      app: AppReducer
-   })
+   routing: routerReducer
  });
 
 /**
  * Export the reducer
  */
- export default rootReducer;
+export default rootReducer;
