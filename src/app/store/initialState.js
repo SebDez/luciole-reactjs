@@ -1,10 +1,10 @@
 export default {
-  user:{
-    token:null
+  user: {
+    token: null
   },
-  app:{
-    auth:{
-      isLoginModalOpen:false
+  app: {
+    auth: {
+      isLoginModalOpen: false
     }
   }
-};
+}
