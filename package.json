@@ -32,7 +32,7 @@
     "esdoc": "0.4.7",
     "object-assign": "4.1.0",
     "react": "15.3.2",
-    "react-addons-pure-render-mixin": "^15.2.1",
+    "react-addons-pure-render-mixin": "15.2.1",
     "react-bootstrap": "0.30.6",
     "react-dom": "15.2.1",
     "react-fontawesome": "^1.2.0",
@@ -42,6 +42,7 @@
     "react-router-redux": "4.0.5",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
+    "shrinkwrap": "0.4.0",
     "superagent": "2.1.0"
   },
   "devDependencies": {
@@ -113,5 +114,5 @@
     "ignore": [
       "webpack-public-path.js"
     ]
-}
+  }
 }
