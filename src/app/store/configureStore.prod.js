@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import { loadTranslations, setLocale, syncTranslationWithStore } from 'react-redux-i18n'
 import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
+import rootReducer from '../App.reducer'
 import translationsObject from './../../assets/lang/index'
 
 /**

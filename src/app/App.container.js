@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 export const App = (props) => {
   return (
     <div className='appContainer'>
+    HELLO WORLD
     </div>)
 }
 
