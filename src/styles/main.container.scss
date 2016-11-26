@@ -1,0 +1,18 @@
+$main-width: 85%;
+$background-color: rgba(50,66,121,0.7);
+$main-padtop: 60px;
+$main-padleft: 10px;
+$background-url: url(../assets/img/luciole_background.png);
+
+.main-container{
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: fixed;
+  right: 0;
+  height: 100%;
+  width: $main-width;
+  padding-top: $main-padtop;
+  padding-left: $main-padleft;
+  background:linear-gradient(0deg, $background-color, $background-color), $background-url;
+  background-size:cover;
+}

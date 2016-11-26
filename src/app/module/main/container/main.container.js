@@ -1,27 +1,19 @@
-import React /* , { PropTypes }*/ from 'react'
+import React /*, { PropTypes }*/ from 'react'
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
-import Sidebar from './module/sidebar/container/sidebar.container'
 
 /**
- * App container, used to define the whole app
+ * Main container, used to define the composition of the Main screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const App = (props) => {
+export const Main = (props) => {
   return (
-    <div>
-      <Sidebar />
-      {props.children}
-    </div>)
+    <div className='main-container'>
+      Main
+    </div>
+  )
 }
-
-/**
- * The container properties' types
- * @type {Object}
- */
-App.propTypes = {}
 
 /**
  * Map the global state into props
@@ -41,8 +33,14 @@ function mapDispatchToProps (dispatch) {
   return {}
 }
 
-App.mapStateToProps = mapStateToProps
-App.mapDispatchToProps = mapDispatchToProps
+/**
+ * The container properties' types
+ * @type {Object}
+ */
+Main.propTypes = {}
+
+Main.mapStateToProps = mapStateToProps
+Main.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -53,4 +51,4 @@ App.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Main)
