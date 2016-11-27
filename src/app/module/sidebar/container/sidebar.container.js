@@ -1,8 +1,9 @@
-import React /*, { PropTypes }*/ from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import SidebarLoggedIn from './../component/sidebar-logged-in.component'
 import SidebarLoggedOff from './../component/sidebar-logged-off.component'
 import SidebarLogo from './../component/sidebar-logo.component'
+import AuthService from './../../../common/auth/service/auth.service'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar
@@ -11,15 +12,23 @@ import SidebarLogo from './../component/sidebar-logo.component'
  * @return {Object} React component tree
  */
 export const Sidebar = (props) => {
+  const content = isUserLoggedIn(props) ? (<SidebarLoggedIn />) : (<SidebarLoggedOff />)
   return (
     <div className='sidebar-container'>
       <SidebarLogo />
       SIDEBAR
-      <SidebarLoggedOff />
-      or
-      <SidebarLoggedIn />
+      {content}
     </div>
   )
+}
+
+/**
+ * Check if the user is logged in
+ * @param  {Object}  props The container props
+ * @return {Boolean}       True if the user is logged in, else false
+ */
+function isUserLoggedIn (props) {
+  return AuthService.isConnected(props)
 }
 
 /**
@@ -28,7 +37,9 @@ export const Sidebar = (props) => {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    auth: state.application.auth
+  }
 }
 
 /**
@@ -44,7 +55,9 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-Sidebar.propTypes = {}
+Sidebar.propTypes = {
+  auth: PropTypes.object.isRequired
+}
 
 Sidebar.mapStateToProps = mapStateToProps
 Sidebar.mapDispatchToProps = mapDispatchToProps

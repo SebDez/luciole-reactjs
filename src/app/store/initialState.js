@@ -1,1 +1,5 @@
-export default {}
+export default {
+  module: {},
+  auth: {},
+  app: {}
+}

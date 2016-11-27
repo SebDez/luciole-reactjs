@@ -1,17 +1,14 @@
-import { combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
-import { i18nReducer } from 'react-redux-i18n'
+import initialState from './store/initialState'
+
+const handleActions = {}
 
 /**
- * Get the root reducer object
- * @return {Object}          The root reducer object
+ * Set new state according to action, if no existing action, set default state
+ * @param {Object} [state=initialState] The state to set, default is initialState
+ * @param {Object} action               The action to use
  */
-const rootReducer = combineReducers({
-  i18n: i18nReducer,
-  routing: routerReducer
-})
+const AppReducer = (state = initialState, action) => {
+  return handleActions[action.type] ? handleActions[action.type](state, action) : state
+}
 
-/**
- * Export the reducer
- */
-export default rootReducer
+export default AppReducer

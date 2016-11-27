@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import HomePageLoggedIn from './../component/homepage-logged-in.component'
 import HomePageLoggedOff from './../component/homepage-logged-off.component'
+import AuthService from './../../../common/auth/service/auth.service'
 
 /**
  * HomePage container, used to define the composition of the HomePage screen
@@ -10,14 +11,22 @@ import HomePageLoggedOff from './../component/homepage-logged-off.component'
  * @return {Object} React component tree
  */
 export const HomePage = (props) => {
+  const content = isUserLoggedIn(props) ? (<HomePageLoggedIn />) : (<HomePageLoggedOff />)
   return (
     <div>
       HOMEPAGE
-      <HomePageLoggedIn />
-      or
-      <HomePageLoggedOff />
+      {content}
     </div>
   )
+}
+
+/**
+ * Check if the user is logged in
+ * @param  {Object}  props The container props
+ * @return {Boolean}       True if the user is logged in, else false
+ */
+function isUserLoggedIn (props) {
+  return AuthService.isConnected(props)
 }
 
 /**
@@ -26,7 +35,9 @@ export const HomePage = (props) => {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    auth: state.application.auth
+  }
 }
 
 /**
@@ -42,7 +53,9 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-HomePage.propTypes = {}
+HomePage.propTypes = {
+  auth: PropTypes.object.isRequired
+}
 
 HomePage.mapStateToProps = mapStateToProps
 HomePage.mapDispatchToProps = mapDispatchToProps

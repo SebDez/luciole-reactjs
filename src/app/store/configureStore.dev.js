@@ -5,7 +5,7 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import { loadTranslations, setLocale, syncTranslationWithStore } from 'react-redux-i18n'
 import thunk from 'redux-thunk'
-import rootReducer from '../App.reducer'
+import rootReducer from '../app.root-reducer'
 import translationsObject from './../../assets/lang/index'
 
 /**
@@ -22,8 +22,8 @@ export default function configureStore (initialState) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../App.reducer', () => {
-      const nextReducer = require('../App.reducer').default // eslint-disable-line global-require
+    module.hot.accept('../app.root-reducer', () => {
+      const nextReducer = require('../app.root-reducer').default // eslint-disable-line global-require
       store.replaceReducer(nextReducer)
     })
   }
