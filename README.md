@@ -8,9 +8,7 @@ The reactjs frontend for luciole game
 Tests coverage [Access the test coverage tool](../coverage/index.html)
 
 #On my todo list
-- Finish to set up the project
-- Set the firsts components
-- Do the unit tests for that
 - Make a good readme !
+- And a lot of stuff :D
 
 note update esdoc hosting badge : https://doc.esdoc.org/-/generate.html#url=git@github.com:SebDez/luciole-reactjs.git
