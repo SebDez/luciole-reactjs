@@ -1,5 +1,8 @@
 import React /*, { PropTypes }*/ from 'react'
 import { connect } from 'react-redux'
+import SidebarLoggedIn from './../component/sidebar-logged-in.component'
+import SidebarLoggedOff from './../component/sidebar-logged-off.component'
+import SidebarLogo from './../component/sidebar-logo.component'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar
@@ -10,10 +13,11 @@ import { connect } from 'react-redux'
 export const Sidebar = (props) => {
   return (
     <div className='sidebar-container'>
+      <SidebarLogo />
       SIDEBAR
-      Will be login
+      <SidebarLoggedOff />
       or
-      User navigation
+      <SidebarLoggedIn />
     </div>
   )
 }
