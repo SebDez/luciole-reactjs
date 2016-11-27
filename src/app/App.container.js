@@ -1,6 +1,6 @@
-import React /* , { PropTypes }*/ from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
+import ReactSidebar from 'react-sidebar'
 import Sidebar from './module/sidebar/container/sidebar.container'
 
 /**
@@ -10,10 +10,25 @@ import Sidebar from './module/sidebar/container/sidebar.container'
  * @return {Object} React component tree
  */
 export const App = (props) => {
+  const styles = {
+    sidebar: {
+      boxShadow: '-1px 2px 5px 5px #2c3861'
+    }
+  }
+  const sidebarContent = <Sidebar />
+  const sidebarProps = {
+    sidebar: sidebarContent,
+    open: true,
+    docked: true,
+    shadow: false,
+    styles,
+    onSetOpen: () => { sidebarProps.open = true }
+  }
   return (
-    <div>
-      <Sidebar />
-      {props.children}
+    <div className='app-container'>
+      <ReactSidebar {...sidebarProps}>
+          {props.children}
+      </ReactSidebar>)
     </div>)
 }
 

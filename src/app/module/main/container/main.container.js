@@ -1,4 +1,4 @@
-import React /*, { PropTypes }*/ from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 /**
@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 export const Main = (props) => {
   return (
     <div className='main-container'>
-      Main
+      Main content
     </div>
   )
 }

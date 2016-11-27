@@ -11,8 +11,7 @@ import configureStore from './app/store/configureStore'
 require('./favicon.ico') // Tell webpack to load favicon.ico
 
 // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
-import './styles/sidebar.container.scss'
-import './styles/main.container.scss'
+import './styles/app.container.scss'
 
 const store = configureStore()
 
