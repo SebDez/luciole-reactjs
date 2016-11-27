@@ -3,11 +3,16 @@ import {Route, IndexRoute} from 'react-router'
 
 import App from './app/app.container'
 import Main from './app/module/main/container/main.container'
+import HomePage from './app/module/homepage/container/homepage.container'
+import Buildings from './app/module/buildings/container/buildings.container'
 
 export default (store) => {
   return (
     <Route path='/' component={App}>
-      <IndexRoute component={Main} />
+      <Route component={Main}>
+        <IndexRoute component={HomePage} />
+        <Route path='/buildings' component={Buildings} />
+      </Route>
     </Route>
   )
 }
