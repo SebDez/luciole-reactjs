@@ -2,12 +2,12 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 /**
- * SidebarLoggedOff Component
+ * HomePageLoggedOff Component
  */
-class SidebarLoggedOff extends React.Component {
+class HomePageLoggedOff extends React.Component {
 
   /**
-   * Create a new SidebarLoggedOff component
+   * Create a new HomePageLoggedOff component
    * @param  {Object} props The component properties
    * @param  {Object} context The app context
    */
@@ -24,13 +24,13 @@ class SidebarLoggedOff extends React.Component {
   render () {
     return (
       <div>
-        ----
+        xxxx
         <br />
-        SidebarLoggedOff
+        HomePageLoggedOff
         <br />
         Content when user is logged off
         <br />
-        ----
+        xxxx
       </div>
     )
   }
@@ -40,9 +40,9 @@ class SidebarLoggedOff extends React.Component {
  * The component properties' types
  * @type {Object}
  */
-SidebarLoggedOff.propTypes = {}
+HomePageLoggedOff.propTypes = {}
 
 /**
  * Export the component
  */
-export default SidebarLoggedOff
+export default HomePageLoggedOff

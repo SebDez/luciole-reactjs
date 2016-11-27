@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import HomePageLoggedIn from './../component/homepage-logged-in.component'
+import HomePageLoggedOff from './../component/homepage-logged-off.component'
 
 /**
  * HomePage container, used to define the composition of the HomePage screen
@@ -10,7 +12,10 @@ import { connect } from 'react-redux'
 export const HomePage = (props) => {
   return (
     <div>
-      HomePage content
+      HOMEPAGE
+      <HomePageLoggedIn />
+      or
+      <HomePageLoggedOff />
     </div>
   )
 }
