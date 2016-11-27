@@ -1,5 +1,9 @@
 export default {
   module: {},
-  auth: {},
+  auth: {
+    user: {
+      token: null
+    }
+  },
   app: {}
 }
