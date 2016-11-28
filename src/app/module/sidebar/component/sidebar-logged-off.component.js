@@ -19,12 +19,12 @@ export class SidebarLoggedOff extends React.Component {
     super(props, context)
     /** @type {Object}*/
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    /** @type {Object}*/
+    /** @type {Function}*/
     this.logUserIn = this.logUserIn.bind(this)
   }
 
   /**
- * Open modal for add a new student
+ * Log an user in
  */
   logUserIn () {
     this.props.authActions.logUserIn()

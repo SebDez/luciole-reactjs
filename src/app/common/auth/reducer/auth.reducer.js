@@ -8,6 +8,12 @@ const handleActions = {
   },
   [Constants.LOG_USER_IN_FAILURE]: (state) => {
     return objectAssign({}, state, {user: {token: null}})
+  },
+  [Constants.DISCONNECT_USER_SUCCESS]: (state, action) => {
+    return objectAssign({}, state, {user: {token: null}})
+  },
+  [Constants.DISCONNECT_USER_FAILURE]: (state) => {
+    return objectAssign({}, state)
   }
 }
 

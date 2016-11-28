@@ -15,4 +15,14 @@ export default class AuthMockApi {
       }
     })
   }
+
+  /**
+   * MOCK : Disconnect an user
+   * @return {Object} A promise to resolve
+   */
+  disconnectUser () {
+    return Promise.resolve({
+      data: {}
+    })
+  }
 }

@@ -15,6 +15,8 @@ export default class AuthActions {
     /** @type {Function}*/
     this.logUserIn = this.logUserIn.bind(this)
     /** @type {Function}*/
+    this.disconnectUser = this.disconnectUser.bind(this)
+    /** @type {Function}*/
     this.logUserInSuccessAction = this.logUserInSuccessAction.bind(this)
     /** @type {Function}*/
     this.logUserInFailureAction = this.logUserInFailureAction.bind(this)
@@ -32,6 +34,20 @@ export default class AuthActions {
         dispatch(this.logUserInSuccessAction(res.data.token))
       }, err => {
         dispatch(this.logUserInFailureAction(err))
+      })
+    }
+  }
+
+  /**
+   * Disconnect an user
+   * @return {Object}          The action to dispatch
+   */
+  disconnectUser () {
+    return dispatch => {
+      return this.authService.disconnectUser().then(() => {
+        dispatch(this.disconnectUserInSuccessAction())
+      }, err => {
+        dispatch(this.disconnectUserInFailureAction(err))
       })
     }
   }
@@ -55,6 +71,28 @@ export default class AuthActions {
   logUserInFailureAction (err) {
     return {
       type: Constants.LOG_USER_IN_FAILURE,
+      err
+    }
+  }
+
+  /**
+   * Create an action with the DISCONNECT_USER_SUCCESS type
+   * Accepts the new token to put in Redux store
+   * Returns a new action that can be managed by Redux
+   */
+  disconnectUserInSuccessAction () {
+    return {
+      type: Constants.DISCONNECT_USER_SUCCESS
+    }
+  }
+
+  /**
+   * Create an action with the DISCONNECT_USER_FAILURE type
+   * Returns a new action that can be managed by Redux
+   */
+  disconnectUserInFailureAction (err) {
+    return {
+      type: Constants.DISCONNECT_USER_FAILURE,
       err
     }
   }

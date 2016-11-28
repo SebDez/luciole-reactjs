@@ -24,6 +24,14 @@ export default class AuthService {
   }
 
   /**
+   * Disconnect an user
+   * @return {Object} A promise to resolve
+   */
+  disconnectUser () {
+    return this.api.disconnectUser()
+  }
+
+  /**
    * Check if the user is connected
    * @param  {Object}  state The state to use
    * @return {Boolean} True if the user is connected
