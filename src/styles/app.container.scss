@@ -15,12 +15,13 @@ $app-text-second-color:#4059f9;
 
 $sidebar-width: 15%;
 $sidebar-padding-top: 25px;
-$sidebar-bg-color: #2d3c69;
+$sidebar-primary-bg-color: #2d3c69;
+$sidebar-second-bg-color: #1D244B;
 $sidebar-padding-borders: 10px;
 
 .sidebar-container{
   height: 100%;
-  background-color: $sidebar-bg-color;
+  background-color: $sidebar-primary-bg-color;
   padding-top: $sidebar-padding-top;
   text-align: center;
   padding-left: $sidebar-padding-borders;
@@ -33,13 +34,21 @@ $logo-url: url('../assets/img/luciole_logo.png');
   padding-bottom: 20px;
 }
 
+.sidebar-content{
+  background-color: $sidebar-second-bg-color;
+  box-shadow: 0px 0px 10px #000;
+  position:absolute;
+  bottom:50%;
+  margin:-10px;
+  width:100%;
+}
+
 .sidebar-footer{
   position:absolute;
   bottom:0;
   width: 90%;
   color: $app-text-second-color;
 }
-
 
 /******************************
 * MAIN CONTAINER

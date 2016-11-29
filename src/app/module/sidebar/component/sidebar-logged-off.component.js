@@ -37,6 +37,8 @@ export class SidebarLoggedOff extends React.Component {
   render () {
     return (
       <div>
+        <br />
+        <br />
         ----
         <br />
         SidebarLoggedOff
@@ -44,6 +46,8 @@ export class SidebarLoggedOff extends React.Component {
         Content when user is logged off
         <br />
         ----
+        <br />
+        <br />
         <Button bsStyle='success' onClick={this.logUserIn}> LOG IN</Button>
       </div>
     )
