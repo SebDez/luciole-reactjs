@@ -1,10 +1,11 @@
 /******************************
 * APP CONTAINER
 * *****************************/
-$app-text-color:white;
+$app-text-primary-color:white;
+$app-text-second-color:#4059f9;
 
 .app-container{
-  color: $app-text-color;
+  color: $app-text-primary-color;
 }
 
 
@@ -30,6 +31,13 @@ $logo-url: url(../assets/img/luciole_logo.png);
 .sidebar-logo{
   content:$logo-url;
   padding-bottom: 20px;
+}
+
+.sidebar-footer{
+  position:absolute;
+  bottom:0;
+  width: 90%;
+  color: $app-text-second-color;
 }
 
 

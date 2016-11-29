@@ -18,6 +18,9 @@ export const Sidebar = (props) => {
       <SidebarLogo />
       SIDEBAR
       {content}
+      <div className='sidebar-footer'>
+        CGU - A propos - Contact
+      </div>
     </div>
   )
 }
