@@ -23,8 +23,9 @@ class SidebarLogo extends React.Component {
    */
   render () {
     return (
-      <div className='sidebar-logo' />
-    )
+      <div className='sidebar-logo'>
+        <img src='../assets/img/luciole_logo.png' alt='Logo' />
+      </div>)
   }
 }
 

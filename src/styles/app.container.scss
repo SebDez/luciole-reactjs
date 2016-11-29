@@ -27,9 +27,9 @@ $sidebar-padding-borders: 10px;
   padding-right: $sidebar-padding-borders;
 }
 
-$logo-url: url(../assets/img/luciole_logo.png);
+$logo-url: url('../assets/img/luciole_logo.png');
 .sidebar-logo{
-  content:$logo-url;
+  content: $logo-url;
   padding-bottom: 20px;
 }
 
