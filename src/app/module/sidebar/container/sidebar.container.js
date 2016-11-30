@@ -21,7 +21,7 @@ export const Sidebar = (props) => {
         {content}
       </div>
       <div className='sidebar-footer'>
-        <Link to='/cgu'>CGU</Link> - A propos - Contact
+        <Link to='/cgu'>CGU</Link> - <Link to='/about'>A propos</Link> - Contact
       </div>
     </div>
   )
