@@ -4,6 +4,7 @@ import SidebarLoggedIn from './../component/sidebar-logged-in.component'
 import SidebarLoggedOff from './../component/sidebar-logged-off.component'
 import SidebarLogo from './../component/sidebar-logo.component'
 import AuthService from './../../../common/auth/service/auth.service'
+import {Link} from 'react-router'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar
@@ -20,7 +21,7 @@ export const Sidebar = (props) => {
         {content}
       </div>
       <div className='sidebar-footer'>
-        CGU - A propos - Contact
+        <Link to='/cgu'>CGU</Link> - A propos - Contact
       </div>
     </div>
   )

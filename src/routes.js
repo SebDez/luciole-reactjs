@@ -5,6 +5,7 @@ import App from './app/app.container'
 import Main from './app/module/main/container/main.container'
 import HomePage from './app/module/homepage/container/homepage.container'
 import Buildings from './app/module/buildings/container/buildings.container'
+import CGU from './app/module/cgu/container/cgu.container'
 
 export default (store) => {
   return (
@@ -12,6 +13,7 @@ export default (store) => {
       <Route component={Main}>
         <IndexRoute component={HomePage} />
         <Route path='/buildings' component={Buildings} />
+        <Route path='/cgu' component={CGU} />
       </Route>
     </Route>
   )

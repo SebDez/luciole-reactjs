@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import {IndexLink} from 'react-router'
 
 /**
  * SidebarLogo Component
@@ -24,7 +25,7 @@ class SidebarLogo extends React.Component {
   render () {
     return (
       <div className='sidebar-logo'>
-        <img src='../assets/img/luciole_logo.png' alt='Logo' />
+        <IndexLink to='/'><img src='../assets/img/luciole_logo.png' alt='Logo' /></IndexLink>
       </div>)
   }
 }
