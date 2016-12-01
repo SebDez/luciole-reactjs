@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 /**
- * CGU container, used to define the composition of the CGU screen
+ * CGUPage container, used to define the composition of the CGUPage screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const CGU = (props) => {
+export const CGUPage = (props) => {
   return (
     <div>
       CGU
@@ -37,10 +37,10 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-CGU.propTypes = {}
+CGUPage.propTypes = {}
 
-CGU.mapStateToProps = mapStateToProps
-CGU.mapDispatchToProps = mapDispatchToProps
+CGUPage.mapStateToProps = mapStateToProps
+CGUPage.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -51,4 +51,4 @@ CGU.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CGU)
+)(CGUPage)

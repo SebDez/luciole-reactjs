@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 /**
- * Contact container, used to define the composition of the Contact screen
+ * ContactPage container, used to define the composition of the ContactPage screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const Contact = (props) => {
+export const ContactPage = (props) => {
   return (
     <div>
     Contact page
@@ -37,10 +37,10 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-Contact.propTypes = {}
+ContactPage.propTypes = {}
 
-Contact.mapStateToProps = mapStateToProps
-Contact.mapDispatchToProps = mapDispatchToProps
+ContactPage.mapStateToProps = mapStateToProps
+ContactPage.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -51,4 +51,4 @@ Contact.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Contact)
+)(ContactPage)

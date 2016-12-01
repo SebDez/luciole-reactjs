@@ -2,15 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 /**
- * Buildings container, used to define the composition of the Buildings screen
+ * BuildingsPage container, used to define the composition of the BuildingsPage screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const Buildings = (props) => {
+export const BuildingsPage = (props) => {
   return (
     <div>
-      Buildings content
+      BuildingsPage content
     </div>
   )
 }
@@ -37,10 +37,10 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-Buildings.propTypes = {}
+BuildingsPage.propTypes = {}
 
-Buildings.mapStateToProps = mapStateToProps
-Buildings.mapDispatchToProps = mapDispatchToProps
+BuildingsPage.mapStateToProps = mapStateToProps
+BuildingsPage.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -51,4 +51,4 @@ Buildings.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Buildings)
+)(BuildingsPage)

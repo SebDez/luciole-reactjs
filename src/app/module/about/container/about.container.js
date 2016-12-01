@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 /**
- * About container, used to define the composition of the About screen
+ * AboutPage container, used to define the composition of the AboutPage screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const About = (props) => {
+export const AboutPage = (props) => {
   return (
     <div>
       A propos page
@@ -37,10 +37,10 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-About.propTypes = {}
+AboutPage.propTypes = {}
 
-About.mapStateToProps = mapStateToProps
-About.mapDispatchToProps = mapDispatchToProps
+AboutPage.mapStateToProps = mapStateToProps
+AboutPage.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -51,4 +51,4 @@ About.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(About)
+)(AboutPage)
