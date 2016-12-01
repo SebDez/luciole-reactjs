@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
-import SidebarActions from './../../sidebar/action/sidebar.action'
 import HomePageLoggedIn from './../component/homepage-logged-in.component'
 import HomePageLoggedOff from './../component/homepage-logged-off.component'
-import HomePageSidebarBurger from './../component/homepage-sidebar-burger.component'
 import AuthService from './../../../common/auth/service/auth.service'
 
 /**
@@ -14,14 +11,22 @@ import AuthService from './../../../common/auth/service/auth.service'
  * @return {Object} React component tree
  */
 export const HomePage = (props) => {
-  const content = isUserLoggedIn(props) ? (<HomePageLoggedIn />) : (<HomePageLoggedOff />)
+  const content = getHomePageContentElement(props)
   return (
     <div>
-      <HomePageSidebarBurger onClick={handleBurgerClick.bind(null, props)} />
       HOMEPAGE
       {content}
     </div>
   )
+}
+
+/**
+ * Get home page content element according to the user (logged or not)
+ * @param  {Object} props The container props
+ * @return {Object}       The element to render
+ */
+function getHomePageContentElement (props) {
+  return isUserLoggedIn(props) ? (<HomePageLoggedIn />) : (<HomePageLoggedOff />)
 }
 
 /**
@@ -33,10 +38,6 @@ function isUserLoggedIn (props) {
   return AuthService.isConnected(props)
 }
 
-function handleBurgerClick (props) {
-  props.sidebarActions.manageSidebar(props.sidebar.open)
-}
-
 /**
  * Map the global state into props
  * @param  {Object} state The global state
@@ -44,8 +45,7 @@ function handleBurgerClick (props) {
  */
 function mapStateToProps (state) {
   return {
-    auth: state.application.auth,
-    sidebar: state.application.module.sidebar
+    auth: state.application.auth
   }
 }
 
@@ -55,9 +55,7 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {
-    sidebarActions: bindActionCreators(new SidebarActions(), dispatch)
-  }
+  return {}
 }
 
 /**

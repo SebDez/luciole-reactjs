@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import SidebarActions from './../../sidebar/action/sidebar.action'
+import MainPageSidebarBurger from './../component/main-sidebar-burger.component'
+import AuthService from './../../../common/auth/service/auth.service'
 
 /**
  * Main container, used to define the composition of the Main screen
@@ -8,11 +12,39 @@ import { connect } from 'react-redux'
  * @return {Object} React component tree
  */
 export const Main = (props) => {
+  const sidebarBurger = getSidebarBurgerElement(props)
   return (
     <div className='main-container'>
+      {sidebarBurger}
       {props.children}
     </div>
   )
+}
+
+/**
+ * Get sidebarburger element if the user is logged in
+ * @param  {Object} props The container props
+ * @return {Object}       The element to render
+ */
+function getSidebarBurgerElement (props) {
+  return isUserLoggedIn(props) ? (<MainPageSidebarBurger onClick={handleBurgerClick.bind(null, props)} />) : null
+}
+
+/**
+ * Handle the burger click to open/close sidebar
+ * @param  {Object} props The container props
+ */
+function handleBurgerClick (props) {
+  props.sidebarActions.manageSidebar(props.sidebar.open)
+}
+
+/**
+* Check if the user is logged in
+* @param  {Object}  props The container props
+* @return {Boolean}       True if the user is logged in, else false
+*/
+function isUserLoggedIn (props) {
+  return AuthService.isConnected(props)
 }
 
 /**
@@ -21,7 +53,10 @@ export const Main = (props) => {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    auth: state.application.auth,
+    sidebar: state.application.module.sidebar
+  }
 }
 
 /**
@@ -30,14 +65,20 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {}
+  return {
+    sidebarActions: bindActionCreators(new SidebarActions(), dispatch)
+  }
 }
 
 /**
  * The container properties' types
  * @type {Object}
  */
-Main.propTypes = {}
+Main.propTypes = {
+  auth: PropTypes.object.isRequired,
+  sidebar: PropTypes.object.isRequired,
+  sidebarActions: PropTypes.object.isRequired
+}
 
 Main.mapStateToProps = mapStateToProps
 Main.mapDispatchToProps = mapDispatchToProps
