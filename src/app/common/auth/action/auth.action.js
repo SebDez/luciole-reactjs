@@ -59,7 +59,7 @@ export default class AuthActions {
    */
   logUserInSuccessAction (token) {
     return {
-      type: Constants.LOG_USER_IN_SUCCESS,
+      type: Constants.ACTIONS.AUTH.LOG_USER_IN_SUCCESS,
       token
     }
   }
@@ -70,7 +70,7 @@ export default class AuthActions {
    */
   logUserInFailureAction (err) {
     return {
-      type: Constants.LOG_USER_IN_FAILURE,
+      type: Constants.ACTIONS.AUTH.LOG_USER_IN_FAILURE,
       err
     }
   }
@@ -82,7 +82,7 @@ export default class AuthActions {
    */
   disconnectUserInSuccessAction () {
     return {
-      type: Constants.DISCONNECT_USER_SUCCESS
+      type: Constants.ACTIONS.AUTH.DISCONNECT_USER_SUCCESS
     }
   }
 
@@ -92,7 +92,7 @@ export default class AuthActions {
    */
   disconnectUserInFailureAction (err) {
     return {
-      type: Constants.DISCONNECT_USER_FAILURE,
+      type: Constants.ACTIONS.AUTH.DISCONNECT_USER_FAILURE,
       err
     }
   }

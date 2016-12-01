@@ -1,5 +1,9 @@
 export default {
-  module: {},
+  module: {
+    sidebar: {
+      open: true
+    }
+  },
   auth: {
     user: {
       token: null

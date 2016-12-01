@@ -1,7 +1,3 @@
-@import "homepage.container";
-@import "sidebar.container";
-@import "main.container";
-
 /******************************
 * APP CONTAINER
 * *****************************/
@@ -11,3 +7,7 @@ $app-text-second-color:#4059f9;
 .app-container{
   color: $app-text-primary-color;
 }
+
+@import "homepage.container";
+@import "sidebar.container";
+@import "main.container";

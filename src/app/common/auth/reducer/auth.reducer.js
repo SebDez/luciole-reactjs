@@ -3,16 +3,16 @@ import objectAssign from 'object-assign'
 import initialState from './../../../store/initialState'
 
 const handleActions = {
-  [Constants.LOG_USER_IN_SUCCESS]: (state, action) => {
+  [Constants.ACTIONS.AUTH.LOG_USER_IN_SUCCESS]: (state, action) => {
     return objectAssign({}, state, {user: {token: action.token}})
   },
-  [Constants.LOG_USER_IN_FAILURE]: (state) => {
+  [Constants.ACTIONS.AUTH.LOG_USER_IN_FAILURE]: (state) => {
     return objectAssign({}, state, {user: {token: null}})
   },
-  [Constants.DISCONNECT_USER_SUCCESS]: (state, action) => {
+  [Constants.ACTIONS.AUTH.DISCONNECT_USER_SUCCESS]: (state, action) => {
     return objectAssign({}, state, {user: {token: null}})
   },
-  [Constants.DISCONNECT_USER_FAILURE]: (state) => {
+  [Constants.ACTIONS.AUTH.DISCONNECT_USER_FAILURE]: (state) => {
     return objectAssign({}, state)
   }
 }

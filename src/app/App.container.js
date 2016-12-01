@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import ReactSidebar from 'react-sidebar'
 import Sidebar from './module/sidebar/container/sidebar.container'
@@ -18,8 +18,8 @@ export const App = (props) => {
   const sidebarContent = <Sidebar />
   const sidebarProps = {
     sidebar: sidebarContent,
-    open: true,
-    docked: true,
+    open: props.sidebar.open,
+    docked: props.sidebar.open,
     shadow: false,
     styles,
     onSetOpen: () => { sidebarProps.open = true }
@@ -36,7 +36,9 @@ export const App = (props) => {
  * The container properties' types
  * @type {Object}
  */
-App.propTypes = {}
+App.propTypes = {
+  sidebar: PropTypes.object.isRequired
+}
 
 /**
  * Map the global state into props
@@ -44,7 +46,9 @@ App.propTypes = {}
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    sidebar: state.application.module.sidebar
+  }
 }
 
 /**

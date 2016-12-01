@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux'
 import { i18nReducer } from 'react-redux-i18n'
 import AppReducer from './app.reducer'
 import AuthReducer from './common/auth/reducer/auth.reducer'
+import SidebarReducer from './module/sidebar/reducer/sidebar.reducer'
 
 /**
  * Get the root reducer object
@@ -13,7 +14,10 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   application: combineReducers({
     app: AppReducer,
-    auth: AuthReducer
+    auth: AuthReducer,
+    module: combineReducers({
+      sidebar: SidebarReducer
+    })
   })
 })
 
