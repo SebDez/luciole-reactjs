@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {Button} from 'react-bootstrap'
+import {Link} from 'react-router'
+import FontAwesome from 'react-fontawesome'
 
 /**
- * SidebarLoggedOff Component
+ * SidebarLink Component
  */
-export class SidebarLoggedOff extends React.Component {
+class SidebarLink extends React.Component {
 
   /**
-   * Create a new SidebarLoggedOff component
+   * Create a new SidebarLink component
    * @param  {Object} props The component properties
    * @param  {Object} context The app context
    */
@@ -24,19 +25,10 @@ export class SidebarLoggedOff extends React.Component {
    */
   render () {
     return (
-      <div>
-        <div className='sidebar-content'>
-          ----
-          <br />
-          SidebarLoggedOff
-          <br />
-          Content when user is logged off
-          <br />
-          ----
-          <Button bsStyle='success' onClick={this.props.logUserIn}> LOG IN</Button>
-        </div>
-      </div>
-    )
+      <Link to={this.props.link} className='sidebar-link'>
+        <FontAwesome size='2x' className='sidebar-link-icon' name={this.props.icon} />
+        <div className='sidebar-link-text'> {this.props.text} </div>
+      </Link>)
   }
 }
 
@@ -44,11 +36,13 @@ export class SidebarLoggedOff extends React.Component {
  * The component properties' types
  * @type {Object}
  */
-SidebarLoggedOff.propTypes = {
-  logUserIn: PropTypes.func.isRequired
+SidebarLink.propTypes = {
+  text: PropTypes.string.required,
+  icon: PropTypes.string.required,
+  link: PropTypes.string.required
 }
 
 /**
  * Export the component
  */
-export default SidebarLoggedOff
+export default SidebarLink

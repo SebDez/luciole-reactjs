@@ -19,9 +19,7 @@ export const Sidebar = (props) => {
   return (
     <div className='sidebar-container'>
       <SidebarLogo />
-      <div className='sidebar-content'>
-        {content}
-      </div>
+      {content}
       <div className='sidebar-footer'>
         <Link to='/cgu'>CGU</Link> - <Link to='/about'>A propos</Link> - <Link to='/contact'>Contact</Link>
       </div>

@@ -3,11 +3,20 @@
 * *****************************/
 $app-text-primary-color:white;
 $app-text-second-color:#4059f9;
+$app-text-third-color:#54cbfe;
+
+$app-title-font: 'Play', serif;
+$app-text-font: 'Play', serif;
 
 .app-container{
   color: $app-text-primary-color;
+  font-size: 15px;
+  font-family: $app-text-font;
 }
 
 @import "homepage.container";
 @import "sidebar.container";
 @import "main.container";
+
+// font-family: 'PT Sans', sans-serif;
+// font-family: 'Maitree', serif;

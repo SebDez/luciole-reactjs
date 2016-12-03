@@ -25,7 +25,7 @@ class SidebarLogo extends React.Component {
   render () {
     return (
       <div className='sidebar-logo'>
-        <IndexLink to='/'><img src={require('../assets/img/luciole_logo.png')} alt='Logo' /></IndexLink>
+        <IndexLink to='/'><img src='../assets/img/luciole_logo.png' alt='Logo' /></IndexLink>
       </div>)
   }
 }

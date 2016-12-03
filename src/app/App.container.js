@@ -12,7 +12,7 @@ import Sidebar from './module/sidebar/container/sidebar.container'
 export const App = (props) => {
   const styles = {
     sidebar: {
-      boxShadow: '-1px 2px 5px 5px #2c3861'
+      boxShadow: '-1px 2px 5px 5px rgba(0,0,0, 0.3)'
     }
   }
   const sidebarContent = <Sidebar />
