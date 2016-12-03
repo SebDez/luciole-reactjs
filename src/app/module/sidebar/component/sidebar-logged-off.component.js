@@ -1,8 +1,5 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import AuthActions from './../../../common/auth/action/auth.action'
 import {Button} from 'react-bootstrap'
 
 /**
@@ -19,15 +16,6 @@ export class SidebarLoggedOff extends React.Component {
     super(props, context)
     /** @type {Object}*/
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    /** @type {Function}*/
-    this.logUserIn = this.logUserIn.bind(this)
-  }
-
-  /**
- * Log an user in
- */
-  logUserIn () {
-    this.props.authActions.logUserIn()
   }
 
   /**
@@ -48,7 +36,7 @@ export class SidebarLoggedOff extends React.Component {
         ----
         <br />
         <br />
-        <Button bsStyle='success' onClick={this.logUserIn}> LOG IN</Button>
+        <Button bsStyle='success' onClick={this.props.logUserIn}> LOG IN</Button>
       </div>
     )
   }
@@ -59,36 +47,10 @@ export class SidebarLoggedOff extends React.Component {
  * @type {Object}
  */
 SidebarLoggedOff.propTypes = {
-  authActions: PropTypes.object.isRequired
+  logUserIn: PropTypes.func.isRequired
 }
-
-/**
- * Map the global state into props
- * @param  {Object} state The global state
- * @return {Object}       The container props
- */
-function mapStateToProps (state) {
-  return {}
-}
-
-/**
- * Maps the dispatch to props (to allow to execute action creator)
- * @param  {Object} dispatch The global dispatch
- * @return {Object}       The container props
- */
-function mapDispatchToProps (dispatch) {
-  return {
-    authActions: bindActionCreators(new AuthActions(), dispatch)
-  }
-}
-
-SidebarLoggedOff.mapStateToProps = mapStateToProps
-SidebarLoggedOff.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Export the component
  */
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SidebarLoggedOff)
+export default SidebarLoggedOff

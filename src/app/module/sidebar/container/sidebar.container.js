@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {Link} from 'react-router'
 import SidebarLoggedIn from './../component/sidebar-logged-in.component'
 import SidebarLoggedOff from './../component/sidebar-logged-off.component'
 import SidebarLogo from './../component/sidebar-logo.component'
 import AuthService from './../../../common/auth/service/auth.service'
-import {Link} from 'react-router'
+import AuthActions from './../../../common/auth/action/auth.action'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar
@@ -13,7 +15,7 @@ import {Link} from 'react-router'
  * @return {Object} React component tree
  */
 export const Sidebar = (props) => {
-  const content = isUserLoggedIn(props) ? (<SidebarLoggedIn />) : (<SidebarLoggedOff />)
+  const content = getHomePageContentElement(props)
   return (
     <div className='sidebar-container'>
       <SidebarLogo />
@@ -25,6 +27,31 @@ export const Sidebar = (props) => {
       </div>
     </div>
   )
+}
+
+/**
+ * Get home page content element according to the user (logged or not)
+ * @param  {Object} props The container props
+ * @return {Object}       The element to render
+ */
+function getHomePageContentElement (props) {
+  return isUserLoggedIn(props) ? (<SidebarLoggedIn disconnectUser={disconnectUser.bind(null, props)} />) : (<SidebarLoggedOff logUserIn={logUserIn.bind(null, props)} />)
+}
+
+/**
+ * Disconnect an user
+ * @param  {Object} props The container props
+ */
+function disconnectUser (props) {
+  props.authActions.disconnectUser()
+}
+
+/**
+ * Log an user in
+ * @param  {Object} props The container props
+ */
+function logUserIn (props) {
+  props.authActions.logUserIn('login', 'password')
 }
 
 /**
@@ -53,7 +80,9 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {}
+  return {
+    authActions: bindActionCreators(new AuthActions(), dispatch)
+  }
 }
 
 /**
@@ -61,7 +90,8 @@ function mapDispatchToProps (dispatch) {
  * @type {Object}
  */
 Sidebar.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  authActions: PropTypes.object.isRequired
 }
 
 Sidebar.mapStateToProps = mapStateToProps
