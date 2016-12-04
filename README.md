@@ -12,3 +12,16 @@ Tests coverage [Access the test coverage tool](../coverage/index.html)
 - And a lot of stuff :D
 
 note update esdoc hosting badge : https://doc.esdoc.org/-/generate.html#url=git@github.com:SebDez/luciole-reactjs.git
+
+
+//todo
+
+docs
+col resource line to fix
+disconnect button
+login button
+bruger menu
+resources SVG
+--
+user card
+--

@@ -12,6 +12,7 @@ import Sidebar from './module/sidebar/container/sidebar.container'
 export const App = (props) => {
   const styles = {
     sidebar: {
+      width: '260px',
       boxShadow: '-1px 2px 5px 5px rgba(0,0,0, 0.3)'
     }
   }
@@ -19,16 +20,15 @@ export const App = (props) => {
   const sidebarProps = {
     sidebar: sidebarContent,
     open: props.sidebar.open,
-    docked: props.sidebar.open,
+    docked: true,
     shadow: false,
-    styles,
-    onSetOpen: () => { sidebarProps.open = true }
+    styles
   }
   return (
     <div className='app-container'>
       <ReactSidebar {...sidebarProps}>
           {props.children}
-      </ReactSidebar>)
+      </ReactSidebar>
     </div>)
 }
 

@@ -25,7 +25,7 @@ class SidebarLink extends React.Component {
    */
   render () {
     return (
-      <Link to={this.props.link} className='sidebar-link'>
+      <Link to={this.props.link} className='sidebar-link' onClick={this.props.onClick}>
         <FontAwesome size='2x' className='sidebar-link-icon' name={this.props.icon} />
         <div className='sidebar-link-text'> {this.props.text} </div>
       </Link>)
@@ -39,7 +39,8 @@ class SidebarLink extends React.Component {
 SidebarLink.propTypes = {
   text: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+  link: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 }
 
 /**
