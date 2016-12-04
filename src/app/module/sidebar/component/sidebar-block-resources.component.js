@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import SidebarLineResources from './sidebar-line-resources.component'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 /**
  * SidebarBlockResources Component
@@ -26,11 +27,15 @@ class SidebarBlockResources extends React.Component {
    */
   render () {
     return (
-      <div>
-        {this.getLineElementForResource('wood')}
-        {this.getLineElementForResource('gold')}
-        {this.getLineElementForResource('food')}
-      </div>)
+      <Grid className='sidebar-block-grid'>
+        <Row>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('wood')}</Col>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('gold')}</Col>
+        </Row>
+        <Row>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>
+        </Row>
+      </Grid>)
   }
 
   getLineElementForResource (resource) {

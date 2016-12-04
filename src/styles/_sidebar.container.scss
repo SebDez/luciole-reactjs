@@ -78,12 +78,19 @@ $logo-url: url('../assets/img/luciole_logo.png');
 
   .resource-line {
     margin-top: 5px;
+    text-align: left;
 
     .resource-line-text {
-      text-align: center;
       display: inline-block;
       padding-bottom: 5px;
       margin-top: 3px;
       vertical-align: middle;
     }
+  }
+
+  .sidebar-block-grid{
+    width: auto;
+  }
+
+  .sidebar-block-col{
   }
