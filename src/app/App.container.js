@@ -20,7 +20,7 @@ export const App = (props) => {
   const sidebarProps = {
     sidebar: sidebarContent,
     open: props.sidebar.open,
-    docked: true,
+    docked: props.sidebar.open,
     shadow: false,
     styles
   }

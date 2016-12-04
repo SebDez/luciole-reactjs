@@ -7,8 +7,10 @@
 }
 
 .hand-over{
-  background-color: green;
+  background-color: rgba(18, 25 ,46, 0.5);
   display: inline-block;
   cursor:pointer;
   cursor:hand;
+  padding: 10px 10px 10px 10px;
+  border-radius: 0px 0px 5px 5px;
 }

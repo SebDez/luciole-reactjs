@@ -15,12 +15,9 @@ note update esdoc hosting badge : https://doc.esdoc.org/-/generate.html#url=git@
 
 
 //todo
-
 docs
-col resource line to fix
-disconnect button
 login button
-bruger menu
+burger menu
 resources SVG
 --
 user card
