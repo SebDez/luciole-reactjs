@@ -63,9 +63,7 @@ function mapDispatchToProps (dispatch) {
  * @type {Object}
  */
 HomePage.propTypes = {
-  auth: PropTypes.object.isRequired,
-  sidebar: PropTypes.object.isRequired,
-  sidebarActions: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
 }
 
 HomePage.mapStateToProps = mapStateToProps

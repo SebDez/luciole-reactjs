@@ -7,6 +7,7 @@ import SidebarLoggedOff from './../component/sidebar-logged-off.component'
 import SidebarLogo from './../component/sidebar-logo.component'
 import AuthService from './../../../common/auth/service/auth.service'
 import AuthActions from './../../../common/auth/action/auth.action'
+import SidebarActions from './../action/sidebar.action'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar
@@ -33,7 +34,10 @@ export const Sidebar = (props) => {
  * @return {Object}       The element to render
  */
 function getHomePageContentElement (props) {
-  return isUserLoggedIn(props) ? (<SidebarLoggedIn disconnectUser={disconnectUser.bind(null, props)} />) : (<SidebarLoggedOff logUserIn={logUserIn.bind(null, props)} />)
+  if (isUserLoggedIn(props)) {
+    return (<SidebarLoggedIn disconnectUser={disconnectUser.bind(null, props)} userResource={props.userResource} />)
+  }
+  return (<SidebarLoggedOff logUserIn={logUserIn.bind(null, props)} />)
 }
 
 /**
@@ -61,6 +65,10 @@ function isUserLoggedIn (props) {
   return AuthService.isConnected(props)
 }
 
+function getUserResources (props) {
+  props.sidebarActions.getUserResources()
+}
+
 /**
  * Map the global state into props
  * @param  {Object} state The global state
@@ -68,7 +76,8 @@ function isUserLoggedIn (props) {
  */
 function mapStateToProps (state) {
   return {
-    auth: state.application.auth
+    auth: state.application.auth,
+    userResource: state.application.module.sidebar.userResource
   }
 }
 
@@ -79,7 +88,8 @@ function mapStateToProps (state) {
  */
 function mapDispatchToProps (dispatch) {
   return {
-    authActions: bindActionCreators(new AuthActions(), dispatch)
+    authActions: bindActionCreators(new AuthActions(), dispatch),
+    sidebarActions: bindActionCreators(new SidebarActions(), dispatch)
   }
 }
 

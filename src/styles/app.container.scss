@@ -20,3 +20,41 @@ $app-text-font: 'Play', serif;
 
 // font-family: 'PT Sans', sans-serif;
 // font-family: 'Maitree', serif;
+
+
+/******************************
+* RESOURCES ICON
+* *****************************/
+
+.resource-icon {
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  line-height: 28px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.resource-icon-circle {
+  @extend .resource-icon;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.resource-icon-no-circle {
+  @extend .resource-icon;
+}
+
+.resource-wood{
+  color: brown
+}
+
+.resource-gold{
+  color: yellow
+}
+
+.resource-food{
+  color: green
+}

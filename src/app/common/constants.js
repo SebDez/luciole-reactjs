@@ -9,6 +9,9 @@ export default {
     SIDEBAR: {
       OPEN_SIDEBAR: 'OPEN_SIDEBAR',
       CLOSE_SIDEBAR: 'CLOSE_SIDEBAR'
+    },
+    RESOURCE: {
+      GET_RESOURCES_SUCCESS: 'GET_RESOURCES_SUCCESS'
     }
   }
 }

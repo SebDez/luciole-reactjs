@@ -42,36 +42,48 @@ $logo-url: url('../assets/img/luciole_logo.png');
 }
 
 .sidebar-link{
-  text-align: left;
-  padding-left: 5px;
-  line-height: 40px;
-  display: block;
-  vertical-align: middle;
+    text-align: left;
+    padding-left: 5px;
+    line-height: 40px;
+    display: block;
+    vertical-align: middle;
 
-  &:hover {
+    &:hover {
+      .sidebar-link-icon{
+        color: #008B8B;
+      }
+      .sidebar-link-text{
+        color: #008B8B;
+      }
+    }
+
     .sidebar-link-icon{
-      color: #008B8B;
+      display: inline-block;
+      margin-right: 7px;
+      color:$app-text-third-color;
+      vertical-align: middle;
+      width:35px;
+      text-align: center;
     }
+
     .sidebar-link-text{
-      color: #008B8B;
+      display: inline-block;
+      color:$app-text-primary-color;
+      vertical-align: middle;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-family: $app-title-font;
     }
   }
 
-  .sidebar-link-icon{
-    display: inline-block;
-    margin-right: 7px;
-    color:$app-text-third-color;
-    vertical-align: middle;
-    width:35px;
-    text-align: center;
-  }
+  .resource-line {
+    margin-top: 5px;
 
-  .sidebar-link-text{
-    display: inline-block;
-    color:$app-text-primary-color;
-    vertical-align: middle;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-family: $app-title-font;
+    .resource-line-text {
+      text-align: center;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-top: 3px;
+      vertical-align: middle;
+    }
   }
-}

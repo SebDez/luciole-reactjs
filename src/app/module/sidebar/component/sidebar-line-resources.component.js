@@ -1,15 +1,14 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {Link} from 'react-router'
-import FontAwesome from 'react-fontawesome'
+import ResourceIcon from './../../../common/resource/component/resource-icon.component'
 
 /**
- * SidebarLink Component
+ * SidebarLineResources Component
  */
-class SidebarLink extends React.Component {
+class SidebarLineResources extends React.Component {
 
   /**
-   * Create a new SidebarLink component
+   * Create a new SidebarLineResources component
    * @param  {Object} props The component properties
    * @param  {Object} context The app context
    */
@@ -25,10 +24,10 @@ class SidebarLink extends React.Component {
    */
   render () {
     return (
-      <Link to={this.props.link} className='sidebar-link'>
-        <FontAwesome size='2x' className='sidebar-link-icon' name={this.props.icon} />
-        <div className='sidebar-link-text'> {this.props.text} </div>
-      </Link>)
+      <div className='resource-line'>
+        <ResourceIcon withCircle resourceName={this.props.resourceName} />
+        <div className='resource-line-text'>{this.props.amount}</div>
+      </div>)
   }
 }
 
@@ -36,13 +35,12 @@ class SidebarLink extends React.Component {
  * The component properties' types
  * @type {Object}
  */
-SidebarLink.propTypes = {
-  text: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+SidebarLineResources.propTypes = {
+  resourceName: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired
 }
 
 /**
  * Export the component
  */
-export default SidebarLink
+export default SidebarLineResources

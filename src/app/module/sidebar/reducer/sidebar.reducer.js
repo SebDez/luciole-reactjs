@@ -9,6 +9,7 @@ const SidebarReducer = new LucioleReducer(initialState.module.sidebar)
 // Register actions
 SidebarReducer.registerAction(Constants.ACTIONS.SIDEBAR.OPEN_SIDEBAR, openSidebarAction)
 SidebarReducer.registerAction(Constants.ACTIONS.SIDEBAR.CLOSE_SIDEBAR, closeSidebarAction)
+SidebarReducer.registerAction(Constants.ACTIONS.RESOURCE.GET_RESOURCES_SUCCESS, getResourceSuccessAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -30,6 +31,10 @@ export function openSidebarAction (state) {
  */
 export function closeSidebarAction (state) {
   return objectAssign({}, state, {open: false})
+}
+
+export function getResourceSuccessAction (state, resources) {
+  return objectAssign({}, state, {userResource: resources})
 }
 
 // Export the reducer
