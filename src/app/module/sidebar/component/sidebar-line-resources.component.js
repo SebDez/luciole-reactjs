@@ -26,8 +26,12 @@ class SidebarLineResources extends React.Component {
     return (
       <div className='resource-line'>
         <ResourceIcon withCircle resourceName={this.props.resourceName} />
-        <div className='resource-line-text'>{this.props.amount}</div>
+        <div className='resource-line-text'>{this.getAmountFormatted(this.props.amount)}</div>
       </div>)
+  }
+
+  getAmountFormatted (amount) {
+    return amount.toLocaleString()
   }
 }
 

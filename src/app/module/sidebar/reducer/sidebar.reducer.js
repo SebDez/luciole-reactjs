@@ -33,8 +33,8 @@ export function closeSidebarAction (state) {
   return objectAssign({}, state, {open: false})
 }
 
-export function getResourceSuccessAction (state, resources) {
-  return objectAssign({}, state, {userResource: resources})
+export function getResourceSuccessAction (state, action) {
+  return objectAssign({}, state, {userResource: action.resources})
 }
 
 // Export the reducer

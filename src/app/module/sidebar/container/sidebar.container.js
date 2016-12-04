@@ -35,7 +35,11 @@ export const Sidebar = (props) => {
  */
 function getHomePageContentElement (props) {
   if (isUserLoggedIn(props)) {
-    return (<SidebarLoggedIn disconnectUser={disconnectUser.bind(null, props)} userResource={props.userResource} />)
+    if (props.userResource) {
+      return (<SidebarLoggedIn disconnectUser={disconnectUser.bind(null, props)} userResource={props.userResource} />)
+    } else {
+      getUserResources(props)
+    }
   }
   return (<SidebarLoggedOff logUserIn={logUserIn.bind(null, props)} />)
 }

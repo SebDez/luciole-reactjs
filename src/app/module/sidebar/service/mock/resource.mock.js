@@ -1,3 +1,5 @@
+import MockHelper from './../../../../common/helper/mock.helper'
+
 /**
  * Class for Mock Resource Api
  */
@@ -10,23 +12,19 @@ export default class ResourceMockApi {
   getUserResources () {
     return Promise.resolve({
       data: {
-        gold: {
-          amount: 25,
-          production: 10,
-          storage: 15
-        },
-        food: {
-          amount: 25,
-          production: 10,
-          storage: 15
-        },
-        wood: {
-          amount: 25,
-          production: 10,
-          storage: 15
-        }
+        gold: this.getRandomResource(),
+        food: this.getRandomResource(),
+        wood: this.getRandomResource()
       }
     })
+  }
+
+  getRandomResource () {
+    return {
+      amount: MockHelper.generateNumber(0),
+      production: MockHelper.generateNumber(0),
+      storage: MockHelper.generateNumber(0)
+    }
   }
 
 }

@@ -55,7 +55,7 @@ export default class SidebarActions {
   getUserResources () {
     return dispatch => {
       return this.resourceService.getUserResources().then(res => {
-        dispatch(this.getUserResourceSuccessAction(res.data.token))
+        dispatch(this.getUserResourceSuccessAction(res.data))
       })
     }
   }
