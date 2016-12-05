@@ -17,8 +17,8 @@ note update esdoc hosting badge : https://doc.esdoc.org/-/generate.html#url=git@
 //todo
 docs
 login button
-burger menu
 resources SVG
 --
 user card
 --
+readme 

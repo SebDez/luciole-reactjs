@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {Button} from 'react-bootstrap'
 
 /**
  * SidebarLoggedOff Component
@@ -25,15 +24,8 @@ export class SidebarLoggedOff extends React.Component {
   render () {
     return (
       <div>
-        <div className='sidebar-content'>
-          ----
-          <br />
-          SidebarLoggedOff
-          <br />
-          Content when user is logged off
-          <br />
-          ----
-          <Button bsStyle='success' onClick={this.props.logUserIn}> LOG IN</Button>
+        <div className='sidebar-content off'>
+          <div className='sidebar-button' onClick={this.props.logUserIn}>Jouer</div>
         </div>
       </div>
     )

@@ -33,6 +33,10 @@ $logo-url: url('../assets/img/luciole_logo.png');
   margin-bottom: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
+
+  &.off{
+    margin-top: 100%;
+  }
 }
 
 .sidebar-footer{
@@ -94,4 +98,25 @@ $logo-url: url('../assets/img/luciole_logo.png');
   }
 
   .sidebar-block-col{
+  }
+
+  .sidebar-button{
+    background-color: $app-button-bg-color;
+    width : 200px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 5px 5px 5px 5px;
+    vertical-align: middle;
+    line-height: 75px;
+    font-size: 35px;
+    color:$app-button-text-color;
+    text-transform: uppercase;
+
+    &:hover{
+      cursor:pointer;
+      cursor:hand;
+      border: 2px solid $app-button-bg-color;
+      background-color: $app-button-hover-color;
+      color: $app-button-bg-color;
+    }
   }
