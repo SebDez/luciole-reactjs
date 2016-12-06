@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import FontAwesome from 'react-fontawesome'
+
 /**
  * MainPageSidebarBurger Component
  */
@@ -34,8 +35,8 @@ class MainPageSidebarBurger extends React.Component {
   render () {
     return (
       <div>
-        <div className='hand-over' onClick={this.handleBurgerClick}>
-          L
+        <div className='hand-over burger-menu' onClick={this.handleBurgerClick}>
+          <img src='./../../../../assets/img/luciole_mini_logo.png' alt='mini_logo' />
           <FontAwesome className='sidebar-burger' name='bars' />
         </div>
       </div>

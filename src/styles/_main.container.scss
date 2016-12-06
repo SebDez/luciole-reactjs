@@ -11,3 +11,9 @@ $background-url: url(../assets/img/luciole_background.png);
   background:linear-gradient(0deg, $background-color, $background-color), $background-url;
   background-size:cover;
 }
+
+.burger-menu{
+  img{
+    height: 25px;
+  }
+}
