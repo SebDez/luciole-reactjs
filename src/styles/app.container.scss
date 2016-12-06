@@ -31,14 +31,15 @@ $app-text-font: 'Play', serif;
 * *****************************/
 
 .resource-icon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   margin-left: 5px;
   margin-right: 5px;
   display: inline-block;
   line-height: 28px;
   text-align: center;
   vertical-align: middle;
+  padding-top: 5px;
 }
 
 .resource-icon-circle {
@@ -52,13 +53,18 @@ $app-text-font: 'Play', serif;
 }
 
 .resource-wood{
-  color: brown
+  fill: #D2691E
 }
 
 .resource-gold{
-  color: yellow
+  fill: #FFD700
 }
 
 .resource-food{
-  color: green
+  fill: #ADFF2F
+}
+
+.svg{
+  width: 24px;
+  height: 24px;
 }

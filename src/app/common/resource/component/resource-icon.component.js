@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import LucioleSVG from './../../core/component/luciole-svg.component'
 
 /**
  * ResourceIcon Component
@@ -15,6 +16,8 @@ class ResourceIcon extends React.Component {
     super(props, context)
     /** @type {Object}*/
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+    /** @type {string}*/
+    this.pathToSVG = './../../../../assets/svg'
   }
 
   /**
@@ -26,7 +29,7 @@ class ResourceIcon extends React.Component {
     const resourceIcon = `resource-${this.props.resourceName}`
     return (
       <div className={`${iconClass} ${resourceIcon}`}>
-        X
+        <LucioleSVG class={'svg'} path={`${this.pathToSVG}/resource_${this.props.resourceName}.svg`} />
       </div>)
   }
 }
