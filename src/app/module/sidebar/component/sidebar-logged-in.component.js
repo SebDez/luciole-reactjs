@@ -1,23 +1,12 @@
 import React, { PropTypes } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import SidebarLink from './sidebar-link.component'
 import SidebarBlockResources from './sidebar-block-resources.component'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * SidebarLoggedIn Component
  */
-class SidebarLoggedIn extends React.Component {
-
-  /**
-   * Create a new SidebarLoggedIn component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+class SidebarLoggedIn extends LucioleComponent {
 
   /**
    * Render the component

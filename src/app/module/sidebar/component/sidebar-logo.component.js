@@ -1,22 +1,11 @@
 import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {IndexLink} from 'react-router'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * SidebarLogo Component
  */
-class SidebarLogo extends React.Component {
-
-  /**
-   * Create a new SidebarLogo component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+class SidebarLogo extends LucioleComponent {
 
   /**
    * Render the component

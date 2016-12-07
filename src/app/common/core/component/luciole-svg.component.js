@@ -1,22 +1,11 @@
 import React, { PropTypes } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ReactSVG from 'react-svg'
+import LucioleComponent from './../abstract/luciole-component'
 
 /**
  * LucioleSVG Component
  */
-class LucioleSVG extends React.Component {
-
-  /**
-   * Create a new LucioleSVG component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+class LucioleSVG extends LucioleComponent {
 
   /**
    * Render the component

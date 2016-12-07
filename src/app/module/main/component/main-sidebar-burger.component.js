@@ -1,11 +1,11 @@
 import React, {PropTypes} from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import FontAwesome from 'react-fontawesome'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * MainPageSidebarBurger Component
  */
-class MainPageSidebarBurger extends React.Component {
+class MainPageSidebarBurger extends LucioleComponent {
 
   /**
    * Create a new MainPageSidebarBurger component
@@ -14,10 +14,7 @@ class MainPageSidebarBurger extends React.Component {
    */
   constructor (props, context) {
     super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    /** @type {Function}*/
-    this.handleBurgerClick = this.handleBurgerClick.bind(this)
+    this._bindThisToMethods('handleBurgerClick')
   }
 
 /**

@@ -1,21 +1,10 @@
 import React, { PropTypes } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * SidebarLoggedOff Component
  */
-export class SidebarLoggedOff extends React.Component {
-
-  /**
-   * Create a new SidebarLoggedOff component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+export class SidebarLoggedOff extends LucioleComponent {
 
   /**
    * Render the component

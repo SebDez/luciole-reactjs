@@ -1,23 +1,12 @@
 import React, { PropTypes } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {Link} from 'react-router'
 import FontAwesome from 'react-fontawesome'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * SidebarLink Component
  */
-class SidebarLink extends React.Component {
-
-  /**
-   * Create a new SidebarLink component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+class SidebarLink extends LucioleComponent {
 
   /**
    * Render the component

@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ResourceIcon from './../../../common/resource/component/resource-icon.component'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * SidebarLineResources Component
  */
-class SidebarLineResources extends React.Component {
+class SidebarLineResources extends LucioleComponent {
 
   /**
    * Create a new SidebarLineResources component
@@ -14,8 +14,7 @@ class SidebarLineResources extends React.Component {
    */
   constructor (props, context) {
     super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+    this._bindThisToMethods('getAmountFormatted')
   }
 
   /**

@@ -1,21 +1,10 @@
 import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * MainPageUserCard Component
  */
-class MainPageUserCard extends React.Component {
-
-  /**
-   * Create a new MainPageUserCard component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+class MainPageUserCard extends LucioleComponent {
 
   /**
    * Render the component

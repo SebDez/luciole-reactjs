@@ -1,21 +1,10 @@
 import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * HomePageLoggedIn Component
  */
-class HomePageLoggedIn extends React.Component {
-
-  /**
-   * Create a new HomePageLoggedIn component
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-  }
+class HomePageLoggedIn extends LucioleComponent {
 
   /**
    * Render the component

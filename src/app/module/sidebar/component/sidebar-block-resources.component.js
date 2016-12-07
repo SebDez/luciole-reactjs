@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 import SidebarLineResources from './sidebar-line-resources.component'
 import { Grid, Row, Col } from 'react-bootstrap'
+import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
  * SidebarBlockResources Component
  */
-class SidebarBlockResources extends React.Component {
+class SidebarBlockResources extends LucioleComponent {
 
   /**
    * Create a new SidebarBlockResources component
@@ -15,10 +15,7 @@ class SidebarBlockResources extends React.Component {
    */
   constructor (props, context) {
     super(props, context)
-    /** @type {Object}*/
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
-    /** @type {Function}*/
-    this.getLineElementForResource = this.getLineElementForResource.bind(this)
+    this._bindThisToMethods('getLineElementForResource')
   }
 
   /**
