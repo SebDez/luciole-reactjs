@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import ResourceIcon from './../../../common/resource/component/resource-icon.component'
+import ResourceIcon from './../../../common/component/resource/resource-icon.component'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**

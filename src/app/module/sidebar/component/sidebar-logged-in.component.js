@@ -20,7 +20,7 @@ class SidebarLoggedIn extends LucioleComponent {
         <div className='sidebar-content'>
           <SidebarBlockResources userResource={this.props.userResource} />
         </div>
-        <SidebarLink text={'Bâtiments'} icon={'cubes'} link={'/'} />
+        <SidebarLink text={'Bâtiments'} icon={'cubes'} link={'/buildings'} />
         <SidebarLink text={'Spécialistes'} icon={'users'} link={'/'} />
         <SidebarLink text={'Statistiques'} icon={'line-chart'} link={'/'} />
         <SidebarLink text={'Forum'} icon={'bank'} link={'/'} />

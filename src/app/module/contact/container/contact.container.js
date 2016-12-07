@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import WorkInProgress from './../../../common/component/wip/wip.component'
 
 /**
  * ContactPage container, used to define the composition of the ContactPage screen
@@ -11,6 +12,7 @@ export const ContactPage = (props) => {
   return (
     <div>
     Contact page
+    <WorkInProgress />
     </div>
   )
 }
