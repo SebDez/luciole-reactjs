@@ -21,9 +21,9 @@ export default class ResourceMockApi {
 
   getRandomResource () {
     return {
-      amount: MockHelper.generateNumber(0),
-      production: MockHelper.generateNumber(0),
-      storage: MockHelper.generateNumber(0)
+      amount: MockHelper.getRandomInt(0, 999999),
+      production: MockHelper.getRandomInt(0, 999999),
+      storage: MockHelper.getRandomInt(0, 999999)
     }
   }
 
