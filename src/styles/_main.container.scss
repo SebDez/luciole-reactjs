@@ -12,8 +12,29 @@ $background-url: url(../assets/img/luciole_background.png);
   background-size:cover;
 }
 
+.sidebar-burger{
+  margin-left: 10px;
+}
+
+.hand-over{
+  background-color: rgba(18, 25 ,46, 0.5);
+  display: inline-block;
+  cursor:pointer;
+  cursor:hand;
+  padding: 10px 10px 10px 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+
 .burger-menu{
   img{
     height: 25px;
   }
+}
+
+.main-user-card{
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 45%;
+  height: 70px;
 }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
 import SidebarActions from './../../sidebar/action/sidebar.action'
 import MainPageSidebarBurger from './../component/main-sidebar-burger.component'
+import MainPageUserCard from './../component/main-user-card.component'
 import AuthService from './../../../common/auth/service/auth.service'
 
 /**
@@ -27,7 +28,15 @@ export const Main = (props) => {
  * @return {Object}       The element to render
  */
 function getSidebarBurgerElement (props) {
-  return isUserLoggedIn(props) ? (<MainPageSidebarBurger onClick={handleBurgerClick.bind(null, props)} />) : null
+  if (isUserLoggedIn(props)) {
+    return (
+      <div>
+        <MainPageSidebarBurger onClick={handleBurgerClick.bind(null, props)} />
+        <MainPageUserCard />
+      </div>
+    )
+  }
+  return null
 }
 
 /**
