@@ -18,9 +18,9 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run clean-dist && npm run lint:standard && npm run test",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "test": "mocha tools/testSetup.js \"src/app/**/*.js\" --reporter progress",
-    "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" --reporter progress",
-    "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly _mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test": "mocha tools/testSetup.js \"src/app/**/*.js\" --reporter progress -r jsdom-global/register",
+    "test:cover": "babel-node node_modules/isparta/bin/isparta cover --root src --report html node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" --reporter progress -r jsdom-global/register",
+    "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" -r jsdom-global/register && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html",
     "lint:standard": "standard ./src/**/*.js --verbose"
@@ -48,7 +48,6 @@
     "superagent": "2.1.0"
   },
   "devDependencies": {
-    "standard": "^7.1.1",
     "autoprefixer": "6.3.7",
     "babel-cli": "6.11.4",
     "babel-core": "6.11.4",
@@ -79,6 +78,8 @@
     "html-webpack-plugin": "2.22.0",
     "isparta": "4.0.0",
     "istanbul": "0.4.4",
+    "jsdom": "https://registry.npmjs.org/jsdom/-/jsdom-7.2.2.tgz",
+    "jsdom-global": "2.1.0",
     "mocha": "2.5.3",
     "node-sass": "3.8.0",
     "npm-run-all": "2.3.0",
@@ -92,6 +93,7 @@
     "sass-loader": "4.0.0",
     "sinon": "1.17.4",
     "sinon-chai": "2.8.0",
+    "standard": "^7.1.1",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.13.1",
