@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import SidebarLink from './sidebar-link.component'
 import SidebarBlockResources from './sidebar-block-resources.component'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
+import FontAwesome from 'react-fontawesome'
 
 /**
  * SidebarLoggedIn Component
@@ -18,7 +19,8 @@ class SidebarLoggedIn extends LucioleComponent {
         <SidebarLink text={'Accueil'} icon={'home'} link={'/'} />
         <SidebarLink text={'Mon Royaume'} icon={'flag'} link={'/'} />
         <div className='sidebar-content'>
-          <SidebarBlockResources userResource={this.props.userResource} />
+          <SidebarBlockResources userResource={this.props.userResource} reloadResources={this.props.reloadResources} />
+          <div className='sidebar-block-reload' onClick={this.props.reloadResources}><FontAwesome name='refresh' /> Rafraichir</div>
         </div>
         <SidebarLink text={'Bâtiments'} icon={'cubes'} link={'/buildings'} />
         <SidebarLink text={'Spécialistes'} icon={'users'} link={'/'} />
@@ -38,7 +40,8 @@ class SidebarLoggedIn extends LucioleComponent {
  */
 SidebarLoggedIn.propTypes = {
   disconnectUser: PropTypes.func.isRequired,
-  userResource: PropTypes.object.isRequired
+  userResource: PropTypes.object.isRequired,
+  reloadResources: PropTypes.func.isRequired
 }
 
 /**
