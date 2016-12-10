@@ -42,6 +42,7 @@
     "react-router-redux": "4.0.5",
     "react-sidebar": "2.2.1",
     "react-svg": "1.1.5",
+    "react-tooltip": "3.2.2",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
     "shrinkwrap": "0.4.0",

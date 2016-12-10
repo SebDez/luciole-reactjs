@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import ResourceIcon from './../../../common/component/resource/resource-icon.component'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
+import ReactTooltip from 'react-tooltip'
 
 /**
  * SidebarLineResources Component
@@ -14,7 +15,7 @@ class SidebarLineResources extends LucioleComponent {
    */
   constructor (props, context) {
     super(props, context)
-    this._bindThisToMethods('getAmountFormatted')
+    this._bindThisToMethods('getNumberFormatted', 'getToolTipDataFromResource')
   }
 
   /**
@@ -22,15 +23,31 @@ class SidebarLineResources extends LucioleComponent {
    * @return {Object} React component tree
    */
   render () {
+    const toolTip = this.getToolTipDataFromResource()
     return (
-      <div className='resource-line'>
+      <div className='resource-line' data-tip={toolTip.text} data-place='top' data-type={toolTip.style}>
         <ResourceIcon withCircle resourceName={this.props.resourceName} />
-        <div className='resource-line-text'>{this.getAmountFormatted(this.props.amount)}</div>
+        <div className={`resource-line-text resource-${toolTip.style}`}>{this.getNumberFormatted(this.props.amount)}</div>
+        <ReactTooltip />
       </div>)
   }
 
-  getAmountFormatted (amount) {
+  getNumberFormatted (amount) {
     return amount.toLocaleString()
+  }
+
+  getToolTipDataFromResource () {
+    const percentage = Math.floor((this.props.amount * 100) / this.props.storage)
+    const amount = this.getNumberFormatted(this.props.amount)
+    const storage = this.getNumberFormatted(this.props.storage)
+    const text = `(${percentage}%) ${amount}/${storage}`
+    if (percentage <= 60) {
+      return {style: 'success', text}
+    } else if (percentage >= 61 && percentage <= 90) {
+      return {style: 'warning', text}
+    } else {
+      return {style: 'error', text}
+    }
   }
 }
 
@@ -40,7 +57,8 @@ class SidebarLineResources extends LucioleComponent {
  */
 SidebarLineResources.propTypes = {
   resourceName: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired
+  amount: PropTypes.number.isRequired,
+  storage: PropTypes.number.isRequired
 }
 
 /**

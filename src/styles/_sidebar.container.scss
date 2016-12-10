@@ -91,6 +91,14 @@ $logo-url: url('../assets/img/luciole_logo.png');
       margin-top: 3px;
       vertical-align: middle;
     }
+
+    .resource-warning{
+      color: #DAA520;
+    }
+
+    .resource-error{
+      color: #B22222;
+    }
   }
 
   .sidebar-block-grid{

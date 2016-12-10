@@ -38,7 +38,7 @@ class SidebarBlockResources extends LucioleComponent {
   getLineElementForResource (resource) {
     const value = this.props.userResource[resource]
     if (value) {
-      return (<SidebarLineResources resourceName={resource} amount={value.amount} />)
+      return (<SidebarLineResources resourceName={resource} amount={value.amount} storage={value.storage} />)
     }
     return null
   }
