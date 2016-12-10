@@ -42,17 +42,6 @@ $background-url: url(../assets/img/luciole_background.png);
   display:inline-block;
 }
 
-.user-card-avatar{
-  @extend .user-card;
-  img{
-    object-fit: cover;
-    border-radius:50%;
-    width: 40px;
-    height: 40px;
-    border: 2px solid white;
-  }
-}
-
 .user-card-username{
   @extend .user-card;
   padding-left: 5px;

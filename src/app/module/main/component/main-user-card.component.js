@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
-
+import UserAvatar from './../../../common/component/avatar/user-avatar.component'
 /**
  * MainPageUserCard Component
  */
@@ -13,9 +13,7 @@ class MainPageUserCard extends LucioleComponent {
   render () {
     return (
       <div className='hand-over main-user-card'>
-        <div className='user-card-avatar'>
-          <img src={this.props.user.avatar} />
-        </div>
+        <UserAvatar src={this.props.user.avatar} />
         <div className='user-card-username'>{this.props.user.username}</div>
       </div>
     )
