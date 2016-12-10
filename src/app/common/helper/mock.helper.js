@@ -1,5 +1,5 @@
 /**
- * Mock Helper static class
+ * Mock Helper class
  * Generate random elements statics
  * Not of my work but quite good !
  */
@@ -64,7 +64,7 @@ export default class MockHelper {
     ]
   }
 
-  static getRandomSentence (wordcount) {
+  getRandomSentence (wordcount) {
     var words = []
     for (var i = 0; i < wordcount; i++) {
       words.push(this.getRandomWord())
@@ -72,34 +72,38 @@ export default class MockHelper {
     return words.join(' ')
   }
 
-  static getRandomWord () {
+  getRandomWord () {
     return this.words[this.getRandomInt(0, this.words.length - 1)]
   }
 
-  static getRandomInt (min, max) {
+  getRandomInt (min, max) {
     return Math.floor((Math.random() * (max - min)) + min)
   }
 
-  static getRandomId () {
+  getRandomId () {
     return this.getRandomInt(0, 65536)
   }
 
-  static getRandomDate (min, max) {
+  getRandomDate (min, max) {
     return new Date(Math.floor(Math.random() * (max.getTime() - min.getTime())) + min.getTime())
   }
 
-  static getRandomBoolean () {
+  getRandomBoolean () {
     return Math.random() > 0.5
   }
 
-  static getRandomValueInArray (arr) {
+  getRandomMail () {
+    return `${this.getRandomWord()}@fake-luciole-fake.fr`
+  }
+
+  getRandomValueInArray (arr) {
     if (arr.length > 0) {
       var i = Math.floor(Math.random() * arr.length)
       return arr[(i < arr.length) ? i : arr.length]
     }
   }
 
-  static getRandomArray (maxLength, itemGenerator) {
+  getRandomArray (maxLength, itemGenerator) {
     var result = []
     var length = this.getRandomInt(0, maxLength)
     for (var i = 0; i < length; i++) {

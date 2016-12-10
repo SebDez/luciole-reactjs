@@ -3,6 +3,9 @@ export default {
     sidebar: {
       open: true,
       userResource: null
+    },
+    main: {
+      user: null
     }
   },
   auth: {

@@ -5,6 +5,7 @@ import SidebarActions from './../../sidebar/action/sidebar.action'
 import MainPageSidebarBurger from './../component/main-sidebar-burger.component'
 import MainPageUserCard from './../component/main-user-card.component'
 import AuthService from './../../../common/auth/service/auth.service'
+import MainActions from './../action/main.action'
 
 /**
  * Main container, used to define the composition of the Main screen
@@ -29,14 +30,22 @@ export const Main = (props) => {
  */
 function getSidebarBurgerElement (props) {
   if (isUserLoggedIn(props)) {
-    return (
-      <div>
-        <MainPageSidebarBurger onClick={handleBurgerClick.bind(null, props)} />
-        <MainPageUserCard />
-      </div>
-    )
+    if (props.user) {
+      return (
+        <div>
+          <MainPageSidebarBurger onClick={handleBurgerClick.bind(null, props)} />
+          <MainPageUserCard user={props.user} />
+        </div>
+      )
+    } else {
+      getUserInformations(props)
+    }
   }
   return null
+}
+
+function getUserInformations (props) {
+  props.mainActions.getUserInformations()
 }
 
 /**
@@ -64,7 +73,8 @@ function isUserLoggedIn (props) {
 function mapStateToProps (state) {
   return {
     auth: state.application.auth,
-    sidebar: state.application.module.sidebar
+    sidebar: state.application.module.sidebar,
+    user: state.application.module.main.user
   }
 }
 
@@ -75,7 +85,8 @@ function mapStateToProps (state) {
  */
 function mapDispatchToProps (dispatch) {
   return {
-    sidebarActions: bindActionCreators(new SidebarActions(), dispatch)
+    sidebarActions: bindActionCreators(new SidebarActions(), dispatch),
+    mainActions: bindActionCreators(new MainActions(), dispatch)
   }
 }
 
@@ -86,7 +97,8 @@ function mapDispatchToProps (dispatch) {
 Main.propTypes = {
   auth: PropTypes.object.isRequired,
   sidebar: PropTypes.object.isRequired,
-  sidebarActions: PropTypes.object.isRequired
+  sidebarActions: PropTypes.object.isRequired,
+  mainActions: PropTypes.object.isRequired
 }
 
 Main.mapStateToProps = mapStateToProps

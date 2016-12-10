@@ -12,6 +12,9 @@ export default {
     },
     RESOURCE: {
       GET_RESOURCES_SUCCESS: 'GET_RESOURCES_SUCCESS'
+    },
+    USER: {
+      GET_USER_INFORMATIONS: 'GET_USER_INFORMATIONS'
     }
   }
 }

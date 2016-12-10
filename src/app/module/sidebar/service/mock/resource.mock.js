@@ -20,10 +20,11 @@ export default class ResourceMockApi {
   }
 
   getRandomResource () {
+    const mockHelper = new MockHelper()
     return {
-      amount: MockHelper.getRandomInt(0, 999999),
-      production: MockHelper.getRandomInt(0, 999999),
-      storage: MockHelper.getRandomInt(0, 999999)
+      amount: mockHelper.getRandomInt(0, 999999),
+      production: mockHelper.getRandomInt(0, 999999),
+      storage: mockHelper.getRandomInt(0, 999999)
     }
   }
 

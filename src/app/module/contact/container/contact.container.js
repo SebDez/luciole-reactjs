@@ -11,8 +11,8 @@ import WorkInProgress from './../../../common/component/wip/wip.component'
 export const ContactPage = (props) => {
   return (
     <div>
-    Contact page
-    <WorkInProgress />
+      Contact page
+      <WorkInProgress />
     </div>
   )
 }

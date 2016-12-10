@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 
 /**
@@ -13,8 +13,8 @@ class MainPageUserCard extends LucioleComponent {
   render () {
     return (
       <div className='hand-over main-user-card'>
-        A PSEUDO
-        POINTS
+        <div className='user-card-avatar'>A</div>
+        <div className='user-card-username'>{this.props.user.username}</div>
       </div>
     )
   }
@@ -24,7 +24,9 @@ class MainPageUserCard extends LucioleComponent {
  * The component properties' types
  * @type {Object}
  */
-MainPageUserCard.propTypes = {}
+MainPageUserCard.propTypes = {
+  user: PropTypes.object.isRequired
+}
 
 /**
  * Export the component

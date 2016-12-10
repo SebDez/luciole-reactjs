@@ -21,7 +21,6 @@ SidebarReducer.registerAction(Constants.ACTIONS.RESOURCE.GET_RESOURCES_SUCCESS, 
  * @return {Object}       The new state
  */
 export function openSidebarAction (state) {
-  console.log('open')
   return objectAssign({}, state, {open: true})
 }
 
