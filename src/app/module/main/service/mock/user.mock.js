@@ -18,6 +18,7 @@ export default class UserMockApi {
   getRandomUser () {
     const mockHelper = new MockHelper()
     return {
+      avatar: mockHelper.getRandomImgSrc(),
       mail: mockHelper.getRandomMail(),
       _id: mockHelper.getRandomId(),
       username: mockHelper.getRandomWord(),

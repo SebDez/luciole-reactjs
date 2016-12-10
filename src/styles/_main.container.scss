@@ -44,13 +44,13 @@ $background-url: url(../assets/img/luciole_background.png);
 
 .user-card-avatar{
   @extend .user-card;
-  border-radius: 50%;
-  border: 2px solid white;
-  width: 36px;
-  height: 36px;
-  line-height: 30px;
-  text-align: center;
-  vertical-align: middle;
+  img{
+    object-fit: cover;
+    border-radius:50%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+  }
 }
 
 .user-card-username{
