@@ -62,6 +62,19 @@ export default class MockHelper {
       'introgression',
       'yeast'
     ]
+
+    this.imgSrc = [
+      'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo2_1280.jpg',
+      'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo3_1280.jpg',
+      'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo4_1280.jpg',
+      'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo5_1280.jpg',
+      'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo6_1280.jpg',
+      'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo1_1280.jpg',
+      'http://orig06.deviantart.net/7d36/f/2012/324/2/1/2136c09679bbaa843bde06359892acfc-d5llwh4.jpg',
+      'http://orig04.deviantart.net/35f6/f/2012/006/5/4/5457bef4adf75f5386303933f9b1055b-d4lgqqu.jpg',
+      'http://orig02.deviantart.net/ae75/f/2012/317/3/f/3f082c662369f1b044e5b8aac27ff55d-d5kwivn.jpg',
+      'http://orig15.deviantart.net/c489/f/2012/314/d/5/d5696220639bb2f0d7524c06466def46-d5kjarn.jpg'
+    ]
   }
 
   getRandomSentence (wordcount) {
@@ -94,6 +107,10 @@ export default class MockHelper {
 
   getRandomMail () {
     return `${this.getRandomWord()}@fake-luciole-fake.fr`
+  }
+
+  getRandomImgSrc () {
+    return this.imgSrc[this.getRandomInt(0, this.imgSrc.length - 1)]
   }
 
   getRandomValueInArray (arr) {
