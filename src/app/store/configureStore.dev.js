@@ -13,6 +13,7 @@ import translationsObject from './../../assets/lang/index'
  * @param  {Object} initialState The initialState given
  * @return {Object}              The app store
  */
+/* istanbul ignore next */
 export default function configureStore (initialState) {
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk), compose(
     // Add other middleware on this line...
