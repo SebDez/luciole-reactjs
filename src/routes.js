@@ -9,12 +9,15 @@ import CGUPage from './app/module/cgu/container/cgu.container'
 import AboutPage from './app/module/about/container/about.container'
 import ContactPage from './app/module/contact/container/contact.container'
 
+import AuthService from './app/common/auth/service/auth.service'
+
 export default (store) => {
   return (
     <Route path='/' component={App}>
       <Route component={Main}>
         <IndexRoute component={HomePage} />
-        <Route path='/buildings' component={BuildingsPage} />
+        <Route path='/buildings' component={BuildingsPage}
+          onChange={checkAuth(store)} onEnter={checkAuth(store)} />
         <Route path='/cgu' component={CGUPage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contact' component={ContactPage} />
@@ -25,9 +28,9 @@ export default (store) => {
 
 export const checkAuth = (store) => {
   return (location, replaceWith) => {
-    // const state = store.getState()
-    /* if (!AuthService.isConnected(state)) {
+    const state = store.getState()
+    if (!AuthService.isConnected(state.application)) {
       replaceWith({pathname: '/'})
-    } */
+    }
   }
 }
