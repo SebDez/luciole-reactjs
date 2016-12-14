@@ -23,7 +23,8 @@
     "test:cover:travis": "babel-node node_modules/isparta/bin/isparta cover --root src --report lcovonly node_modules/mocha/bin/_mocha -- --require ./tools/testSetup.js \"src/app/**/*.js\" -r jsdom-global/register && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html",
-    "lint:standard": "standard ./src/**/*.js --verbose"
+    "lint:standard": "standard ./src/**/*.js --verbose",
+    "help": "node tools/help.js"
   },
   "author": "SebDez",
   "license": "MIT",
