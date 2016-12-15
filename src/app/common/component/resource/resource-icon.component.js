@@ -3,6 +3,7 @@ import LucioleSVG from './../../core/component/luciole-svg.component'
 import LucioleComponent from './../../core/abstract/luciole-component'
 /**
  * ResourceIcon Component
+ * A component to show resource' svg icon, with circle around it or not
  */
 class ResourceIcon extends LucioleComponent {
 

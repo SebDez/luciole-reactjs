@@ -35,6 +35,11 @@ class SidebarBlockResources extends LucioleComponent {
       </Grid>)
   }
 
+  /**
+   * Get line element for a resource
+   * @param  {string} resource The resource name
+   * @return {Object}          The element to render
+   */
   getLineElementForResource (resource) {
     const value = this.props.userResource[resource]
     if (value) {

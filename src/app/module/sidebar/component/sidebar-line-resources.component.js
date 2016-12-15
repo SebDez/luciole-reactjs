@@ -32,10 +32,19 @@ class SidebarLineResources extends LucioleComponent {
       </div>)
   }
 
+  /**
+   * Get a number in local format
+   * @param  {integer} amount The amount to format
+   * @return {string}        The amount formatted
+   */
   getNumberFormatted (amount) {
     return amount.toLocaleString()
   }
 
+  /**
+   * Get tooltip format object according to percentage between amount and storage
+   * @return {object}  Tooltip format object
+   */
   getToolTipDataFromResource () {
     const percentage = Math.floor((this.props.amount * 100) / this.props.storage)
     const amount = this.getNumberFormatted(this.props.amount)

@@ -3,6 +3,7 @@ import LucioleComponent from './../../core/abstract/luciole-component'
 
 /**
  * UserAvatar Component
+ * A component used to show user's avatar in circle
  */
 class UserAvatar extends LucioleComponent {
 

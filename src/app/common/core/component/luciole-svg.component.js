@@ -4,6 +4,7 @@ import LucioleComponent from './../abstract/luciole-component'
 
 /**
  * LucioleSVG Component
+ * A component used to print SVG in app
  */
 class LucioleSVG extends LucioleComponent {
 

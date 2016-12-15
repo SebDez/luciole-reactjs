@@ -1,3 +1,7 @@
+/**
+* The app's constants
+* @type {Object}
+ */
 export default {
   ACTIONS: {
     AUTH: {

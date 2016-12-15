@@ -3,6 +3,7 @@ import AuthService from './../service/auth.service'
 
 /**
  * Class for AuthActions
+ * All authentication actions and related methods
  */
 export default class AuthActions {
 
@@ -10,7 +11,7 @@ export default class AuthActions {
    * Create a new AuthActions
    */
   constructor () {
-    /** @type {Object}*/
+    /** @type {AuthService}*/
     this.authService = new AuthService()
     /** @type {Function}*/
     this.logUserIn = this.logUserIn.bind(this)
@@ -56,6 +57,8 @@ export default class AuthActions {
    * Create an action with the LOG_USER_IN_SUCCESS type
    * Accepts the new token to put in Redux store
    * Returns a new action that can be managed by Redux
+   * @param  {string} token    The token to return
+   * @return {Object}          The action
    */
   logUserInSuccessAction (token) {
     return {
@@ -67,6 +70,8 @@ export default class AuthActions {
   /**
    * Create an action with the LOG_USER_IN_FAILURE type
    * Returns a new action that can be managed by Redux
+   * @param  {Object} err     The error to return
+   * @return {Object}          The action
    */
   logUserInFailureAction (err) {
     return {
@@ -79,6 +84,7 @@ export default class AuthActions {
    * Create an action with the DISCONNECT_USER_SUCCESS type
    * Accepts the new token to put in Redux store
    * Returns a new action that can be managed by Redux
+   * @return {Object}          The action
    */
   disconnectUserInSuccessAction () {
     return {
@@ -89,6 +95,8 @@ export default class AuthActions {
   /**
    * Create an action with the DISCONNECT_USER_FAILURE type
    * Returns a new action that can be managed by Redux
+   * @param  {Object} err     The error to return
+   * @return {Object}          The action
    */
   disconnectUserInFailureAction (err) {
     return {

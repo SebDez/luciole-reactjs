@@ -3,6 +3,9 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 /**
  * LucioleComponent Component
+ * A default component for the luciole app.
+ * Contain all common methods for components.
+ * Every component in this app should extend it.
  */
 class LucioleComponent extends React.Component {
 

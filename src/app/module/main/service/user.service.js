@@ -9,10 +9,14 @@ export default class UserService {
    * Create a new UserService
    */
   constructor () {
-    /** @type {Object} The api service to use */
+    /** @type {UserMockApi} The api service to use */
     this.api = new UserMockApi()
   }
 
+  /**
+   * Get user's informations
+   * @return {Promise}  A promise to resolve
+   */
   getUserInformations () {
     return this.api.getUserInformations()
   }

@@ -15,6 +15,10 @@ export default class UserMockApi {
     })
   }
 
+  /**
+   * Get a random user with generated values
+   * @return {User}  An user generated
+   */
   getRandomUser () {
     const mockHelper = new MockHelper()
     return {

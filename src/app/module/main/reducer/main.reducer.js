@@ -13,6 +13,12 @@ MainReducer.registerAction(Constants.ACTIONS.USER.GET_USER_INFORMATIONS, getUser
 * ACTION CALLBACKS
 * *****************************/
 
+/**
+ * Set new user informations
+ * @param  {Object} state  The state to use
+ * @param  {Object} action The action content
+ * @return {Object}        The new state
+ */
 export function getUserInformationsSuccessAction (state, action) {
   return objectAssign({}, state, {user: action.user})
 }

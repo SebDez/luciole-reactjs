@@ -3,6 +3,7 @@ import ResourceService from './../service/resource.service'
 
 /**
  * Class for SidebarActions
+ * All main sidebar and related methods
  */
 export default class SidebarActions {
 
@@ -10,7 +11,7 @@ export default class SidebarActions {
    * Create a new SidebarActions
    */
   constructor () {
-    /** @type {Object}*/
+    /** @type {ResourceService}*/
     this.resourceService = new ResourceService()
     /** @type {Function}*/
     this.manageSidebar = this.manageSidebar.bind(this)
@@ -52,6 +53,10 @@ export default class SidebarActions {
     }
   }
 
+  /**
+   * Get the user resources data
+   * @return {Object}  The action to dispatch with user resources
+   */
   getUserResources () {
     return dispatch => {
       return this.resourceService.getUserResources().then(res => {

@@ -19,6 +19,10 @@ export default class ResourceMockApi {
     })
   }
 
+  /**
+   * MOCK : Mock for getting random resource
+   * @return {Object} A promise to resolve
+   */
   getRandomResource () {
     const mockHelper = new MockHelper()
     return {

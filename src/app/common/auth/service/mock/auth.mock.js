@@ -1,5 +1,6 @@
 /**
  * Class for Mock Auth Api
+ * A mock class for auth api service
  */
 export default class AuthMockApi {
 

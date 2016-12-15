@@ -2,6 +2,7 @@ import AuthMockApi from './mock/auth.mock'
 
 /**
  * Class for Authentication Service
+ * The authentication's methods service
  */
 export default class AuthService {
 
@@ -9,7 +10,7 @@ export default class AuthService {
    * Create a new AuthService
    */
   constructor () {
-    /** @type {Object} The api service to use */
+    /** @type {AuthMockApi} The api service to use */
     this.api = new AuthMockApi()
   }
 

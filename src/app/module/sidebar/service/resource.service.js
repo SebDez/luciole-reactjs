@@ -9,10 +9,14 @@ export default class ResourceService {
    * Create a new ResourceService
    */
   constructor () {
-    /** @type {Object} The api service to use */
+    /** @type {ResourceMockApi} The api service to use */
     this.api = new ResourceMockApi()
   }
 
+  /**
+   * Get user resources
+   * @return {Promise}  A promise to resolve
+   */
   getUserResources () {
     return this.api.getUserResources()
   }

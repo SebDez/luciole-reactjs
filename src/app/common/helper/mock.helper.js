@@ -5,7 +5,11 @@
  */
 export default class MockHelper {
 
+  /**
+   * Create a new MockHelper
+   */
   constructor () {
+    /** @type {string[]} A list of generic words */
     this.words = [
       'ungrappling',
       'zephyrian',
@@ -63,6 +67,7 @@ export default class MockHelper {
       'yeast'
     ]
 
+    /** @type {string[]} A list of generic images source */
     this.imgSrc = [
       'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo2_1280.jpg',
       'http://68.media.tumblr.com/tumblr_mdj13ty0p91r4nmedo3_1280.jpg',
@@ -77,6 +82,11 @@ export default class MockHelper {
     ]
   }
 
+  /**
+   * Generate a random sentence
+   * @param  {string} wordcount The number of words in the sentence
+   * @return {string}           The sentence generated
+   */
   getRandomSentence (wordcount) {
     var words = []
     for (var i = 0; i < wordcount; i++) {
@@ -85,34 +95,71 @@ export default class MockHelper {
     return words.join(' ')
   }
 
+  /**
+   * Generate a random word
+   * @return {string}  A random word
+   */
   getRandomWord () {
     return this.words[this.getRandomInt(0, this.words.length - 1)]
   }
 
+  /**
+   * Generate a random number
+   * @param  {integer} min The min value
+   * @param  {integer} max The max value
+   * @return {integer}     A random number
+   */
   getRandomInt (min, max) {
     return Math.floor((Math.random() * (max - min)) + min)
   }
 
+  /**
+   * Generate a random id, which is a number between 0 and 65536
+   * @return {integer}  A random id
+   */
   getRandomId () {
     return this.getRandomInt(0, 65536)
   }
 
+  /**
+   * Generate a random date
+   * @param  {Date} min The min value
+   * @param  {Date} max The max value
+   * @return {Date}     A random Date
+   */
   getRandomDate (min, max) {
     return new Date(Math.floor(Math.random() * (max.getTime() - min.getTime())) + min.getTime())
   }
 
+  /**
+   * Generate a random boolean
+   * @return {Boolean}  A random boolean
+   */
   getRandomBoolean () {
     return Math.random() > 0.5
   }
 
+  /**
+   * Generate a random mail adresse
+   * @return {string}  A random mail
+   */
   getRandomMail () {
     return `${this.getRandomWord()}@fake-luciole-fake.fr`
   }
 
+  /**
+   * Get a random img src
+   * @return {string}  A random img src
+   */
   getRandomImgSrc () {
     return this.imgSrc[this.getRandomInt(0, this.imgSrc.length - 1)]
   }
 
+  /**
+   * Get a random value in an array
+   * @param  {Array} arr The array concerned
+   * @return {Object}     A random object in array
+   */
   getRandomValueInArray (arr) {
     if (arr.length > 0) {
       var i = Math.floor(Math.random() * arr.length)
@@ -120,6 +167,12 @@ export default class MockHelper {
     }
   }
 
+  /**
+   * Generate an array with random elements in it
+   * @param  {integer} maxLength     The number max of items
+   * @param  {Function} itemGenerator A function that return an object that will be generated
+   * @return {Array}               An array with random elements in it
+   */
   getRandomArray (maxLength, itemGenerator) {
     var result = []
     var length = this.getRandomInt(0, maxLength)

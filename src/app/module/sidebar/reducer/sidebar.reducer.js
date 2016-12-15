@@ -33,6 +33,12 @@ export function closeSidebarAction (state) {
   return objectAssign({}, state, {open: false})
 }
 
+/**
+ * Get user resources and update state
+ * @param  {Object} state The state to use
+ * @param  {type} action description
+ * @return {Object}       The new state
+ */
 export function getResourceSuccessAction (state, action) {
   return objectAssign({}, state, {userResource: action.resources})
 }
