@@ -5,7 +5,7 @@ import { App } from './app.container'
 
 describe('App', () => {
   describe('mapDispatchToProps', () => {
-    it('Should return empty object', () => {
+    it('Expect to return empty object', () => {
       expect(App.mapDispatchToProps().actions).to.be.empty
     })
   })
