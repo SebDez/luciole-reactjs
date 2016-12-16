@@ -163,8 +163,9 @@ export default class MockHelper {
   getRandomValueInArray (arr) {
     if (arr.length > 0) {
       var i = Math.floor(Math.random() * arr.length)
-      return arr[(i < arr.length) ? i : arr.length]
+      return arr[(i < arr.length) ? i : arr.length - 1]
     }
+    return null
   }
 
   /**
