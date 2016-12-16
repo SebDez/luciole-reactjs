@@ -40,10 +40,10 @@ describe('MockHelper', () => {
       expect(typeof service.getRandomInt(0, 100)).to.equal('number')
     })
     it('Expect to return a integer above min', () => {
-      expect(service.getRandomInt(0, 100)).to.be.above(0)
+      expect(service.getRandomInt(1, 100)).to.be.above(0)
     })
     it('Expect to return a integer under max', () => {
-      expect(service.getRandomInt(0, 100)).to.be.below(100)
+      expect(service.getRandomInt(1, 100)).to.be.below(100)
     })
   })
 
@@ -114,7 +114,10 @@ describe('MockHelper', () => {
       expect(service.getRandomArray(10, itemGenerator.generator).constructor.name).to.equal('Array')
     })
     it('Expect to return an array of 0', () => {
-      expect(service.getRandomArray(10, itemGenerator.generator)[0]).to.equal(0)
+      const res = service.getRandomArray(10, itemGenerator.generator)[0]
+      if (res.length > 0) {
+        expect(res[0]).to.equal(0)
+      }
     })
     it('Expect to return an array with length to 10', () => {
       expect(service.getRandomArray(10, itemGenerator.generator).length).to.be.below(10)

@@ -2,6 +2,7 @@
  * Class for Mock Auth Api
  * A mock class for auth api service
  */
+/* istanbul ignore next */
 export default class AuthMockApi {
 
   /**

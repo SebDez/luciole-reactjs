@@ -21,7 +21,7 @@ export default class AuthService {
    * @return {Object} A promise to resolve
    */
   logUserIn (login, password) {
-    return this.api.logUserIn()
+    return this.api.logUserIn(login, password)
   }
 
   /**
