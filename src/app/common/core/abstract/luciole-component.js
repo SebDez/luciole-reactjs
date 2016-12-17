@@ -14,6 +14,7 @@ class LucioleComponent extends React.Component {
    * @param  {Object} props The component properties
    * @param  {Object} context The app context
    */
+  /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
     /** @type {Object}*/

@@ -3,6 +3,7 @@ import MockHelper from './../../../../common/helper/mock.helper'
 /**
  * Class for Mock User Api
  */
+/* istanbul ignore next */
 export default class UserMockApi {
 
   /**

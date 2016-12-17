@@ -12,6 +12,7 @@ class MainPageSidebarBurger extends LucioleComponent {
    * @param  {Object} props The component properties
    * @param  {Object} context The app context
    */
+  /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
     this._bindThisToMethods('handleBurgerClick')
