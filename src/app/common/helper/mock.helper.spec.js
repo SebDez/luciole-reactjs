@@ -114,7 +114,7 @@ describe('MockHelper', () => {
       expect(service.getRandomArray(10, itemGenerator.generator).constructor.name).to.equal('Array')
     })
     it('Expect to return an array of 0', () => {
-      const res = service.getRandomArray(10, itemGenerator.generator)[0]
+      const res = service.getRandomArray(10, itemGenerator.generator)
       if (res.length > 0) {
         expect(res[0]).to.equal(0)
       }

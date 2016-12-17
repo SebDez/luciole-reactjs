@@ -13,7 +13,7 @@ class WorkInProgress extends LucioleComponent {
   render () {
     return (
       <div>
-        <h1> WORK IN PROGRESS </h1>
+        <h1>WORK IN PROGRESS</h1>
       </div>
     )
   }
