@@ -16,7 +16,7 @@ class SidebarLink extends LucioleComponent {
     return (
       <Link to={this.props.link} className='sidebar-link' onClick={this.props.onClick}>
         <FontAwesome size='2x' className='sidebar-link-icon' name={this.props.icon} />
-        <div className='sidebar-link-text'> {this.props.text} </div>
+        <div className='sidebar-link-text'>{this.props.text}</div>
       </Link>)
   }
 }

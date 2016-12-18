@@ -9,7 +9,7 @@ describe('SidebarLoggedIn', () => {
   describe('render', () => {
     const props = {
       disconnectUser: () => 0,
-      userResource: () => 1,
+      userResource: {gold: 1},
       reloadResources: () => 2
     }
 

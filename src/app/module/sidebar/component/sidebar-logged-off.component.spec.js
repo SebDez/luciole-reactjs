@@ -5,7 +5,9 @@ import SidebarLoggedOff from './sidebar-logged-off.component'
 
 describe('SidebarLoggedOff', () => {
   describe('render', () => {
-    const props = {}
+    const props = {
+      logUserIn: () => 0
+    }
 
     it('Expect to contain a div with valid className sidebar-content off', () => {
       const wrapper = shallow(<SidebarLoggedOff {...props} />)
