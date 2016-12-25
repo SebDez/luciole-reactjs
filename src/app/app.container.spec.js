@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import { App } from './app.container'
+import { App } from './app.container.js'
 import ReactSidebar from 'react-sidebar'
 
 describe('App', () => {
