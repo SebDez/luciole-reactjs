@@ -1,0 +1,143 @@
+/******************************
+* SIDEBAR CONTAINER
+* *****************************/
+
+$sidebar-width: 15%;
+$sidebar-padding-top: 25px;
+$sidebar-primary-bg-color: #2d3c69;
+$sidebar-second-bg-color: #1D244B;
+$sidebar-padding-borders: 10px;
+
+.sidebar-container{
+  height: 100%;
+  width: 260px;
+  background-color: $sidebar-primary-bg-color;
+  padding-top: $sidebar-padding-top;
+  text-align: center;
+  padding-left: $sidebar-padding-borders;
+  padding-right: $sidebar-padding-borders;
+}
+
+$logo-url: url('../assets/img/luciole_logo.png');
+.sidebar-logo{
+  content: $logo-url;
+  padding-bottom: 20px;
+}
+
+.sidebar-content{
+  background-color: $sidebar-second-bg-color;
+  box-shadow: 0px 0px 10px #000;
+  bottom:50%;
+  margin:-10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &.off{
+    margin-top: 100%;
+  }
+}
+
+.sidebar-footer{
+  position:absolute;
+  bottom:0;
+  width: 90%;
+  color: $app-text-second-color;
+}
+
+.sidebar-link{
+    text-align: left;
+    padding-left: 5px;
+    line-height: 40px;
+    display: block;
+    vertical-align: middle;
+
+    &:hover {
+      .sidebar-link-icon{
+        color: #008B8B;
+      }
+      .sidebar-link-text{
+        color: #008B8B;
+      }
+    }
+
+    .sidebar-link-icon{
+      display: inline-block;
+      margin-right: 7px;
+      color:$app-text-third-color;
+      vertical-align: middle;
+      width:35px;
+      text-align: center;
+    }
+
+    .sidebar-link-text{
+      display: inline-block;
+      color:$app-text-primary-color;
+      vertical-align: middle;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-family: $app-title-font;
+    }
+  }
+
+  .resource-line {
+    margin-top: 5px;
+    text-align: left;
+
+    .resource-line-text {
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-top: 3px;
+      vertical-align: middle;
+    }
+
+    .resource-warning{
+      color: #DAA520;
+    }
+
+    .resource-error{
+      color: #B22222;
+    }
+  }
+
+  .sidebar-block-grid{
+    width: auto;
+  }
+
+  .sidebar-block-col{
+    padding-right: 0px !important;
+  }
+
+  .sidebar-button{
+    background-color: $app-button-bg-color;
+    width : 200px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 5px 5px 5px 5px;
+    vertical-align: middle;
+    line-height: 75px;
+    font-size: 35px;
+    color:$app-button-text-color;
+    text-transform: uppercase;
+
+    &:hover{
+      cursor:pointer;
+      cursor:hand;
+      border: 2px solid $app-button-bg-color;
+      background-color: $app-button-hover-color;
+      color: $app-button-bg-color;
+    }
+  }
+
+  .sidebar-block-reload{
+    text-align: right;
+    font-size: 10px;
+    padding-top: 5px;
+    padding-right: 5px;
+    margin-bottom: -20px;
+    &:hover{
+      cursor:pointer;
+      cursor:hand;
+    }
+  }

@@ -1,6 +1,7 @@
-import React /* , { PropTypes }*/ from 'react'
+import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
+import ReactSidebar from 'react-sidebar'
+import Sidebar from './module/sidebar/container/sidebar.container'
 
 /**
  * App container, used to define the whole app
@@ -9,8 +10,25 @@ import { connect } from 'react-redux'
  * @return {Object} React component tree
  */
 export const App = (props) => {
+  const styles = {
+    sidebar: {
+      width: '260px',
+      boxShadow: '-1px 2px 5px 5px rgba(0,0,0, 0.3)'
+    }
+  }
+  const sidebarContent = <Sidebar />
+  const sidebarProps = {
+    sidebar: sidebarContent,
+    open: props.sidebar.open,
+    docked: props.sidebar.open,
+    shadow: false,
+    styles
+  }
   return (
-    <div className='appContainer'>
+    <div className='app-container'>
+      <ReactSidebar {...sidebarProps}>
+          {props.children}
+      </ReactSidebar>
     </div>)
 }
 
@@ -18,7 +36,9 @@ export const App = (props) => {
  * The container properties' types
  * @type {Object}
  */
-App.propTypes = {}
+App.propTypes = {
+  sidebar: PropTypes.object.isRequired
+}
 
 /**
  * Map the global state into props
@@ -26,7 +46,9 @@ App.propTypes = {}
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    sidebar: state.application.module.sidebar
+  }
 }
 
 /**

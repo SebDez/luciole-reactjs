@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import { loadTranslations, setLocale, syncTranslationWithStore } from 'react-redux-i18n'
 import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
+import rootReducer from '../app.root-reducer'
 import translationsObject from './../../assets/lang/index'
 
 /**
@@ -9,6 +9,7 @@ import translationsObject from './../../assets/lang/index'
  * @param  {Object} initialState The initialState given
  * @return {Object}              The app store
  */
+/* istanbul ignore next */
 export default function configureStore (initialState) {
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk))
 
