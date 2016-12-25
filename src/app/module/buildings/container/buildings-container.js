@@ -1,24 +1,21 @@
-import React /* , { PropTypes }*/ from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
+import WorkInProgress from './../../../common/component/wip/wip-component'
 
 /**
- * App container, used to define the whole app
+ * BuildingsPage container, used to define the composition of the BuildingsPage screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const App = (props) => {
+export const BuildingsPage = (props) => {
   return (
-    <div className='appContainer'>
-    </div>)
+    <div>
+      BuildingsPage content
+      <WorkInProgress />
+    </div>
+  )
 }
-
-/**
- * The container properties' types
- * @type {Object}
- */
-App.propTypes = {}
 
 /**
  * Map the global state into props
@@ -38,8 +35,14 @@ function mapDispatchToProps (dispatch) {
   return {}
 }
 
-App.mapStateToProps = mapStateToProps
-App.mapDispatchToProps = mapDispatchToProps
+/**
+ * The container properties' types
+ * @type {Object}
+ */
+BuildingsPage.propTypes = {}
+
+BuildingsPage.mapStateToProps = mapStateToProps
+BuildingsPage.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -50,4 +53,4 @@ App.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(BuildingsPage)

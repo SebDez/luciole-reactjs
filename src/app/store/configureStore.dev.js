@@ -1,11 +1,11 @@
 // This file merely configures the store for hot reloading.
 // This boilerplate file is likely to be the same for each project that uses Redux.
-// With Redux, the actual stores are in /reducers.
+// With Redux, the actual stores are in /App.reducer.
 
 import { createStore, compose, applyMiddleware } from 'redux'
 import { loadTranslations, setLocale, syncTranslationWithStore } from 'react-redux-i18n'
 import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
+import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
 /**
@@ -13,6 +13,7 @@ import translationsObject from './../../assets/lang/index'
  * @param  {Object} initialState The initialState given
  * @return {Object}              The app store
  */
+/* istanbul ignore next */
 export default function configureStore (initialState) {
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk), compose(
     // Add other middleware on this line...
@@ -22,8 +23,8 @@ export default function configureStore (initialState) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers').default // eslint-disable-line global-require
+    module.hot.accept('../app-root-reducer', () => {
+      const nextReducer = require('../app-root-reducer').default // eslint-disable-line global-require
       store.replaceReducer(nextReducer)
     })
   }
