@@ -2,7 +2,7 @@ import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 
 // CONTAINERS
-import App from './app/app.container'
+import App from './app/app-container'
 import Main from './app/module/main/container/main-container'
 import HomePage from './app/module/homepage/container/homepage-container'
 import BuildingsPage from './app/module/buildings/container/buildings-container'
