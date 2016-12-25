@@ -103,6 +103,10 @@ Main.propTypes = {
 
 Main.mapStateToProps = mapStateToProps
 Main.mapDispatchToProps = mapDispatchToProps
+Main.__testOnly = {
+  getSidebarBurgerElement,
+  handleBurgerClick
+}
 
 /**
  * Connect the component to access global state object
