@@ -3,7 +3,6 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import { App } from './app.container'
 import ReactSidebar from 'react-sidebar'
-import Sidebar from './module/sidebar/container/sidebar.container'
 
 describe('App', () => {
   describe('mapDispatchToProps', () => {
