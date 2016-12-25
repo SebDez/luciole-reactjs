@@ -6,6 +6,7 @@ import MainPageSidebarBurger from './../component/main-sidebar-burger-component'
 import MainPageUserCard from './../component/main-user-card-component'
 import AuthService from './../../../common/auth/service/auth-service'
 import MainActions from './../action/main-action'
+import MainPageLangCard from './../component/main-lang-card-component'
 
 /**
  * Main container, used to define the composition of the Main screen
@@ -19,6 +20,7 @@ export const Main = (props) => {
     <div className='main-container'>
       {sidebarBurger}
       {props.children}
+      <MainPageLangCard currentLang='FR' />
     </div>
   )
 }
