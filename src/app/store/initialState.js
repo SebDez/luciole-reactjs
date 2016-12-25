@@ -1,10 +1,17 @@
 export default {
-  user: {
-    token: null
-  },
-  app: {
-    auth: {
-      isLoginModalOpen: false
+  module: {
+    sidebar: {
+      open: true,
+      userResource: null
+    },
+    main: {
+      user: null
     }
-  }
+  },
+  auth: {
+    user: {
+      token: null
+    }
+  },
+  app: {}
 }

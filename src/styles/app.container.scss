@@ -1,0 +1,81 @@
+/******************************
+* APP CONTAINER
+* *****************************/
+$app-text-primary-color:white;
+$app-text-second-color:#4059f9;
+$app-text-third-color:#54cbfe;
+
+$app-button-bg-color:#54ceff;
+$app-button-hover-color:#1a3951;
+$app-button-text-color: #0151a7;
+
+$app-title-font: 'Play', serif;
+$app-text-font: 'Play', serif;
+
+.app-container{
+  color: $app-text-primary-color;
+  font-size: 15px;
+  font-family: $app-text-font;
+}
+
+@import "homepage-container";
+@import "sidebar-container";
+@import "main-container";
+
+// font-family: 'PT Sans', sans-serif;
+// font-family: 'Maitree', serif;
+
+
+/******************************
+* RESOURCES ICON
+* *****************************/
+
+.resource-icon {
+  width: 36px;
+  height: 36px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  line-height: 28px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 5px;
+}
+
+.resource-icon-circle {
+  @extend .resource-icon;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.resource-icon-no-circle {
+  @extend .resource-icon;
+}
+
+.resource-wood{
+  fill: #D2691E
+}
+
+.resource-gold{
+  fill: #FFD700
+}
+
+.resource-food{
+  fill: #ADFF2F
+}
+
+.svg{
+  width: 24px;
+  height: 24px;
+}
+
+.user-avatar{
+  display: inline-block;
+  img{
+    object-fit: cover;
+    border-radius:50%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+  }
+}
