@@ -113,6 +113,10 @@ Sidebar.propTypes = {
 
 Sidebar.mapStateToProps = mapStateToProps
 Sidebar.mapDispatchToProps = mapDispatchToProps
+Sidebar.__testOnly = {
+  disconnectUser,
+  logUserIn
+}
 
 /**
  * Connect the component to access global state object

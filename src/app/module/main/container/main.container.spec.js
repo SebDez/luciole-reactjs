@@ -78,7 +78,7 @@ describe('Main', () => {
   })
 
   describe('handleBurgerClick', () => {
-    it('Expect to return null if user not logged in', () => {
+    it('Expect to have call sidebarActions.manageSidebar', () => {
       const sidebarActions = {
         manageSidebar: () => 0
       }
