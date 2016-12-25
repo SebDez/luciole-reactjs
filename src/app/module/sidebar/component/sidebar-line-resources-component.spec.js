@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme'
 import SidebarLineResources from './sidebar-line-resources-component'
-import ResourceIcon from './../../../common/component/resource/resource-icon.component'
+import ResourceIcon from './../../../common/component/resource/resource-icon-component'
 import ReactTooltip from 'react-tooltip'
 
 let chai = require('chai')

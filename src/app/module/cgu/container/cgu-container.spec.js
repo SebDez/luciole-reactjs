@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import { CGUPage } from './cgu-container'
-import WorkInProgress from './../../../common/component/wip/wip.component'
+import WorkInProgress from './../../../common/component/wip/wip-component'
 
 describe('CGUPage', () => {
   describe('mapDispatchToProps', () => {

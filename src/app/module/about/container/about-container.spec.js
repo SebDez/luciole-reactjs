@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import { AboutPage } from './about-container'
-import WorkInProgress from './../../../common/component/wip/wip.component'
+import WorkInProgress from './../../../common/component/wip/wip-component'
 
 describe('AboutPage', () => {
   describe('mapDispatchToProps', () => {

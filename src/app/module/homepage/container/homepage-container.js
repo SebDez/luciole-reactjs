@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import HomePageLoggedIn from './../component/homepage-logged-in-component'
 import HomePageLoggedOff from './../component/homepage-logged-off-component'
 import AuthService from './../../../common/auth/service/auth-service'
-import WorkInProgress from './../../../common/component/wip/wip.component'
+import WorkInProgress from './../../../common/component/wip/wip-component'
 
 /**
  * HomePage container, used to define the composition of the HomePage screen

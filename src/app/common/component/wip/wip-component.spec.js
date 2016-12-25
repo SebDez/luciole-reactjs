@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import WorkInProgress from './wip.component'
+import WorkInProgress from './wip-component'
 
 describe('WorkInProgress', () => {
   describe('render', () => {
