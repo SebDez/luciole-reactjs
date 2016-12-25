@@ -1,9 +1,9 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import SidebarLoggedIn from './sidebar-logged-in.component'
-import SidebarLink from './sidebar-link.component'
-import SidebarBlockResources from './sidebar-block-resources.component'
+import SidebarLoggedIn from './sidebar-logged-in-component'
+import SidebarLink from './sidebar-link-component'
+import SidebarBlockResources from './sidebar-block-resources-component'
 
 describe('SidebarLoggedIn', () => {
   describe('render', () => {

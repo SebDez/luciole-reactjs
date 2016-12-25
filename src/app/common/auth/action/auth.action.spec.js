@@ -1,6 +1,6 @@
-import AuthAction from './auth.action'
-import AuthService from './../service/auth.service'
-import TestHelper from './../../../../test/mock/test.helper'
+import AuthAction from './auth-action'
+import AuthService from './../service/auth-service'
+import TestHelper from './../../../../test/mock/test-helper'
 
 require('sinon-as-promised')
 let chai = require('chai')

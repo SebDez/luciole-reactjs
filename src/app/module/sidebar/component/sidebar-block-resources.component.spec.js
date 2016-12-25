@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme'
-import SidebarBlockResources from './sidebar-block-resources.component'
+import SidebarBlockResources from './sidebar-block-resources-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 
 let chai = require('chai')

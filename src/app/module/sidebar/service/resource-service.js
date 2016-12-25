@@ -1,4 +1,4 @@
-import ResourceMockApi from './mock/resource.mock'
+import ResourceMockApi from './mock/resource-mock'
 
 /**
  * Class for Resource service

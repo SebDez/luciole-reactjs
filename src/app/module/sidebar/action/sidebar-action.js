@@ -1,5 +1,5 @@
 import Constants from './../../../common/constants'
-import ResourceService from './../service/resource.service'
+import ResourceService from './../service/resource-service'
 
 /**
  * Class for SidebarActions

@@ -1,5 +1,5 @@
 import Constants from './../../../common/constants'
-import UserResource from './../service/user.service'
+import UserResource from './../service/user-service'
 
 /**
  * Class for MainActions

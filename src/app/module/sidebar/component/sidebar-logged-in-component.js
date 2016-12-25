@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
-import SidebarLink from './sidebar-link.component'
-import SidebarBlockResources from './sidebar-block-resources.component'
+import SidebarLink from './sidebar-link-component'
+import SidebarBlockResources from './sidebar-block-resources-component'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import FontAwesome from 'react-fontawesome'
 

@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import * as SidebarReducer from './sidebar.reducer'
+import * as SidebarReducer from './sidebar-reducer'
 
 let chai = require('chai')
 let spies = require('chai-spies')

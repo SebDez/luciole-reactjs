@@ -1,4 +1,4 @@
-import UserMockApi from './mock/user.mock'
+import UserMockApi from './mock/user-mock'
 
 /**
  * Class for User service

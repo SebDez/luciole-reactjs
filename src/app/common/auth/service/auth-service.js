@@ -1,4 +1,4 @@
-import AuthMockApi from './mock/auth.mock'
+import AuthMockApi from './mock/auth-mock'
 
 /**
  * Class for Authentication Service

@@ -1,6 +1,6 @@
-import MainActions from './main.action'
-import UserService from './../service/user.service'
-import TestHelper from './../../../../test/mock/test.helper'
+import MainActions from './main-action'
+import UserService from './../service/user-service'
+import TestHelper from './../../../../test/mock/test-helper'
 
 require('sinon-as-promised')
 let chai = require('chai')

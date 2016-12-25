@@ -18,9 +18,9 @@ $app-text-font: 'Play', serif;
   font-family: $app-text-font;
 }
 
-@import "homepage.container";
-@import "sidebar.container";
-@import "main.container";
+@import "homepage-container";
+@import "sidebar-container";
+@import "main-container";
 
 // font-family: 'PT Sans', sans-serif;
 // font-family: 'Maitree', serif;

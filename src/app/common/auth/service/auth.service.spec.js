@@ -1,5 +1,5 @@
-import AuthService from './auth.service'
-import MockAuthService from './../../../../test/mock/mock.auth.service'
+import AuthService from './auth-service'
+import MockAuthService from './../../../../test/mock/mock-auth-service'
 
 let chai = require('chai')
 let expect = chai.expect

@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import SidebarLink from './sidebar-link.component'
+import SidebarLink from './sidebar-link-component'
 import {Link} from 'react-router'
 import FontAwesome from 'react-fontawesome'
 

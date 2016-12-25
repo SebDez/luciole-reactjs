@@ -1,6 +1,6 @@
 import React from 'react'
 import {shallow} from 'enzyme'
-import MainPageSidebarBurger from './main-sidebar-burger.component'
+import MainPageSidebarBurger from './main-sidebar-burger-component'
 import FontAwesome from 'react-fontawesome'
 
 let chai = require('chai')

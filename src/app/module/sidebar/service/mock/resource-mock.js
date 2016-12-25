@@ -1,4 +1,4 @@
-import MockHelper from './../../../../common/helper/mock.helper'
+import MockHelper from './../../../../common/helper/mock-helper'
 
 /**
  * Class for Mock Resource Api

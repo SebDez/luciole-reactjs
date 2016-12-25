@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import { connect } from 'react-redux'
 import ReactSidebar from 'react-sidebar'
-import Sidebar from './module/sidebar/container/sidebar.container'
+import Sidebar from './module/sidebar/container/sidebar-container'
 
 /**
  * App container, used to define the whole app

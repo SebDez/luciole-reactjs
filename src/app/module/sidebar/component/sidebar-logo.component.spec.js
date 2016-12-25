@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import SidebarLogo from './sidebar-logo.component'
+import SidebarLogo from './sidebar-logo-component'
 import {IndexLink} from 'react-router'
 
 describe('SidebarLogo', () => {

@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
-import SidebarActions from './../../sidebar/action/sidebar.action'
-import MainPageSidebarBurger from './../component/main-sidebar-burger.component'
-import MainPageUserCard from './../component/main-user-card.component'
-import AuthService from './../../../common/auth/service/auth.service'
-import MainActions from './../action/main.action'
+import SidebarActions from './../../sidebar/action/sidebar-action'
+import MainPageSidebarBurger from './../component/main-sidebar-burger-component'
+import MainPageUserCard from './../component/main-user-card-component'
+import AuthService from './../../../common/auth/service/auth-service'
+import MainActions from './../action/main-action'
 
 /**
  * Main container, used to define the composition of the Main screen

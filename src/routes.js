@@ -3,15 +3,15 @@ import {Route, IndexRoute} from 'react-router'
 
 // CONTAINERS
 import App from './app/app.container'
-import Main from './app/module/main/container/main.container'
-import HomePage from './app/module/homepage/container/homepage.container'
-import BuildingsPage from './app/module/buildings/container/buildings.container'
-import CGUPage from './app/module/cgu/container/cgu.container'
-import AboutPage from './app/module/about/container/about.container'
-import ContactPage from './app/module/contact/container/contact.container'
+import Main from './app/module/main/container/main-container'
+import HomePage from './app/module/homepage/container/homepage-container'
+import BuildingsPage from './app/module/buildings/container/buildings-container'
+import CGUPage from './app/module/cgu/container/cgu-container'
+import AboutPage from './app/module/about/container/about-container'
+import ContactPage from './app/module/contact/container/contact-container'
 
 // SERVICES
-import AuthService from './app/common/auth/service/auth.service'
+import AuthService from './app/common/auth/service/auth-service'
 
 /**
  * APP ROUTES

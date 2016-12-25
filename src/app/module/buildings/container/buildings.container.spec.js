@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import { BuildingsPage } from './buildings.container'
+import { BuildingsPage } from './buildings-container'
 import WorkInProgress from './../../../common/component/wip/wip.component'
 
 describe('BuildingsPage', () => {

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import SidebarLineResources from './sidebar-line-resources.component'
+import SidebarLineResources from './sidebar-line-resources-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 

@@ -2,12 +2,12 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Link} from 'react-router'
-import SidebarLoggedIn from './../component/sidebar-logged-in.component'
-import SidebarLoggedOff from './../component/sidebar-logged-off.component'
-import SidebarLogo from './../component/sidebar-logo.component'
-import AuthService from './../../../common/auth/service/auth.service'
-import AuthActions from './../../../common/auth/action/auth.action'
-import SidebarActions from './../action/sidebar.action'
+import SidebarLoggedIn from './../component/sidebar-logged-in-component'
+import SidebarLoggedOff from './../component/sidebar-logged-off-component'
+import SidebarLogo from './../component/sidebar-logo-component'
+import AuthService from './../../../common/auth/service/auth-service'
+import AuthActions from './../../../common/auth/action/auth-action'
+import SidebarActions from './../action/sidebar-action'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar

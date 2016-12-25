@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
-import UserAvatar from './../../../common/component/avatar/user-avatar.component'
+import UserAvatar from './../../../common/component/avatar/user-avatar-component'
 /**
  * MainPageUserCard Component
  */

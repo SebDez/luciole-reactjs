@@ -1,6 +1,6 @@
-import SidebarActions from './sidebar.action'
-import ResourceService from './../service/resource.service'
-import TestHelper from './../../../../test/mock/test.helper'
+import SidebarActions from './sidebar-action'
+import ResourceService from './../service/resource-service'
+import TestHelper from './../../../../test/mock/test-helper'
 
 require('sinon-as-promised')
 let chai = require('chai')

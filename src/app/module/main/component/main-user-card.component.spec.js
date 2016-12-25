@@ -1,8 +1,8 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import MainPageUserCard from './main-user-card.component'
-import UserAvatar from './../../../common/component/avatar/user-avatar.component'
+import MainPageUserCard from './main-user-card-component'
+import UserAvatar from './../../../common/component/avatar/user-avatar-component'
 
 describe('MainPageUserCard', () => {
   describe('render', () => {

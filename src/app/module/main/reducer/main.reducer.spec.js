@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import * as MainReducer from './main.reducer'
+import * as MainReducer from './main-reducer'
 
 let chai = require('chai')
 let spies = require('chai-spies')

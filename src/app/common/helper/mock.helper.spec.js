@@ -1,4 +1,4 @@
-import MockHelper from './mock.helper'
+import MockHelper from './mock-helper'
 
 let chai = require('chai')
 let expect = chai.expect

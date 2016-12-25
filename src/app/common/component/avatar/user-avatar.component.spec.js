@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import UserAvatar from './user-avatar.component'
+import UserAvatar from './user-avatar-component'
 
 describe('UserAvatar', () => {
   describe('render', () => {

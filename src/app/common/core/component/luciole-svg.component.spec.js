@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import LucioleSVG from './luciole-svg.component'
+import LucioleSVG from './luciole-svg-component'
 import ReactSVG from 'react-svg'
 
 describe('LucioleSVG', () => {

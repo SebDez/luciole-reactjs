@@ -1,5 +1,5 @@
-import UserService from './user.service'
-import MockUserService from './../../../../test/mock/mock.user.service'
+import UserService from './user-service'
+import MockUserService from './../../../../test/mock/mock-user-service'
 
 let chai = require('chai')
 let expect = chai.expect

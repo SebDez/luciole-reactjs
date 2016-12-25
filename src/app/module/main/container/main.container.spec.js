@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import { Main } from './main.container'
-import MainPageSidebarBurger from './../component/main-sidebar-burger.component'
-import MainPageUserCard from './../component/main-user-card.component'
+import { Main } from './main-container'
+import MainPageSidebarBurger from './../component/main-sidebar-burger-component'
+import MainPageUserCard from './../component/main-user-card-component'
 
 let chai = require('chai')
 let spies = require('chai-spies')

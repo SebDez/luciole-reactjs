@@ -1,5 +1,5 @@
-import ResourceService from './resource.service'
-import MockResourceService from './../../../../test/mock/mock.resource.service'
+import ResourceService from './resource-service'
+import MockResourceService from './../../../../test/mock/mock-resource-service'
 
 let chai = require('chai')
 let expect = chai.expect

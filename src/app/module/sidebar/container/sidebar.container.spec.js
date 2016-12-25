@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import { Sidebar } from './sidebar.container'
-import SidebarLoggedIn from './../component/sidebar-logged-in.component'
-import SidebarLoggedOff from './../component/sidebar-logged-off.component'
+import { Sidebar } from './sidebar-container'
+import SidebarLoggedIn from './../component/sidebar-logged-in-component'
+import SidebarLoggedOff from './../component/sidebar-logged-off-component'
 
 let chai = require('chai')
 let spies = require('chai-spies')

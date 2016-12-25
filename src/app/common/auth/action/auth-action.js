@@ -1,5 +1,5 @@
 import Constants from './../../constants'
-import AuthService from './../service/auth.service'
+import AuthService from './../service/auth-service'
 
 /**
  * Class for AuthActions

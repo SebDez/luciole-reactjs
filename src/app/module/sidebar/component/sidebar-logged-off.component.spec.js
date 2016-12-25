@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import SidebarLoggedOff from './sidebar-logged-off.component'
+import SidebarLoggedOff from './sidebar-logged-off-component'
 
 describe('SidebarLoggedOff', () => {
   describe('render', () => {

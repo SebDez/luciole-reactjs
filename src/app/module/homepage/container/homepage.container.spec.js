@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import { HomePage } from './homepage.container'
-import HomePageLoggedIn from './../component/homepage-logged-in.component'
-import HomePageLoggedOff from './../component/homepage-logged-off.component'
+import { HomePage } from './homepage-container'
+import HomePageLoggedIn from './../component/homepage-logged-in-component'
+import HomePageLoggedOff from './../component/homepage-logged-off-component'
 import WorkInProgress from './../../../common/component/wip/wip.component'
 
 describe('HomePage', () => {
