@@ -79,3 +79,21 @@ $app-text-font: 'Play', serif;
     border: 2px solid white;
   }
 }
+
+/******************************
+* DROPDOWN
+* *****************************/
+.dropdown-menu{
+  background-color: $app-button-hover-color;
+  min-width: 100% !important;
+}
+
+.mylistremovethis{
+}
+
+.myitemremovethis{
+  background-color: red;
+  &:hover{
+    background-color: $app-button-bg-color;
+  }
+}

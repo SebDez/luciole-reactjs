@@ -24,8 +24,8 @@ class MainLangMenu extends LucioleComponent {
    */
   render () {
     return (
-      <div className='dropdown-menu' style={{ padding: '' }}>
-        <ul className='list-unstyled'>
+      <div className='dropdown-menu'>
+        <ul className='mylistremovethis'>
         {React.Children.toArray(this.props.children).filter(child => (
           !this.value.trim() || child.props.children.indexOf(this.value) !== -1
         ))}

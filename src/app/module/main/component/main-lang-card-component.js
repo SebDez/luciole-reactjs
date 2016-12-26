@@ -31,7 +31,7 @@ class MainLangCard extends LucioleComponent {
    */
   render () {
     return (
-      <Dropdown open={this.isopen} onToggle={this.onToggle}
+      <Dropdown open={true} onToggle={this.onToggle}
         id='dropdown-custom-menu' className='hand-over main-lang-card'>
         <MainLangToggle bsRole='toggle'>
           <FontAwesome name='globe' />
@@ -39,7 +39,7 @@ class MainLangCard extends LucioleComponent {
           <FontAwesome name='angle-down' />
         </MainLangToggle>
         <MainLangMenu bsRole='menu'>
-          <MenuItem onSelect={this.handleClick} eventKey='FR'>FR</MenuItem>
+          <MenuItem className='myitemremovethis' onSelect={this.handleClick} eventKey='FR'>FR</MenuItem>
           <MenuItem onSelect={this.handleClick} eventKey='EN'>EN</MenuItem>
           <MenuItem onSelect={this.handleClick} eventKey='DE'>DE</MenuItem>
         </MainLangMenu>

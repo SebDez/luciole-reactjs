@@ -28,9 +28,9 @@ class MainLangToggle extends LucioleComponent {
    */
   render () {
     return (
-      <a href='' onClick={this.handleClick}>
+      <div onClick={this.handleClick}>
         {this.props.children}
-      </a>
+      </div>
     )
   }
 }
