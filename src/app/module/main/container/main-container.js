@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
+import { bindActionCreators } from 'redux'
 import SidebarActions from './../../sidebar/action/sidebar-action'
 import MainPageSidebarBurger from './../component/main-sidebar-burger-component'
 import MainPageUserCard from './../component/main-user-card-component'

@@ -84,16 +84,30 @@ $app-text-font: 'Play', serif;
 * DROPDOWN
 * *****************************/
 .dropdown-menu{
-  background-color: $app-button-hover-color;
+  background-color: $sidebar-second-bg-color;
   min-width: 100% !important;
 }
 
-.mylistremovethis{
-}
-
-.myitemremovethis{
-  background-color: red;
-  &:hover{
-    background-color: $app-button-bg-color;
+.dpd-lang-list{
+  list-style-type: none;
+  padding: 10px 10px 0 0;
+  width: 100% !important;
+  li{
+    width: 100%;
+    margin-left: 5px;
+    a{
+      text-decoration: none !important;
+      margin: 0px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      &:hover{
+        color:$app-text-third-color;
+      }
+    }
+    &:hover{
+      background-color: $sidebar-primary-bg-color;
+      color: red;
+    }
   }
 }

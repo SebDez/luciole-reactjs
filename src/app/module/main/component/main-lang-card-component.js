@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
-import FontAwesome from 'react-fontawesome'
-import { Dropdown, MenuItem } from 'react-bootstrap'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
-import MainLangToggle from './main-lang-toggle-component'
-import MainLangMenu from './main-lang-menu-component'
+import LuDropDown from './../../../common/component/dropdown/dropdown-component'
+import FontAwesome from 'react-fontawesome'
+
 /**
  * MainLangCard Component
  */
@@ -11,18 +10,15 @@ class MainLangCard extends LucioleComponent {
 
   constructor (props, context) {
     super(props, context)
-    this._bindThisToMethods('handleClick', 'onToggle')
-    this.defaultOpen = false
-    this.isopen = !!this.defaultOpen
+    this._bindThisToMethods('handleClick', 'handleToogle')
   }
 
   handleClick (key) {
     console.log('got his', key)
-    this.isopen = false
   }
 
-  onToggle () {
-    this.isopen = true
+  handleToogle () {
+    console.log('open/close')
   }
 
   /**
@@ -30,20 +26,20 @@ class MainLangCard extends LucioleComponent {
    * @return {Object} React component tree
    */
   render () {
+    const choices = [
+      {key: '1', label: 'FR'},
+      {key: '2', label: 'DE'},
+      {key: '3', label: 'FE'},
+      {key: '4', label: 'DDF4'}
+    ]
     return (
-      <Dropdown open={true} onToggle={this.onToggle}
-        id='dropdown-custom-menu' className='hand-over main-lang-card'>
-        <MainLangToggle bsRole='toggle'>
-          <FontAwesome name='globe' />
-          <p className='lang-style'>{this.props.currentLang}</p>
-          <FontAwesome name='angle-down' />
-        </MainLangToggle>
-        <MainLangMenu bsRole='menu'>
-          <MenuItem className='myitemremovethis' onSelect={this.handleClick} eventKey='FR'>FR</MenuItem>
-          <MenuItem onSelect={this.handleClick} eventKey='EN'>EN</MenuItem>
-          <MenuItem onSelect={this.handleClick} eventKey='DE'>DE</MenuItem>
-        </MainLangMenu>
-      </Dropdown>
+      <LuDropDown open id='myid' choices={choices} currSelected='curr'
+        containerClass='hand-over main-lang-card' listClass='dpd-lang-list'
+        onToggle={this.handleToogle} onSelect={this.handleClick}>
+        <FontAwesome name='globe' />
+        <p className='lang-style'>{this.props.currentLang}</p>
+        <FontAwesome name='angle-down' />
+      </LuDropDown>
     )
   }
 }

@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Dropdown, MenuItem } from 'react-bootstrap'
 import LucioleComponent from './../../core/abstract/luciole-component'
-import MainLangToggle from './main-lang-toggle-component'
-import MainLangMenu from './main-lang-menu-component'
+import LuDropdownToggle from './dropdown-toggle-component'
+import LuDropdownMenu from './dropdown-menu-component'
 
 /**
  * LuDropDown Component
@@ -11,23 +11,44 @@ import MainLangMenu from './main-lang-menu-component'
 class LuDropDown extends LucioleComponent {
 
   /**
+   * Create a new LuDropDown component
+   * @param  {Object} props The component properties
+   * @param  {Object} context The app context
+   */
+  /* istanbul ignore next */
+  constructor (props, context) {
+    super(props, context)
+    this._bindThisToMethods('getMenuItems')
+  }
+
+  /**
    * Render the component
    * @return {Object} React component tree
    */
   render () {
+    const menuItemList = this.getMenuItems()
     return (
-      <Dropdown open={this.props.open} onToggle={this.props.onToggle}
-        className={this.props.dropdownClass}>
-        <MainLangToggle bsRole='toggle'>
-          {this.props.children}
-        </MainLangToggle>
-        <MainLangMenu bsRole='menu'>
-          <MenuItem onSelect={this.onSelect} eventKey='FR'>FR</MenuItem>
-          <MenuItem onSelect={this.onSelect} eventKey='EN'>EN</MenuItem>
-          <MenuItem onSelect={this.onSelect} eventKey='DE'>DE</MenuItem>
-        </MainLangMenu>
-      </Dropdown>
+      <div className={this.props.containerClass}>
+        <Dropdown open={this.props.open}
+          onToggle={this.props.onToggle}
+          className={this.props.dropdownClass} id={this.props.id} >
+          <LuDropdownToggle bsRole='toggle'>
+            {this.props.children}
+          </LuDropdownToggle>
+          <LuDropdownMenu bsRole='menu' listClass={this.props.listClass} >
+            {menuItemList}
+          </LuDropdownMenu>
+        </Dropdown>
+      </div>
     )
+  }
+
+  getMenuItems () {
+    const itemList = []
+    this.props.choices.forEach((choice, index) => {
+      itemList.push(<MenuItem key={index} onSelect={this.props.onSelect} eventKey={choice.key}>{choice.label}</MenuItem>)
+    })
+    return itemList
   }
 }
 
@@ -36,13 +57,14 @@ class LuDropDown extends LucioleComponent {
  * @type {Object}
  */
 LuDropDown.propTypes = {
-  containerClass: PropTypes.string,
-  listClass: PropTypes.string,
-  open: PropTypes.boolean.isRequired,
+  id: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
   choices: PropTypes.array.isRequired,
   currSelected: PropTypes.string.isRequired,
-  onSelect: PropTypes.func,
-  onToggle: PropTypes.func
+  onToggle: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  containerClass: PropTypes.string,
+  listClass: PropTypes.string
 }
 
 /**
