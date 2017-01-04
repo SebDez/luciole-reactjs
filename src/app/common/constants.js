@@ -3,6 +3,10 @@
 * @type {Object}
  */
 export default {
+  LANGUAGE: [
+    {key: '1', label: 'fr'},
+    {key: '2', label: 'en'}
+  ],
   ACTIONS: {
     AUTH: {
       LOG_USER_IN_SUCCESS: 'LOG_USER_IN_SUCCESS',
@@ -19,6 +23,10 @@ export default {
     },
     USER: {
       GET_USER_INFORMATIONS: 'GET_USER_INFORMATIONS'
+    },
+    MAIN: {
+      OPEN_LANGUAGE_CARD: 'OPEN_LANGUAGE_CARD',
+      CLOSE_LANGUAGE_CARD: 'CLOSE_LANGUAGE_CARD'
     }
   }
 }

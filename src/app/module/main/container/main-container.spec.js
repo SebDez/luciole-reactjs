@@ -26,9 +26,20 @@ describe('Main', () => {
         module: {
           sidebar: 'mysidebar',
           main: {
-            user: 'myuser'
+            user: 'myuser',
+            modals: {
+              lang: {
+                open: true
+              }
+            },
+            lang: {
+              currentLang: 'fr'
+            }
           }
         }
+      },
+      i18n: {
+        locale: 'fr'
       }
     }
     it('Expect to return a valid auth prop', () => {
@@ -43,20 +54,28 @@ describe('Main', () => {
   })
 
   describe('render', () => {
-    const auth = {
+    const props = {
+      auth: {
+        user: {
+          token: 'mytoken'
+        }
+      },
       user: {
-        token: 'mytoken'
+        name: 'name'
+      },
+      langConfig: {
+        open: true
+      },
+      i18n: {
+        locale: 'fr'
       }
     }
-    let user = {
-      name: 'name'
-    }
     it('Expect to contain a MainPageSidebarBurger if user logged in', () => {
-      const wrapper = shallow(<Main auth={auth} user={user} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
+      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
       expect(wrapper.find(MainPageSidebarBurger)).to.be.length(1)
     })
     it('Expect to contain a MainPageUserCard if user logged in', () => {
-      const wrapper = shallow(<Main auth={auth} user={user} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
+      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
       expect(wrapper.find(MainPageUserCard)).to.be.length(1)
     })
     it('Expect to have call mainActions.getUserInformations if user data not loaded', () => {
@@ -65,7 +84,7 @@ describe('Main', () => {
       }
       let spy = chai.spy.on(mainActions, 'getUserInformations')
       const noUser = null
-      shallow(<Main auth={auth} user={noUser} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
+      shallow(<Main {...props} user={noUser} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(spy).to.have.been.called()
     })
   })

@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import LuDropDown from './../../../common/component/dropdown/dropdown-component'
 import FontAwesome from 'react-fontawesome'
+import Constants from './../../../common/constants'
 
 /**
  * MainLangCard Component
@@ -10,15 +11,19 @@ class MainLangCard extends LucioleComponent {
 
   constructor (props, context) {
     super(props, context)
-    this._bindThisToMethods('handleClick', 'handleToogle')
+    this._bindThisToMethods('handleSelect', 'handleClick', 'handleMouseLeave')
   }
 
-  handleClick (key) {
-    console.log('got his', key)
+  handleSelect (key) {
+    this.props.onSelect(key)
   }
 
-  handleToogle () {
-    console.log('open/close')
+  handleClick () {
+    this.props.onToggle(this.props.isOpen)
+  }
+
+  handleMouseLeave () {
+    this.props.onToggle(true)
   }
 
   /**
@@ -26,20 +31,17 @@ class MainLangCard extends LucioleComponent {
    * @return {Object} React component tree
    */
   render () {
-    const choices = [
-      {key: '1', label: 'FR'},
-      {key: '2', label: 'DE'},
-      {key: '3', label: 'FE'},
-      {key: '4', label: 'DDF4'}
-    ]
+    const choices = Constants.LANGUAGE
     return (
-      <LuDropDown open id='myid' choices={choices} currSelected='curr'
-        containerClass='hand-over main-lang-card' listClass='dpd-lang-list'
-        onToggle={this.handleToogle} onSelect={this.handleClick}>
-        <FontAwesome name='globe' />
-        <p className='lang-style'>{this.props.currentLang}</p>
-        <FontAwesome name='angle-down' />
-      </LuDropDown>
+      <div onMouseLeave={this.handleMouseLeave}>
+        <LuDropDown open={this.props.isOpen} id='myid' choices={choices} currSelected='curr'
+          containerClass='hand-over main-lang-card' listClass='dpd-lang-list'
+          onToggle={this.handleClick} onSelect={this.handleSelect} >
+          <FontAwesome name='globe' />
+          <p className='lang-style'>{this.props.lang}</p>
+          <FontAwesome name='angle-down' />
+        </LuDropDown>
+      </div>
     )
   }
 }
@@ -49,7 +51,10 @@ class MainLangCard extends LucioleComponent {
  * @type {Object}
  */
 MainLangCard.propTypes = {
-  currentLang: PropTypes.string.isRequired
+  onSelect: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  lang: PropTypes.string
 }
 
 /**
