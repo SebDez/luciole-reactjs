@@ -31,9 +31,6 @@ describe('Main', () => {
               lang: {
                 open: true
               }
-            },
-            lang: {
-              currentLang: 'fr'
             }
           }
         }
@@ -54,6 +51,11 @@ describe('Main', () => {
   })
 
   describe('render', () => {
+    const mainActions = {
+      getUserInformations: () => 0,
+      changeLanguage: () => 0,
+      manageLangToggle: () => 1
+    }
     const props = {
       auth: {
         user: {
@@ -68,20 +70,18 @@ describe('Main', () => {
       },
       i18n: {
         locale: 'fr'
-      }
+      },
+      mainActions
     }
     it('Expect to contain a MainPageSidebarBurger if user logged in', () => {
-      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
+      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(wrapper.find(MainPageSidebarBurger)).to.be.length(1)
     })
     it('Expect to contain a MainPageUserCard if user logged in', () => {
-      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
+      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(wrapper.find(MainPageUserCard)).to.be.length(1)
     })
     it('Expect to have call mainActions.getUserInformations if user data not loaded', () => {
-      const mainActions = {
-        getUserInformations: () => 0
-      }
       let spy = chai.spy.on(mainActions, 'getUserInformations')
       const noUser = null
       shallow(<Main {...props} user={noUser} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)

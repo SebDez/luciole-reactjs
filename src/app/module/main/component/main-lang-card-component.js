@@ -4,6 +4,8 @@ import LuDropDown from './../../../common/component/dropdown/dropdown-component'
 import FontAwesome from 'react-fontawesome'
 import Constants from './../../../common/constants'
 
+import { browserHistory } from 'react-router'
+
 /**
  * MainLangCard Component
  */
@@ -12,9 +14,11 @@ class MainLangCard extends LucioleComponent {
   constructor (props, context) {
     super(props, context)
     this._bindThisToMethods('handleSelect', 'handleClick', 'handleMouseLeave')
+    this.routerActions = browserHistory
   }
 
   handleSelect (key) {
+    this.routerActions.push('/')
     this.props.onSelect(key)
   }
 

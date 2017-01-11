@@ -18,6 +18,9 @@ describe('HomePage', () => {
       const state = {
         application: {
           auth: 'my auth obj'
+        },
+        i18n: {
+          locale: 'fr'
         }
       }
       expect(HomePage.mapStateToProps(state).auth).to.equal('my auth obj')

@@ -6,9 +6,6 @@ export default {
     },
     main: {
       user: null,
-      lang: {
-        currentLang: 'FR'
-      },
       modals: {
         lang: {
           open: false

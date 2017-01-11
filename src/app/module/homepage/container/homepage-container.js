@@ -28,7 +28,8 @@ export const HomePage = (props) => {
  * @return {Object}       The element to render
  */
 function getHomePageContentElement (props) {
-  return isUserLoggedIn(props) ? (<HomePageLoggedIn />) : (<HomePageLoggedOff />)
+  const lang = props.currentLang
+  return isUserLoggedIn(props) ? (<HomePageLoggedIn lang={lang} />) : (<HomePageLoggedOff lang={lang} />)
 }
 
 /**
@@ -47,7 +48,8 @@ function isUserLoggedIn (props) {
  */
 function mapStateToProps (state) {
   return {
-    auth: state.application.auth
+    auth: state.application.auth,
+    currentLang: state.i18n.locale
   }
 }
 
@@ -65,7 +67,8 @@ function mapDispatchToProps (dispatch) {
  * @type {Object}
  */
 HomePage.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  currentLang: PropTypes.string
 }
 
 HomePage.mapStateToProps = mapStateToProps

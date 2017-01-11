@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
+import LuI18n from './../../../common/component/i18n/luciole-i18n-component'
 
 /**
  * HomePageLoggedIn Component
@@ -19,6 +20,7 @@ class HomePageLoggedIn extends LucioleComponent {
         <br />
         Content when user is logged in
         <br />
+        <LuI18n value='application.homePage.linkTo' lang={this.props.lang} />
         xxxx
       </div>
     )
@@ -29,7 +31,9 @@ class HomePageLoggedIn extends LucioleComponent {
  * The component properties' types
  * @type {Object}
  */
-HomePageLoggedIn.propTypes = {}
+HomePageLoggedIn.propTypes = {
+  lang: PropTypes.string
+}
 
 /**
  * Export the component

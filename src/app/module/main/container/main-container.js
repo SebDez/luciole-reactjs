@@ -20,7 +20,7 @@ export const Main = (props) => {
     <div className='main-container'>
       {sidebarBurger}
       {props.children}
-      <MainPageLangCard isOpen={props.langConfig.open} lang={props.lang}
+      <MainPageLangCard isOpen={props.langConfig.open} lang={props.langConfig.currentLang}
         onSelect={props.mainActions.changeLanguage} onToggle={props.mainActions.manageLangToggle} />
     </div>
   )
@@ -80,9 +80,8 @@ function mapStateToProps (state) {
     user: state.application.module.main.user,
     langConfig: {
       open: state.application.module.main.modals.lang.open,
-      currentLang: state.application.module.main.lang.currentLang
-    },
-    lang: state.i18n.locale
+      currentLang: state.i18n.locale
+    }
   }
 }
 
