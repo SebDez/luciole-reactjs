@@ -41,11 +41,11 @@ function getHomePageContentElement (props) {
   if (isUserLoggedIn(props)) {
     if (props.userResource) {
       return (
-      <SidebarLoggedIn lang={lang}
-      disconnectUser={disconnectUser.bind(null, props)}
-      userResource={props.userResource}
-      reloadResources={getUserResources.bind(null, props)}
-      />)
+        <SidebarLoggedIn lang={lang}
+          disconnectUser={disconnectUser.bind(null, props)}
+          userResource={props.userResource}
+          reloadResources={getUserResources.bind(null, props)}
+        />)
     } else {
       getUserResources(props)
     }
