@@ -20,6 +20,8 @@ export default class MainActions {
     this.changeLanguage = this.changeLanguage.bind(this)
     /** @type {Function}*/
     this.manageLangToggle = this.manageLangToggle.bind(this)
+    /** @type {Object}*/
+    this.i18nActions = {setLocale}
   }
 
   /**
@@ -38,7 +40,7 @@ export default class MainActions {
     const codeLanguage = Constants.LANGUAGE.filter(lang => {
       return lang.key === languageCode
     })[0].label
-    return setLocale(codeLanguage)
+    return this.i18nActions.setLocale(codeLanguage)
   }
 
   /**
