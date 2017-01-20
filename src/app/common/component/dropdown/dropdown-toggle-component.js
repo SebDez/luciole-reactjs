@@ -17,6 +17,9 @@ class LuDropdownToggle extends LucioleComponent {
     this._bindThisToMethods('handleClick')
   }
 
+/**
+ * Manage click on toggle component
+ */
   handleClick (e) {
     e.preventDefault()
     this.props.onClick(e)

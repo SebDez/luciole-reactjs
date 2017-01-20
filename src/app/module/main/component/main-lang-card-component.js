@@ -10,22 +10,38 @@ import { browserHistory } from 'react-router'
  * MainLangCard Component
  */
 class MainLangCard extends LucioleComponent {
-
+  /**
+   * Create a new MainPageSidebarBurger component
+   * @param  {Object} props The component properties
+   * @param  {Object} context The app context
+   */
+  /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
     this._bindThisToMethods('handleSelect', 'handleClick', 'handleMouseLeave')
+    /** @type {Object} */
     this.routerActions = browserHistory
   }
 
+/**
+ * Manage selection of a language
+ * @param  {string} key The selected language's key
+ */
   handleSelect (key) {
     this.routerActions.push('/')
     this.props.onSelect(key)
   }
 
+/**
+ * Manage the click on component
+ */
   handleClick () {
     this.props.onToggle(this.props.isOpen)
   }
 
+/**
+ * Close the component on mouse leave
+ */
   handleMouseLeave () {
     this.props.onToggle(true)
   }

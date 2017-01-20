@@ -36,6 +36,11 @@ export default class MainActions {
     }
   }
 
+/**
+ * Change app language
+ * @type {string} languageCode The choosen language's code
+ * @return {Object}  The action to dispatch
+ */
   changeLanguage (languageCode) {
     const codeLanguage = Constants.LANGUAGE.filter(lang => {
       return lang.key === languageCode

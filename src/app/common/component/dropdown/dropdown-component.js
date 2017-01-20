@@ -43,6 +43,10 @@ class LuDropDown extends LucioleComponent {
     )
   }
 
+/**
+ * Get menu's items components
+ * @return {Object[]} A list of items
+ */
   getMenuItems () {
     const itemList = []
     this.props.choices.forEach((choice, index) => {
