@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import LucioleComponent from './../../core/abstract/luciole-component'
 
 /**
@@ -42,7 +42,9 @@ class LuDropdownToggle extends LucioleComponent {
  * The component properties' types
  * @type {Object}
  */
-LuDropdownToggle.propTypes = {}
+LuDropdownToggle.propTypes = {
+  onClick: PropTypes.func
+}
 
 /**
  * Export the component

@@ -68,6 +68,7 @@ LuDropDown.propTypes = {
   onToggle: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
   containerClass: PropTypes.string,
+  dropdownClass: PropTypes.string,
   listClass: PropTypes.string
 }
 
