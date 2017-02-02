@@ -54,7 +54,7 @@ class MainLangCard extends LucioleComponent {
     const choices = Constants.LANGUAGE
     return (
       <div onMouseLeave={this.handleMouseLeave}>
-        <LuDropDown open={this.props.isOpen} id='myid' choices={choices} currSelected='curr'
+        <LuDropDown open={this.props.isOpen} id='myid' choices={choices} currSelected={this.props.lang}
           containerClass='hand-over main-lang-card' listClass='dpd-lang-list'
           onToggle={this.handleClick} onSelect={this.handleSelect} >
           <FontAwesome name='globe' />
