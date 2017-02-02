@@ -4,6 +4,7 @@ import {expect} from 'chai'
 import SidebarLink from './sidebar-link-component'
 import {Link} from 'react-router'
 import FontAwesome from 'react-fontawesome'
+import LuI18n from './../../../common/component/i18n/luciole-i18n-component'
 
 describe('SidebarLink', () => {
   describe('render', () => {
@@ -22,9 +23,9 @@ describe('SidebarLink', () => {
       expect(actual).to.be.equal(expected)
     })
 
-    it('Expect to contain a div with valid text', () => {
+    it('Expect to contain a LuI18n', () => {
       const wrapper = shallow(<SidebarLink {...props} />)
-      const actual = wrapper.find('div').text()
+      const actual = wrapper.find(LuI18n).prop('value')
       const expected = 'text'
       expect(actual).to.be.equal(expected)
     })

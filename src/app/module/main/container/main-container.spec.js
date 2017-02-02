@@ -26,9 +26,17 @@ describe('Main', () => {
         module: {
           sidebar: 'mysidebar',
           main: {
-            user: 'myuser'
+            user: 'myuser',
+            modals: {
+              lang: {
+                open: true
+              }
+            }
           }
         }
+      },
+      i18n: {
+        locale: 'fr'
       }
     }
     it('Expect to return a valid auth prop', () => {
@@ -43,29 +51,40 @@ describe('Main', () => {
   })
 
   describe('render', () => {
-    const auth = {
-      user: {
-        token: 'mytoken'
-      }
+    const mainActions = {
+      getUserInformations: () => 0,
+      changeLanguage: () => 0,
+      manageLangToggle: () => 1
     }
-    let user = {
-      name: 'name'
+    const props = {
+      auth: {
+        user: {
+          token: 'mytoken'
+        }
+      },
+      user: {
+        name: 'name'
+      },
+      langConfig: {
+        open: true
+      },
+      i18n: {
+        locale: 'fr'
+      },
+      mainActions
     }
     it('Expect to contain a MainPageSidebarBurger if user logged in', () => {
-      const wrapper = shallow(<Main auth={auth} user={user} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
+      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(wrapper.find(MainPageSidebarBurger)).to.be.length(1)
     })
     it('Expect to contain a MainPageUserCard if user logged in', () => {
-      const wrapper = shallow(<Main auth={auth} user={user} sidebarActions={{}} mainActions={{}} sidebar={{}} />)
+      const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(wrapper.find(MainPageUserCard)).to.be.length(1)
     })
     it('Expect to have call mainActions.getUserInformations if user data not loaded', () => {
-      const mainActions = {
-        getUserInformations: () => 0
-      }
       let spy = chai.spy.on(mainActions, 'getUserInformations')
       const noUser = null
-      shallow(<Main auth={auth} user={noUser} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
+      shallow(<Main {...props} user={noUser} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(spy).to.have.been.called()
     })
   })

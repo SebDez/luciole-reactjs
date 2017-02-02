@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {Link} from 'react-router'
+import { bindActionCreators } from 'redux'
+import { Link } from 'react-router'
 import SidebarLoggedIn from './../component/sidebar-logged-in-component'
 import SidebarLoggedOff from './../component/sidebar-logged-off-component'
 import SidebarLogo from './../component/sidebar-logo-component'
 import AuthService from './../../../common/auth/service/auth-service'
 import AuthActions from './../../../common/auth/action/auth-action'
 import SidebarActions from './../action/sidebar-action'
+import LuI18n from './../../../common/component/i18n/luciole-i18n-component'
 
 /**
  * Sidebar container, used to define the composition of the Sidebar
@@ -22,7 +23,9 @@ export const Sidebar = (props) => {
       <SidebarLogo />
       {content}
       <div className='sidebar-footer'>
-        <Link to='/cgu'>CGU</Link> - <Link to='/about'>A propos</Link> - <Link to='/contact'>Contact</Link>
+        <Link to='/cgu'><LuI18n value='application.sidebar.cgu' lang={props.currentLang} /></Link> -
+        <Link to='/about'><LuI18n value='application.sidebar.about' lang={props.currentLang} /></Link> -
+        <Link to='/contact'><LuI18n value='application.sidebar.contact' lang={props.currentLang} /></Link>
       </div>
     </div>
   )
@@ -34,10 +37,11 @@ export const Sidebar = (props) => {
  * @return {Object}       The element to render
  */
 function getHomePageContentElement (props) {
+  const lang = props.currentLang
   if (isUserLoggedIn(props)) {
     if (props.userResource) {
       return (
-        <SidebarLoggedIn
+        <SidebarLoggedIn lang={lang}
           disconnectUser={disconnectUser.bind(null, props)}
           userResource={props.userResource}
           reloadResources={getUserResources.bind(null, props)}
@@ -46,7 +50,7 @@ function getHomePageContentElement (props) {
       getUserResources(props)
     }
   }
-  return (<SidebarLoggedOff logUserIn={logUserIn.bind(null, props)} />)
+  return (<SidebarLoggedOff lang={lang} logUserIn={logUserIn.bind(null, props)} />)
 }
 
 /**
@@ -86,7 +90,8 @@ function getUserResources (props) {
 function mapStateToProps (state) {
   return {
     auth: state.application.auth,
-    userResource: state.application.module.sidebar.userResource
+    userResource: state.application.module.sidebar.userResource,
+    currentLang: state.i18n.locale
   }
 }
 
@@ -108,7 +113,8 @@ function mapDispatchToProps (dispatch) {
  */
 Sidebar.propTypes = {
   auth: PropTypes.object.isRequired,
-  authActions: PropTypes.object.isRequired
+  authActions: PropTypes.object.isRequired,
+  currentLang: PropTypes.string
 }
 
 Sidebar.mapStateToProps = mapStateToProps

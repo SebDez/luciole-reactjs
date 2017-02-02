@@ -28,6 +28,9 @@ describe('Sidebar', () => {
             userResource: 'userResource-my'
           }
         }
+      },
+      i18n: {
+        locale: 'fr'
       }
     }
     it('Expect to return a valid auth prop', () => {

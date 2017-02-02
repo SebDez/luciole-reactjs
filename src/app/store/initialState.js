@@ -5,7 +5,12 @@ export default {
       userResource: null
     },
     main: {
-      user: null
+      user: null,
+      modals: {
+        lang: {
+          open: false
+        }
+      }
     }
   },
   auth: {

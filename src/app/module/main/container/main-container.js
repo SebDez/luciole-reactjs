@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {bindActionCreators} from 'redux'
+import { bindActionCreators } from 'redux'
 import SidebarActions from './../../sidebar/action/sidebar-action'
 import MainPageSidebarBurger from './../component/main-sidebar-burger-component'
 import MainPageUserCard from './../component/main-user-card-component'
 import AuthService from './../../../common/auth/service/auth-service'
 import MainActions from './../action/main-action'
+import MainPageLangCard from './../component/main-lang-card-component'
 
 /**
  * Main container, used to define the composition of the Main screen
@@ -19,6 +20,8 @@ export const Main = (props) => {
     <div className='main-container'>
       {sidebarBurger}
       {props.children}
+      <MainPageLangCard isOpen={props.langConfig.open} lang={props.langConfig.currentLang}
+        onSelect={props.mainActions.changeLanguage} onToggle={props.mainActions.manageLangToggle} />
     </div>
   )
 }
@@ -74,7 +77,11 @@ function mapStateToProps (state) {
   return {
     auth: state.application.auth,
     sidebar: state.application.module.sidebar,
-    user: state.application.module.main.user
+    user: state.application.module.main.user,
+    langConfig: {
+      open: state.application.module.main.modals.lang.open,
+      currentLang: state.i18n.locale
+    }
   }
 }
 
