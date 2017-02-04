@@ -1,16 +1,18 @@
 import Constants from './../../constants'
 import AuthService from './../service/auth-service'
+import LucioleActions from './../../core/abstract/luciole-actions'
 
 /**
  * Class for AuthActions
  * All authentication actions and related methods
  */
-export default class AuthActions {
+export default class AuthActions extends LucioleActions {
 
   /**
    * Create a new AuthActions
    */
   constructor () {
+    super()
     /** @type {AuthService}*/
     this.authService = new AuthService()
     /** @type {Function}*/

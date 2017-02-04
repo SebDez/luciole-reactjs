@@ -1,17 +1,19 @@
 import Constants from './../../../common/constants'
 import UserResource from './../service/user-service'
 import { setLocale } from 'react-redux-i18n'
+import LucioleActions from './../../../common/core/abstract/luciole-actions'
 
 /**
  * Class for MainActions
  * All main actions and related methods
  */
-export default class MainActions {
+export default class MainActions extends LucioleActions {
 
   /**
    * Create a new MainActions
    */
   constructor () {
+    super()
     /** @type {UserResource}*/
     this.userService = new UserResource()
     /** @type {Function}*/

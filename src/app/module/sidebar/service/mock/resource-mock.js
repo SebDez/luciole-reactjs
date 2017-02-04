@@ -11,8 +11,7 @@ export default class ResourceMockApi {
    * @return {Object} A promise to resolve
    */
   getUserResources () {
-    return Promise.reject({
-      httpCode: 720,
+    return Promise.resolve({
       data: {
         gold: this.getRandomResource(),
         food: this.getRandomResource(),
