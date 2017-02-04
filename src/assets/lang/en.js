@@ -21,5 +21,23 @@ export default {
   },
   date: {
     long: 'MMMM Do, YYYY'
+  },
+  httpErrors: {
+    401: {
+      title: 'You are not logged in.',
+      message: 'You must reconnect to do this action.'
+    },
+    403: {
+      title: 'Forbidden !',
+      message: 'You are not allowed to do this action.'
+    },
+    500: {
+      title: 'Oops, a problem occured',
+      message: 'The action has been ignored.'
+    },
+    other: {
+      title: 'Aie, a problem occured',
+      message: 'The action has been ignored.'
+    }
   }
 }

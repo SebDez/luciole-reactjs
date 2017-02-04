@@ -1,4 +1,5 @@
 import ToastrHelper from './toastr-helper'
+import { I18n } from 'react-redux-i18n'
 
 /**
  * REST Helper class
@@ -12,6 +13,8 @@ export default class RestHelper {
   constructor () {
     /** @type {ToastrHelper}*/
     this.toastrHelper = new ToastrHelper()
+    /** @type {I18n}*/
+    this.i18n = I18n
     /** @type {Array}*/
     this.managedCodes = [401, 403, 500]
   }
@@ -25,26 +28,26 @@ export default class RestHelper {
     const errorCode = this.managedCodes.indexOf(httpCode) > -1 ? httpCode : 'other'
     const httpResponses = {
       401: {
-        title: 'Vous n\'êtes pas connecté.',
-        message: 'Reconnectez vous pour effectuer cette action.',
+        title: this.i18n.t('httpErrors.401.title'),
+        message: this.i18n.t('httpErrors.401.message'),
         type: 'warning',
         options: null
       },
       403: {
-        title: 'Non autorisé',
-        message: 'Vous n\'êtes pas autorisé à effectuer cette action.',
+        title: this.i18n.t('httpErrors.403.title'),
+        message: this.i18n.t('httpErrors.403.message'),
         type: 'warning',
         options: null
       },
       500: {
-        title: 'Oops, un problème est survenu',
-        message: 'L\'action n\'a pas été prise en compte.',
+        title: this.i18n.t('httpErrors.500.title'),
+        message: this.i18n.t('httpErrors.500.message'),
         type: 'error',
         options: null
       },
       other: {
-        title: 'Aie, un problème est survenu',
-        message: 'L\'action n\'a pas été prise en compte.',
+        title: this.i18n.t('httpErrors.other.title'),
+        message: this.i18n.t('httpErrors.other.message'),
         type: 'error',
         options: null
       }

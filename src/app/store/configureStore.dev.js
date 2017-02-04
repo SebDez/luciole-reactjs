@@ -31,7 +31,7 @@ export default function configureStore (initialState) {
 
   syncTranslationWithStore(store)
   store.dispatch(loadTranslations(translationsObject))
-  store.dispatch(setLocale('en'))
+  store.dispatch(setLocale('fr'))
 
   return store
 }
