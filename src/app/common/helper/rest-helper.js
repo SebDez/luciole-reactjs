@@ -12,6 +12,8 @@ export default class RestHelper {
   constructor () {
     /** @type {ToastrHelper}*/
     this.toastrHelper = new ToastrHelper()
+    /** @type {Array}*/
+    this.managedCodes = [401, 403, 500]
   }
 
   /**
@@ -19,9 +21,38 @@ export default class RestHelper {
   * @type {Object} error The error received
   */
   manageErrors (error) {
-    console.log(error)
-    this.toastrHelper.showMessage('error', 'titre', 'message', {})
-    this.toastrHelper.showMessage('info', 'titre', 'message', {showCloseButton: false})
-    this.toastrHelper.showMessage('warning', 'titre', 'message', {})
+    const httpCode = error.httpCode
+    const errorCode = this.managedCodes.indexOf(httpCode) > -1 ? httpCode : 'other'
+    const httpResponses = {
+      401: {
+        title: 'Vous n\'êtes pas connecté.',
+        message: 'Reconnectez vous pour effectuer cette action.',
+        type: 'warning',
+        options: null
+      },
+      403: {
+        title: 'Non autorisé',
+        message: 'Vous n\'êtes pas autorisé à effectuer cette action.',
+        type: 'warning',
+        options: null
+      },
+      500: {
+        title: 'Oops, un problème est survenu',
+        message: 'L\'action n\'a pas été prise en compte.',
+        type: 'error',
+        options: null
+      },
+      other: {
+        title: 'Aie, un problème est survenu',
+        message: 'L\'action n\'a pas été prise en compte.',
+        type: 'error',
+        options: null
+      }
+    }
+    this.toastrHelper.showMessage(
+      httpResponses[errorCode].type,
+      httpResponses[errorCode].title,
+      httpResponses[errorCode].message,
+      httpResponses[errorCode].options)
   }
 }

@@ -12,6 +12,7 @@ export default class ResourceMockApi {
    */
   getUserResources () {
     return Promise.reject({
+      httpCode: 403,
       data: {
         gold: this.getRandomResource(),
         food: this.getRandomResource(),
