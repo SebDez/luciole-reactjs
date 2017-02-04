@@ -1,6 +1,6 @@
 import Constants from './../../../common/constants'
 import ResourceService from './../service/resource-service'
-
+import RestHelper from './../../../common/helper/rest-helper'
 /**
  * Class for SidebarActions
  * All main sidebar and related methods
@@ -61,6 +61,9 @@ export default class SidebarActions {
     return dispatch => {
       return this.resourceService.getUserResources().then(res => {
         dispatch(this.getUserResourceSuccessAction(res.data))
+      }).catch((err) => {
+        const x = new RestHelper()
+        x.manageErrors(err)
       })
     }
   }
