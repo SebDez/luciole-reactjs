@@ -12,6 +12,7 @@ export default class MainActions extends LucioleActions {
   /**
    * Create a new MainActions
    */
+  /* istanbul ignore next */
   constructor () {
     super()
     /** @type {UserResource}*/
