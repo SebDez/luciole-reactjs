@@ -1,33 +1,31 @@
 import React, { PropTypes } from 'react'
-import LucioleComponent from './../../../common/core/abstract/luciole-component'
+import FormComponent from './../../../common/component/form/form-component'
 import { Field, reduxForm } from 'redux-form'
-import FormHelper from './../../../common/helper/form-helper'
 
 /**
  * ContactForm Component
  */
-class ContactFormComponent extends LucioleComponent {
+class ContactFormComponent extends FormComponent {
 
   /**
    * Render the component
    * @return {Object} React component tree
    */
   render () {
-    const f = new FormHelper()
     return (
       <form className='luciole-form' onSubmit={this.props.handleSubmit}>
         <Field name='username' type='text'
-          component={f.renderInputField.bind(f)} label='Username'
-          validate={[ f.isRequired, f.isMoreThanMaxLength(15) ]}
-          warn={f.adviceDemo}
+          component={this.formHelper.renderInputField.bind(this.formHelper)} label='Username'
+          validate={[ this.formHelper.isRequired, this.formHelper.isMoreThanMaxLength(15) ]}
+          warn={this.formHelper.adviceDemo}
         />
         <Field name='email' type='email'
-          component={f.renderInputField.bind(f)} label='Email'
-          validate={f.isValidEmail}
+          component={this.formHelper.renderInputField.bind(this.formHelper)} label='Email'
+          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
         />
         <Field name='content' type='text'
-          component={f.renderTextAreaField.bind(f)} label='Content'
-          validate={[ f.isRequired, f.isLessThanMinLength(5) ]}
+          component={this.formHelper.renderTextAreaField.bind(this.formHelper)} label='Content'
+          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5) ]}
         />
         <button type='submit'>Submit</button>
       </form>
