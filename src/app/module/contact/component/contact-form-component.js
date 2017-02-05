@@ -15,16 +15,16 @@ class ContactFormComponent extends FormComponent {
     return (
       <form className='luciole-form' onSubmit={this.props.handleSubmit}>
         <Field name='username' type='text'
-          component={this.formHelper.renderInputField.bind(this.formHelper)} label='Username'
+          component={this.formHelper.renderField.bind(this.formHelper)} label='Username'
           validate={[ this.formHelper.isRequired, this.formHelper.isMoreThanMaxLength(15) ]}
           warn={this.formHelper.adviceDemo}
         />
         <Field name='email' type='email'
-          component={this.formHelper.renderInputField.bind(this.formHelper)} label='Email'
+          component={this.formHelper.renderField.bind(this.formHelper)} label='Email'
           validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
         />
         <Field name='content' type='text'
-          component={this.formHelper.renderTextAreaField.bind(this.formHelper)} label='Content'
+          component={this.formHelper.renderField.bind(this.formHelper)} label='Content'
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5) ]}
         />
         <button type='submit'>Submit</button>

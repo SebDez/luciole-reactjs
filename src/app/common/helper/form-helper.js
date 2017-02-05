@@ -31,50 +31,51 @@ export default class FormHelper {
     return value && value === 'train' ? 'Oh ! You like trains too ?!' : undefined
   }
 
-  renderInputField ({ input, label, type, meta: { touched, error, warning } }) {
+  renderField ({ input, label, type, meta: { touched, error, warning } }) {
     return (
       <div>
         <label>{label}</label>
         <div>
-          <input {...input} placeholder={label} type={type} className={this.getFieldClass(touched, error)} />
-          {touched && ((error && this.renderErrorField(error)) ||
-            (warning && this.renderWarningField(warning))
+          {this.getInputElement(input, label, type, touched, error)}
+          {touched && ((error && this.renderInfoField('error', error)) ||
+            (warning && this.renderInfoField('warning', warning))
           )}
         </div>
       </div>
     )
   }
 
-  renderTextAreaField ({ input, label, type, meta: { touched, error, warning } }) {
-    return (
-      <div>
-        <label>{label}</label>
-        <div>
-          <textarea {...input} placeholder={label} type={type} className={this.getFieldClass(touched, error)} />
-          {touched && ((error && this.renderErrorField(error)) ||
-            (warning && this.renderWarningField(warning))
-          )}
-        </div>
-      </div>
-    )
+  getInputElement (input, label, type, touched, error) {
+    if (type === 'text' || type === 'email') {
+      return (<input {...input} placeholder={label} type={type} className={this.getFieldClass(touched, error)} />)
+    } else if (type === 'textarea') {
+      return (<textarea {...input} placeholder={label} type={type} className={this.getFieldClass(touched, error)} />)
+    }
   }
 
   getFieldClass (touched, error) {
     return touched && (error && 'field-error')
   }
 
-  renderErrorField (message) {
-    return (
-      <div className='field-error-label'>
-        <FontAwesome name='exclamation-circle' />
-        <span>{message}</span>
-      </div>)
+  getFieldLabelProp (type) {
+    if (type === 'warning') {
+      return {
+        class: 'field-warning-label',
+        icon: 'exclamation-triangle'
+      }
+    } else if (type === 'error') {
+      return {
+        class: 'field-error-label',
+        icon: 'exclamation-circle'
+      }
+    }
   }
 
-  renderWarningField (message) {
+  renderInfoField (type, message) {
+    const props = this.getFieldLabelProp(type)
     return (
-      <div className='field-warning-label'>
-        <FontAwesome name='exclamation-triangle' />
+      <div className={props.class}>
+        <FontAwesome name={props.icon} />
         <span>{message}</span>
       </div>)
   }
