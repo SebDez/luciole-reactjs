@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import WorkInProgress from './../../../common/component/wip/wip-component'
+import ContactForm from './../component/contact-form-component'
 
 /**
  * ContactPage container, used to define the composition of the ContactPage screen
@@ -9,12 +10,18 @@ import WorkInProgress from './../../../common/component/wip/wip-component'
  * @return {Object} React component tree
  */
 export const ContactPage = (props) => {
+  onContactFormSubmit()
   return (
     <div>
       Contact page
       <WorkInProgress />
+      <ContactForm onSubmit={onContactFormSubmit} />
     </div>
   )
+}
+
+function onContactFormSubmit (values) {
+  console.log('MY VALUES', values)
 }
 
 /**
