@@ -14,6 +14,7 @@ class FormComponent extends LucioleComponent {
   /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
+    /** @type {FormHelper}*/
     this.formHelper = new FormHelper()
   }
 
