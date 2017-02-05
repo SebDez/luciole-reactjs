@@ -1,16 +1,18 @@
 import Constants from './../../../common/constants'
 import ResourceService from './../service/resource-service'
+import LucioleActions from './../../../common/core/abstract/luciole-actions'
 
 /**
  * Class for SidebarActions
  * All main sidebar and related methods
  */
-export default class SidebarActions {
+export default class SidebarActions extends LucioleActions {
 
   /**
    * Create a new SidebarActions
    */
   constructor () {
+    super()
     /** @type {ResourceService}*/
     this.resourceService = new ResourceService()
     /** @type {Function}*/
@@ -61,7 +63,7 @@ export default class SidebarActions {
     return dispatch => {
       return this.resourceService.getUserResources().then(res => {
         dispatch(this.getUserResourceSuccessAction(res.data))
-      })
+      }).catch(this.manageHttpErrors.bind(this))
     }
   }
 
