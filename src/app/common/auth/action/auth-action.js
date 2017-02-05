@@ -11,6 +11,7 @@ export default class AuthActions extends LucioleActions {
   /**
    * Create a new AuthActions
    */
+  /* istanbul ignore next */
   constructor () {
     super()
     /** @type {AuthService}*/

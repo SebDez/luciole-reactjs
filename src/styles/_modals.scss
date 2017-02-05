@@ -1,0 +1,20 @@
+$modals-background-color: #1D244B;
+$modals-text-color: white;
+$modals-title-color: #54cbfe;
+$modals-line-color: #0151a7;
+$modals-actions-color: #0151a7;
+
+.rrm-content {
+  background-color: $modals-background-color !important;
+  opacity: 0.9 !important;
+  color: $modals-text-color !important;
+}
+
+.rrm-title{
+  color:$modals-title-color !important;
+  border-bottom: 1px solid $modals-line-color !important;
+}
+
+.rr-close{
+  color:$modals-actions-color !important;
+}

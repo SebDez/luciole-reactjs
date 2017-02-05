@@ -11,6 +11,7 @@ export default class SidebarActions extends LucioleActions {
   /**
    * Create a new SidebarActions
    */
+  /* istanbul ignore next */
   constructor () {
     super()
     /** @type {ResourceService}*/

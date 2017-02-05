@@ -39,6 +39,7 @@
     "react-fontawesome": "^1.2.0",
     "react-redux": "4.4.5",
     "react-redux-i18n": "0.0.3",
+    "react-redux-modal": "0.5.2",
     "react-redux-toastr": "4.4.6",
     "react-router": "2.6.0",
     "react-router-redux": "4.0.5",
