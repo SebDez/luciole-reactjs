@@ -79,7 +79,7 @@ Or npm run help
 
 # TODO LIST
 
-See todo.txt
+See todo.md
 
 
 # MAINTAINERS
