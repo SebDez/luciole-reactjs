@@ -1,5 +1,6 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
+import { I18n } from 'react-redux-i18n'
 
 /**
  * Form Helper class
@@ -7,13 +8,33 @@ import FontAwesome from 'react-fontawesome'
  */
 export default class FormHelper {
 
+  /**
+   * Create a new Rest Helper
+   */
+  constructor () {
+    /** @type {I18n}*/
+    this.i18n = I18n
+    /** @type {Function}*/
+    this.isRequired = this.isRequired.bind(this)
+    /** @type {Function}*/
+    this.isMoreThanMaxLength = this.isMoreThanMaxLength.bind(this)
+    /** @type {Function}*/
+    this.isNumber = this.isNumber.bind(this)
+    /** @type {Function}*/
+    this.isLessThanMinLength = this.isLessThanMinLength.bind(this)
+    /** @type {Function}*/
+    this.isValidEmail = this.isValidEmail.bind(this)
+    /** @type {Function}*/
+    this.adviceDemo = this.adviceDemo.bind(this)
+  }
+
 /**
  * Check if given field is required or not
  * @type {string} value The value to check
  * @return {string} The error message to show, undefined if the value is valid
  */
   isRequired (value) {
-    return value ? undefined : 'Required'
+    return value ? undefined : this.i18n.t('forms.required')
   }
 
   /**
@@ -22,7 +43,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is valid
    */
   isMoreThanMaxLength (max) {
-    return value => value && value.length > max ? `Must be ${max} characters or less` : undefined
+    return value => value && value.length > max ? this.i18n.t('forms.maxLength', {max}) : undefined
   }
 
   /**
@@ -31,7 +52,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is a number
    */
   isNumber (value) {
-    return value && isNaN(Number(value)) ? 'Must be a number' : undefined
+    return value && isNaN(Number(value)) ? this.i18n.t('forms.numberRequired') : undefined
   }
 
   /**
@@ -40,7 +61,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is valid
    */
   isLessThanMinLength (min) {
-    return value => value && value.length < min ? `Must be at least ${min}` : undefined
+    return value => value && value.length < min ? this.i18n.t('forms.minLength', {min}) : undefined
   }
 
   /**
@@ -49,7 +70,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is valid
    */
   isValidEmail (value) {
-    return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email address' : undefined
+    return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? this.i18n.t('forms.emailInvalid') : undefined
   }
 
   /**
@@ -58,7 +79,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is valid
    */
   adviceDemo (value) {
-    return value && value === 'train' ? 'Oh ! You like trains too ?!' : undefined
+    return value && value === 'train' ? this.i18n.t('forms.mock') : undefined
   }
 
   /**

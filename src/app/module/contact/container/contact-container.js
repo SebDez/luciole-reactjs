@@ -21,7 +21,7 @@ export const ContactPage = (props) => {
 }
 
 function onContactFormSubmit (values) {
-  console.log('MY VALUES', values)
+  // @TODO
 }
 
 /**
