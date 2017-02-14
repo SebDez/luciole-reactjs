@@ -1,6 +1,6 @@
 {
   "name": "luciole-reactjs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The reactjs frontend for luciole game",
   "engines": {
     "npm": ">=3"
@@ -47,6 +47,7 @@
     "react-svg": "1.1.5",
     "react-tooltip": "3.2.2",
     "redux": "3.5.2",
+    "redux-form": "6.5.0",
     "redux-thunk": "2.1.0",
     "shrinkwrap": "0.4.0",
     "superagent": "2.1.0"

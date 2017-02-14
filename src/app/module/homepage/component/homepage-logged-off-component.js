@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import LuI18n from './../../../common/component/i18n/luciole-i18n-component'
+import WorkInProgress from './../../../common/component/wip/wip-component'
 
 /**
  * HomePageLoggedOff Component
@@ -22,6 +23,7 @@ class HomePageLoggedOff extends LucioleComponent {
         <br />
         <LuI18n value='application.homePage.linkTo' lang={this.props.lang} />
         xxxx
+        <WorkInProgress />
       </div>
     )
   }

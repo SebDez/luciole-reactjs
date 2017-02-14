@@ -22,6 +22,14 @@ export default {
   date: {
     long: 'D MMMM YYYY'
   },
+  forms: {
+    required: 'Obligatoire',
+    maxLength: 'Maximum %{max} caractères.',
+    numberRequired: 'Doit être un nombre.',
+    minLength: 'Minimum %{min} caractères.',
+    emailInvalid: 'Ne respecte le format d\'une adresse mail.',
+    mock: 'Oh ! Tu aimes les trains toi aussi ?!'
+  },
   httpErrors: {
     401: {
       title: 'Vous n\'êtes pas connecté.',

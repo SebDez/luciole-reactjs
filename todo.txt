@@ -1,3 +1,0 @@
-# TODO list
-
-- Make a todo list

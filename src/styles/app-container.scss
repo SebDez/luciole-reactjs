@@ -22,6 +22,7 @@ $app-text-font: 'Play', serif;
 @import "sidebar-container";
 @import "main-container";
 @import "modals";
+@import "forms";
 
 // font-family: 'PT Sans', sans-serif;
 // font-family: 'Maitree', serif;
@@ -112,3 +113,25 @@ $app-text-font: 'Play', serif;
     }
   }
 }
+
+/******************************
+* DROPDOWN
+* *****************************/
+
+.luciole-buttons{
+   background-color: $app-button-bg-color;
+   display: inline-block;
+   border: 2px solid;
+   border-radius: 5px 5px 5px 5px;
+   border-color: $app-button-text-color;
+   vertical-align: middle;
+   color:$app-button-text-color;
+   text-transform: uppercase;
+   &:hover{
+     cursor:pointer;
+     cursor:hand;
+     border: 2px solid $app-button-bg-color;
+     background-color: $app-button-hover-color;
+     color: $app-button-bg-color;
+   }
+ }

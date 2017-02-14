@@ -22,6 +22,14 @@ export default {
   date: {
     long: 'MMMM Do, YYYY'
   },
+  forms: {
+    required: 'Required',
+    maxLength: 'Must be %{max} characters or less.',
+    numberRequired: 'Must be a number',
+    minLength: 'Must be at least %{min}.',
+    emailInvalid: 'Invalid email address.',
+    mock: 'Oh ! You like trains too ?!'
+  },
   httpErrors: {
     401: {
       title: 'You are not logged in.',

@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import { i18nReducer } from 'react-redux-i18n'
 import {reducer as toastrReducer} from 'react-redux-toastr'
+import { reducer as formReducer } from 'redux-form'
 import {reducer as modalReducer} from 'react-redux-modal'
 import AppReducer from './app-reducer'
 import AuthReducer from './common/auth/reducer/auth-reducer'
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   toastr: toastrReducer,
   modals: modalReducer,
+  form: formReducer,
   application: combineReducers({
     app: AppReducer,
     auth: AuthReducer,
