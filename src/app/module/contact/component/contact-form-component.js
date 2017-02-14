@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 /**
  * ContactForm Component
  */
-class ContactFormComponent extends FormComponent {
+export class ContactFormComponent extends FormComponent {
 
   /**
    * Render the component
