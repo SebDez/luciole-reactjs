@@ -13,8 +13,8 @@
  * Toastr | toastr | **DONE**
  * Modals | modals | **DONE**
  * Validation tool tips for forms | validation_tooltips | **DONE**
- * Forms | forms | **IN_PROGRESS**
- * Deployment configurations | deployment_config | **TODO**
+ * Forms | forms | **DONE**
+ * Deployment configurations | deployment_config | **DONE**
 
 # V0.2.1 : Contact page
  * Contact page | contact_page | **TODO**
