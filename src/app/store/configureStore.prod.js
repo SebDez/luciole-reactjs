@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
+/* istanbul ignore next */
 try {
   var confProd = require('./../../env/prod')
 } catch (ex) {

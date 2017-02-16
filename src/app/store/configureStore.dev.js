@@ -8,11 +8,14 @@ import thunk from 'redux-thunk'
 import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
+/* istanbul ignore next */
 try {
   var confDev = require('./../../env/devddd')
   var confLocal = require('./../../env/local')
 } catch (ex) {
-  console.log('Cannot find conf files, error :', ex)
+  if (process.env.NODE_ENV !== 'test') {
+    console.log('Cannot find conf files, error :', ex)
+  }
 }
 
 /**
