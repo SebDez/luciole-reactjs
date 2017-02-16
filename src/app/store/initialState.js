@@ -1,4 +1,5 @@
 export default {
+  conf: null, // available on state.application.app.conf
   module: {
     sidebar: {
       open: true,

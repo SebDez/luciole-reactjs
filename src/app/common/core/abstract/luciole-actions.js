@@ -21,6 +21,24 @@ class LucioleActions {
   manageHttpErrors (error) {
     this.restHelper.manageErrors(error)
   }
+
+/**
+ * Get the environnement conf from getState method
+ * @type {Function} getState The getState method
+ * @returns {Object} The app conf
+ */
+  getEnvConfFromGetState (getState) {
+    return getState().application.app.conf
+  }
+
+  /**
+   * Get the user token from getState method
+   * @type {Function} getState The getState method
+   * @returns {Object} The user token
+   */
+  getTokenFromGetState (getState) {
+    return getState().application.auth.token
+  }
 }
 
 /**
