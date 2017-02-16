@@ -4,7 +4,11 @@ import thunk from 'redux-thunk'
 import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
-import confProd from './../../env/prod'
+try {
+  var confProd = require('./../../env/prod')
+} catch (ex) {
+  console.log('Cannot find conf files, error :', ex)
+}
 
 /**
  * Configure the store for the PROD mode

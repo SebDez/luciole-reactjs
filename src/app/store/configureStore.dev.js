@@ -8,8 +8,12 @@ import thunk from 'redux-thunk'
 import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
-import confDev from './../../env/dev'
-import confLocal from './../../env/local'
+try {
+  var confDev = require('./../../env/devddd')
+  var confLocal = require('./../../env/local')
+} catch (ex) {
+  console.log('Cannot find conf files, error :', ex)
+}
 
 /**
  * Configure the store for the DEV mode
