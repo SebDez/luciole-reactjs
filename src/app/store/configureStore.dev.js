@@ -8,6 +8,16 @@ import thunk from 'redux-thunk'
 import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
+/* istanbul ignore next */
+try {
+  var confDev = require('./../../env/devddd')
+  var confLocal = require('./../../env/local')
+} catch (ex) {
+  if (process.env.NODE_ENV !== 'test') {
+    console.log('Cannot find conf files, error :', ex)
+  }
+}
+
 /**
  * Configure the store for the DEV mode
  * @param  {Object} initialState The initialState given
@@ -15,6 +25,7 @@ import translationsObject from './../../assets/lang/index'
  */
 /* istanbul ignore next */
 export default function configureStore (initialState) {
+  initialState.conf = process.env.NODE_ENV === 'localMode' ? confLocal : confDev
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk), compose(
     // Add other middleware on this line...
     window.devToolsExtension ? window.devToolsExtension() : f => f // add support for Redux dev tools
