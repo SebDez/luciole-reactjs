@@ -9,8 +9,6 @@
     "docs": "esdoc -c esdoc.json",
     "prestart": "npm-run-all --parallel start-message remove-dist",
     "start-message": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
-    "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "npm run lint:standard -- --watch",
@@ -24,7 +22,11 @@
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html",
     "lint:standard": "standard ./src/**/*.js --verbose",
-    "help": "node tools/help.js"
+    "help": "node tools/help.js",
+    "start": "npm-run-all --parallel test:watch open:src lint:watch",
+    "open:src": "babel-node tools/srcServer.js dev",
+    "start:local": "npm-run-all --parallel test:watch open:src:local lint:watch",
+    "open:src:local": "babel-node tools/srcServer.js localMode"
   },
   "author": "SebDez",
   "license": "MIT",

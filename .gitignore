@@ -40,3 +40,6 @@ dist
 
 # Mac files
 .DS_Store
+
+# ENV CONF
+src/env

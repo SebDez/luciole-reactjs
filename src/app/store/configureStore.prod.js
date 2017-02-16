@@ -4,6 +4,8 @@ import thunk from 'redux-thunk'
 import rootReducer from '../app-root-reducer'
 import translationsObject from './../../assets/lang/index'
 
+import confProd from './../../env/prod'
+
 /**
  * Configure the store for the PROD mode
  * @param  {Object} initialState The initialState given
@@ -11,6 +13,7 @@ import translationsObject from './../../assets/lang/index'
  */
 /* istanbul ignore next */
 export default function configureStore (initialState) {
+  initialState.conf = confProd
   const store = createStore(rootReducer, initialState, applyMiddleware(thunk))
 
   syncTranslationWithStore(store)
