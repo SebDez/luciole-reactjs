@@ -33,12 +33,12 @@ export class ContactFormComponent extends FormComponent {
         />
         <Field name='subject' type='text'
           component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.subject')}
-          validate={[ this.formHelper.isRequired, this.formHelper.isMoreThanMaxLength(15) ]}
+          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5), this.formHelper.isMoreThanMaxLength(100) ]}
           warn={this.formHelper.adviceDemo}
         />
         <Field name='content' type='text'
           component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}
-          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5) ]}
+          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(10), this.formHelper.isMoreThanMaxLength(2000) ]}
         />
         <button type='submit'>Submit</button>
       </form>
