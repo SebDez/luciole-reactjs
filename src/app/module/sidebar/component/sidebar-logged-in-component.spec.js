@@ -18,13 +18,21 @@ describe('SidebarLoggedIn', () => {
       const actual = wrapper.find(SidebarLink).findWhere(n => {
         return n.prop('link') === '/'
       })
-      expect(actual).to.have.length(8)
+      expect(actual).to.have.length(7)
     })
 
     it('Expect to contain 1 SidebarLink with link to buildings', () => {
       const wrapper = shallow(<SidebarLoggedIn {...props} />)
       const actual = wrapper.find(SidebarLink).findWhere(n => {
         return n.prop('link') === '/buildings'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 SidebarLink with link to contact', () => {
+      const wrapper = shallow(<SidebarLoggedIn {...props} />)
+      const actual = wrapper.find(SidebarLink).findWhere(n => {
+        return n.prop('link') === '/contact'
       })
       expect(actual).to.have.length(1)
     })

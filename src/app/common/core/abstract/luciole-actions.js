@@ -1,4 +1,6 @@
 import RestHelper from './../../helper/rest-helper'
+import ToastrHelper from './../../helper/toastr-helper'
+import Constants from './../../../common/constants'
 
 /**
  * LucioleActions
@@ -10,8 +12,10 @@ class LucioleActions {
    * Create a new LucioleActions
    */
   constructor () {
-    /** @type {Object}*/
+    /** @type {RestHelper}*/
     this.restHelper = new RestHelper()
+    /** @type {ToastrHelper}*/
+    this.toastrHelper = new ToastrHelper()
   }
 
   /**
@@ -32,12 +36,32 @@ class LucioleActions {
   }
 
   /**
+   * Get the api endpoint from getState method
+   * @type {Function} getState The getState method
+   * @returns {Object} The api endpoint
+   */
+  getEndpointFromGetState (getState) {
+    const conf = this.getEnvConfFromGetState(getState)
+    return `${conf.default.api.url}:${conf.default.api.port}`
+  }
+
+  /**
    * Get the user token from getState method
    * @type {Function} getState The getState method
    * @returns {Object} The user token
    */
   getTokenFromGetState (getState) {
     return getState().application.auth.token
+  }
+
+  /**
+   * Create an action with the DO_NOTHING type
+   * Returns a new action that can be managed by Redux
+   */
+  getDoNothingAction () {
+    return {
+      type: Constants.ACTIONS.APP.DO_NOTHING
+    }
   }
 }
 

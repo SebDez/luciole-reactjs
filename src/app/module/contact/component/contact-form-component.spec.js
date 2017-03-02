@@ -30,10 +30,10 @@ describe('ContactFormComponent', () => {
       expect(actual).to.be.length(1)
     })
 
-    it('Expect to contain 1 Field with name "username"', () => {
+    it('Expect to contain 1 Field with name "subject"', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
-        return n.prop('name') === 'username'
+        return n.prop('name') === 'subject'
       })
       expect(actual).to.have.length(1)
     })
@@ -46,10 +46,10 @@ describe('ContactFormComponent', () => {
       expect(actual).to.have.length(2)
     })
 
-    it('Expect to contain 1 Field with name "email"', () => {
+    it('Expect to contain 1 Field with name "mail"', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
-        return n.prop('name') === 'email'
+        return n.prop('name') === 'mail'
       })
       expect(actual).to.have.length(1)
     })

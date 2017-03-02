@@ -1,6 +1,6 @@
 {
   "name": "luciole-reactjs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The reactjs frontend for luciole game",
   "engines": {
     "npm": ">=3"

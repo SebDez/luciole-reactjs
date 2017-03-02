@@ -17,6 +17,13 @@ export default {
       about: 'About',
       refresh: 'Refresh',
       play: 'Play'
+    },
+    contact: {
+      toast_success_title: 'Let\'s go !',
+      toast_success_text: 'Your message has been send.',
+      mail: 'Your email',
+      subject: 'Subject',
+      content: 'Message content'
     }
   },
   date: {

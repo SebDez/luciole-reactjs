@@ -10,7 +10,7 @@ import translationsObject from './../../assets/lang/index'
 
 /* istanbul ignore next */
 try {
-  var confDev = require('./../../env/devddd')
+  var confDev = require('./../../env/dev')
   var confLocal = require('./../../env/local')
 } catch (ex) {
   if (process.env.NODE_ENV !== 'test') {

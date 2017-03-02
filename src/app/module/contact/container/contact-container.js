@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import WorkInProgress from './../../../common/component/wip/wip-component'
+import { bindActionCreators } from 'redux'
 import ContactForm from './../component/contact-form-component'
+import ContactActions from './../action/contact-action'
 
 /**
  * ContactPage container, used to define the composition of the ContactPage screen
@@ -10,18 +11,12 @@ import ContactForm from './../component/contact-form-component'
  * @return {Object} React component tree
  */
 export const ContactPage = (props) => {
-  onContactFormSubmit()
   return (
     <div>
       Contact page
-      <WorkInProgress />
-      <ContactForm onSubmit={onContactFormSubmit} />
+      <ContactForm onSubmit={props.contactActions.sendContactMessage} />
     </div>
   )
-}
-
-function onContactFormSubmit (values) {
-  // @TODO
 }
 
 /**
@@ -39,7 +34,9 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {}
+  return {
+    contactActions: bindActionCreators(new ContactActions(), dispatch)
+  }
 }
 
 /**

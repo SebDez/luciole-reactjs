@@ -1,11 +1,24 @@
 import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
 import { Field, reduxForm } from 'redux-form'
+import { I18n } from 'react-redux-i18n'
 
 /**
  * ContactForm Component
  */
 export class ContactFormComponent extends FormComponent {
+
+  /**
+   * Create a new ContactFormComponent
+   * @param  {Object} props The component properties
+   * @param  {Object} context The app context
+   */
+  /* istanbul ignore next */
+  constructor (props, context) {
+    super(props, context)
+    /** @type {I18n}*/
+    this.i18n = I18n
+  }
 
   /**
    * Render the component
@@ -14,17 +27,17 @@ export class ContactFormComponent extends FormComponent {
   render () {
     return (
       <form className='luciole-form' onSubmit={this.props.handleSubmit}>
-        <Field name='username' type='text'
-          component={this.formHelper.renderField.bind(this.formHelper)} label='Username'
+        <Field name='mail' type='email'
+          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.mail')}
+          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
+        />
+        <Field name='subject' type='text'
+          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.subject')}
           validate={[ this.formHelper.isRequired, this.formHelper.isMoreThanMaxLength(15) ]}
           warn={this.formHelper.adviceDemo}
         />
-        <Field name='email' type='email'
-          component={this.formHelper.renderField.bind(this.formHelper)} label='Email'
-          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
-        />
         <Field name='content' type='text'
-          component={this.formHelper.renderField.bind(this.formHelper)} label='Content'
+          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5) ]}
         />
         <button type='submit'>Submit</button>

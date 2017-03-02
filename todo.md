@@ -17,7 +17,7 @@
  * Deployment configurations | deployment_config | **DONE**
 
 # V0.2.1 : Contact page
- * Contact page | contact_page | **TODO**
+ * Contact page | contact_page | **IN_PROGRESS**
 
 # V0.3.0 : Auth
 
