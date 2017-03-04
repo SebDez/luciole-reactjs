@@ -2,7 +2,7 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import ResourceIcon from './resource-icon-component'
-import LucioleSVG from './../../core/component/luciole-svg-component'
+import LucioleSVG from './../../component/svg/luciole-svg-component'
 
 describe('ResourceIcon', () => {
   describe('render', () => {
