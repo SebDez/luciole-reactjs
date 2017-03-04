@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import ContactForm from './../component/contact-form-component'
 import ContactActions from './../action/contact-action'
+import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
 
 /**
  * ContactPage container, used to define the composition of the ContactPage screen
@@ -13,8 +14,10 @@ import ContactActions from './../action/contact-action'
 export const ContactPage = (props) => {
   return (
     <div>
-      Contact page
-      <ContactForm onSubmit={props.contactActions.sendContactMessage} />
+      <LuciolePageHeader title='application.sidebar.contact' icon='envelope' />
+      <div className='lu-container'>
+        <ContactForm onSubmit={props.contactActions.sendContactMessage} />
+      </div>
     </div>
   )
 }

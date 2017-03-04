@@ -26,7 +26,7 @@ export class ContactFormComponent extends FormComponent {
    */
   render () {
     return (
-      <form className='luciole-form' onSubmit={this.props.handleSubmit}>
+      <form className='luciole-form contact-form' onSubmit={this.props.handleSubmit}>
         <Field name='mail' type='email'
           component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.mail')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
@@ -36,11 +36,13 @@ export class ContactFormComponent extends FormComponent {
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5), this.formHelper.isMoreThanMaxLength(100) ]}
           warn={this.formHelper.adviceDemo}
         />
-        <Field name='content' type='text'
+        <Field name='content' type='textarea'
           component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(10), this.formHelper.isMoreThanMaxLength(2000) ]}
         />
-        <button type='submit'>Submit</button>
+        <div className='buttons'>
+          <button type='submit'>{this.i18n.t('application.contact.submit')}</button>
+        </div>
       </form>
     )
   }

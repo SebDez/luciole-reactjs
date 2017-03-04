@@ -21,9 +21,10 @@ export default {
     contact: {
       toast_success_title: 'Let\'s go !',
       toast_success_text: 'Your message has been send.',
-      mail: 'Your email',
+      mail: 'Your mail address',
       subject: 'Subject',
-      content: 'Message content'
+      content: 'Message content',
+      submit: 'Send message'
     }
   },
   date: {

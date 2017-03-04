@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import ReactSVG from 'react-svg'
-import LucioleComponent from './../abstract/luciole-component'
+import LucioleComponent from './../../core/abstract/luciole-component'
 
 /**
  * LucioleSVG Component

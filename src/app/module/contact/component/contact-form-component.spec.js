@@ -38,12 +38,20 @@ describe('ContactFormComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 2 Field with type "text"', () => {
+    it('Expect to contain 1 Field with type "text"', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
         return n.prop('type') === 'text'
       })
-      expect(actual).to.have.length(2)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 Field with type "textarea"', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(Field).findWhere(n => {
+        return n.prop('type') === 'textarea'
+      })
+      expect(actual).to.have.length(1)
     })
 
     it('Expect to contain 1 Field with name "mail"', () => {
