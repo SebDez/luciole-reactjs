@@ -6,14 +6,27 @@ import ContactForm from './../component/contact-form-component'
 
 describe('ContactPage', () => {
   describe('mapDispatchToProps', () => {
-    it('Expect to return empty object', () => {
+    it('Expect to return valid props', () => {
       expect(ContactPage.mapDispatchToProps().contactActions).to.not.be.empty
     })
   })
 
   describe('mapStateToProps', () => {
     it('Expect to return empty object', () => {
-      expect(ContactPage.mapStateToProps()).to.be.empty
+      const state = {
+        application: {
+          app: {
+            conf: {
+              default: {
+                recaptcha: {
+                  key: 'mykey'
+                }
+              }
+            }
+          }
+        }
+      }
+      expect(ContactPage.mapStateToProps(state).recaptchaKey).to.equals('mykey')
     })
   })
 

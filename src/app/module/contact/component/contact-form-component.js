@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
 import { Field, reduxForm } from 'redux-form'
 import { I18n } from 'react-redux-i18n'
+import LuRecaptcha from './../../../common/component/recaptcha/recaptcha-component'
 
 /**
  * ContactForm Component
@@ -40,6 +41,10 @@ export class ContactFormComponent extends FormComponent {
           component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(10), this.formHelper.isMoreThanMaxLength(2000) ]}
         />
+        <div className='recaptcha'>
+          <Field name='captcharesponse' component={LuRecaptcha}
+            recaptchaKey={this.props.recaptchaKey} />
+        </div>
         <div className='buttons'>
           <button type='submit'>{this.i18n.t('application.contact.submit')}</button>
         </div>
@@ -53,7 +58,8 @@ export class ContactFormComponent extends FormComponent {
  * @type {Object}
  */
 ContactFormComponent.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  recaptchaKey: PropTypes.string.isRequired
 }
 
 /**

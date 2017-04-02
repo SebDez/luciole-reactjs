@@ -2,6 +2,7 @@ import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import { Field } from 'redux-form'
 import { ContactFormComponent } from './contact-form-component'
+import LuRecaptcha from './../../../common/component/recaptcha/recaptcha-component'
 
 describe('ContactFormComponent', () => {
   describe('render', () => {
@@ -18,10 +19,10 @@ describe('ContactFormComponent', () => {
       expect(actual).to.be.length(1)
     })
 
-    it('Expect to contain 3 Field', () => {
+    it('Expect to contain 4 Field', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field)
-      expect(actual).to.be.length(3)
+      expect(actual).to.be.length(4)
     })
 
     it('Expect to contain 1 button', () => {
@@ -74,6 +75,14 @@ describe('ContactFormComponent', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
         return n.prop('name') === 'content'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 Field with name "captcharesponse"', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(Field).findWhere(n => {
+        return n.prop('name') === 'captcharesponse'
       })
       expect(actual).to.have.length(1)
     })
