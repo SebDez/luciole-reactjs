@@ -16,7 +16,8 @@ describe('ContactApi', () => {
       message = {
         mail: 'message.mail',
         subject: 'message.subject',
-        content: 'message.content'
+        content: 'message.content',
+        captcharesponse: 'recaptchakey'
       }
     })
 
@@ -27,11 +28,45 @@ describe('ContactApi', () => {
     it('Expect to have call post method', (done) => {
       let spy = chai.spy.on(rHelper, 'post')
       let uri = 'endpoint/v1/contact'
-      let body = message
+      let body = {
+        mail: 'message.mail',
+        subject: 'message.subject',
+        content: 'message.content',
+        recaptcha: 'recaptchakey'
+      }
       serv.sendContactMessage('endpoint', message).then(() => {
         expect(spy).to.have.been.called.with(uri, body)
         done()
       })
+    })
+  })
+
+  describe('encodeMessage', () => {
+    var serv, message
+    beforeEach(() => {
+      serv = new ContactApi()
+      message = {
+        mail: 'message.mail',
+        subject: 'message.subject',
+        content: 'message.content',
+        captcharesponse: 'recaptchakey'
+      }
+    })
+
+    it('Expect to return an object with valid mail', () => {
+      expect(serv.encodeMessage(message).mail).to.equals('message.mail')
+    })
+
+    it('Expect to return an object with valid subject', () => {
+      expect(serv.encodeMessage(message).subject).to.equals('message.subject')
+    })
+
+    it('Expect to return an object with valid content', () => {
+      expect(serv.encodeMessage(message).content).to.equals('message.content')
+    })
+
+    it('Expect to return an object with valid recaptcha', () => {
+      expect(serv.encodeMessage(message).recaptcha).to.equals('recaptchakey')
     })
   })
 })

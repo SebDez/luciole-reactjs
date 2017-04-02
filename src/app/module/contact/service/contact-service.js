@@ -15,6 +15,8 @@ export default class ContactService {
 
   /**
    * Send contact message
+   * @type {Object} endpoint The endpoint to use
+   * @type {Object} message The message object to send
    * @return {Promise}  A promise to resolve
    */
   sendContactMessage (endpoint, message) {
