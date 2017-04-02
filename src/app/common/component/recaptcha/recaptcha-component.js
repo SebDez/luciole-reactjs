@@ -1,18 +1,19 @@
 import React, { PropTypes } from 'react'
-import LucioleComponent from './../../core/abstract/luciole-component'
+import FormComponent from './../../../common/component/form/form-component'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 /**
  * Recaptcha Component
  * A component used for recaptchas
  */
-class LuRecaptcha extends LucioleComponent {
+class LuRecaptcha extends FormComponent {
 
   /**
    * Render the component
    * @return {Object} React component tree
    */
   render () {
+    const {touched, error} = this.props.meta
     return (
       <div>
         <ReCAPTCHA
@@ -22,6 +23,7 @@ class LuRecaptcha extends LucioleComponent {
           theme='dark'
           className='g-recaptcha'
         />
+        {touched && error && this.formHelper.renderInfoField('error', error)}
       </div>
     )
   }
@@ -33,6 +35,7 @@ class LuRecaptcha extends LucioleComponent {
  */
 LuRecaptcha.propTypes = {
   input: PropTypes.object.isRequired,
+  meta: PropTypes.object.isRequired,
   recaptchaKey: PropTypes.string.isRequired
 }
 

@@ -43,6 +43,7 @@ export class ContactFormComponent extends FormComponent {
         />
         <div className='recaptcha'>
           <Field name='captcharesponse' component={LuRecaptcha}
+            validate={[this.formHelper.isRequired]}
             recaptchaKey={this.props.recaptchaKey} />
         </div>
         <div className='buttons'>
