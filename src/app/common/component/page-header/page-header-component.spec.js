@@ -1,42 +1,33 @@
-/* import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import LucioleSVG from './luciole-svg-component'
-import ReactSVG from 'react-svg'
+import LuciolePageHeader from './page-header-component'
+import FontAwesome from 'react-fontawesome'
+import LuI18n from './../i18n/luciole-i18n-component'
 
-describe('LucioleSVG', () => {
+describe('LuciolePageHeader', () => {
   describe('render', () => {
+    let compo = null
     const props = {
-      path: 'pathprop',
-      callback: () => { return 0 },
-      class: 'classnameprop'
+      icon: 'myicon',
+      title: 'mytitle'
     }
 
-    it('Expect to contain ReactSVG', () => {
-      const wrapper = shallow(<LucioleSVG {...props} />)
-      expect(wrapper.find(ReactSVG)).to.be.length(1)
+    beforeEach(() => {
+      compo = new LuciolePageHeader(props)
     })
 
-    it('Expect to contain ReactSVG with good prop path', () => {
-      const wrapper = shallow(<LucioleSVG {...props} />)
-      const actual = wrapper.find(ReactSVG).props().path
-      const expected = 'pathprop'
+    it('Expect to contain FontAwesome with good prop name', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(FontAwesome).props().name
+      const expected = 'myicon'
       expect(actual).to.be.equal(expected)
     })
 
-    it('Expect to contain ReactSVG with good prop callback', () => {
-      const wrapper = shallow(<LucioleSVG {...props} />)
-      const actual = wrapper.find(ReactSVG).props().callback
-      const expected = props.callback
-      expect(actual).to.be.equal(expected)
-    })
-
-    it('Expect to contain ReactSVG with good prop className', () => {
-      const wrapper = shallow(<LucioleSVG {...props} />)
-      const actual = wrapper.find(ReactSVG).props().className
-      const expected = 'classnameprop'
+    it('Expect to contain LuI18n with good prop value', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(LuI18n).props().value
+      const expected = 'mytitle'
       expect(actual).to.be.equal(expected)
     })
   })
 })
-*/
