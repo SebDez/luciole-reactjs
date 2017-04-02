@@ -2,7 +2,6 @@ import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import { Field } from 'redux-form'
 import { ContactFormComponent } from './contact-form-component'
-import LuRecaptcha from './../../../common/component/recaptcha/recaptcha-component'
 
 describe('ContactFormComponent', () => {
   describe('render', () => {

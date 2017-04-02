@@ -1,7 +1,6 @@
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import LuRecaptcha from './recaptcha-component'
-import FontAwesome from 'react-fontawesome'
 import ReCAPTCHA from 'react-google-recaptcha'
 
 describe('LuRecaptcha', () => {
