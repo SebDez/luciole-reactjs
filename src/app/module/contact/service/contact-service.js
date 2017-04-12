@@ -1,4 +1,5 @@
 import ContactApi from './api/contact-api'
+import config from 'config'
 
 /**
  * Class for Contact service

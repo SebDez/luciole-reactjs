@@ -46,5 +46,10 @@ export default {
       {test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']}
     ]
   },
-  postcss: ()=> [autoprefixer]
-};
+  postcss: () => [autoprefixer],
+  resolve: {
+    alias: {
+      config: path.join(__dirname, 'src/env/' + (process.argv[2] && process.argv[2] === 'localMode' ? 'local' : 'dev') + '.js')
+    }
+  }
+}

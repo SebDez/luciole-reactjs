@@ -78,5 +78,10 @@ export default {
       }
     ]
   },
-  postcss: ()=> [autoprefixer]
+  postcss: ()=> [autoprefixer],
+  resolve: {
+    alias: {
+      config: path.join(__dirname, 'src/env/prod.js')
+    }
+  }
 };
