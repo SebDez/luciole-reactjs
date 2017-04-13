@@ -23,7 +23,6 @@ describe('ContactActions', () => {
     actions.toastrHelper = {
       showMessage: () => 0
     }
-    actions.getEndpointFromGetState = () => 'endpoint'
     actions.getDoNothingAction = () => 'DoNothingAction'
     actions.manageHttpErrors = () => 0
   })
@@ -41,7 +40,7 @@ describe('ContactActions', () => {
     it('Expect to have call dispatch with good params in case of success', (done) => {
       mockContactService.expects('sendContactMessage').returns(Promise.resolve())
       spy = chai.spy.on(TestHelper, 'dispatch')
-      actions.sendContactMessage('message')(TestHelper.dispatch, 'getState').then(() => {
+      actions.sendContactMessage('message')(TestHelper.dispatch).then(() => {
         expect(spy).to.have.been.called.with('DoNothingAction')
         done()
       })
@@ -50,7 +49,7 @@ describe('ContactActions', () => {
     it('Expect to have call getDoNothingAction with good params in case of success', (done) => {
       mockContactService.expects('sendContactMessage').returns(Promise.resolve())
       spy = chai.spy.on(actions, 'getDoNothingAction')
-      actions.sendContactMessage('message')(TestHelper.dispatch, 'getState').then(() => {
+      actions.sendContactMessage('message')(TestHelper.dispatch).then(() => {
         expect(spy).to.have.been.called.with()
         done()
       })
@@ -59,8 +58,8 @@ describe('ContactActions', () => {
     it('Expect to have call sendContactMessage with good params', (done) => {
       mockContactService.expects('sendContactMessage').returns(Promise.resolve())
       spy = chai.spy.on(contactService, 'sendContactMessage')
-      actions.sendContactMessage('message')(TestHelper.dispatch, 'getState').then(() => {
-        expect(spy).to.have.been.called.with('endpoint', 'message')
+      actions.sendContactMessage('message')(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.with('message')
         done()
       })
     })
@@ -68,7 +67,7 @@ describe('ContactActions', () => {
     it('Expect to have call showMessage with good params in case of success', (done) => {
       mockContactService.expects('sendContactMessage').returns(Promise.resolve())
       spy = chai.spy.on(actions.toastrHelper, 'showMessage')
-      actions.sendContactMessage('message')(TestHelper.dispatch, 'getState').then(() => {
+      actions.sendContactMessage('message')(TestHelper.dispatch).then(() => {
         expect(spy).to.have.been.called.with('success', 'application.contact.toast_success_title', 'application.contact.toast_success_text')
         done()
       })
@@ -77,7 +76,7 @@ describe('ContactActions', () => {
     it('Expect to have call manageHttpErrors with good params in case of failure', (done) => {
       mockContactService.expects('sendContactMessage').returns(Promise.reject('err'))
       spy = chai.spy.on(actions, 'manageHttpErrors')
-      actions.sendContactMessage('message')(TestHelper.dispatch, 'getState').then(() => {
+      actions.sendContactMessage('message')(TestHelper.dispatch).then(() => {
         expect(spy).to.have.been.called.with('err')
         done()
       })

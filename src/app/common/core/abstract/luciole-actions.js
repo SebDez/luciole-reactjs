@@ -26,25 +26,6 @@ class LucioleActions {
     this.restHelper.manageErrors(error)
   }
 
-/**
- * Get the environnement conf from getState method
- * @type {Function} getState The getState method
- * @returns {Object} The app conf
- */
-  getEnvConfFromGetState (getState) {
-    return getState().application.app.conf
-  }
-
-  /**
-   * Get the api endpoint from getState method
-   * @type {Function} getState The getState method
-   * @returns {Object} The api endpoint
-   */
-  getEndpointFromGetState (getState) {
-    const conf = this.getEnvConfFromGetState(getState)
-    return `${conf.default.api.url}:${conf.default.api.port}`
-  }
-
   /**
    * Get the user token from getState method
    * @type {Function} getState The getState method

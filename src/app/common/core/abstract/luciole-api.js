@@ -1,4 +1,5 @@
 import RequestHelper from './../../helper/request-helper'
+import config from 'config'
 
 /**
  * LucioleApi
@@ -12,6 +13,16 @@ class LucioleApi {
   constructor () {
     /** @type {RequestHelper}*/
     this.requestHelper = new RequestHelper()
+    /** @type {Object}*/
+    this.appConf = config
+  }
+
+  /**
+  * Get app endpoint from appConf
+  * @returns {string} The app endpoint to use
+  */
+  getAppEndpoint () {
+    return `${this.appConf.api.url}:${this.appConf.api.port}`
   }
 
 }

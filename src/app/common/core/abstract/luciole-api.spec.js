@@ -13,4 +13,21 @@ describe('LucioleActions', () => {
       expect(serv.requestHelper).to.be.an.instanceof(RequestHelper)
     })
   })
+
+  describe('getAppEndpoint', () => {
+    var serv
+    beforeEach(() => {
+      serv = new LucioleApi()
+      serv.appConf = {
+        api: {
+          url: 'my-url',
+          port: 42
+        }
+      }
+    })
+
+    it('Expect to return the endpoint', () => {
+      expect(serv.getAppEndpoint()).to.equals('my-url:42')
+    })
+  })
 })

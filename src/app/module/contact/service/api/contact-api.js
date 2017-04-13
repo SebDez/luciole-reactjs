@@ -7,11 +7,11 @@ export default class ContactApi extends LucioleApi {
 
   /**
    * Send contact message
-   * @type {Object} endpoint The endpoint to use
    * @type {Object} message The message object to send
    * @return {Promise}  A promise to resolve
    */
-  sendContactMessage (endpoint, message) {
+  sendContactMessage (message) {
+    const endpoint = this.getAppEndpoint()
     const body = this.encodeMessage(message)
     const uri = `${endpoint}/v1/contact`
     return this.requestHelper.post(uri, body)

@@ -17,13 +17,13 @@ describe('ContactService', () => {
     })
 
     it('Expect to return a promise', () => {
-      expect(serv.sendContactMessage('endpoint', 'message')).to.be.an.instanceof(Promise)
+      expect(serv.sendContactMessage('message')).to.be.an.instanceof(Promise)
     })
 
     it('Expect to have call sendContactMessage method', (done) => {
       let spy = chai.spy.on(api, 'sendContactMessage')
-      serv.sendContactMessage('endpoint', 'message').then(() => {
-        expect(spy).to.have.been.called.with('endpoint', 'message')
+      serv.sendContactMessage('message').then(() => {
+        expect(spy).to.have.been.called.with('message')
         done()
       })
     })
