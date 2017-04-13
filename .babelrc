@@ -7,7 +7,7 @@
   "env": {
     "test": {
       "plugins": [
-        ["webpack-alias", {"config": "webpack.config.dev.js"}]
+        ["webpack-alias", {"config": "webpack.config.test.js"}]
       ]
     },
     "development": {
