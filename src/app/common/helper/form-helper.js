@@ -83,7 +83,18 @@ export default class FormHelper {
     return value && value === 'train' ? this.i18n.t('forms.mock') : undefined
   }
 
-  renderField2 ({ input, label, type, meta: { touched, error, warning }, prefix }) {
+  /**
+   * Render the field element
+   * @type {Object} params The params for redux form
+   * @type {string} input The value of the field
+   * @type {string} label The label and placeholder for this field
+   * @type {string} type The type of field
+   * @type {boolean} touched Is the field modified
+   * @type {string} error The error message to show
+   * @type {string} warning The warning message to show
+   * @return {Object} The element to render
+   */
+  renderField ({ input, label, type, meta: { touched, error, warning }, prefix }) {
     const state = this.getValidationState(touched, error, warning)
     const elmClass = this.getFieldClass(touched, error) || 'field-success'
     return (
@@ -145,48 +156,6 @@ export default class FormHelper {
       return (<FormControl {...input} componentClass='textarea' placeholder={label} />)
     } else {
       return null
-    }
-  }
-
-  /**
-   * Render the field element
-   * @type {Object} params The params for redux form
-   * @type {string} input The value of the field
-   * @type {string} label The label and placeholder for this field
-   * @type {string} type The type of field
-   * @type {boolean} touched Is the field modified
-   * @type {string} error The error message to show
-   * @type {string} warning The warning message to show
-   * @return {Object} The element to render
-   */
-  renderField ({ input, label, type, meta: { touched, error, warning } }) {
-    return (
-      <div>
-        <label>{label}</label>
-        <div>
-          {this.getInputElement(input, label, type, touched, error)}
-          {touched && ((error && this.renderInfoField('error', error)) ||
-            (warning && this.renderInfoField('warning', warning))
-          )}
-        </div>
-      </div>
-    )
-  }
-
-  /**
-   * Render the input field element
-   * @type {string} input The value of the field
-   * @type {string} label The label and placeholder for this field
-   * @type {string} type The type of field
-   * @type {boolean} touched Is the field modified
-   * @type {string} error The error message to show
-   * @return {Object} The element to render
-   */
-  getInputElement (input, label, type, touched, error) {
-    if (type === 'text' || type === 'email') {
-      return (<input {...input} placeholder={label} type={type} className={this.getFieldClass(touched, error)} />)
-    } else if (type === 'textarea') {
-      return (<textarea {...input} placeholder={label} type={type} className={this.getFieldClass(touched, error)} />)
     }
   }
 
