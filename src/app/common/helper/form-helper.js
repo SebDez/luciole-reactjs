@@ -1,5 +1,6 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
+import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { I18n } from 'react-redux-i18n'
 
 /**
@@ -82,6 +83,65 @@ export default class FormHelper {
     return value && value === 'train' ? this.i18n.t('forms.mock') : undefined
   }
 
+  renderField2 ({ input, label, type, meta: { touched, error, warning } }) {
+    const state = this.getValidationState(touched, error, warning)
+    const elmClass = this.getFieldClass(touched, error) || 'field-success'
+    return (
+      <FormGroup controlId={input.name} validationState={state}>
+        {this.getControlLabel(label)}
+        {this.getInputGroup(type, input, label, null, elmClass)}
+        {touched && ((error && this.renderInfoField('error', error)) ||
+          (warning && this.renderInfoField('warning', warning))
+        )}
+        <FormControl.Feedback />
+      </FormGroup>
+    )
+  }
+
+  getValidationState (touched, error, warning) {
+    if (touched && error) {
+      return 'error'
+    } else if (touched && warning) {
+      return 'warning'
+    } else if (touched) {
+      return 'success'
+    } else {
+      return null
+    }
+  }
+
+  getControlLabel (label) {
+    return label ? (<ControlLabel>{label}</ControlLabel>) : null
+  }
+
+  getInputGroup (type, input, label, prefix, elmClass) {
+    return (
+      <InputGroup>
+        {this.getPrefix(prefix, elmClass)}
+        {this.getFormControl(type, input, label, elmClass)}
+      </InputGroup>)
+  }
+
+  getPrefix (prefix, elmClass) {
+    if (prefix && prefix.type === 'icon') {
+      return (<InputGroup.Addon bsClass={elmClass}><FontAwesome size='2x' name={this.props.icon} /></InputGroup.Addon>)
+    } else if (prefix && prefix.type === 'text') {
+      return (<InputGroup.Addon>{prefix.value}</InputGroup.Addon>)
+    } else {
+      return null
+    }
+  }
+
+  getFormControl (type, input, label, elmClass) {
+    if (type === 'text' || type === 'email' || type === 'password') {
+      return (<FormControl {...input} type={type} placeholder={label} bsClass={elmClass} />)
+    } else if (type === 'textarea') {
+      return (<FormControl {...input} componentClass='textarea' placeholder={label} bsClass={elmClass} />)
+    } else {
+      return null
+    }
+  }
+
   /**
    * Render the field element
    * @type {Object} params The params for redux form
@@ -131,7 +191,7 @@ export default class FormHelper {
  * @return {string} The class name to apply or false
  */
   getFieldClass (touched, error) {
-    return touched && (error && 'field-error')
+    return touched ? (error ? 'field-error' : 'field-success') : 'field-not-touched'
   }
 
 /**

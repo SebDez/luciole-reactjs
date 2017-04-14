@@ -4,7 +4,7 @@ import initialState from './../../../store/initialState'
 import LucioleReducer from './../../core/abstract/luciole-reducer'
 
 // Initialize Reducer
-const AuthReducer = new LucioleReducer(initialState.auth)
+const AuthReducer = new LucioleReducer(initialState.application.auth)
 
 // Register actions
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.LOG_USER_IN_SUCCESS, logUserSuccessAction)

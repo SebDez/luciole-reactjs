@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import ContactForm from './../component/contact-form-component'
 import ContactActions from './../action/contact-action'
 import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
+import config from 'config'
 
 /**
  * ContactPage container, used to define the composition of the ContactPage screen
@@ -30,7 +31,7 @@ export const ContactPage = (props) => {
  */
 function mapStateToProps (state) {
   return {
-    recaptchaKey: state.application.app.conf.default.recaptcha.key
+    recaptchaKey: config.recaptcha.key
   }
 }
 

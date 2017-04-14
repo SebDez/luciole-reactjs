@@ -34,8 +34,24 @@ $form-text-color: white;
     }
   }
 
+  .input-group{
+    width: 100% !important;
+  }
+
   .field-error{
-    border: 2px solid #FF4500;
+    border: 2px solid #FF4500 !important;
+  }
+
+  .field-not-touched{
+    border: none !important;
+  }
+
+  .field-success{
+    border: 2px solid green !important;
+  }
+
+  .form-control-feedback{
+    padding-top: 10px;
   }
 
   .field-icons{
