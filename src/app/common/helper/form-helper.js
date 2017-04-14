@@ -83,13 +83,13 @@ export default class FormHelper {
     return value && value === 'train' ? this.i18n.t('forms.mock') : undefined
   }
 
-  renderField2 ({ input, label, type, meta: { touched, error, warning } }) {
+  renderField2 ({ input, label, type, meta: { touched, error, warning }, prefix }) {
     const state = this.getValidationState(touched, error, warning)
     const elmClass = this.getFieldClass(touched, error) || 'field-success'
     return (
       <FormGroup controlId={input.name} validationState={state}>
         {this.getControlLabel(label)}
-        {this.getInputGroup(type, input, label, null, elmClass)}
+        {this.getInputGroup(type, input, label, prefix, elmClass)}
         {touched && ((error && this.renderInfoField('error', error)) ||
           (warning && this.renderInfoField('warning', warning))
         )}
@@ -115,16 +115,22 @@ export default class FormHelper {
   }
 
   getInputGroup (type, input, label, prefix, elmClass) {
+    const prefixSupClass = prefix ? '' : 'no-prefix '
+    const intputGroupClass = prefixSupClass + elmClass
     return (
-      <InputGroup>
-        {this.getPrefix(prefix, elmClass)}
-        {this.getFormControl(type, input, label, elmClass)}
-      </InputGroup>)
+      <div className={intputGroupClass}>
+        <InputGroup>
+          {this.getPrefix(prefix, type)}
+          {this.getFormControl(type, input, label)}
+        </InputGroup>
+      </div>)
   }
 
-  getPrefix (prefix, elmClass) {
-    if (prefix && prefix.type === 'icon') {
-      return (<InputGroup.Addon bsClass={elmClass}><FontAwesome size='2x' name={this.props.icon} /></InputGroup.Addon>)
+  getPrefix (prefix, type) {
+    if (type === 'textarea') {
+      return null
+    } else if (prefix && prefix.type === 'icon') {
+      return (<InputGroup.Addon><FontAwesome name={prefix.value} /></InputGroup.Addon>)
     } else if (prefix && prefix.type === 'text') {
       return (<InputGroup.Addon>{prefix.value}</InputGroup.Addon>)
     } else {
@@ -132,11 +138,11 @@ export default class FormHelper {
     }
   }
 
-  getFormControl (type, input, label, elmClass) {
+  getFormControl (type, input, label) {
     if (type === 'text' || type === 'email' || type === 'password') {
-      return (<FormControl {...input} type={type} placeholder={label} bsClass={elmClass} />)
+      return (<FormControl {...input} type={type} placeholder={label} />)
     } else if (type === 'textarea') {
-      return (<FormControl {...input} componentClass='textarea' placeholder={label} bsClass={elmClass} />)
+      return (<FormControl {...input} componentClass='textarea' placeholder={label} />)
     } else {
       return null
     }

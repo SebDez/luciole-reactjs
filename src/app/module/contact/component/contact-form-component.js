@@ -30,12 +30,12 @@ export class ContactFormComponent extends FormComponent {
       <form className='luciole-form contact-form' onSubmit={this.props.handleSubmit}>
         <Field name='mail' type='email'
           component={this.formHelper.renderField2.bind(this.formHelper)} label={this.i18n.t('application.contact.mail')}
-          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
+          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]} prefix={{type: 'text', value: 'P'}}
         />
         <Field name='subject' type='text'
           component={this.formHelper.renderField2.bind(this.formHelper)} label={this.i18n.t('application.contact.subject')}
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5), this.formHelper.isMoreThanMaxLength(100) ]}
-          warn={this.formHelper.adviceDemo}
+          warn={this.formHelper.adviceDemo} prefix={null}
         />
         <Field name='content' type='textarea'
           component={this.formHelper.renderField2.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}

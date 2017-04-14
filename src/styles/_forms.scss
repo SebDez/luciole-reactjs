@@ -8,9 +8,12 @@ $form-text-color: white;
     margin : 5px 15px 5px 5px;
   }
 
+  .form-group{
+    margin-bottom: 10px;
+  }
+
   input, textarea{
     width: 100%;
-    margin-bottom: 10px;
     background: #1a3951;
     opacity: 0.7;
     border: none;
@@ -34,20 +37,53 @@ $form-text-color: white;
     }
   }
 
+  textarea{
+    border-radius: 4px !important;
+  }
+
+  .no-prefix{
+    input{
+      border-radius: 4px !important;
+      border-left: 1px solid rgba(0,0,0,0.2) !important;
+    }
+  }
+
+   .input-group-addon{
+     background: #1a3951;
+     border: 1px solid rgba(0,0,0,0.2);
+   }
+
   .input-group{
     width: 100% !important;
   }
 
   .field-error{
+    border-radius: 4px;
     border: 2px solid #FF4500 !important;
+
+    input{
+      border-radius: none !important;
+      border-left: none !important;
+    }
   }
 
   .field-not-touched{
     border: none !important;
+
+    input{
+      border-radius: none !important;
+      border-left: none !important;
+    }
   }
 
   .field-success{
+    border-radius: 4px;
     border: 2px solid green !important;
+
+    input{
+      border-radius: none !important;
+      border-left: none !important;
+    }
   }
 
   .form-control-feedback{
