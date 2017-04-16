@@ -4,7 +4,7 @@ import initialState from './../../../store/initialState'
 import LucioleReducer from './../../../common/core/abstract/luciole-reducer'
 
 // Initialize Reducer
-const MainReducer = new LucioleReducer(initialState.module.main)
+const MainReducer = new LucioleReducer(initialState.application.module.main)
 
 // Register actions
 MainReducer.registerAction(Constants.ACTIONS.USER.GET_USER_INFORMATIONS, getUserInformationsSuccessAction)

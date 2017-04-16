@@ -23,6 +23,7 @@ $app-text-font: 'Play', serif;
 @import "main-container";
 @import "modals";
 @import "forms";
+@import "contact-container";
 
 // font-family: 'PT Sans', sans-serif;
 // font-family: 'Maitree', serif;
@@ -135,3 +136,31 @@ $app-text-font: 'Play', serif;
      color: $app-button-bg-color;
    }
  }
+
+ /******************************
+ * CONTAINERS
+ * *****************************/
+
+ .lu-container{
+   background-color: rgba(18, 25 ,46, 0.5);
+   padding: 10px 10px 10px 10px;
+   border-radius: 5px 5px 5px 5px;
+   margin-right: 5%;
+ }
+
+ /******************************
+ * PAGE HEADER
+ * *****************************/
+.page-header{
+  background-color: rgba(18, 25 ,46, 0.5);
+  display: inline-block;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px 5px 5px 5px;
+  text-transform: uppercase;
+  border: none;
+
+  h2{
+    display: inline;
+    margin-left: 10px;
+  }
+}

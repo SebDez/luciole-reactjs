@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
 import { Field, reduxForm } from 'redux-form'
+import { I18n } from 'react-redux-i18n'
+import LuRecaptcha from './../../../common/component/recaptcha/recaptcha-component'
 
 /**
  * ContactForm Component
@@ -8,26 +10,45 @@ import { Field, reduxForm } from 'redux-form'
 export class ContactFormComponent extends FormComponent {
 
   /**
+   * Create a new ContactFormComponent
+   * @param  {Object} props The component properties
+   * @param  {Object} context The app context
+   */
+  /* istanbul ignore next */
+  constructor (props, context) {
+    super(props, context)
+    /** @type {I18n}*/
+    this.i18n = I18n
+  }
+
+  /**
    * Render the component
    * @return {Object} React component tree
    */
   render () {
     return (
-      <form className='luciole-form' onSubmit={this.props.handleSubmit}>
-        <Field name='username' type='text'
-          component={this.formHelper.renderField.bind(this.formHelper)} label='Username'
-          validate={[ this.formHelper.isRequired, this.formHelper.isMoreThanMaxLength(15) ]}
-          warn={this.formHelper.adviceDemo}
+      <form className='luciole-form contact-form' onSubmit={this.props.handleSubmit}>
+        <Field name='mail' type='email'
+          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.mail')}
+          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]} prefix={{type: 'text', value: '@'}}
         />
-        <Field name='email' type='email'
-          component={this.formHelper.renderField.bind(this.formHelper)} label='Email'
-          validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]}
+        <Field name='subject' type='text'
+          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.subject')}
+          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5), this.formHelper.isMoreThanMaxLength(100) ]}
+          warn={this.formHelper.adviceDemo} prefix={{type: 'icon', value: 'envelope-open'}}
         />
-        <Field name='content' type='text'
-          component={this.formHelper.renderField.bind(this.formHelper)} label='Content'
-          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5) ]}
+        <Field name='content' type='textarea'
+          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}
+          validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(10), this.formHelper.isMoreThanMaxLength(2000) ]}
         />
-        <button type='submit'>Submit</button>
+        <div className='recaptcha'>
+          <Field name='captcharesponse' component={LuRecaptcha}
+            validate={[this.formHelper.isRequired]}
+            recaptchaKey={this.props.recaptchaKey} />
+        </div>
+        <div className='buttons'>
+          <button type='submit'>{this.i18n.t('application.contact.submit')}</button>
+        </div>
       </form>
     )
   }
@@ -38,7 +59,8 @@ export class ContactFormComponent extends FormComponent {
  * @type {Object}
  */
 ContactFormComponent.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  recaptchaKey: PropTypes.string.isRequired
 }
 
 /**

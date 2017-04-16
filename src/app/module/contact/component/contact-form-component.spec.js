@@ -18,10 +18,10 @@ describe('ContactFormComponent', () => {
       expect(actual).to.be.length(1)
     })
 
-    it('Expect to contain 3 Field', () => {
+    it('Expect to contain 4 Field', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field)
-      expect(actual).to.be.length(3)
+      expect(actual).to.be.length(4)
     })
 
     it('Expect to contain 1 button', () => {
@@ -30,26 +30,34 @@ describe('ContactFormComponent', () => {
       expect(actual).to.be.length(1)
     })
 
-    it('Expect to contain 1 Field with name "username"', () => {
+    it('Expect to contain 1 Field with name "subject"', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
-        return n.prop('name') === 'username'
+        return n.prop('name') === 'subject'
       })
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 2 Field with type "text"', () => {
+    it('Expect to contain 1 Field with type "text"', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
         return n.prop('type') === 'text'
       })
-      expect(actual).to.have.length(2)
+      expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 Field with name "email"', () => {
+    it('Expect to contain 1 Field with type "textarea"', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
-        return n.prop('name') === 'email'
+        return n.prop('type') === 'textarea'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 Field with name "mail"', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(Field).findWhere(n => {
+        return n.prop('name') === 'mail'
       })
       expect(actual).to.have.length(1)
     })
@@ -66,6 +74,14 @@ describe('ContactFormComponent', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Field).findWhere(n => {
         return n.prop('name') === 'content'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 Field with name "captcharesponse"', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(Field).findWhere(n => {
+        return n.prop('name') === 'captcharesponse'
       })
       expect(actual).to.have.length(1)
     })

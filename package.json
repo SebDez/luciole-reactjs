@@ -1,6 +1,6 @@
 {
   "name": "luciole-reactjs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The reactjs frontend for luciole game",
   "engines": {
     "npm": ">=3"
@@ -36,9 +36,11 @@
     "object-assign": "4.1.0",
     "react": "15.3.2",
     "react-addons-pure-render-mixin": "15.2.1",
+    "react-async-script": "0.8.0",
     "react-bootstrap": "0.30.6",
     "react-dom": "15.2.1",
     "react-fontawesome": "^1.2.0",
+    "react-google-recaptcha": "0.8.0",
     "react-redux": "4.4.5",
     "react-redux-i18n": "0.0.3",
     "react-redux-modal": "0.5.2",
@@ -62,6 +64,7 @@
     "babel-plugin-react-display-name": "2.0.0",
     "babel-plugin-transform-react-constant-elements": "6.9.1",
     "babel-plugin-transform-react-remove-prop-types": "0.2.7",
+    "babel-plugin-webpack-alias": "2.1.2",
     "babel-preset-es2015": "6.9.0",
     "babel-preset-react": "6.11.1",
     "babel-preset-react-hmre": "1.1.1",

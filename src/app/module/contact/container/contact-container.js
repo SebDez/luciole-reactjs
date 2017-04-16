@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import WorkInProgress from './../../../common/component/wip/wip-component'
+import { bindActionCreators } from 'redux'
 import ContactForm from './../component/contact-form-component'
+import ContactActions from './../action/contact-action'
+import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
+import config from 'config'
 
 /**
  * ContactPage container, used to define the composition of the ContactPage screen
@@ -10,18 +13,15 @@ import ContactForm from './../component/contact-form-component'
  * @return {Object} React component tree
  */
 export const ContactPage = (props) => {
-  onContactFormSubmit()
   return (
     <div>
-      Contact page
-      <WorkInProgress />
-      <ContactForm onSubmit={onContactFormSubmit} />
+      <LuciolePageHeader title='application.sidebar.contact' icon='envelope' />
+      <div className='lu-container'>
+        <ContactForm onSubmit={props.contactActions.sendContactMessage}
+          recaptchaKey={props.recaptchaKey} />
+      </div>
     </div>
   )
-}
-
-function onContactFormSubmit (values) {
-  // @TODO
 }
 
 /**
@@ -30,7 +30,9 @@ function onContactFormSubmit (values) {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    recaptchaKey: config.recaptcha.key
+  }
 }
 
 /**
@@ -39,7 +41,9 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {}
+  return {
+    contactActions: bindActionCreators(new ContactActions(), dispatch)
+  }
 }
 
 /**

@@ -23,26 +23,6 @@ describe('LucioleActions', () => {
     })
   })
 
-  describe('getEnvConfFromGetState', () => {
-    var serv, getState
-    beforeEach(() => {
-      serv = new LucioleActions()
-      getState = () => {
-        return {
-          application: {
-            app: {
-              conf: 'my-conf'
-            }
-          }
-        }
-      }
-    })
-
-    it('Expect to return conf', () => {
-      expect(serv.getEnvConfFromGetState(getState)).to.equal('my-conf')
-    })
-  })
-
   describe('getTokenFromGetState', () => {
     var serv, getState
     beforeEach(() => {
@@ -60,6 +40,13 @@ describe('LucioleActions', () => {
 
     it('Expect to return conf', () => {
       expect(serv.getTokenFromGetState(getState)).to.equal('my-token')
+    })
+  })
+
+  describe('getDoNothingAction', () => {
+    it('Expect to return DO_NOTHING as action type', () => {
+      const serv = new LucioleActions()
+      expect(serv.getDoNothingAction().type).to.equal('DO_NOTHING')
     })
   })
 })

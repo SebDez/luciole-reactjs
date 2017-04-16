@@ -4,7 +4,7 @@ import initialState from './../../../store/initialState'
 import LucioleReducer from './../../../common/core/abstract/luciole-reducer'
 
 // Initialize Reducer
-const SidebarReducer = new LucioleReducer(initialState.module.sidebar)
+const SidebarReducer = new LucioleReducer(initialState.application.module.sidebar)
 
 // Register actions
 SidebarReducer.registerAction(Constants.ACTIONS.SIDEBAR.OPEN_SIDEBAR, openSidebarAction)

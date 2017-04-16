@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import LucioleSVG from './../../core/component/luciole-svg-component'
+import LucioleSVG from './../../component/svg/luciole-svg-component'
 import LucioleComponent from './../../core/abstract/luciole-component'
 /**
  * ResourceIcon Component

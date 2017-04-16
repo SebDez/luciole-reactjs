@@ -27,6 +27,9 @@ export default {
     MAIN: {
       OPEN_LANGUAGE_CARD: 'OPEN_LANGUAGE_CARD',
       CLOSE_LANGUAGE_CARD: 'CLOSE_LANGUAGE_CARD'
+    },
+    APP: {
+      DO_NOTHING: 'DO_NOTHING'
     }
   }
 }

@@ -49,7 +49,7 @@ export default {
   postcss: () => [autoprefixer],
   resolve: {
     alias: {
-      config: path.join(__dirname, 'src/env/' + (process.argv[2] && process.argv[2] === 'localMode' ? 'local' : 'dev') + '.js')
+      config: path.join(__dirname, 'src/test/test.js')
     }
   }
 }

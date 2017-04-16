@@ -5,6 +5,11 @@
     "stage-1"
   ],
   "env": {
+    "test": {
+      "plugins": [
+        ["webpack-alias", {"config": "webpack.config.test.js"}]
+      ]
+    },
     "development": {
       "presets": [
         "react-hmre"
