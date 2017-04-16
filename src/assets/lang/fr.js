@@ -3,6 +3,14 @@ export default {
     homePage: {
       linkTo: 'Accueil'
     },
+    auth: {
+      username: 'Votre adresse mail',
+      password: 'Votre mot de passe',
+      login: 'Me connecter',
+      goToSignupTitle: 'Pas encore inscrit ?',
+      goToSignup: 'Je m \'inscris !',
+      loginTitle: 'Rejoignez l\'aventure'
+    },
     sidebar: {
       home: 'Accueil',
       kingdom: 'Mon Royaume',

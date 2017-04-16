@@ -1,25 +1,12 @@
 import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
 import { Field, reduxForm } from 'redux-form'
-import { I18n } from 'react-redux-i18n'
 import LuRecaptcha from './../../../common/component/recaptcha/recaptcha-component'
 
 /**
  * ContactForm Component
  */
 export class ContactFormComponent extends FormComponent {
-
-  /**
-   * Create a new ContactFormComponent
-   * @param  {Object} props The component properties
-   * @param  {Object} context The app context
-   */
-  /* istanbul ignore next */
-  constructor (props, context) {
-    super(props, context)
-    /** @type {I18n}*/
-    this.i18n = I18n
-  }
 
   /**
    * Render the component

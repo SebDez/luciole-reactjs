@@ -1,5 +1,6 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { I18n } from 'react-redux-i18n'
 
 /**
  * LucioleComponent Component
@@ -19,6 +20,8 @@ class LucioleComponent extends React.Component {
     super(props, context)
     /** @type {Object}*/
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
+    /** @type {I18n}*/
+    this.i18n = I18n
   }
 
   /**

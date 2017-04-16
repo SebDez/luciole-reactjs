@@ -50,7 +50,8 @@ function getHomePageContentElement (props) {
       getUserResources(props)
     }
   }
-  return (<SidebarLoggedOff lang={lang} logUserIn={logUserIn.bind(null, props)} />)
+  return (<SidebarLoggedOff lang={lang} logUserIn={logUserIn.bind(null, props)}
+    showLoginModal={props.showLoginModal} />)
 }
 
 /**
@@ -91,7 +92,8 @@ function mapStateToProps (state) {
   return {
     auth: state.application.auth,
     userResource: state.application.module.sidebar.userResource,
-    currentLang: state.i18n.locale
+    currentLang: state.i18n.locale,
+    showLoginModal: state.application.app.modals.showLoginModal
   }
 }
 

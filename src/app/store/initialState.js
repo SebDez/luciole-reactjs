@@ -19,6 +19,10 @@ export default {
         token: null
       }
     },
-    app: {}
+    app: {
+      modals: {
+        showLoginModal: true
+      }
+    }
   }
 }

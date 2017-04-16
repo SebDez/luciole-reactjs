@@ -17,6 +17,7 @@ export const ContactPage = (props) => {
     <div>
       <LuciolePageHeader title='application.sidebar.contact' icon='envelope' />
       <div className='lu-container'>
+      //TODO recaptchaKey
         <ContactForm onSubmit={props.contactActions.sendContactMessage}
           recaptchaKey={props.recaptchaKey} />
       </div>

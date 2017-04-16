@@ -3,6 +3,14 @@ export default {
     homePage: {
       linkTo: 'Home'
     },
+    auth: {
+      username: 'Your mail address',
+      password: 'Your password',
+      login: 'Login',
+      goToSignupTitle: 'New to Luciole ?',
+      goToSignup: 'Create an account',
+      loginTitle: 'Join the adventure'
+    },
     sidebar: {
       home: 'Home',
       kingdom: 'My Kingdom',
