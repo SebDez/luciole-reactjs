@@ -92,23 +92,33 @@ export default class FormHelper {
    * @type {boolean} touched Is the field modified
    * @type {string} error The error message to show
    * @type {string} warning The warning message to show
+   * @type {Object} prefix The prefix object for the field {type: text or icon, value: text or icon name}
    * @return {Object} The element to render
    */
   renderField ({ input, label, type, meta: { touched, error, warning }, prefix }) {
     const state = this.getValidationState(touched, error, warning)
-    const elmClass = this.getFieldClass(touched, error) || 'field-success'
+    const elmClass = this.getFieldClass(touched, error)
     return (
-      <FormGroup controlId={input.name} validationState={state}>
-        {this.getControlLabel(label)}
-        {this.getInputGroup(type, input, label, prefix, elmClass)}
-        {touched && ((error && this.renderInfoField('error', error)) ||
-          (warning && this.renderInfoField('warning', warning))
-        )}
-        <FormControl.Feedback />
-      </FormGroup>
+      <div>
+        <FormGroup controlId={input.name} validationState={state}>
+          {this.getControlLabel(label)}
+          {this.getInputGroup(type, input, label, prefix, elmClass)}
+          {touched && ((error && this.renderInfoField('error', error)) ||
+            (warning && this.renderInfoField('warning', warning))
+          )}
+          <FormControl.Feedback />
+        </FormGroup>
+      </div>
     )
   }
 
+/**
+ * Get the formcontrol validation state according to the input state
+ * @type {boolean} touched Is the field modified
+ * @type {string} error The error message to show
+ * @type {string} warning The warning message to show
+ * @return {string} The validation state string or null if not touched
+ */
   getValidationState (touched, error, warning) {
     if (touched && error) {
       return 'error'
@@ -121,10 +131,24 @@ export default class FormHelper {
     }
   }
 
+/**
+ * Get the control label is there is one to be show
+ * @type {string} label The label to show or null
+ * @return {Object} The element to render
+ */
   getControlLabel (label) {
     return label ? (<ControlLabel>{label}</ControlLabel>) : null
   }
 
+/**
+ * Get Inputgroup element according to the prefix and formcontrol configuration
+ * @type {string} input The value of the field
+ * @type {string} label The label and placeholder for this field
+ * @type {string} type The type of field
+ * @type {Object} prefix The prefix object for the field {type: text or icon, value: text or icon name}
+ * @type {string} elmClass The class to apply to element
+ * @return {Object} The element to render
+ */
   getInputGroup (type, input, label, prefix, elmClass) {
     const prefixSupClass = prefix ? '' : 'no-prefix '
     const intputGroupClass = prefixSupClass + elmClass
@@ -137,6 +161,12 @@ export default class FormHelper {
       </div>)
   }
 
+/**
+ * Get prefix element for input field according to prefix type (text or icon) and field type
+ * @type {Object} prefix The prefix object for the field {type: text or icon, value: text or icon name}
+ * @type {string} type The type of field
+ * @return {Object} The element to render or null is there is no prefix or field's type is textarea
+ */
   getPrefix (prefix, type) {
     if (type === 'textarea') {
       return null
@@ -149,6 +179,13 @@ export default class FormHelper {
     }
   }
 
+  /**
+   * Get the form control element according to input type (text/email/password/textarea)
+   * @type {string} type The type of field
+   * @type {string} input The value of the field
+   * @type {string} label The label and placeholder for this field
+   * @return {Object} The element to render or null if type not in text/email/password/textarea
+   */
   getFormControl (type, input, label) {
     if (type === 'text' || type === 'email' || type === 'password') {
       return (<FormControl {...input} type={type} placeholder={label} />)

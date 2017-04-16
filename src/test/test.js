@@ -2,4 +2,8 @@
 * Test CONFIG, empty
 * @type {Object}
  */
-export default {}
+export default {
+  recaptcha: {
+    key: 'mykey'
+  }
+}
