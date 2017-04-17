@@ -17,12 +17,12 @@ export default {
     auth: {
       user: {
         token: null
+      },
+      modals: {
+        showLoginModal: false
       }
     },
     app: {
-      modals: {
-        showLoginModal: true
-      }
     }
   }
 }
