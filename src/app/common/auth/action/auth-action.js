@@ -25,9 +25,9 @@ export default class AuthActions extends LucioleActions {
     /** @type {Function}*/
     this.logUserInFailureAction = this.logUserInFailureAction.bind(this)
     /** @type {Function}*/
-    this.openLoginModal = this.openLoginModal.bind(this)
+    this.openLoginModalAction = this.openLoginModalAction.bind(this)
     /** @type {Function}*/
-    this.closeLoginModal = this.closeLoginModal.bind(this)
+    this.closeLoginModalAction = this.closeLoginModalAction.bind(this)
   }
 
   /**
@@ -118,7 +118,7 @@ export default class AuthActions extends LucioleActions {
    * Returns a new action that can be managed by Redux
    * @return {Object}          The action
    */
-  openLoginModal () {
+  openLoginModalAction () {
     return {
       type: Constants.ACTIONS.AUTH.OPEN_LOGIN_MODAL
     }
@@ -130,7 +130,7 @@ export default class AuthActions extends LucioleActions {
    * Returns a new action that can be managed by Redux
    * @return {Object}          The action
    */
-  closeLoginModal () {
+  closeLoginModalAction () {
     return {
       type: Constants.ACTIONS.AUTH.CLOSE_LOGIN_MODAL
     }

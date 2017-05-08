@@ -16,7 +16,7 @@ export class SidebarLoggedOff extends LucioleComponent {
     return (
       <div>
         <LuLoginModal show={this.props.showLoginModal} handleLogin={this.props.handleLogin}
-          handleClose={this.props.handleCloseModal} handleSignup={() => console.log('handleSignup')} />
+          handleClose={this.props.handleCloseModal} handleSignup={console.log} />
         <div className='sidebar-content off'>
           <div className='sidebar-button' onClick={this.props.openLoginModal}>
             <LuI18n value='application.sidebar.play' lang={this.props.lang} />

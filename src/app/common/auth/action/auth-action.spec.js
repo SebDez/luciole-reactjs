@@ -197,4 +197,17 @@ describe('AuthAction', () => {
       })
     })
   })
+
+  describe('openLoginModalAction', () => {
+    it('Expect to return OPEN_LOGIN_MODAL as action type', () => {
+      expect(actions.openLoginModalAction().type).to.equal('OPEN_LOGIN_MODAL')
+    })
+  })
+
+  describe('closeLoginModalAction', () => {
+    it('Expect to return CLOSE_LOGIN_MODAL as action type', () => {
+      expect(actions.closeLoginModalAction().type).to.equal('CLOSE_LOGIN_MODAL')
+    })
+  })
+
 })

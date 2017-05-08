@@ -27,6 +27,9 @@ describe('AuthReducer', () => {
         state: 'default-state-value',
         user: {
           token: 'my-new-token'
+        },
+        modals: {
+          showLoginModal: false
         }
       }
       expect(result).to.deep.equal(expected)
@@ -63,6 +66,38 @@ describe('AuthReducer', () => {
     it('Expect to return a valid state', () => {
       const result = AuthReducer.disconnectUserFailureAction(state, action)
       expect(result).to.deep.equal(state)
+    })
+  })
+
+  describe('openLoginModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = AuthReducer.openLoginModalAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token'
+        },
+        modals: {
+          showLoginModal: true
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('closeLoginModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = AuthReducer.closeLoginModalAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token'
+        },
+        modals: {
+          showLoginModal: false
+        }
+      }
+      expect(result).to.deep.equal(expected)
     })
   })
 })

@@ -6,7 +6,12 @@ import SidebarLoggedOff from './sidebar-logged-off-component'
 describe('SidebarLoggedOff', () => {
   describe('render', () => {
     const props = {
-      logUserIn: () => 0
+      logUserIn: () => 0,
+      openLoginModal: () => 0,
+      lang: 'fr',
+      showLoginModal: false,
+      handleCloseModal: () => 0,
+      handleLogin: () => 0
     }
 
     it('Expect to contain a div with valid className sidebar-content off', () => {

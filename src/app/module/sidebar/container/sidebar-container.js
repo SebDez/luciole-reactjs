@@ -51,7 +51,7 @@ function getHomePageContentElement (props) {
     }
   }
   return (<SidebarLoggedOff lang={lang} openLoginModal={openLoginModal.bind(null, props)}
-    showLoginModal={props.showLoginModal} handleCloseModal={closeLoginModal.bind(null, props)}
+    showLoginModal={props.auth.modals.showLoginModal} handleCloseModal={closeLoginModal.bind(null, props)}
     handleLogin={logUserIn.bind(null, props)} />)
 }
 
@@ -76,7 +76,7 @@ function logUserIn (props) {
  * @param  {Object} props The container props
  */
 function openLoginModal (props) {
-  props.authActions.openLoginModal()
+  props.authActions.openLoginModalAction()
 }
 
 /**
@@ -84,7 +84,7 @@ function openLoginModal (props) {
  * @param  {Object} props The container props
  */
 function closeLoginModal (props) {
-  props.authActions.closeLoginModal()
+  props.authActions.closeLoginModalAction()
 }
 
 /**
@@ -109,8 +109,7 @@ function mapStateToProps (state) {
   return {
     auth: state.application.auth,
     userResource: state.application.module.sidebar.userResource,
-    currentLang: state.i18n.locale,
-    showLoginModal: state.application.auth.modals.showLoginModal
+    currentLang: state.i18n.locale
   }
 }
 
@@ -140,7 +139,9 @@ Sidebar.mapStateToProps = mapStateToProps
 Sidebar.mapDispatchToProps = mapDispatchToProps
 Sidebar.__testOnly = {
   disconnectUser,
-  logUserIn
+  logUserIn,
+  closeLoginModal,
+  openLoginModal
 }
 
 /**
