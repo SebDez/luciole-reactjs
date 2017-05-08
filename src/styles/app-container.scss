@@ -146,7 +146,16 @@ $app-text-font: 'Play', serif;
    background-color: rgba(18, 25 ,46, 0.5);
    padding: 10px 10px 10px 10px;
    border-radius: 5px 5px 5px 5px;
+   margin-bottom: 10px;
+ }
+
+ .lu-container-wmargin{
+   @extend .lu-container;
    margin-right: 5%;
+ }
+
+ .lu-grid{
+   width: 95%;
  }
 
  /******************************

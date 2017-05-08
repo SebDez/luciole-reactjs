@@ -27,7 +27,7 @@
 # V0.4.0 : User account
 
  * Signup Process | signup_module | **TODO**
- * User Page | user_page | **TODO**
+ * User Page | user_page | **IN_PROGRESS**
   * Design | **TODO**
   * User datas | **TODO**
  * User Lang | user_lang | **TODO**

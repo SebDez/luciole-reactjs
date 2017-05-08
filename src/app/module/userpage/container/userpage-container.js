@@ -1,26 +1,38 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import ContactForm from './../component/contact-form-component'
-import ContactActions from './../action/contact-action'
 import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
-import config from 'config'
+import { Grid, Row, Col } from 'react-bootstrap'
 
 /**
- * ContactPage container, used to define the composition of the ContactPage screen
+ * UserPage container, used to define the composition of the UserPage screen
  * This function will render the container
  * @param  {Object} props The container properties
  * @return {Object} React component tree
  */
-export const ContactPage = (props) => {
+export const UserPage = (props) => {
   return (
-    <div>
-      <LuciolePageHeader title='application.sidebar.contact' icon='envelope' />
-      <div className='lu-container-wmargin'>
-        <ContactForm onSubmit={props.contactActions.sendContactMessage}
-          recaptchaKey={props.recaptchaKey} />
-      </div>
-    </div>
+    <Grid className='lu-grid'>
+      <LuciolePageHeader title='application.sidebar.account' icon='user' />
+      <Row>
+        <Col className='sidebar-block-col' xs={12} md={2}>
+          <div className='lu-container'>
+            PICTURE
+          </div>
+        </Col>
+        <Col className='sidebar-block-col' xs={12} md={10}>
+          <div className='lu-container'>
+            MAIN DATAS
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col className='sidebar-block-col' xs={12} md={12}>
+          <div className='lu-container'>
+            MORE DATAS
+          </div>
+        </Col>
+      </Row>
+    </Grid>
   )
 }
 
@@ -30,9 +42,7 @@ export const ContactPage = (props) => {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {
-    recaptchaKey: config.recaptcha.key
-  }
+  return {}
 }
 
 /**
@@ -41,19 +51,17 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {
-    contactActions: bindActionCreators(new ContactActions(), dispatch)
-  }
+  return {}
 }
 
 /**
  * The container properties' types
  * @type {Object}
  */
-ContactPage.propTypes = {}
+UserPage.propTypes = {}
 
-ContactPage.mapStateToProps = mapStateToProps
-ContactPage.mapDispatchToProps = mapDispatchToProps
+UserPage.mapStateToProps = mapStateToProps
+UserPage.mapDispatchToProps = mapDispatchToProps
 
 /**
  * Connect the component to access global state object
@@ -64,4 +72,4 @@ ContactPage.mapDispatchToProps = mapDispatchToProps
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ContactPage)
+)(UserPage)
