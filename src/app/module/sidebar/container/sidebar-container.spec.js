@@ -45,6 +45,9 @@ describe('Sidebar', () => {
     const auth = {
       user: {
         token: 'mytoken'
+      },
+      modals: {
+        showLoginModal: true
       }
     }
     let userResource = {
@@ -55,7 +58,11 @@ describe('Sidebar', () => {
       expect(wrapper.find(SidebarLoggedIn)).to.be.length(1)
     })
     it('Expect to contain a SidebarLoggedOff if user not logged in', () => {
-      const noAuth = {}
+      const noAuth = {
+        modals: {
+          showLoginModal: true
+        }
+      }
       const wrapper = shallow(<Sidebar auth={noAuth} userResource={userResource} sidebarActions={{}} authActions={{}} />)
       expect(wrapper.find(SidebarLoggedOff)).to.be.length(1)
     })
@@ -79,8 +86,12 @@ describe('Sidebar', () => {
       const props = {
         authActions
       }
-      Sidebar.__testOnly.logUserIn(props)
-      expect(spy).to.have.been.called.with('login', 'password')
+      const credentials = {
+        mail: 'my-mail',
+        password: 'my-password'
+      }
+      Sidebar.__testOnly.logUserIn(props, credentials)
+      expect(spy).to.have.been.called.with('my-mail', 'my-password')
     })
   })
 
@@ -94,6 +105,34 @@ describe('Sidebar', () => {
         authActions
       }
       Sidebar.__testOnly.disconnectUser(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('openLoginModal', () => {
+    it('Expect to have call authActions.openLoginModalAction', () => {
+      const authActions = {
+        openLoginModalAction: () => 0
+      }
+      let spy = chai.spy.on(authActions, 'openLoginModalAction')
+      const props = {
+        authActions
+      }
+      Sidebar.__testOnly.openLoginModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('closeLoginModal', () => {
+    it('Expect to have call authActions.closeLoginModalAction', () => {
+      const authActions = {
+        closeLoginModalAction: () => 0
+      }
+      let spy = chai.spy.on(authActions, 'closeLoginModalAction')
+      const props = {
+        authActions
+      }
+      Sidebar.__testOnly.closeLoginModal(props)
       expect(spy).to.have.been.called()
     })
   })

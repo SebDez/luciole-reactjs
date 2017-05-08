@@ -1,0 +1,36 @@
+/******************************
+* Auth CONTAINER
+* *****************************/
+
+.lu-modal{
+  .buttons{
+    text-align: center;
+
+    button{
+      width: 100%;
+      margin: 0 0 0 0;
+    }
+  }
+
+  .separate-footer{
+    margin-top: 15px;
+    border-top: 2px dashed $app-button-text-color;
+  }
+
+  .modal-footer.login-modal{
+    text-align: center;
+    display: block;
+
+    button{
+      background-color: #73e298;
+      width : auto;
+      height: 50px;
+      font-size: 20px;
+
+      &:hover{
+        background-color: $app-button-hover-color;
+        color: $app-button-bg-color;
+      }
+    }
+  }
+}

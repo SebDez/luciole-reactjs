@@ -1,4 +1,4 @@
-import AuthMockApi from './mock/auth-mock'
+import AuthApi from './api/auth-api'
 
 /**
  * Class for Authentication Service
@@ -11,7 +11,7 @@ export default class AuthService {
    */
   constructor () {
     /** @type {AuthMockApi} The api service to use */
-    this.api = new AuthMockApi()
+    this.api = new AuthApi()
   }
 
   /**
@@ -26,10 +26,11 @@ export default class AuthService {
 
   /**
    * Disconnect an user
+   * @param {string} token The user's token
    * @return {Object} A promise to resolve
    */
-  disconnectUser () {
-    return this.api.disconnectUser()
+  disconnectUser (token) {
+    return this.api.disconnectUser(token)
   }
 
   /**

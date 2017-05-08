@@ -30,4 +30,15 @@ describe('LucioleActions', () => {
       expect(serv.getAppEndpoint()).to.equals('my-url:42')
     })
   })
+
+  describe('addTokenQueryParamToUri', () => {
+    var serv
+    beforeEach(() => {
+      serv = new LucioleApi()
+    })
+
+    it('Expect to return the endpoint', () => {
+      expect(serv.addTokenQueryParamToUri('my-uri', 'my-token')).to.equals('my-uri?access_token=my-token')
+    })
+  })
 })

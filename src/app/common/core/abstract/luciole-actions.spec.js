@@ -31,7 +31,9 @@ describe('LucioleActions', () => {
         return {
           application: {
             auth: {
-              token: 'my-token'
+              user: {
+                token: 'my-token'
+              }
             }
           }
         }

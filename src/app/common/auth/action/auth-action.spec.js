@@ -14,6 +14,12 @@ describe('AuthAction', () => {
 
   beforeEach(() => {
     actions = new AuthAction()
+    actions.toastrHelper = {
+      showMessage: () => 0
+    }
+    actions.i18n = {
+      t: () => 'mytext'
+    }
   })
 
   describe('logUserInSuccessAction', () => {
@@ -52,8 +58,8 @@ describe('AuthAction', () => {
   describe('logUserIn', () => {
     let mockService, mockActions, service, spy
     const data = {
-      data: {
-        token: 'my-token'
+      body: {
+        access_token: 'my-token'
       }
     }
 
@@ -124,6 +130,15 @@ describe('AuthAction', () => {
         done()
       })
     })
+
+    it('Expect to have call toastrHelper showMessage', (done) => {
+      mockService.expects('logUserIn').resolves(Promise.reject('error'))
+      spy = chai.spy.on(actions.toastrHelper, 'showMessage')
+      actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called()
+        done()
+      })
+    })
   })
 
   describe('disconnectUser', () => {
@@ -148,6 +163,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call disconnectUser', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves()
       mockActions.expects('disconnectUserInSuccessAction').returns('disconnectUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'disconnectUser')
@@ -158,6 +174,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call dispatch with good params in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves()
       mockActions.expects('disconnectUserInSuccessAction').returns('disconnectUserInSuccessAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
@@ -168,6 +185,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call disconnectUserInSuccessAction in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves()
       mockActions.expects('disconnectUserInSuccessAction').returns('disconnectUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'disconnectUserInSuccessAction')
@@ -178,6 +196,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call dispatch with error value in case of failure', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves(Promise.reject('error'))
       mockActions.expects('disconnectUserInFailureAction').returns('disconnectUserInFailureAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
@@ -188,6 +207,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call disconnectUserInFailureAction with good params in case of failure', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves(Promise.reject('error'))
       mockActions.expects('disconnectUserInFailureAction').returns('disconnectUserInFailureAction-result')
       spy = chai.spy.on(actions, 'disconnectUserInFailureAction')
@@ -195,6 +215,18 @@ describe('AuthAction', () => {
         expect(spy).to.have.been.called.with('error')
         done()
       })
+    })
+  })
+
+  describe('openLoginModalAction', () => {
+    it('Expect to return OPEN_LOGIN_MODAL as action type', () => {
+      expect(actions.openLoginModalAction().type).to.equal('OPEN_LOGIN_MODAL')
+    })
+  })
+
+  describe('closeLoginModalAction', () => {
+    it('Expect to return CLOSE_LOGIN_MODAL as action type', () => {
+      expect(actions.closeLoginModalAction().type).to.equal('CLOSE_LOGIN_MODAL')
     })
   })
 })
