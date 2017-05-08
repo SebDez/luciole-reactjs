@@ -209,5 +209,4 @@ describe('AuthAction', () => {
       expect(actions.closeLoginModalAction().type).to.equal('CLOSE_LOGIN_MODAL')
     })
   })
-
 })
