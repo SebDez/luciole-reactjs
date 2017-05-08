@@ -148,6 +148,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call disconnectUser', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves()
       mockActions.expects('disconnectUserInSuccessAction').returns('disconnectUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'disconnectUser')
@@ -158,6 +159,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call dispatch with good params in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves()
       mockActions.expects('disconnectUserInSuccessAction').returns('disconnectUserInSuccessAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
@@ -168,6 +170,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call disconnectUserInSuccessAction in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves()
       mockActions.expects('disconnectUserInSuccessAction').returns('disconnectUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'disconnectUserInSuccessAction')
@@ -178,6 +181,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call dispatch with error value in case of failure', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves(Promise.reject('error'))
       mockActions.expects('disconnectUserInFailureAction').returns('disconnectUserInFailureAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
@@ -188,6 +192,7 @@ describe('AuthAction', () => {
     })
 
     it('Expect to have call disconnectUserInFailureAction with good params in case of failure', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
       mockService.expects('disconnectUser').resolves(Promise.reject('error'))
       mockActions.expects('disconnectUserInFailureAction').returns('disconnectUserInFailureAction-result')
       spy = chai.spy.on(actions, 'disconnectUserInFailureAction')

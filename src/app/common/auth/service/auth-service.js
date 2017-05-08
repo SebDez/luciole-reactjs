@@ -26,10 +26,11 @@ export default class AuthService {
 
   /**
    * Disconnect an user
+   * @param {string} token The user's token
    * @return {Object} A promise to resolve
    */
-  disconnectUser () {
-    return this.api.disconnectUser()
+  disconnectUser (token) {
+    return this.api.disconnectUser(token)
   }
 
   /**

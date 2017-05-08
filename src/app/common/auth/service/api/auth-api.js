@@ -20,12 +20,12 @@ export default class AuthApi extends LucioleApi {
 
   /**
    * Disconnect an user
+   * @param {string} token The user's token
    * @return {Object} A promise to resolve
    */
-  disconnectUser () {
-    // @TODO : add tokens to URI
+  disconnectUser (token) {
     const endpoint = this.getAppEndpoint()
-    const uri = `${endpoint}/v1/logout`
+    const uri = this.addTokenQueryParamToUri(`${endpoint}/v1/logout`, token)
     return this.requestHelper.post(uri)
   }
 

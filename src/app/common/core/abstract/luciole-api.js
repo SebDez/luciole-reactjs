@@ -25,6 +25,15 @@ class LucioleApi {
     return `${this.appConf.api.url}:${this.appConf.api.port}`
   }
 
+  /**
+   * Add token query params to api uri string
+   * @param {string} uri The uri to use
+   * @param {string} token The token to use
+   * @returns {string} The uri string with token query param
+   */
+  addTokenQueryParamToUri (uri, token) {
+    return `${uri}?access_token=${token}`
+  }
 }
 
 /**

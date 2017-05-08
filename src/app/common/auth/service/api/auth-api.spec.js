@@ -58,14 +58,14 @@ describe('AuthApi', () => {
 
     it('Expect to return a promise', () => {
       mockService.expects('getAppEndpoint').returns('endpoint')
-      expect(serv.disconnectUser()).to.be.an.instanceof(Promise)
+      expect(serv.disconnectUser('mytoken')).to.be.an.instanceof(Promise)
     })
 
     it('Expect to have call post method', (done) => {
       mockService.expects('getAppEndpoint').returns('endpoint')
       let spy = chai.spy.on(rHelper, 'post')
-      let uri = 'endpoint/v1/logout'
-      serv.disconnectUser().then(() => {
+      let uri = 'endpoint/v1/logout?access_token=mytoken'
+      serv.disconnectUser('mytoken').then(() => {
         expect(spy).to.have.been.called.with(uri)
         done()
       })

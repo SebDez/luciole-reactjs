@@ -28,8 +28,8 @@ describe('AuthService', () => {
   describe('disconnectUser', () => {
     it('Expect to have call api disconnectUser', (done) => {
       spy = chai.spy.on(service.api, 'disconnectUser')
-      service.disconnectUser().then(() => {
-        expect(spy).to.have.been.called.once()
+      service.disconnectUser('mytoken').then(() => {
+        expect(spy).to.have.been.called.with('mytoken')
         done()
       })
     })

@@ -51,8 +51,9 @@ export default class AuthActions extends LucioleActions {
    * @return {Object}          The action to dispatch
    */
   disconnectUser () {
-    return dispatch => {
-      return this.authService.disconnectUser().then(() => {
+    return (dispatch, getState) => {
+      const token = this.getTokenFromGetState(getState)
+      return this.authService.disconnectUser(token).then(() => {
         dispatch(this.disconnectUserInSuccessAction())
       }, err => {
         dispatch(this.disconnectUserInFailureAction(err))
