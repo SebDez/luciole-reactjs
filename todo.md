@@ -21,8 +21,8 @@
 
 # V0.3.0 : Auth
 
- * Login Process | login_module | **IN_PROGRESS**
- * Disconnect process | disconnect_module| **TODO**
+ * Login Process | login_module | **DONE**
+ * Disconnect process | disconnect_module| **DONE**
 
 # V0.4.0 : User account
 
