@@ -1,6 +1,7 @@
 import Constants from './../../constants'
 import AuthService from './../service/auth-service'
 import LucioleActions from './../../core/abstract/luciole-actions'
+import { I18n } from 'react-redux-i18n'
 
 /**
  * Class for AuthActions
@@ -16,6 +17,8 @@ export default class AuthActions extends LucioleActions {
     super()
     /** @type {AuthService}*/
     this.authService = new AuthService()
+    /** @type {I18n}*/
+    this.i18n = I18n
     /** @type {Function}*/
     this.logUserIn = this.logUserIn.bind(this)
     /** @type {Function}*/
@@ -39,8 +42,11 @@ export default class AuthActions extends LucioleActions {
   logUserIn (login, password) {
     return dispatch => {
       return this.authService.logUserIn(login, password).then(res => {
-        dispatch(this.logUserInSuccessAction(res.data.token))
+        dispatch(this.logUserInSuccessAction(res.body.access_token))
       }, err => {
+        const title = this.i18n.t('application.auth.tstFailTitle')
+        const msg = this.i18n.t('application.auth.tstFailMessage')
+        this.toastrHelper.showMessage('warning', title, msg)
         dispatch(this.logUserInFailureAction(err))
       })
     }

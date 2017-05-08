@@ -32,7 +32,7 @@ class LucioleActions {
    * @returns {Object} The user token
    */
   getTokenFromGetState (getState) {
-    return getState().application.auth.token
+    return getState().application.auth.user.token
   }
 
   /**

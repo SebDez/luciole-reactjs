@@ -14,6 +14,12 @@ describe('AuthAction', () => {
 
   beforeEach(() => {
     actions = new AuthAction()
+    actions.toastrHelper = {
+      showMessage: () => 0
+    }
+    actions.i18n = {
+      t: () => 'mytext'
+    }
   })
 
   describe('logUserInSuccessAction', () => {
@@ -52,8 +58,8 @@ describe('AuthAction', () => {
   describe('logUserIn', () => {
     let mockService, mockActions, service, spy
     const data = {
-      data: {
-        token: 'my-token'
+      body: {
+        access_token: 'my-token'
       }
     }
 
@@ -121,6 +127,15 @@ describe('AuthAction', () => {
       spy = chai.spy.on(actions, 'logUserInFailureAction')
       actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
         expect(spy).to.have.been.called.with('error')
+        done()
+      })
+    })
+
+    it('Expect to have call toastrHelper showMessage', (done) => {
+      mockService.expects('logUserIn').resolves(Promise.reject('error'))
+      spy = chai.spy.on(actions.toastrHelper, 'showMessage')
+      actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called()
         done()
       })
     })

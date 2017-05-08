@@ -66,9 +66,10 @@ function disconnectUser (props) {
 /**
  * Log an user in
  * @param  {Object} props The container props
+ * @param  {Object} credentials The credentials to use
  */
-function logUserIn (props) {
-  props.authActions.logUserIn('login', 'password')
+function logUserIn (props, credentials) {
+  props.authActions.logUserIn(credentials.mail, credentials.password)
 }
 
 /**

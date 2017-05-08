@@ -1,4 +1,4 @@
-import AuthMockApi from './mock/auth-mock'
+import AuthApi from './api/auth-api'
 
 /**
  * Class for Authentication Service
@@ -11,7 +11,7 @@ export default class AuthService {
    */
   constructor () {
     /** @type {AuthMockApi} The api service to use */
-    this.api = new AuthMockApi()
+    this.api = new AuthApi()
   }
 
   /**

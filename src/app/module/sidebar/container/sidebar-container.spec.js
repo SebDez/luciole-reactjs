@@ -86,8 +86,12 @@ describe('Sidebar', () => {
       const props = {
         authActions
       }
-      Sidebar.__testOnly.logUserIn(props)
-      expect(spy).to.have.been.called.with('login', 'password')
+      const credentials = {
+        mail: 'my-mail',
+        password: 'my-password'
+      }
+      Sidebar.__testOnly.logUserIn(props, credentials)
+      expect(spy).to.have.been.called.with('my-mail', 'my-password')
     })
   })
 

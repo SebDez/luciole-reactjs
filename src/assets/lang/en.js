@@ -9,7 +9,9 @@ export default {
       login: 'Login',
       goToSignupTitle: 'New to Luciole ?',
       goToSignup: 'Create an account',
-      loginTitle: 'Join the adventure'
+      loginTitle: 'Join the adventure',
+      tstFailTitle: 'Fail to login',
+      tstFailMessage: 'Your mail or your password is not valid.'
     },
     sidebar: {
       home: 'Home',

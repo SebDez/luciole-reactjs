@@ -9,7 +9,9 @@ export default {
       login: 'Me connecter',
       goToSignupTitle: 'Pas encore inscrit ?',
       goToSignup: 'Je m \'inscris !',
-      loginTitle: 'Rejoignez l\'aventure'
+      loginTitle: 'Rejoignez l\'aventure',
+      tstFailTitle: 'Impossible de vous connecter',
+      tstFailMessage: 'Votre mail ou votre mot passe n\'est pas reconnu.'
     },
     sidebar: {
       home: 'Accueil',
