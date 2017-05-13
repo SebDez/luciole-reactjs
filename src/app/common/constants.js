@@ -3,6 +3,9 @@
 * @type {Object}
  */
 export default {
+  ERRORS: {
+    ALREADY_MANAGED: 'LUCIOLE-ERROR-ALREADY-MANAGED'
+  },
   LANGUAGE: [
     {key: '1', label: 'fr'},
     {key: '2', label: 'en'}

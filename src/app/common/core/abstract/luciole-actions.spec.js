@@ -1,5 +1,6 @@
 import {expect} from 'chai'
 import LucioleActions from './luciole-actions'
+import Constants from './../../constants'
 
 let chai = require('chai')
 let spies = require('chai-spies')
@@ -20,6 +21,12 @@ describe('LucioleActions', () => {
       let spy = chai.spy.on(serv.restHelper, 'manageErrors')
       serv.manageHttpErrors('error')
       expect(spy).to.have.been.called.with('error')
+    })
+
+    it('Expect to not call restHelper manageErrors if error ALREADY_MANAGED', () => {
+      let spy = chai.spy.on(serv.restHelper, 'manageErrors')
+      serv.manageHttpErrors(Constants.ERRORS.ALREADY_MANAGED)
+      expect(spy).not.to.have.been.called()
     })
   })
 

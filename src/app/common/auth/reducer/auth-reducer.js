@@ -25,7 +25,7 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_LOGIN_MODAL, closeLoginM
  * @return {Object}       The new state
  */
 export function logUserSuccessAction (state, action) {
-  return objectAssign({}, state, {user: {token: action.token}, modals: {showLoginModal: false}})
+  return objectAssign({}, state, {user: action.user, modals: {showLoginModal: false}})
 }
 
 /**
@@ -34,7 +34,7 @@ export function logUserSuccessAction (state, action) {
  * @return {Object}       The new state
  */
 export function logUserFailureAction (state) {
-  return objectAssign({}, state, {user: {token: null}})
+  return objectAssign({}, state, {user: null})
 }
 
 /**
@@ -44,7 +44,7 @@ export function logUserFailureAction (state) {
  * @return {Object}       The new state
  */
 export function disconnectUserSuccessAction (state, action) {
-  return objectAssign({}, state, {user: {token: null}})
+  return objectAssign({}, state, {user: null})
 }
 
 /**

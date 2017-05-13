@@ -4,9 +4,9 @@
 export default class MockUserService {
 
   /**
-   * A fake getUserInformations method
+   * A fake getUserProfile method
    */
-  getUserInformations () {
+  getUserProfile () {
     return Promise.resolve()
   }
 

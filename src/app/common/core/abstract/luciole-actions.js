@@ -23,7 +23,9 @@ class LucioleActions {
    * @type {Object} error The error received
    */
   manageHttpErrors (error) {
-    this.restHelper.manageErrors(error)
+    if (error !== Constants.ERRORS.ALREADY_MANAGED) {
+      this.restHelper.manageErrors(error)
+    }
   }
 
   /**

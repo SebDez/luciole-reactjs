@@ -46,7 +46,7 @@ export const UserPage = (props) => {
  */
 function mapStateToProps (state) {
   return {
-    user: state.application.module.main.user
+    user: state.application.auth.user
   }
 }
 
