@@ -35,7 +35,20 @@ export default {
       subject: 'Subject',
       content: 'Message content',
       submit: 'Send message'
-    }
+    },
+    user: {
+      gender: {
+        label: 'Gender',
+        male: 'Male',
+        female: 'Female'
+      },
+      birthDate: 'Birth date',
+      signUpDate: 'Registered since',
+      country: 'Country',
+      city: 'City',
+      datasTitle: 'My personal datas'
+    },
+    not_set: 'Not specified'
   },
   date: {
     long: 'MMMM Do, YYYY'

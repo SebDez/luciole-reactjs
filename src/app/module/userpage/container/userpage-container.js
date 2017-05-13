@@ -31,7 +31,7 @@ export const UserPage = (props) => {
       <Row>
         <Col className='sidebar-block-col' xs={12} md={12}>
           <div className='lu-container'>
-            <UserDatasRead />
+            <UserDatasRead user={props.user} />
           </div>
         </Col>
       </Row>

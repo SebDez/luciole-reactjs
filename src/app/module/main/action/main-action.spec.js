@@ -1,5 +1,4 @@
 import MainActions from './main-action'
-import TestHelper from './../../../../test/mock/test-helper'
 
 require('sinon-as-promised')
 let chai = require('chai')

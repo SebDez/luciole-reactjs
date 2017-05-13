@@ -29,5 +29,11 @@ describe('LuciolePageHeader', () => {
       const expected = 'mytitle'
       expect(actual).to.be.equal(expected)
     })
+
+    it('Expect to contain 1 h1', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find('h1')
+      expect(actual).to.have.length(1)
+    })
   })
 })

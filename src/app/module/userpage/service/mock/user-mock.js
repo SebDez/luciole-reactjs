@@ -18,6 +18,10 @@ export default class UserMockApi {
     })
   }
 
+  /**
+   * Return a fake User
+   * @return {User} The fake use
+   */
   getUserMocked () {
     const mockHelper = new MockHelper()
     return new User({
@@ -29,8 +33,8 @@ export default class UserMockApi {
       signUpDate: mockHelper.getRandomDate(new Date(2010, 5, 24), new Date(2017, 5, 24)),
       birthDate: mockHelper.getRandomDate(new Date(1980, 5, 24), new Date(2000, 5, 24)),
       gender: mockHelper.getRandomInt(1, 2),
-      country: mockHelper.getRandomWord(),
-      city: mockHelper.getRandomWord(),
+      country: mockHelper.getRandomCountry(),
+      city: null,
       avatar: mockHelper.getRandomImgSrc()
     })
   }

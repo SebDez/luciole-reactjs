@@ -16,8 +16,8 @@ class LuciolePageHeader extends LucioleComponent {
   render () {
     return (
       <div className='page-header'>
-        <FontAwesome size='2x' name={this.props.icon} />
-        <h2><LuI18n value={this.props.title} /></h2>
+        <FontAwesome size='3x' name={this.props.icon} />
+        <h1><LuI18n value={this.props.title} /></h1>
       </div>
     )
   }

@@ -142,4 +142,13 @@ describe('MockHelper', () => {
       expect(service.getRandomDate(begin, end)).to.afterDate(begin)
     })
   })
+
+  describe('getRandomCountry', () => {
+    it('Expect to return a string', () => {
+      expect(typeof service.getRandomCountry()).to.equal('string')
+    })
+    it('Expect to return a string in countryCodes list', () => {
+      expect(service.countryCodes.indexOf(service.getRandomCountry())).to.be.above(-1)
+    })
+  })
 })

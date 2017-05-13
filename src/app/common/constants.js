@@ -36,5 +36,11 @@ export default {
     APP: {
       DO_NOTHING: 'DO_NOTHING'
     }
+  },
+  USER: {
+    GENDER: {
+      1: 'application.user.gender.male',
+      2: 'application.user.gender.female'
+    }
   }
 }
