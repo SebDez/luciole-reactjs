@@ -1,0 +1,19 @@
+/******************************
+* USERPAGE CONTAINER
+* *****************************/
+.userpage{
+  .user-avatar{
+    img{
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .userpage-avatar{
+    text-align: center;
+  }
+
+  .userpage-account{
+    height: 120px;
+  }
+}

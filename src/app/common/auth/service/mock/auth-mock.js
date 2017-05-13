@@ -11,9 +11,9 @@ export default class AuthMockApi {
    */
   logUserIn () {
     return Promise.resolve({
-      data: {
+      body: {
         user: 'my user',
-        token: 'my new token'
+        access_token: 'my new token'
       }
     })
   }

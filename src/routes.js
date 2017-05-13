@@ -27,7 +27,8 @@ export default (store) => {
         <Route path='/cgu' component={CGUPage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contact' component={ContactPage} />
-        <Route path='/user' component={UserPage} />
+        <Route path='/user' component={UserPage}
+          onChange={checkAuth(store)} onEnter={checkAuth(store)} />
       </Route>
     </Route>
   )

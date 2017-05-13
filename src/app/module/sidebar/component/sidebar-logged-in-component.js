@@ -31,7 +31,7 @@ class SidebarLoggedIn extends LucioleComponent {
         <SidebarLink text={'application.sidebar.stats'} icon={'line-chart'} link={'/'} lang={lang} />
         <SidebarLink text={'application.sidebar.forum'} icon={'bank'} link={'/'} lang={lang} />
         <SidebarLink text={'application.sidebar.contact'} icon={'envelope'} link={'/contact'} lang={lang} />
-        <SidebarLink text={'application.sidebar.account'} icon={'user'} link={'/'} lang={lang} />
+        <SidebarLink text={'application.sidebar.account'} icon={'user'} link={'/user'} lang={lang} />
         <SidebarLink text={'application.sidebar.logout'} icon={'sign-out'} link={'/'} onClick={this.props.disconnectUser} lang={lang} />
       </div>
     )

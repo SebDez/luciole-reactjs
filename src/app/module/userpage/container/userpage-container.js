@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
 import { Grid, Row, Col } from 'react-bootstrap'
+import UserAvatar from './../../../common/component/avatar/user-avatar-component'
+import UserDatasRead from './../component/user-datas-read-component'
+import UserAccountRead from './../component/user-account-read-component'
 
 /**
  * UserPage container, used to define the composition of the UserPage screen
@@ -11,24 +14,24 @@ import { Grid, Row, Col } from 'react-bootstrap'
  */
 export const UserPage = (props) => {
   return (
-    <Grid className='lu-grid'>
+    <Grid className='lu-grid userpage'>
       <LuciolePageHeader title='application.sidebar.account' icon='user' />
       <Row>
         <Col className='sidebar-block-col' xs={12} md={2}>
-          <div className='lu-container'>
-            PICTURE
+          <div className='lu-container userpage-avatar'>
+            <UserAvatar src={props.user.avatar} />
           </div>
         </Col>
         <Col className='sidebar-block-col' xs={12} md={10}>
-          <div className='lu-container'>
-            MAIN DATAS
+          <div className='lu-container userpage-account'>
+            <UserAccountRead />
           </div>
         </Col>
       </Row>
       <Row>
         <Col className='sidebar-block-col' xs={12} md={12}>
           <div className='lu-container'>
-            MORE DATAS
+            <UserDatasRead />
           </div>
         </Col>
       </Row>
@@ -42,7 +45,9 @@ export const UserPage = (props) => {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    user: state.application.module.main.user
+  }
 }
 
 /**
@@ -58,7 +63,9 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-UserPage.propTypes = {}
+UserPage.propTypes = {
+  user: PropTypes.object.isRequired
+}
 
 UserPage.mapStateToProps = mapStateToProps
 UserPage.mapDispatchToProps = mapDispatchToProps
