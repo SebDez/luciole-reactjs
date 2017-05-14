@@ -24,7 +24,7 @@ export default class RestHelper {
   * @type {Object} error The error received
   */
   manageErrors (error) {
-    const httpCode = error.httpCode
+    const httpCode = error.response && error.response.status ? error.response.status : null
     const errorCode = this.managedCodes.indexOf(httpCode) > -1 ? httpCode : 'other'
     const httpResponses = {
       401: {

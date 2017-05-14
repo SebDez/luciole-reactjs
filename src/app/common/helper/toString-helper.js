@@ -21,7 +21,10 @@ export default class ToStringHelper {
  * @return {string}           The luciole date string
  */
   dateToString (dateToConvert) {
-    return dateToConvert.toLocaleDateString()
+    if (dateToConvert && dateToConvert.toLocaleDateString) {
+      return dateToConvert.toLocaleDateString()
+    }
+    return null
   }
 
   /**
@@ -30,7 +33,7 @@ export default class ToStringHelper {
    * @return {string}           The gender string
    */
   genderToString (genderCode) {
-    return this.i18n.t(Constants.USER.GENDER[genderCode])
+    return Constants.USER.GENDER[genderCode] ? this.i18n.t(Constants.USER.GENDER[genderCode]) : null
   }
 
   /**

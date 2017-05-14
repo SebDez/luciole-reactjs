@@ -59,15 +59,9 @@ describe('AuthAction', () => {
 
   describe('logUserIn', () => {
     let mockService, mockUsrServ, mockActions, service, usrService, spy
-    const data = {
-      body: {
-        access_token: 'my-token'
-      }
-    }
+    const data = 'my-token'
 
-    const usrData = {
-      body: new User({username: 'my-username', mail: 'my-mail'})
-    }
+    const usrData = new User({username: 'my-username', mail: 'my-mail'})
 
     beforeEach(() => {
       service = new AuthService()
@@ -131,7 +125,7 @@ describe('AuthAction', () => {
       mockActions.expects('logUserInSuccessAction').returns('logUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'logUserInSuccessAction')
       actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
-        expect(spy).to.have.been.called.with(usrData.body)
+        expect(spy).to.have.been.called.with(usrData)
         done()
       })
     })

@@ -16,14 +16,24 @@ describe('ToStringHelper', () => {
   })
 
   describe('genderToString', () => {
-    it('Expect to return a string', () => {
+    it('Expect to return a string if gender exist', () => {
       expect(typeof service.genderToString(1)).to.equal('string')
     })
 
-    it('Expect to have call i18n.t', () => {
+    it('Expect to have call i18n.t if gender exist', () => {
       spy = chai.spy.on(service.i18n, 't')
       service.genderToString(1)
       expect(spy).to.have.been.called.once
+    })
+
+    it('Expect to return null if gender not exist', () => {
+      expect(service.genderToString(23)).to.equal(null)
+    })
+
+    it('Expect to not call i18n.t if gender not exist', () => {
+      spy = chai.spy.on(service.i18n, 't')
+      service.genderToString(23)
+      expect(spy).not.to.have.been.called
     })
   })
 
@@ -57,6 +67,14 @@ describe('ToStringHelper', () => {
       spy = chai.spy.on(mydate, 'toLocaleDateString')
       service.dateToString(mydate)
       expect(spy).to.have.been.called.once
+    })
+
+    it('Expect to return null if no date given', () => {
+      expect(service.dateToString(null)).to.equal(null)
+    })
+
+    it('Expect to return null if given date is not a date', () => {
+      expect(service.dateToString('notadate')).to.equal(null)
     })
   })
 })

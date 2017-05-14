@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import LucioleComponent from './../../core/abstract/luciole-component'
+import Constants from './../../constants'
 
 /**
  * UserAvatar Component
@@ -12,9 +13,10 @@ class UserAvatar extends LucioleComponent {
    * @return {Object} React component tree
    */
   render () {
+    const src = this.props.src ? this.props.src : Constants.USER.AVATAR.DEFAULT
     return (
       <div className='user-avatar'>
-        <img src={this.props.src} />
+        <img src={src} />
       </div>)
   }
 }
@@ -24,7 +26,7 @@ class UserAvatar extends LucioleComponent {
  * @type {Object}
  */
 UserAvatar.propTypes = {
-  src: PropTypes.string.isRequired
+  src: PropTypes.string
 }
 
 /**

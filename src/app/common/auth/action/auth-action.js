@@ -45,8 +45,8 @@ export default class AuthActions extends LucioleActions {
   logUserIn (login, password) {
     var token = null
     return dispatch => {
-      return this.authService.logUserIn(login, password).then(res => {
-        token = res.body.access_token
+      return this.authService.logUserIn(login, password).then(mytoken => {
+        token = mytoken
         return this.userService.getUserProfile(token)
       }, err => {
         const title = this.i18n.t('application.auth.tstFailTitle')
@@ -55,8 +55,7 @@ export default class AuthActions extends LucioleActions {
         dispatch(this.logUserInFailureAction(err))
         return Promise.reject(Constants.ERRORS.ALREADY_MANAGED)
       })
-      .then(result => {
-        const user = result.body
+      .then(user => {
         user.setToken(token)
         dispatch(this.logUserInSuccessAction(user))
       }, this.manageHttpErrors.bind(this))
