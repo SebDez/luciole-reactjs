@@ -35,7 +35,25 @@ export default {
       subject: 'Sujet',
       content: 'Contenu du message',
       submit: 'Envoyer mon message'
-    }
+    },
+    user: {
+      gender: {
+        label: 'Genre',
+        male: 'Homme',
+        female: 'Femme'
+      },
+      birthDate: 'Date de naissance',
+      signUpDate: 'Inscrit depuis le',
+      country: 'Pays',
+      city: 'Ville',
+      datasTitle: 'Mes données personnelles',
+      mail: 'E-mail',
+      username: 'Pseudo',
+      usertag: 'Usertag',
+      password: 'Changer mon mot de passe',
+      accountTitle: 'Mes informations de compte'
+    },
+    not_set: 'Non renseigné'
   },
   date: {
     long: 'D MMMM YYYY'

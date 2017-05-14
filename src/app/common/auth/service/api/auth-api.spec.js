@@ -9,11 +9,12 @@ let sinon = require('sinon')
 
 describe('AuthApi', () => {
   describe('logUserIn', () => {
-    var serv, rHelper, mockService
+    var serv, rHelper, mockService, mockRequestHelper
 
     beforeEach(() => {
       rHelper = new MockRequestHelper()
       serv = new AuthApi()
+      mockRequestHelper = sinon.mock(rHelper)
       serv.requestHelper = rHelper
       mockService = sinon.mock(serv)
     })
@@ -21,21 +22,49 @@ describe('AuthApi', () => {
     afterEach(() => {
       mockService.verify()
       mockService.restore()
+      mockRequestHelper.verify()
+      mockRequestHelper.restore()
     })
 
     it('Expect to return a promise', () => {
       mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
       expect(serv.logUserIn('login', 'password')).to.be.an.instanceof(Promise)
     })
 
     it('Expect to have call post method', (done) => {
       mockService.expects('getAppEndpoint').returns('endpoint')
       mockService.expects('encodeLogData').returns('encodedLogData')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
       let spy = chai.spy.on(rHelper, 'post')
       let uri = 'endpoint/oauth2/token/owner'
-      let body = 'encodedLogData'
       serv.logUserIn('login', 'password').then(() => {
-        expect(spy).to.have.been.called.with(uri, body)
+        expect(spy).to.have.been.called.with(uri, 'encodedLogData')
+        done()
+      })
+    })
+
+    it('Expect to have call decodeToken', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('encodeLogData').returns('encodedLogData')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
+      let spy = chai.spy.on(serv, 'decodeToken')
+      serv.logUserIn('login', 'password').then(() => {
+        expect(spy).to.have.been.called.with(response.body)
+        done()
+      })
+    })
+
+    it('Expect to resolve the token', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('encodeLogData').returns('encodedLogData')
+      let response = {body: {access_token: 'mytoken'}}
+      mockRequestHelper.expects('post').resolves(response)
+      serv.logUserIn('login', 'password').then(res => {
+        expect(res).to.equal('mytoken')
         done()
       })
     })
@@ -92,6 +121,21 @@ describe('AuthApi', () => {
 
     it('Expect to return an object with valid grant_type', () => {
       expect(serv.encodeLogData('login', 'password').grant_type).to.equals('password')
+    })
+  })
+
+  describe('decodeToken', () => {
+    var serv
+    beforeEach(() => {
+      serv = new AuthApi()
+    })
+
+    it('Expect to return null if there is no token', () => {
+      expect(serv.decodeToken(null)).to.equals(null)
+    })
+
+    it('Expect to return valid token', () => {
+      expect(serv.decodeToken({access_token: 'mytoken'})).to.equals('mytoken')
     })
   })
 })

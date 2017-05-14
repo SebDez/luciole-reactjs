@@ -20,13 +20,19 @@ describe('AuthReducer', () => {
   describe('logUserSuccessAction', () => {
     it('Expect to return a valid state', () => {
       action = {
-        token: 'my-new-token'
+        user: {
+          token: 'my-new-token',
+          _id: 'my_id',
+          username: 'my-username'
+        }
       }
       const result = AuthReducer.logUserSuccessAction(state, action)
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-new-token'
+          token: 'my-new-token',
+          _id: 'my_id',
+          username: 'my-username'
         },
         modals: {
           showLoginModal: false
@@ -41,9 +47,7 @@ describe('AuthReducer', () => {
       const result = AuthReducer.logUserFailureAction(state, action)
       const expected = {
         state: 'default-state-value',
-        user: {
-          token: null
-        }
+        user: null
       }
       expect(result).to.deep.equal(expected)
     })
@@ -54,9 +58,7 @@ describe('AuthReducer', () => {
       const result = AuthReducer.disconnectUserSuccessAction(state, action)
       const expected = {
         state: 'default-state-value',
-        user: {
-          token: null
-        }
+        user: null
       }
       expect(result).to.deep.equal(expected)
     })

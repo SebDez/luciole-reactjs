@@ -15,7 +15,9 @@ export default class AuthApi extends LucioleApi {
     const endpoint = this.getAppEndpoint()
     const body = this.encodeLogData(login, password)
     const uri = `${endpoint}/oauth2/token/owner`
-    return this.requestHelper.post(uri, body)
+    return this.requestHelper.post(uri, body).then(res => {
+      return this.decodeToken(res.body)
+    })
   }
 
   /**
@@ -27,6 +29,15 @@ export default class AuthApi extends LucioleApi {
     const endpoint = this.getAppEndpoint()
     const uri = this.addTokenQueryParamToUri(`${endpoint}/v1/logout`, token)
     return this.requestHelper.post(uri)
+  }
+
+  /**
+   * Decode JSON response to a Token object
+   * @param {Object} json The json to decode
+   * @return {Object}  A Token object
+   */
+  decodeToken (json) {
+    return json && json.access_token ? json.access_token : null
   }
 
   /**

@@ -13,12 +13,12 @@ describe('SidebarLoggedIn', () => {
       reloadResources: () => 2
     }
 
-    it('Expect to contain 9 SidebarLink with link to root', () => {
+    it('Expect to contain 6 SidebarLink with link to root', () => {
       const wrapper = shallow(<SidebarLoggedIn {...props} />)
       const actual = wrapper.find(SidebarLink).findWhere(n => {
         return n.prop('link') === '/'
       })
-      expect(actual).to.have.length(7)
+      expect(actual).to.have.length(6)
     })
 
     it('Expect to contain 1 SidebarLink with link to buildings', () => {
@@ -33,6 +33,14 @@ describe('SidebarLoggedIn', () => {
       const wrapper = shallow(<SidebarLoggedIn {...props} />)
       const actual = wrapper.find(SidebarLink).findWhere(n => {
         return n.prop('link') === '/contact'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 SidebarLink with link to userpage', () => {
+      const wrapper = shallow(<SidebarLoggedIn {...props} />)
+      const actual = wrapper.find(SidebarLink).findWhere(n => {
+        return n.prop('link') === '/user'
       })
       expect(actual).to.have.length(1)
     })

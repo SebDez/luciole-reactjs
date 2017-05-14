@@ -3,6 +3,9 @@
 * @type {Object}
  */
 export default {
+  ERRORS: {
+    ALREADY_MANAGED: 'LUCIOLE-ERROR-ALREADY-MANAGED'
+  },
   LANGUAGE: [
     {key: '1', label: 'fr'},
     {key: '2', label: 'en'}
@@ -32,6 +35,15 @@ export default {
     },
     APP: {
       DO_NOTHING: 'DO_NOTHING'
+    }
+  },
+  USER: {
+    GENDER: {
+      1: 'application.user.gender.male',
+      2: 'application.user.gender.female'
+    },
+    AVATAR: {
+      DEFAULT: 'https://thumbs.dreamstime.com/x/luciole-rougeoyante-5892712.jpg'
     }
   }
 }

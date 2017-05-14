@@ -80,6 +80,11 @@ export default class MockHelper {
       'http://orig02.deviantart.net/ae75/f/2012/317/3/f/3f082c662369f1b044e5b8aac27ff55d-d5kwivn.jpg',
       'http://orig15.deviantart.net/c489/f/2012/314/d/5/d5696220639bb2f0d7524c06466def46-d5kjarn.jpg'
     ]
+
+    /** @type {string[]} A list of countries' alpha code */
+    this.countryCodes = ['HKG', 'HMD', 'HND', 'HRV', 'HTI', 'HUN', 'IDN', 'IMN',
+    'IND', 'IOT', 'IRL', 'IRN', 'IRQ', 'ISL', 'ISR', 'ITA', 'JAM', 'JEY', 'JOR',
+    'JPN', 'KAZ', 'KEN', 'KGZ', 'KHM', 'KIR', 'KNA']
   }
 
   /**
@@ -181,5 +186,13 @@ export default class MockHelper {
       result.push(itemGenerator(i))
     }
     return result
+  }
+
+  /**
+   * Generate a random country alpha code
+   * @return {string}  A random country alpha code
+   */
+  getRandomCountry () {
+    return this.getRandomValueInArray(this.countryCodes)
   }
 }

@@ -40,15 +40,9 @@ function getSidebarBurgerElement (props) {
           <MainPageUserCard user={props.user} />
         </div>
       )
-    } else {
-      getUserInformations(props)
     }
   }
   return null
-}
-
-function getUserInformations (props) {
-  props.mainActions.getUserInformations()
 }
 
 /**
@@ -77,7 +71,7 @@ function mapStateToProps (state) {
   return {
     auth: state.application.auth,
     sidebar: state.application.module.sidebar,
-    user: state.application.module.main.user,
+    user: state.application.auth.user,
     langConfig: {
       open: state.application.module.main.modals.lang.open,
       currentLang: state.i18n.locale

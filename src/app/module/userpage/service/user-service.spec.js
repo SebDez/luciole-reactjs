@@ -15,10 +15,10 @@ describe('UserService', () => {
     service.api = api
   })
 
-  describe('getUserInformations', () => {
-    it('Expect to have call api getUserInformations', (done) => {
-      spy = chai.spy.on(service.api, 'getUserInformations')
-      service.getUserInformations().then(() => {
+  describe('getUserProfile', () => {
+    it('Expect to have call api getUserProfile', (done) => {
+      spy = chai.spy.on(service.api, 'getUserProfile')
+      service.getUserProfile().then(() => {
         expect(spy).to.have.been.called.once()
         done()
       })

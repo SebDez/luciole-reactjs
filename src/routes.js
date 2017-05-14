@@ -9,6 +9,7 @@ import BuildingsPage from './app/module/buildings/container/buildings-container'
 import CGUPage from './app/module/cgu/container/cgu-container'
 import AboutPage from './app/module/about/container/about-container'
 import ContactPage from './app/module/contact/container/contact-container'
+import UserPage from './app/module/userpage/container/userpage-container'
 
 // SERVICES
 import AuthService from './app/common/auth/service/auth-service'
@@ -26,6 +27,8 @@ export default (store) => {
         <Route path='/cgu' component={CGUPage} />
         <Route path='/about' component={AboutPage} />
         <Route path='/contact' component={ContactPage} />
+        <Route path='/user' component={UserPage}
+          onChange={checkAuth(store)} onEnter={checkAuth(store)} />
       </Route>
     </Route>
   )

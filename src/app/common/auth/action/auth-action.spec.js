@@ -1,6 +1,8 @@
 import AuthAction from './auth-action'
 import AuthService from './../service/auth-service'
 import TestHelper from './../../../../test/mock/test-helper'
+import UserService from './../../../module/userpage/service/user-service'
+import User from './../../../module/userpage/service/model/user-model'
 
 require('sinon-as-promised')
 let chai = require('chai')
@@ -26,8 +28,8 @@ describe('AuthAction', () => {
     it('Expect to return LOG_USER_IN_SUCCESS as action type', () => {
       expect(actions.logUserInSuccessAction('my-token').type).to.equal('LOG_USER_IN_SUCCESS')
     })
-    it('Expect to return the given token as action param', () => {
-      expect(actions.logUserInSuccessAction('my-token').token).to.equal('my-token')
+    it('Expect to return the given user as action param', () => {
+      expect(actions.logUserInSuccessAction('my-user').user).to.equal('my-user')
     })
   })
 
@@ -56,18 +58,19 @@ describe('AuthAction', () => {
   })
 
   describe('logUserIn', () => {
-    let mockService, mockActions, service, spy
-    const data = {
-      body: {
-        access_token: 'my-token'
-      }
-    }
+    let mockService, mockUsrServ, mockActions, service, usrService, spy
+    const data = 'my-token'
+
+    const usrData = new User({username: 'my-username', mail: 'my-mail'})
 
     beforeEach(() => {
       service = new AuthService()
       mockService = sinon.mock(service)
       actions.authService = service
       mockActions = sinon.mock(actions)
+      usrService = new UserService()
+      mockUsrServ = sinon.mock(usrService)
+      actions.userService = usrService
     })
 
     afterEach(() => {
@@ -75,6 +78,8 @@ describe('AuthAction', () => {
       mockService.restore()
       mockActions.verify()
       mockActions.restore()
+      mockUsrServ.verify()
+      mockUsrServ.restore()
     })
 
     it('Expect to return a function', () => {
@@ -83,16 +88,29 @@ describe('AuthAction', () => {
 
     it('Expect to have call logUserIn with good params', (done) => {
       mockService.expects('logUserIn').resolves(data)
+      mockUsrServ.expects('getUserProfile').resolves(usrData)
       mockActions.expects('logUserInSuccessAction').returns('logUserInSuccessAction-result')
-      spy = chai.spy.on(actions, 'logUserIn')
+      spy = chai.spy.on(actions.authService, 'logUserIn')
       actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
         expect(spy).to.have.been.called.with('my-login', 'my-password')
         done()
       })
     })
 
+    it('Expect to have call getUserProfile with good params', (done) => {
+      mockService.expects('logUserIn').resolves(data)
+      mockUsrServ.expects('getUserProfile').resolves(usrData)
+      mockActions.expects('logUserInSuccessAction').returns('logUserInSuccessAction-result')
+      spy = chai.spy.on(actions.userService, 'getUserProfile')
+      actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.with('my-token')
+        done()
+      })
+    })
+
     it('Expect to have call dispatch with good params in case of success', (done) => {
       mockService.expects('logUserIn').resolves(data)
+      mockUsrServ.expects('getUserProfile').resolves(usrData)
       mockActions.expects('logUserInSuccessAction').returns('logUserInSuccessAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
       actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
@@ -103,10 +121,11 @@ describe('AuthAction', () => {
 
     it('Expect to have call logUserInSuccessAction with good params in case of success', (done) => {
       mockService.expects('logUserIn').resolves(data)
+      mockUsrServ.expects('getUserProfile').resolves(usrData)
       mockActions.expects('logUserInSuccessAction').returns('logUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'logUserInSuccessAction')
       actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {
-        expect(spy).to.have.been.called.with('my-token')
+        expect(spy).to.have.been.called.with(usrData)
         done()
       })
     })
@@ -131,7 +150,7 @@ describe('AuthAction', () => {
       })
     })
 
-    it('Expect to have call toastrHelper showMessage', (done) => {
+    it('Expect to have call toastrHelper showMessage in case of failure', (done) => {
       mockService.expects('logUserIn').resolves(Promise.reject('error'))
       spy = chai.spy.on(actions.toastrHelper, 'showMessage')
       actions.logUserIn('my-login', 'my-password')(TestHelper.dispatch).then(() => {

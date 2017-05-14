@@ -10,7 +10,7 @@ export default class AuthService {
    * Create a new AuthService
    */
   constructor () {
-    /** @type {AuthMockApi} The api service to use */
+    /** @type {AuthApi} The api service to use */
     this.api = new AuthApi()
   }
 

@@ -2,6 +2,7 @@ import Constants from './../../constants'
 import AuthService from './../service/auth-service'
 import LucioleActions from './../../core/abstract/luciole-actions'
 import { I18n } from 'react-redux-i18n'
+import UserService from './../../../module/userpage/service/user-service'
 
 /**
  * Class for AuthActions
@@ -17,6 +18,8 @@ export default class AuthActions extends LucioleActions {
     super()
     /** @type {AuthService}*/
     this.authService = new AuthService()
+    /** @type {UserService}*/
+    this.userService = new UserService()
     /** @type {I18n}*/
     this.i18n = I18n
     /** @type {Function}*/
@@ -40,15 +43,22 @@ export default class AuthActions extends LucioleActions {
    * @return {Object}          The action to dispatch
    */
   logUserIn (login, password) {
+    var token = null
     return dispatch => {
-      return this.authService.logUserIn(login, password).then(res => {
-        dispatch(this.logUserInSuccessAction(res.body.access_token))
+      return this.authService.logUserIn(login, password).then(mytoken => {
+        token = mytoken
+        return this.userService.getUserProfile(token)
       }, err => {
         const title = this.i18n.t('application.auth.tstFailTitle')
         const msg = this.i18n.t('application.auth.tstFailMessage')
         this.toastrHelper.showMessage('warning', title, msg)
         dispatch(this.logUserInFailureAction(err))
+        return Promise.reject(Constants.ERRORS.ALREADY_MANAGED)
       })
+      .then(user => {
+        user.setToken(token)
+        dispatch(this.logUserInSuccessAction(user))
+      }, this.manageHttpErrors.bind(this))
     }
   }
 
@@ -71,13 +81,13 @@ export default class AuthActions extends LucioleActions {
    * Create an action with the LOG_USER_IN_SUCCESS type
    * Accepts the new token to put in Redux store
    * Returns a new action that can be managed by Redux
-   * @param  {string} token    The token to return
+   * @param  {User} user    The user to return
    * @return {Object}          The action
    */
-  logUserInSuccessAction (token) {
+  logUserInSuccessAction (user) {
     return {
       type: Constants.ACTIONS.AUTH.LOG_USER_IN_SUCCESS,
-      token
+      user
     }
   }
 

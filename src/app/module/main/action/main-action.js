@@ -1,5 +1,4 @@
 import Constants from './../../../common/constants'
-import UserResource from './../service/user-service'
 import { setLocale } from 'react-redux-i18n'
 import LucioleActions from './../../../common/core/abstract/luciole-actions'
 
@@ -15,28 +14,12 @@ export default class MainActions extends LucioleActions {
   /* istanbul ignore next */
   constructor () {
     super()
-    /** @type {UserResource}*/
-    this.userService = new UserResource()
-    /** @type {Function}*/
-    this.getUserInformations = this.getUserInformations.bind(this)
     /** @type {Function}*/
     this.changeLanguage = this.changeLanguage.bind(this)
     /** @type {Function}*/
     this.manageLangToggle = this.manageLangToggle.bind(this)
     /** @type {Object}*/
     this.i18nActions = {setLocale}
-  }
-
-  /**
-   * Get the user informations and dispatch action
-   * @return {Object}  The action to dispatch
-   */
-  getUserInformations () {
-    return dispatch => {
-      return this.userService.getUserInformations().then(res => {
-        dispatch(this.getUserInformationsSuccessAction(res.data))
-      })
-    }
   }
 
 /**

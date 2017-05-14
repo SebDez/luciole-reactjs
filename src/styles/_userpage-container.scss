@@ -1,0 +1,28 @@
+/******************************
+* USERPAGE CONTAINER
+* *****************************/
+.userpage{
+
+  .user-avatar{
+    img{
+      width: 200px;
+      height: 200px;
+    }
+    height: 241px;
+    line-height: 241px;
+    vertical-align: middle;
+  }
+
+  .userpage-avatar{
+    text-align: center;
+  }
+
+  .lu-big-button{
+  }
+
+  .buttons{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

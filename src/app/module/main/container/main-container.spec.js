@@ -22,11 +22,13 @@ describe('Main', () => {
   describe('mapStateToProps', () => {
     const state = {
       application: {
-        auth: 'my auth obj',
+        auth: {
+          val: 'my auth obj',
+          user: 'myuser'
+        },
         module: {
           sidebar: 'mysidebar',
           main: {
-            user: 'myuser',
             modals: {
               lang: {
                 open: true
@@ -40,19 +42,18 @@ describe('Main', () => {
       }
     }
     it('Expect to return a valid auth prop', () => {
-      expect(Main.mapStateToProps(state).auth).to.equal('my auth obj')
+      expect(Main.mapStateToProps(state).auth.val).to.equal('my auth obj')
     })
     it('Expect to return a valid sidebar prop', () => {
       expect(Main.mapStateToProps(state).sidebar).to.equal('mysidebar')
     })
     it('Expect to return a valid user prop', () => {
-      expect(Main.mapStateToProps(state).user).to.equal('myuser')
+      expect(Main.mapStateToProps(state).auth.user).to.equal('myuser')
     })
   })
 
   describe('render', () => {
     const mainActions = {
-      getUserInformations: () => 0,
       changeLanguage: () => 0,
       manageLangToggle: () => 1
     }
@@ -81,18 +82,46 @@ describe('Main', () => {
       const wrapper = shallow(<Main {...props} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
       expect(wrapper.find(MainPageUserCard)).to.be.length(1)
     })
-    it('Expect to have call mainActions.getUserInformations if user data not loaded', () => {
-      let spy = chai.spy.on(mainActions, 'getUserInformations')
-      const noUser = null
-      shallow(<Main {...props} user={noUser} sidebarActions={{}} mainActions={mainActions} sidebar={{}} />)
-      expect(spy).to.have.been.called()
-    })
   })
 
   describe('getSidebarBurgerElement', () => {
+    const props = {
+      auth: {
+        user: {
+          token: 'mytoken'
+        }
+      },
+      user: {
+        name: 'name'
+      }
+    }
+
     it('Expect to return null if user not logged in', () => {
       const noAuth = {}
       expect(Main.__testOnly.getSidebarBurgerElement(noAuth)).to.equal(null)
+    })
+
+    it('Expect to contain 1 MainPageSidebarBurger if user logged in', () => {
+      const wrapper = shallow(Main.__testOnly.getSidebarBurgerElement(props))
+      const actual = wrapper.find(MainPageSidebarBurger)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 MainPageUserCard if user logged in', () => {
+      const wrapper = shallow(Main.__testOnly.getSidebarBurgerElement(props))
+      const actual = wrapper.find(MainPageUserCard)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to return null if no user props', () => {
+      const noUserProp = {
+        auth: {
+          user: {
+            token: 'mytoken'
+          }
+        }
+      }
+      expect(Main.__testOnly.getSidebarBurgerElement(noUserProp)).to.equal(null)
     })
   })
 
