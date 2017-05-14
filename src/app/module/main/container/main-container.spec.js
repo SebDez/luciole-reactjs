@@ -85,9 +85,43 @@ describe('Main', () => {
   })
 
   describe('getSidebarBurgerElement', () => {
+    const props = {
+      auth: {
+        user: {
+          token: 'mytoken'
+        }
+      },
+      user: {
+        name: 'name'
+      }
+    }
+
     it('Expect to return null if user not logged in', () => {
       const noAuth = {}
       expect(Main.__testOnly.getSidebarBurgerElement(noAuth)).to.equal(null)
+    })
+
+    it('Expect to contain 1 MainPageSidebarBurger if user logged in', () => {
+      const wrapper = shallow(Main.__testOnly.getSidebarBurgerElement(props))
+      const actual = wrapper.find(MainPageSidebarBurger)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 MainPageUserCard if user logged in', () => {
+      const wrapper = shallow(Main.__testOnly.getSidebarBurgerElement(props))
+      const actual = wrapper.find(MainPageUserCard)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to return null if no user props', () => {
+      const noUserProp = {
+        auth: {
+          user: {
+            token: 'mytoken'
+          }
+        }
+      }
+      expect(Main.__testOnly.getSidebarBurgerElement(noUserProp)).to.equal(null)
     })
   })
 

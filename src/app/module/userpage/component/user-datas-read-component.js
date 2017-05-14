@@ -11,9 +11,11 @@ class UserDatasRead extends LucioleComponent {
 
   /**
    * Create a new UserDatasRead
+   * @param  {Object} props The component properties
+   * @param  {Object} context The app context
    */
-  constructor () {
-    super()
+  constructor (props, context) {
+    super(props, context)
     /** @type {ToStringHelper}*/
     this.toStringHelper = new ToStringHelper()
   }
