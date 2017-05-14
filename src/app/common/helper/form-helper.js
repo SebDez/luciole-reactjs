@@ -26,6 +26,10 @@ export default class FormHelper {
     /** @type {Function}*/
     this.isValidEmail = this.isValidEmail.bind(this)
     /** @type {Function}*/
+    this.isValidUsername = this.isValidUsername.bind(this)
+    /** @type {Function}*/
+    this.isValidPassword = this.isValidPassword.bind(this)
+    /** @type {Function}*/
     this.adviceDemo = this.adviceDemo.bind(this)
   }
 
@@ -72,6 +76,35 @@ export default class FormHelper {
    */
   isValidEmail (value) {
     return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? this.i18n.t('forms.emailInvalid') : undefined
+  }
+
+  /**
+   * Check if given field is a valid username
+   * @type {string} value The value to check
+   * @return {string} The error message to show, undefined if the value is valid
+   */
+  isValidUsername (value) {
+    let regex = /^[a-zA-Z0-9\s]+$/
+    if (!value || value.length < 4 || value.length > 20) {
+      return this.i18n.t('forms.usernameLengthInvalid')
+    } else if (typeof value !== 'string' || !regex.test(value)) {
+      return this.i18n.t('forms.usernameContentInvalid')
+    }
+    return undefined
+  }
+
+  /**
+   * Check if given field is a valid password
+   * @type {string} value The value to check
+   * @return {string} The error message to show, undefined if the value is valid
+   */
+  isValidPassword (value) {
+    if (!value || value.length < 8 || value.length > 20) {
+      return this.i18n.t('forms.passwordLengthInvalid')
+    } else if (typeof value !== 'string') {
+      return this.i18n.t('forms.passwordContentInvalid')
+    }
+    return undefined
   }
 
   /**

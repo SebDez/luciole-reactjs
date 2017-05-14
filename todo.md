@@ -26,15 +26,15 @@
 
 # V0.4.0 : User account
 
- * Signup Process | signup_module | **TODO**
- * User Page | user_page | **IN_PROGRESS**
+ * Signup Process | signup_module | **IN_PROGRESS**
+ * User Page | user_page | **DONE**
   * Design | **DONE**
   * User datas | **DONE**
  * User Lang | user_lang | **TODO**
  * Edit User Datas | edit_user | **TODO**
-..* Edit username | **TODO**
-..* Edit user datas | **TODO**
-..* Edit user avatar | **TODO**
+   * Edit username | **TODO**
+   * Edit user datas | **TODO**
+   * Edit user avatar | **TODO**
 
 # V0.5.0 : User account Mail Process
 

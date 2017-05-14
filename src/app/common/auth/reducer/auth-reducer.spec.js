@@ -35,7 +35,8 @@ describe('AuthReducer', () => {
           username: 'my-username'
         },
         modals: {
-          showLoginModal: false
+          showLoginModal: false,
+          showSignInModal: false
         }
       }
       expect(result).to.deep.equal(expected)
@@ -80,7 +81,8 @@ describe('AuthReducer', () => {
           token: 'my-old-fashion-token'
         },
         modals: {
-          showLoginModal: true
+          showLoginModal: true,
+          showSignInModal: false
         }
       }
       expect(result).to.deep.equal(expected)
@@ -96,7 +98,59 @@ describe('AuthReducer', () => {
           token: 'my-old-fashion-token'
         },
         modals: {
-          showLoginModal: false
+          showLoginModal: false,
+          showSignInModal: false
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('openSignInModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = AuthReducer.openSignInModalAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token'
+        },
+        modals: {
+          showLoginModal: false,
+          showSignInModal: true
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('closeSignInModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = AuthReducer.closeSignInModalAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token'
+        },
+        modals: {
+          showLoginModal: false,
+          showSignInModal: false
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('signUserInSuccessAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = AuthReducer.signUserInSuccessAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token'
+        },
+        modals: {
+          showLoginModal: false,
+          showSignInModal: false
         }
       }
       expect(result).to.deep.equal(expected)

@@ -47,7 +47,8 @@ describe('Sidebar', () => {
         token: 'mytoken'
       },
       modals: {
-        showLoginModal: true
+        showLoginModal: true,
+        showSignInModal: true
       }
     }
     let userResource = {
@@ -60,7 +61,8 @@ describe('Sidebar', () => {
     it('Expect to contain a SidebarLoggedOff if user not logged in', () => {
       const noAuth = {
         modals: {
-          showLoginModal: true
+          showLoginModal: true,
+          showSignInModal: true
         }
       }
       const wrapper = shallow(<Sidebar auth={noAuth} userResource={userResource} sidebarActions={{}} authActions={{}} />)
@@ -134,6 +136,54 @@ describe('Sidebar', () => {
       }
       Sidebar.__testOnly.closeLoginModal(props)
       expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('openSignInModal', () => {
+    it('Expect to have call authActions.openSignInModalAction', () => {
+      const authActions = {
+        openSignInModalAction: () => 0
+      }
+      let spy = chai.spy.on(authActions, 'openSignInModalAction')
+      const props = {
+        authActions
+      }
+      Sidebar.__testOnly.openSignInModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('closeSignInModal', () => {
+    it('Expect to have call authActions.closeSignInModalAction', () => {
+      const authActions = {
+        closeSignInModalAction: () => 0
+      }
+      let spy = chai.spy.on(authActions, 'closeSignInModalAction')
+      const props = {
+        authActions
+      }
+      Sidebar.__testOnly.closeSignInModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('signUserIn', () => {
+    it('Expect to have call authActions.signUserIn', () => {
+      const authActions = {
+        signUserIn: () => 0
+      }
+      let spy = chai.spy.on(authActions, 'signUserIn')
+      const props = {
+        authActions
+      }
+      const datas = {
+        mail: 'my-mail',
+        password1: 'my-password1',
+        password2: 'my-password2',
+        username: 'my-username'
+      }
+      Sidebar.__testOnly.signUserIn(props, datas)
+      expect(spy).to.have.been.called.with('my-username', 'my-mail', 'my-password1', 'my-password2')
     })
   })
 })

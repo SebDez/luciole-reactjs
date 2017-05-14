@@ -25,6 +25,18 @@ export default class AuthService {
   }
 
   /**
+   * Used to sign an user in
+   * @param  {string} username    The user's username
+   * @param  {string} mail    The user's mail
+   * @param  {string} password1    The user's password1
+   * @param  {string} password2 The user's password2
+   * @return {Object}          The action to dispatch
+   */
+  signUserIn (username, mail, password1, password2) {
+    return this.api.signUserIn(username, mail, password1, password2)
+  }
+
+  /**
    * Disconnect an user
    * @param {string} token The user's token
    * @return {Object} A promise to resolve

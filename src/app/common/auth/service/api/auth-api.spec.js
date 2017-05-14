@@ -70,6 +70,45 @@ describe('AuthApi', () => {
     })
   })
 
+  describe('signUserIn', () => {
+    var serv, rHelper, mockService, mockRequestHelper
+
+    beforeEach(() => {
+      rHelper = new MockRequestHelper()
+      serv = new AuthApi()
+      mockRequestHelper = sinon.mock(rHelper)
+      serv.requestHelper = rHelper
+      mockService = sinon.mock(serv)
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+      mockRequestHelper.verify()
+      mockRequestHelper.restore()
+    })
+
+    it('Expect to return a promise', () => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
+      expect(serv.signUserIn('username', 'mail', 'password1', 'password2').then).to.be.an.instanceof(Function)
+    })
+
+    it('Expect to have call post method', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('encodeSignInData').returns('encodedSignInData')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
+      let spy = chai.spy.on(rHelper, 'post')
+      let uri = 'endpoint/v1/users'
+      serv.signUserIn('username', 'mail', 'password1', 'password2').then(() => {
+        expect(spy).to.have.been.called.with(uri, 'encodedSignInData')
+        done()
+      })
+    })
+  })
+
   describe('disconnectUser', () => {
     var serv, rHelper, mockService
 

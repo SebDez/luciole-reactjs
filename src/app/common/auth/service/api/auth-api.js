@@ -21,6 +21,21 @@ export default class AuthApi extends LucioleApi {
   }
 
   /**
+   * Used to sign an user in
+   * @param  {string} username    The user's username
+   * @param  {string} mail    The user's mail
+   * @param  {string} password1    The user's password1
+   * @param  {string} password2 The user's password2
+   * @return {Object}          The action to dispatch
+   */
+  signUserIn (username, mail, password1, password2) {
+    const endpoint = this.getAppEndpoint()
+    const body = this.encodeSignInData(username, mail, password1, password2)
+    const uri = `${endpoint}/v1/users`
+    return this.requestHelper.post(uri, body)
+  }
+
+  /**
    * Disconnect an user
    * @param {string} token The user's token
    * @return {Object} A promise to resolve
@@ -52,6 +67,23 @@ export default class AuthApi extends LucioleApi {
       password,
       client_id: 'consumer2',
       grant_type: 'password'
+    }
+  }
+
+  /**
+   * Encode log body to valid JSON format
+   * @param  {string} username    The user's username
+   * @param  {string} mail    The user's mail
+   * @param  {string} password1    The user's password1
+   * @param  {string} password2 The user's password2
+   * @return {Object}  A body encoded
+   */
+  encodeSignInData (username, mail, password1, password2) {
+    return {
+      username,
+      mail,
+      password1,
+      password2
     }
   }
 }

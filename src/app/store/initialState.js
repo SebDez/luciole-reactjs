@@ -19,7 +19,8 @@ export default {
         token: null
       },
       modals: {
-        showLoginModal: false
+        showLoginModal: false,
+        showSignInModal: false
       }
     },
     app: {

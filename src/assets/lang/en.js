@@ -11,7 +11,18 @@ export default {
       goToSignup: 'Create an account',
       loginTitle: 'Join the adventure',
       tstFailTitle: 'Fail to login',
-      tstFailMessage: 'Your mail or your password is not valid.'
+      tstFailMessage: 'Your mail or your password is not valid.',
+      signupSuccessTitle: 'Well done !',
+      signupSuccessMessage: 'You will receive an email to validate your registration.'
+    },
+    signin: {
+      mail: 'Your mail address',
+      username: 'Your username',
+      password1: 'Your password',
+      password2: 'Confirm your password',
+      submit: 'Submit',
+      cgu: 'Our Terms and Privacy Policy apply in the game.',
+      title: 'Welcome on Luciole !'
     },
     sidebar: {
       home: 'Home',
@@ -64,7 +75,11 @@ export default {
     numberRequired: 'Must be a number',
     minLength: 'Must be at least %{min}.',
     emailInvalid: 'Invalid email address.',
-    mock: 'Oh ! You like trains too ?!'
+    mock: 'Oh ! You like trains too ?!',
+    usernameLengthInvalid: 'Your username must be between 4 and 20 characters.',
+    usernameContentInvalid: 'Your username must contain only numbers and letters.',
+    passwordLengthInvalid: 'Your password must be between 8 and 20 characters long.',
+    passwordContentInvalid: 'Invalid password.'
   },
   httpErrors: {
     401: {
