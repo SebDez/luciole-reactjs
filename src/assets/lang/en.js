@@ -46,7 +46,12 @@ export default {
       signUpDate: 'Registered since',
       country: 'Country',
       city: 'City',
-      datasTitle: 'My personal datas'
+      datasTitle: 'My personal datas',
+      mail: 'Mail',
+      username: 'Username',
+      usertag: 'Usertag',
+      password: 'Change my password',
+      accountTitle: 'My account datas'
     },
     not_set: 'Not specified'
   },

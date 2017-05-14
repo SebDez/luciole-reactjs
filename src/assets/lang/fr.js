@@ -46,7 +46,12 @@ export default {
       signUpDate: 'Inscrit depuis le',
       country: 'Pays',
       city: 'Ville',
-      datasTitle: 'Mes données personnelles'
+      datasTitle: 'Mes données personnelles',
+      mail: 'E-mail',
+      username: 'Pseudo',
+      usertag: 'Usertag',
+      password: 'Changer mon mot de passe',
+      accountTitle: 'Mes informations de compte'
     },
     not_set: 'Non renseigné'
   },

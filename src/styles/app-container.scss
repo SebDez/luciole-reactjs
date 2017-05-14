@@ -118,7 +118,7 @@ $app-text-font: 'Play', serif;
 }
 
 /******************************
-* DROPDOWN
+* Buttons
 * *****************************/
 
 .luciole-buttons{
@@ -137,6 +137,14 @@ $app-text-font: 'Play', serif;
      background-color: $app-button-hover-color;
      color: $app-button-bg-color;
    }
+ }
+
+ .lu-big-button {
+   @extend .luciole-buttons;
+   height: 50px;
+   font-size: 20px;
+   font-weight: bold;
+   border: none;
  }
 
  /******************************

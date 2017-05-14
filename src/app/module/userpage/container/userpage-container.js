@@ -17,14 +17,14 @@ export const UserPage = (props) => {
     <Grid className='lu-grid userpage'>
       <LuciolePageHeader title='application.sidebar.account' icon='user' />
       <Row>
-        <Col className='sidebar-block-col' xs={12} md={2}>
+        <Col className='sidebar-block-col' xs={12} md={4}>
           <div className='lu-container userpage-avatar'>
             <UserAvatar src={props.user.avatar} />
           </div>
         </Col>
-        <Col className='sidebar-block-col' xs={12} md={10}>
+        <Col className='sidebar-block-col' xs={12} md={8}>
           <div className='lu-container userpage-account'>
-            <UserAccountRead />
+            <UserAccountRead user={props.user} />
           </div>
         </Col>
       </Row>

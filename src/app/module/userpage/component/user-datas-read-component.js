@@ -14,6 +14,7 @@ class UserDatasRead extends LucioleComponent {
    * @param  {Object} props The component properties
    * @param  {Object} context The app context
    */
+  /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
     /** @type {ToStringHelper}*/
@@ -30,33 +31,23 @@ class UserDatasRead extends LucioleComponent {
         <h2>{this.i18n.t('application.user.datasTitle')}</h2>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <div>
-              <UserFieldRead label='application.user.birthDate' value={this.toStringHelper.dateToString(this.props.user.birthDate)} />
-            </div>
+            <UserFieldRead label='application.user.birthDate' value={this.toStringHelper.dateToString(this.props.user.birthDate)} />
           </Col>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <div>
-              <UserFieldRead label='application.user.gender.label' value={this.toStringHelper.genderToString(this.props.user.gender)} />
-            </div>
+            <UserFieldRead label='application.user.gender.label' value={this.toStringHelper.genderToString(this.props.user.gender)} />
           </Col>
         </Row>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <div>
-              <UserFieldRead label='application.user.country' value={this.toStringHelper.countryToString(this.props.user.country)} />
-            </div>
+            <UserFieldRead label='application.user.country' value={this.toStringHelper.countryToString(this.props.user.country)} />
           </Col>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <div>
-              <UserFieldRead label='application.user.city' value={this.toStringHelper.cityToString(this.props.user.city)} />
-            </div>
+            <UserFieldRead label='application.user.city' value={this.toStringHelper.cityToString(this.props.user.city)} />
           </Col>
         </Row>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <div>
-              <UserFieldRead label='application.user.signUpDate' value={this.toStringHelper.dateToString(this.props.user.signUpDate)} />
-            </div>
+            <UserFieldRead label='application.user.signUpDate' value={this.toStringHelper.dateToString(this.props.user.signUpDate)} />
           </Col>
         </Row>
       </Grid>)
