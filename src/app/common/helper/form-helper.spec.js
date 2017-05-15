@@ -213,7 +213,8 @@ describe('FormHelper', () => {
           warning: true
         },
         prefix: 'prefix',
-        type: 'type'
+        type: 'type',
+        formHelper: service
       }
       mockService.expects('getValidationState').returns('success')
       mockService.expects('getFieldClass').returns('my_FieldClass')

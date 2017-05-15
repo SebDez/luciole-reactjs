@@ -128,16 +128,16 @@ export default class FormHelper {
    * @type {Object} prefix The prefix object for the field {type: text or icon, value: text or icon name}
    * @return {Object} The element to render
    */
-  renderField ({ input, label, type, meta: { touched, error, warning }, prefix }) {
-    const state = this.getValidationState(touched, error, warning)
-    const elmClass = this.getFieldClass(touched, error)
+  renderField ({ formHelper, input, label, type, meta: { touched, error, warning }, prefix }) {
+    const state = formHelper.getValidationState(touched, error, warning)
+    const elmClass = formHelper.getFieldClass(touched, error)
     return (
       <div>
         <FormGroup controlId={input.name} validationState={state}>
-          {this.getControlLabel(label)}
-          {this.getInputGroup(type, input, label, prefix, elmClass)}
-          {touched && ((error && this.renderInfoField('error', error)) ||
-            (warning && this.renderInfoField('warning', warning))
+          {formHelper.getControlLabel(label)}
+          {formHelper.getInputGroup(type, input, label, prefix, elmClass)}
+          {touched && ((error && formHelper.renderInfoField('error', error)) ||
+            (warning && formHelper.renderInfoField('warning', warning))
           )}
           <FormControl.Feedback />
         </FormGroup>
