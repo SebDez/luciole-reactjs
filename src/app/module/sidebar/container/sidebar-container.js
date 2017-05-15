@@ -112,7 +112,7 @@ function closeSignInModal (props) {
  * @param  {Object} credentials The credentials to use
  */
 function signUserIn (props, datas) {
-  props.authActions.signUserIn(datas.username, datas.mail, datas.password1, datas.password2)
+  props.authActions.signUserIn(datas.username, datas.mail, datas.password1, datas.password2, datas.captcharesponse)
 }
 
 /**

@@ -28,9 +28,9 @@ export default class AuthApi extends LucioleApi {
    * @param  {string} password2 The user's password2
    * @return {Object}          The action to dispatch
    */
-  signUserIn (username, mail, password1, password2) {
+  signUserIn (username, mail, password1, password2, captcharesponse) {
     const endpoint = this.getAppEndpoint()
-    const body = this.encodeSignInData(username, mail, password1, password2)
+    const body = this.encodeSignInData(username, mail, password1, password2, captcharesponse)
     const uri = `${endpoint}/v1/users`
     return this.requestHelper.post(uri, body)
   }
@@ -76,14 +76,16 @@ export default class AuthApi extends LucioleApi {
    * @param  {string} mail    The user's mail
    * @param  {string} password1    The user's password1
    * @param  {string} password2 The user's password2
+   * @param  {string} captcharesponse The capatcha response to send
    * @return {Object}  A body encoded
    */
-  encodeSignInData (username, mail, password1, password2) {
+  encodeSignInData (username, mail, password1, password2, captcharesponse) {
     return {
       username,
       mail,
       password1,
-      password2
+      password2,
+      recaptcha: captcharesponse
     }
   }
 }

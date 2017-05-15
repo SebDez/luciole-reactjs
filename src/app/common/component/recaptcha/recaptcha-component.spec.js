@@ -23,10 +23,19 @@ describe('LuRecaptcha', () => {
       compo = new LuRecaptcha(props)
     })
 
-    it('Expect to contain ReCAPTCHA with good prop theme', () => {
+    it('Expect to contain ReCAPTCHA with good prop theme to dark if not given', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(ReCAPTCHA).props().theme
       const expected = 'dark'
+      expect(actual).to.be.equal(expected)
+    })
+
+    it('Expect to contain ReCAPTCHA with good prop theme to white if given', () => {
+      props.theme = 'white'
+      compo = new LuRecaptcha(props)
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(ReCAPTCHA).props().theme
+      const expected = 'white'
       expect(actual).to.be.equal(expected)
     })
 

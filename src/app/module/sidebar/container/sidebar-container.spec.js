@@ -180,10 +180,11 @@ describe('Sidebar', () => {
         mail: 'my-mail',
         password1: 'my-password1',
         password2: 'my-password2',
-        username: 'my-username'
+        username: 'my-username',
+        captcharesponse: 'my-captcharesponse'
       }
       Sidebar.__testOnly.signUserIn(props, datas)
-      expect(spy).to.have.been.called.with('my-username', 'my-mail', 'my-password1', 'my-password2')
+      expect(spy).to.have.been.called.with('my-username', 'my-mail', 'my-password1', 'my-password2', 'my-captcharesponse')
     })
   })
 })

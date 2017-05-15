@@ -13,6 +13,7 @@ class LuRecaptcha extends FormComponent {
    * @return {Object} React component tree
    */
   render () {
+    const theme = this.props.theme || 'dark'
     const {touched, error} = this.props.meta
     return (
       <div>
@@ -20,7 +21,7 @@ class LuRecaptcha extends FormComponent {
           ref='recaptcha'
           sitekey={this.props.recaptchaKey}
           onChange={this.props.input.onChange}
-          theme='dark'
+          theme={theme}
           className='g-recaptcha'
         />
         {touched && error && this.formHelper.renderInfoField('error', error)}
@@ -36,7 +37,8 @@ class LuRecaptcha extends FormComponent {
 LuRecaptcha.propTypes = {
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
-  recaptchaKey: PropTypes.string.isRequired
+  recaptchaKey: PropTypes.string.isRequired,
+  theme: PropTypes.string
 }
 
 /**

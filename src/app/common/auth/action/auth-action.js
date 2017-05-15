@@ -76,11 +76,12 @@ export default class AuthActions extends LucioleActions {
    * @param  {string} mail    The user's mail
    * @param  {string} password1    The user's password1
    * @param  {string} password2 The user's password2
+   * @param  {string} captcharesponse The capatcha response to send
    * @return {Object}          The action to dispatch
    */
-  signUserIn (username, mail, password1, password2) {
+  signUserIn (username, mail, password1, password2, captcharesponse) {
     return dispatch => {
-      return this.authService.signUserIn(username, mail, password1, password2)
+      return this.authService.signUserIn(username, mail, password1, password2, captcharesponse)
       .then(() => {
         const title = this.i18n.t('application.auth.signupSuccessTitle')
         const msg = this.i18n.t('application.auth.signupSuccessMessage')

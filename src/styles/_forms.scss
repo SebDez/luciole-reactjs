@@ -114,6 +114,14 @@ $form-text-color: $app-button-bg-color;
     font-size: 20px;
     margin : 5px 5px 5px 5px;
   }
+
+  .g-recaptcha {
+    display: inline-block;
+  }
+
+  .recaptcha {
+    text-align: center;
+  }
 }
 
 // MODALS

@@ -92,7 +92,7 @@ describe('AuthApi', () => {
       mockService.expects('getAppEndpoint').returns('endpoint')
       let response = {body: {}}
       mockRequestHelper.expects('post').resolves(response)
-      expect(serv.signUserIn('username', 'mail', 'password1', 'password2').then).to.be.an.instanceof(Function)
+      expect(serv.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse').then).to.be.an.instanceof(Function)
     })
 
     it('Expect to have call post method', (done) => {
@@ -102,7 +102,7 @@ describe('AuthApi', () => {
       mockRequestHelper.expects('post').resolves(response)
       let spy = chai.spy.on(rHelper, 'post')
       let uri = 'endpoint/v1/users'
-      serv.signUserIn('username', 'mail', 'password1', 'password2').then(() => {
+      serv.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse').then(() => {
         expect(spy).to.have.been.called.with(uri, 'encodedSignInData')
         done()
       })
@@ -175,6 +175,33 @@ describe('AuthApi', () => {
 
     it('Expect to return valid token', () => {
       expect(serv.decodeToken({access_token: 'mytoken'})).to.equals('mytoken')
+    })
+  })
+
+  describe('encodeSignInData', () => {
+    var serv
+    beforeEach(() => {
+      serv = new AuthApi()
+    })
+
+    it('Expect to return object with password2', () => {
+      expect(serv.encodeSignInData('username', 'mail', 'password1', 'password2', 'captcharesponse').password2).to.equals('password2')
+    })
+
+    it('Expect to return object with password1', () => {
+      expect(serv.encodeSignInData('username', 'mail', 'password1', 'password2', 'captcharesponse').password1).to.equals('password1')
+    })
+
+    it('Expect to return object with mail', () => {
+      expect(serv.encodeSignInData('username', 'mail', 'password1', 'password2', 'captcharesponse').mail).to.equals('mail')
+    })
+
+    it('Expect to return object with username', () => {
+      expect(serv.encodeSignInData('username', 'mail', 'password1', 'password2', 'captcharesponse').username).to.equals('username')
+    })
+
+    it('Expect to return object with recaptcha', () => {
+      expect(serv.encodeSignInData('username', 'mail', 'password1', 'password2', 'captcharesponse').recaptcha).to.equals('captcharesponse')
     })
   })
 })

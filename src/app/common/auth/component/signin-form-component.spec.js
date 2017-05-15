@@ -55,6 +55,14 @@ describe('SignInFormComponent', () => {
       expect(actual).to.have.length(1)
     })
 
+    it('Expect to contain 1 Field with valid name (captcharesponse)', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(Field).findWhere(n => {
+        return n.prop('name') === 'captcharesponse'
+      })
+      expect(actual).to.have.length(1)
+    })
+
     it('Expect to contain 1 div with valid className', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('div').findWhere(n => {
@@ -75,6 +83,14 @@ describe('SignInFormComponent', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('button').findWhere(n => {
         return n.prop('className') === 'luciole-buttons'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 div with recaptcha className', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find('div').findWhere(n => {
+        return n.prop('className') === 'recaptcha'
       })
       expect(actual).to.have.length(1)
     })

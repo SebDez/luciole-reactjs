@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
 import { Field, reduxForm } from 'redux-form'
 import {Link} from 'react-router'
+import LuRecaptcha from './../../../common/component/recaptcha/recaptcha-component'
+import config from 'config'
 
 /**
  * LoginForm Component
@@ -13,6 +15,7 @@ export class SignInFormComponent extends FormComponent {
    * @return {Object} React component tree
    */
   render () {
+    const recaptchaKey = config.recaptcha.key
     return (
       <form className='luciole-form' onSubmit={this.props.handleSubmit}>
         <Field name='username' type='text' formHelper={this.formHelper}
@@ -31,6 +34,11 @@ export class SignInFormComponent extends FormComponent {
           component={this.formHelper.renderField} label={this.i18n.t('application.signin.password2')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidPassword, this.formHelper.isSamePassword ]} prefix={{type: 'icon', value: 'key'}}
         />
+        <div className='recaptcha'>
+          <Field name='captcharesponse' component={LuRecaptcha}
+            validate={[this.formHelper.isRequired]} theme='white'
+            recaptchaKey={recaptchaKey} />
+        </div>
         <p className='cgu'>
           <Link to='/cgu' target='_blank'> {this.i18n.t('application.signin.cgu')} </Link>
         </p>
