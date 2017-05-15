@@ -132,6 +132,38 @@ describe('FormHelper', () => {
     })
   })
 
+  describe('isSamePassword', () => {
+    const form = {
+      password1: 'pass1'
+    }
+
+    it('Expect to return undefined if value not given', () => {
+      const expected = void (0)
+      expect(service.isSamePassword(null, form)).to.equals(expected)
+    })
+
+    it('Expect to return undefined if form not given', () => {
+      const expected = void (0)
+      expect(service.isSamePassword('pass1', null)).to.equals(expected)
+    })
+
+    it('Expect to return undefined if password1 not given', () => {
+      const expected = void (0)
+      expect(service.isSamePassword('pass1', {})).to.equals(expected)
+    })
+
+    it('Expect to return undefined if password1 and value are equal', () => {
+      const expected = void (0)
+      expect(service.isSamePassword('pass1', form)).to.equals(expected)
+    })
+
+    it('Expect to return forms.passwordNotEqual if password1 and value are NOT equal', () => {
+      const expected = 'forms.passwordNotEqual'
+      form.password1 = 'other'
+      expect(service.isSamePassword('pass1', form)).to.equals(expected)
+    })
+  })
+
   describe('isValidEmail', () => {
     it('Expect to return undefined if value is an email', () => {
       const expected = void (0)

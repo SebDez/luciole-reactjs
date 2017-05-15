@@ -79,7 +79,8 @@ export default {
     usernameLengthInvalid: 'Your username must be between 4 and 20 characters.',
     usernameContentInvalid: 'Your username must contain only numbers and letters.',
     passwordLengthInvalid: 'Your password must be between 8 and 20 characters long.',
-    passwordContentInvalid: 'Invalid password.'
+    passwordContentInvalid: 'Invalid password.',
+    passwordNotEqual: 'Passwords do not match.'
   },
   httpErrors: {
     401: {

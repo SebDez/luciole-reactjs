@@ -79,7 +79,8 @@ export default {
     usernameLengthInvalid: 'Votre pseudo doit faire entre 4 et 20 caractères.',
     usernameContentInvalid: 'Votre pseudo doit contenir uniquement des chiffres et des lettres.',
     passwordLengthInvalid: 'Votre mot de passe doit faire entre 8 et 20 caractères.',
-    passwordContentInvalid: 'Ne respecte le format d\'un mot de passe.'
+    passwordContentInvalid: 'Ne respecte le format d\'un mot de passe.',
+    passwordNotEqual: 'Les mots de passe ne correspondent pas.'
   },
   httpErrors: {
     401: {

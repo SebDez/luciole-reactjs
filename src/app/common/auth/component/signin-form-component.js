@@ -29,7 +29,7 @@ export class SignInFormComponent extends FormComponent {
         />
         <Field name='password2' type='password' formHelper={this.formHelper}
           component={this.formHelper.renderField} label={this.i18n.t('application.signin.password2')}
-          validate={[ this.formHelper.isRequired, this.formHelper.isValidPassword ]} prefix={{type: 'icon', value: 'key'}}
+          validate={[ this.formHelper.isRequired, this.formHelper.isValidPassword, this.formHelper.isSamePassword ]} prefix={{type: 'icon', value: 'key'}}
         />
         <p className='cgu'>
           <Link to='/cgu' target='_blank'> {this.i18n.t('application.signin.cgu')} </Link>

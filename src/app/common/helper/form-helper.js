@@ -30,6 +30,8 @@ export default class FormHelper {
     /** @type {Function}*/
     this.isValidPassword = this.isValidPassword.bind(this)
     /** @type {Function}*/
+    this.isSamePassword = this.isSamePassword.bind(this)
+    /** @type {Function}*/
     this.adviceDemo = this.adviceDemo.bind(this)
   }
 
@@ -108,6 +110,19 @@ export default class FormHelper {
   }
 
   /**
+   * Check if given password2 is the same as password1
+   * @type {string} value The value to check
+   * @type {Object} form The form values
+   * @return {string} The error message to show, undefined if the value is valid
+   */
+  isSamePassword (value, form) {
+    if (value && form && form.password1 && (value !== form.password1)) {
+      return this.i18n.t('forms.passwordNotEqual')
+    }
+    return undefined
+  }
+
+  /**
    * Example for warning message, check if value equals train
    * @type {string} value The value to check
    * @return {string} The error message to show, undefined if the value is valid
@@ -118,7 +133,7 @@ export default class FormHelper {
 
   /**
    * Render the field element
-   * @type {Object} params The params for redux form
+   * @type {FormHelper} formHelper The formHelper to use
    * @type {string} input The value of the field
    * @type {string} label The label and placeholder for this field
    * @type {string} type The type of field
