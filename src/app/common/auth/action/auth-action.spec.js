@@ -285,15 +285,15 @@ describe('AuthAction', () => {
     })
 
     it('Expect to return a function', () => {
-      expect(typeof (actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse'))).to.equal('function')
+      expect(typeof (actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr'))).to.equal('function')
     })
 
     it('Expect to have call signUserIn with good params', (done) => {
       mockService.expects('signUserIn').resolves({})
       mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
       spy = chai.spy.on(actions.authService, 'signUserIn')
-      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch).then(() => {
-        expect(spy).to.have.been.called.with('username', 'mail', 'password1', 'password2', 'captcharesponse')
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
+        expect(spy).to.have.been.called.with('username', 'mail', 'password1', 'password2', 'captcharesponse', 'my-lang')
         done()
       })
     })
@@ -302,7 +302,7 @@ describe('AuthAction', () => {
       mockService.expects('signUserIn').resolves({})
       mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
-      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch).then(() => {
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
         expect(spy).to.have.been.called.with('signUserInSuccessAction-result')
         done()
       })
@@ -312,7 +312,7 @@ describe('AuthAction', () => {
       mockService.expects('signUserIn').resolves({})
       mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
       spy = chai.spy.on(actions, 'signUserInSuccessAction')
-      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch).then(() => {
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
         expect(spy).to.have.been.called.once
         done()
       })
@@ -322,7 +322,7 @@ describe('AuthAction', () => {
       mockService.expects('signUserIn').resolves({})
       mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
       spy = chai.spy.on(actions.toastrHelper, 'showMessage')
-      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch).then(() => {
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
         expect(spy).to.have.been.called()
         done()
       })

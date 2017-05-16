@@ -31,10 +31,11 @@ export default class AuthService {
    * @param  {string} password1    The user's password1
    * @param  {string} password2 The user's password2
    * @param  {string} captcharesponse The capatcha response to send
+   * @param  {string} currLang The user's lang (when signing up)
    * @return {Object}          The action to dispatch
    */
-  signUserIn (username, mail, password1, password2, captcharesponse) {
-    return this.api.signUserIn(username, mail, password1, password2, captcharesponse)
+  signUserIn (username, mail, password1, password2, captcharesponse, currLang) {
+    return this.api.signUserIn(username, mail, password1, password2, captcharesponse, currLang)
   }
 
   /**

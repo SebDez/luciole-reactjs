@@ -10,4 +10,15 @@ export default class TestHelper {
     return 0
   }
 
+  /**
+   * A fake dispatch method
+   */
+  static getState () {
+    return {
+      i18n: {
+        locale: 'my-lang'
+      }
+    }
+  }
+
 }

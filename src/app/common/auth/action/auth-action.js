@@ -80,8 +80,9 @@ export default class AuthActions extends LucioleActions {
    * @return {Object}          The action to dispatch
    */
   signUserIn (username, mail, password1, password2, captcharesponse) {
-    return dispatch => {
-      return this.authService.signUserIn(username, mail, password1, password2, captcharesponse)
+    return (dispatch, getState) => {
+      const currLang = getState().i18n.locale
+      return this.authService.signUserIn(username, mail, password1, password2, captcharesponse, currLang)
       .then(() => {
         const title = this.i18n.t('application.auth.signupSuccessTitle')
         const msg = this.i18n.t('application.auth.signupSuccessMessage')

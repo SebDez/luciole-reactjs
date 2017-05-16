@@ -36,7 +36,7 @@ export class SignInFormComponent extends FormComponent {
         />
         <div className='recaptcha'>
           <Field name='captcharesponse' component={LuRecaptcha}
-            validate={[this.formHelper.isRequired]} theme='white'
+            validate={[this.formHelper.isRequired]} theme='light'
             recaptchaKey={recaptchaKey} />
         </div>
         <p className='cgu'>

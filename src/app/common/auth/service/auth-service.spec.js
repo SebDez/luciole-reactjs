@@ -28,8 +28,8 @@ describe('AuthService', () => {
   describe('signUserIn', () => {
     it('Expect to have call api signUserIn', (done) => {
       spy = chai.spy.on(service.api, 'signUserIn')
-      service.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse').then(() => {
-        expect(spy).to.have.been.called.with('username', 'mail', 'password1', 'password2', 'captcharesponse')
+      service.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').then(() => {
+        expect(spy).to.have.been.called.with('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr')
         done()
       })
     })
