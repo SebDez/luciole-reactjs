@@ -15,7 +15,7 @@ export default {
       signupSuccessTitle: 'Inscription réussie !',
       signupSuccessMessage: 'Vous allez recevoir un mail afin de valider votre inscription.'
     },
-    signin: {
+    signup: {
       mail: 'Votre adresse mail',
       username: 'Votre pseudo',
       password1: 'Saisissez mot de passe',

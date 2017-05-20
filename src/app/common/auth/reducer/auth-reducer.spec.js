@@ -36,7 +36,7 @@ describe('AuthReducer', () => {
         },
         modals: {
           showLoginModal: false,
-          showSignInModal: false
+          showSignUpModal: false
         }
       }
       expect(result).to.deep.equal(expected)
@@ -82,7 +82,7 @@ describe('AuthReducer', () => {
         },
         modals: {
           showLoginModal: true,
-          showSignInModal: false
+          showSignUpModal: false
         }
       }
       expect(result).to.deep.equal(expected)
@@ -99,16 +99,16 @@ describe('AuthReducer', () => {
         },
         modals: {
           showLoginModal: false,
-          showSignInModal: false
+          showSignUpModal: false
         }
       }
       expect(result).to.deep.equal(expected)
     })
   })
 
-  describe('openSignInModalAction', () => {
+  describe('openSignUpModalAction', () => {
     it('Expect to return a valid state', () => {
-      const result = AuthReducer.openSignInModalAction(state, action)
+      const result = AuthReducer.openSignUpModalAction(state, action)
       const expected = {
         state: 'default-state-value',
         user: {
@@ -116,16 +116,16 @@ describe('AuthReducer', () => {
         },
         modals: {
           showLoginModal: false,
-          showSignInModal: true
+          showSignUpModal: true
         }
       }
       expect(result).to.deep.equal(expected)
     })
   })
 
-  describe('closeSignInModalAction', () => {
+  describe('closeSignUpModalAction', () => {
     it('Expect to return a valid state', () => {
-      const result = AuthReducer.closeSignInModalAction(state, action)
+      const result = AuthReducer.closeSignUpModalAction(state, action)
       const expected = {
         state: 'default-state-value',
         user: {
@@ -133,7 +133,7 @@ describe('AuthReducer', () => {
         },
         modals: {
           showLoginModal: false,
-          showSignInModal: false
+          showSignUpModal: false
         }
       }
       expect(result).to.deep.equal(expected)
@@ -150,7 +150,7 @@ describe('AuthReducer', () => {
         },
         modals: {
           showLoginModal: false,
-          showSignInModal: false
+          showSignUpModal: false
         }
       }
       expect(result).to.deep.equal(expected)

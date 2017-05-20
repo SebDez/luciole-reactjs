@@ -1,20 +1,20 @@
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import SignInLoginModal from './signin-modal-component'
+import SignUpLoginModal from './signup-modal-component'
 import { Modal } from 'react-bootstrap'
-import SignInFormComponent from './signin-form-component'
+import SignUpFormComponent from './signup-form-component'
 
-describe('SignInLoginModal', () => {
+describe('SignUpLoginModal', () => {
   describe('render', () => {
     const props = {
       show: true,
-      handleSignIn: () => 0,
+      handleSignUp: () => 0,
       handleClose: () => 0
     }
     let compo
 
     beforeEach(() => {
-      compo = new SignInLoginModal(props)
+      compo = new SignUpLoginModal(props)
     })
 
     it('Expect to contain a Modal', () => {
@@ -47,10 +47,10 @@ describe('SignInLoginModal', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 SignInFormComponent with valid prop', () => {
+    it('Expect to contain 1 SignUpFormComponent with valid prop', () => {
       const wrapper = shallow(compo.render())
-      const actual = wrapper.find(SignInFormComponent).findWhere(n => {
-        return n.prop('onSubmit') === props.handleSignIn
+      const actual = wrapper.find(SignUpFormComponent).findWhere(n => {
+        return n.prop('onSubmit') === props.handleSignUp
       })
       expect(actual).to.have.length(1)
     })

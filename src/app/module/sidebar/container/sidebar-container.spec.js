@@ -48,7 +48,7 @@ describe('Sidebar', () => {
       },
       modals: {
         showLoginModal: true,
-        showSignInModal: true
+        showSignUpModal: true
       }
     }
     let userResource = {
@@ -62,7 +62,7 @@ describe('Sidebar', () => {
       const noAuth = {
         modals: {
           showLoginModal: true,
-          showSignInModal: true
+          showSignUpModal: true
         }
       }
       const wrapper = shallow(<Sidebar auth={noAuth} userResource={userResource} sidebarActions={{}} authActions={{}} />)
@@ -139,30 +139,30 @@ describe('Sidebar', () => {
     })
   })
 
-  describe('openSignInModal', () => {
-    it('Expect to have call authActions.openSignInModalAction', () => {
+  describe('openSignUpModal', () => {
+    it('Expect to have call authActions.openSignUpModalAction', () => {
       const authActions = {
-        openSignInModalAction: () => 0
+        openSignUpModalAction: () => 0
       }
-      let spy = chai.spy.on(authActions, 'openSignInModalAction')
+      let spy = chai.spy.on(authActions, 'openSignUpModalAction')
       const props = {
         authActions
       }
-      Sidebar.__testOnly.openSignInModal(props)
+      Sidebar.__testOnly.openSignUpModal(props)
       expect(spy).to.have.been.called()
     })
   })
 
-  describe('closeSignInModal', () => {
-    it('Expect to have call authActions.closeSignInModalAction', () => {
+  describe('closeSignUpModal', () => {
+    it('Expect to have call authActions.closeSignUpModalAction', () => {
       const authActions = {
-        closeSignInModalAction: () => 0
+        closeSignUpModalAction: () => 0
       }
-      let spy = chai.spy.on(authActions, 'closeSignInModalAction')
+      let spy = chai.spy.on(authActions, 'closeSignUpModalAction')
       const props = {
         authActions
       }
-      Sidebar.__testOnly.closeSignInModal(props)
+      Sidebar.__testOnly.closeSignUpModal(props)
       expect(spy).to.have.been.called()
     })
   })

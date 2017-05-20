@@ -249,15 +249,15 @@ describe('AuthAction', () => {
     })
   })
 
-  describe('openSignInModalAction', () => {
+  describe('openSignUpModalAction', () => {
     it('Expect to return OPEN_SIGNIN_MODAL as action type', () => {
-      expect(actions.openSignInModalAction().type).to.equal('OPEN_SIGNIN_MODAL')
+      expect(actions.openSignUpModalAction().type).to.equal('OPEN_SIGNIN_MODAL')
     })
   })
 
-  describe('closeSignInModalAction', () => {
+  describe('closeSignUpModalAction', () => {
     it('Expect to return CLOSE_SIGNIN_MODAL as action type', () => {
-      expect(actions.closeSignInModalAction().type).to.equal('CLOSE_SIGNIN_MODAL')
+      expect(actions.closeSignUpModalAction().type).to.equal('CLOSE_SIGNIN_MODAL')
     })
   })
 

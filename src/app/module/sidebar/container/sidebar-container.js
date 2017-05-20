@@ -51,10 +51,10 @@ function getHomePageContentElement (props) {
     }
   }
   return (<SidebarLoggedOff lang={lang} openLoginModal={openLoginModal.bind(null, props)}
-    openSignInModal={openSignInModal.bind(null, props)} showSignInModal={props.auth.modals.showSignInModal}
+    openSignUpModal={openSignUpModal.bind(null, props)} showSignUpModal={props.auth.modals.showSignUpModal}
     showLoginModal={props.auth.modals.showLoginModal} handleCloseModal={closeLoginModal.bind(null, props)}
-    handleCloseSignInModal={closeSignInModal.bind(null, props)}
-    handleLogin={logUserIn.bind(null, props)} handleSignIn={signUserIn.bind(null, props)} />)
+    handleCloseSignUpModal={closeSignUpModal.bind(null, props)}
+    handleLogin={logUserIn.bind(null, props)} handleSignUp={signUserIn.bind(null, props)} />)
 }
 
 /**
@@ -91,19 +91,19 @@ function closeLoginModal (props) {
 }
 
 /**
- * Open the signin modal
+ * Open the signup modal
  * @param  {Object} props The container props
  */
-function openSignInModal (props) {
-  props.authActions.openSignInModalAction()
+function openSignUpModal (props) {
+  props.authActions.openSignUpModalAction()
 }
 
 /**
  * Close the login modal
  * @param  {Object} props The container props
  */
-function closeSignInModal (props) {
-  props.authActions.closeSignInModalAction()
+function closeSignUpModal (props) {
+  props.authActions.closeSignUpModalAction()
 }
 
 /**
@@ -170,8 +170,8 @@ Sidebar.__testOnly = {
   logUserIn,
   closeLoginModal,
   openLoginModal,
-  openSignInModal,
-  closeSignInModal,
+  openSignUpModal,
+  closeSignUpModal,
   signUserIn
 }
 

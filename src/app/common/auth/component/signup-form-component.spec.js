@@ -1,10 +1,10 @@
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import { Field } from 'redux-form'
-import { SignInFormComponent } from './signin-form-component'
+import { SignUpFormComponent } from './signup-form-component'
 import {Link} from 'react-router'
 
-describe('SignInFormComponent', () => {
+describe('SignUpFormComponent', () => {
   describe('render', () => {
     const props = {
       handleSubmit: () => 0
@@ -12,7 +12,7 @@ describe('SignInFormComponent', () => {
     let compo = null
 
     beforeEach(() => {
-      compo = new SignInFormComponent(props)
+      compo = new SignUpFormComponent(props)
     })
 
     it('Expect to contain 1 form with valid className and valid onSubmit', () => {

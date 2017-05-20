@@ -8,7 +8,7 @@ import config from 'config'
 /**
  * LoginForm Component
  */
-export class SignInFormComponent extends FormComponent {
+export class SignUpFormComponent extends FormComponent {
 
   /**
    * Render the component
@@ -19,19 +19,19 @@ export class SignInFormComponent extends FormComponent {
     return (
       <form className='luciole-form' onSubmit={this.props.handleSubmit}>
         <Field name='username' type='text' formHelper={this.formHelper}
-          component={this.formHelper.renderField} label={this.i18n.t('application.signin.username')}
+          component={this.formHelper.renderField} label={this.i18n.t('application.signup.username')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidUsername ]} prefix={{type: 'icon', value: 'user'}}
         />
         <Field name='mail' type='email' formHelper={this.formHelper}
-          component={this.formHelper.renderField} label={this.i18n.t('application.signin.mail')}
+          component={this.formHelper.renderField} label={this.i18n.t('application.signup.mail')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]} prefix={{type: 'text', value: '@'}}
         />
         <Field name='password1' type='password' formHelper={this.formHelper}
-          component={this.formHelper.renderField} label={this.i18n.t('application.signin.password1')}
+          component={this.formHelper.renderField} label={this.i18n.t('application.signup.password1')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidPassword ]} prefix={{type: 'icon', value: 'key'}}
         />
         <Field name='password2' type='password' formHelper={this.formHelper}
-          component={this.formHelper.renderField} label={this.i18n.t('application.signin.password2')}
+          component={this.formHelper.renderField} label={this.i18n.t('application.signup.password2')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidPassword, this.formHelper.isSamePassword ]} prefix={{type: 'icon', value: 'key'}}
         />
         <div className='recaptcha'>
@@ -40,10 +40,10 @@ export class SignInFormComponent extends FormComponent {
             recaptchaKey={recaptchaKey} />
         </div>
         <p className='cgu'>
-          <Link to='/cgu' target='_blank'> {this.i18n.t('application.signin.cgu')} </Link>
+          <Link to='/cgu' target='_blank'> {this.i18n.t('application.signup.cgu')} </Link>
         </p>
         <div className='buttons'>
-          <button className='luciole-buttons' type='submit'>{this.i18n.t('application.signin.submit')}</button>
+          <button className='luciole-buttons' type='submit'>{this.i18n.t('application.signup.submit')}</button>
         </div>
       </form>
     )
@@ -54,7 +54,7 @@ export class SignInFormComponent extends FormComponent {
  * The component properties' types
  * @type {Object}
  */
-SignInFormComponent.propTypes = {
+SignUpFormComponent.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 }
 
@@ -62,5 +62,5 @@ SignInFormComponent.propTypes = {
  * Export the component
  */
 export default reduxForm({
-  form: 'signin' // a unique name for this form
-})(SignInFormComponent)
+  form: 'signup' // a unique name for this form
+})(SignUpFormComponent)

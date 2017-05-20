@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
 import { Modal } from 'react-bootstrap'
-import SignInFormComponent from './signin-form-component'
+import SignUpFormComponent from './signup-form-component'
 
 /**
- * SignInLoginModal Component
- * A component for the signin modal
+ * SignUpLoginModal Component
+ * A component for the signup modal
  */
-class SignInLoginModal extends FormComponent {
+class SignUpLoginModal extends FormComponent {
 
   /**
    * Render the component
@@ -18,11 +18,11 @@ class SignInLoginModal extends FormComponent {
       <Modal show={this.props.show} dialogClassName='lu-modal' onHide={this.props.handleClose}>
         <Modal.Dialog>
           <Modal.Header closeButton>
-            <Modal.Title>{this.i18n.t('application.signin.title')}</Modal.Title>
+            <Modal.Title>{this.i18n.t('application.signup.title')}</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>
-            <SignInFormComponent onSubmit={this.props.handleSignIn} />
+            <SignUpFormComponent onSubmit={this.props.handleSignUp} />
           </Modal.Body>
 
         </Modal.Dialog>
@@ -35,13 +35,13 @@ class SignInLoginModal extends FormComponent {
  * The component properties' types
  * @type {Object}
  */
-SignInLoginModal.propTypes = {
+SignUpLoginModal.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  handleSignIn: PropTypes.func.isRequired
+  handleSignUp: PropTypes.func.isRequired
 }
 
 /**
  * Export the component
  */
-export default SignInLoginModal
+export default SignUpLoginModal

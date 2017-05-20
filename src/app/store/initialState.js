@@ -20,7 +20,7 @@ export default {
       },
       modals: {
         showLoginModal: false,
-        showSignInModal: false
+        showSignUpModal: false
       }
     },
     app: {

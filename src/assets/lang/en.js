@@ -15,7 +15,7 @@ export default {
       signupSuccessTitle: 'Well done !',
       signupSuccessMessage: 'You will receive an email to validate your registration.'
     },
-    signin: {
+    signup: {
       mail: 'Your mail address',
       username: 'Your username',
       password1: 'Your password',
