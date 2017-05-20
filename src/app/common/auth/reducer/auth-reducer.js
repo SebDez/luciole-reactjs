@@ -13,6 +13,9 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.DISCONNECT_USER_SUCCESS, disco
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.DISCONNECT_USER_FAILURE, disconnectUserFailureAction)
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.OPEN_LOGIN_MODAL, openLoginModalAction)
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_LOGIN_MODAL, closeLoginModalAction)
+AuthReducer.registerAction(Constants.ACTIONS.AUTH.OPEN_SIGNIN_MODAL, openSignUpModalAction)
+AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_SIGNIN_MODAL, closeSignUpModalAction)
+AuthReducer.registerAction(Constants.ACTIONS.AUTH.SIGN_USER_IN_SUCCESS, signUserInSuccessAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -25,7 +28,7 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_LOGIN_MODAL, closeLoginM
  * @return {Object}       The new state
  */
 export function logUserSuccessAction (state, action) {
-  return objectAssign({}, state, {user: action.user, modals: {showLoginModal: false}})
+  return objectAssign({}, state, {user: action.user, modals: {showLoginModal: false, showSignUpModal: false}})
 }
 
 /**
@@ -62,7 +65,7 @@ export function disconnectUserFailureAction (state) {
  * @return {Object}       The new state
  */
 export function openLoginModalAction (state) {
-  return objectAssign({}, state, {modals: {showLoginModal: true}})
+  return objectAssign({}, state, {modals: {showLoginModal: true, showSignUpModal: false}})
 }
 
 /**
@@ -71,7 +74,34 @@ export function openLoginModalAction (state) {
  * @return {Object}       The new state
  */
 export function closeLoginModalAction (state) {
-  return objectAssign({}, state, {modals: {showLoginModal: false}})
+  return objectAssign({}, state, {modals: {showLoginModal: false, showSignUpModal: false}})
+}
+
+/**
+ * Change state to open the signup modal
+ * @param  {Object} state The state to use
+ * @return {Object}       The new state
+ */
+export function openSignUpModalAction (state) {
+  return objectAssign({}, state, {modals: {showLoginModal: false, showSignUpModal: true}})
+}
+
+/**
+ * Change state to close signup modal
+ * @param  {Object} state The state to use
+ * @return {Object}       The new state
+ */
+export function closeSignUpModalAction (state) {
+  return objectAssign({}, state, {modals: {showLoginModal: false, showSignUpModal: false}})
+}
+
+/**
+ * Change state after signup success
+ * @param  {Object} state The state to use
+ * @return {Object}       The new state
+ */
+export function signUserInSuccessAction (state) {
+  return objectAssign({}, state, {modals: {showLoginModal: false, showSignUpModal: false}})
 }
 
 // Export the reducer

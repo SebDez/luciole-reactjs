@@ -11,7 +11,11 @@ describe('SidebarLoggedOff', () => {
       lang: 'fr',
       showLoginModal: false,
       handleCloseModal: () => 0,
-      handleLogin: () => 0
+      handleLogin: () => 0,
+      openSignUpModal: () => 0,
+      showSignUpModal: false,
+      handleCloseSignUpModal: () => 0,
+      handleSignUp: () => 0
     }
 
     it('Expect to contain a div with valid className sidebar-content off', () => {

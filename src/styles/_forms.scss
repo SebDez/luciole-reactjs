@@ -1,5 +1,5 @@
 $form-text-size: 15px;
-$form-text-color: white;
+$form-text-color: $app-button-bg-color;
 
 .luciole-form{
 
@@ -20,7 +20,7 @@ $form-text-color: white;
     outline: none;
     padding: 10px;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 2px solid $app-button-bg-color;
     border-radius: 4px;
     box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
     -webkit-transition: box-shadow .5s ease;
@@ -49,7 +49,8 @@ $form-text-color: white;
   }
 
    .input-group-addon{
-     background: #1a3951;
+     background: $app-button-bg-color;
+     color: $app-button-text-color;
      border: 1px solid rgba(0,0,0,0.2);
    }
 
@@ -113,6 +114,14 @@ $form-text-color: white;
     font-size: 20px;
     margin : 5px 5px 5px 5px;
   }
+
+  .g-recaptcha {
+    display: inline-block;
+  }
+
+  .recaptcha {
+    text-align: center;
+  }
 }
 
 // MODALS
@@ -170,5 +179,9 @@ $form-text-color: white;
 
   .modal-footer{
     border-top: none;
+  }
+
+  .cgu {
+    text-align: center;
   }
 }

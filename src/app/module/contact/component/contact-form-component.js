@@ -15,17 +15,17 @@ export class ContactFormComponent extends FormComponent {
   render () {
     return (
       <form className='luciole-form contact-form' onSubmit={this.props.handleSubmit}>
-        <Field name='mail' type='email'
-          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.mail')}
+        <Field name='mail' type='email' formHelper={this.formHelper}
+          component={this.formHelper.renderField} label={this.i18n.t('application.contact.mail')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]} prefix={{type: 'text', value: '@'}}
         />
-        <Field name='subject' type='text'
-          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.subject')}
+        <Field name='subject' type='text' formHelper={this.formHelper}
+          component={this.formHelper.renderField} label={this.i18n.t('application.contact.subject')}
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(5), this.formHelper.isMoreThanMaxLength(100) ]}
           warn={this.formHelper.adviceDemo} prefix={{type: 'icon', value: 'envelope-open'}}
         />
-        <Field name='content' type='textarea'
-          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.contact.content')}
+        <Field name='content' type='textarea' formHelper={this.formHelper}
+          component={this.formHelper.renderField} label={this.i18n.t('application.contact.content')}
           validate={[ this.formHelper.isRequired, this.formHelper.isLessThanMinLength(10), this.formHelper.isMoreThanMaxLength(2000) ]}
         />
         <div className='recaptcha'>

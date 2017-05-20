@@ -21,6 +21,23 @@ export default class AuthApi extends LucioleApi {
   }
 
   /**
+   * Used to sign an user in
+   * @param  {string} username    The user's username
+   * @param  {string} mail    The user's mail
+   * @param  {string} password1    The user's password1
+   * @param  {string} password2 The user's password2
+   * @param  {string} captcharesponse The captcharesponse to use
+   * @param  {string} currLang The user's lang (when signupg up)
+   * @return {Object}          The action to dispatch
+   */
+  signUserIn (username, mail, password1, password2, captcharesponse, currLang) {
+    const endpoint = this.getAppEndpoint()
+    const body = this.encodeSignUpData(username, mail, password1, password2, captcharesponse, currLang)
+    const uri = `${endpoint}/v1/users`
+    return this.requestHelper.post(uri, body)
+  }
+
+  /**
    * Disconnect an user
    * @param {string} token The user's token
    * @return {Object} A promise to resolve
@@ -52,6 +69,27 @@ export default class AuthApi extends LucioleApi {
       password,
       client_id: 'consumer2',
       grant_type: 'password'
+    }
+  }
+
+  /**
+   * Encode log body to valid JSON format
+   * @param  {string} username    The user's username
+   * @param  {string} mail    The user's mail
+   * @param  {string} password1    The user's password1
+   * @param  {string} password2 The user's password2
+   * @param  {string} captcharesponse The capatcha response to send
+   * @param  {string} currLang The user's lang (when signupg up)
+   * @return {Object}  A body encoded
+   */
+  encodeSignUpData (username, mail, password1, password2, captcharesponse, currLang) {
+    return {
+      username,
+      mail,
+      password1,
+      password2,
+      recaptcha: captcharesponse,
+      userLang: currLang
     }
   }
 }

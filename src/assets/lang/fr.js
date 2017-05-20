@@ -11,7 +11,18 @@ export default {
       goToSignup: 'Je m \'inscris !',
       loginTitle: 'Rejoignez l\'aventure',
       tstFailTitle: 'Impossible de vous connecter',
-      tstFailMessage: 'Votre mail ou votre mot passe n\'est pas reconnu.'
+      tstFailMessage: 'Votre mail ou votre mot passe n\'est pas reconnu.',
+      signupSuccessTitle: 'Inscription réussie !',
+      signupSuccessMessage: 'Vous allez recevoir un mail afin de valider votre inscription.'
+    },
+    signup: {
+      mail: 'Votre adresse mail',
+      username: 'Votre pseudo',
+      password1: 'Saisissez mot de passe',
+      password2: 'Confirmation de votre mot de passe',
+      submit: 'Valider',
+      cgu: 'Nos CGU et notre Politique de confidentialité s\'appliquent dans le jeu.',
+      title: 'Bienvenue sur Luciole !'
     },
     sidebar: {
       home: 'Accueil',
@@ -64,7 +75,12 @@ export default {
     numberRequired: 'Doit être un nombre.',
     minLength: 'Minimum %{min} caractères.',
     emailInvalid: 'Ne respecte le format d\'une adresse mail.',
-    mock: 'Oh ! Tu aimes les trains toi aussi ?!'
+    mock: 'Oh ! Tu aimes les trains toi aussi ?!',
+    usernameLengthInvalid: 'Votre pseudo doit faire entre 4 et 20 caractères.',
+    usernameContentInvalid: 'Votre pseudo doit contenir uniquement des chiffres et des lettres.',
+    passwordLengthInvalid: 'Votre mot de passe doit faire entre 8 et 20 caractères.',
+    passwordContentInvalid: 'Ne respecte le format d\'un mot de passe.',
+    passwordNotEqual: 'Les mots de passe ne correspondent pas.'
   },
   httpErrors: {
     401: {

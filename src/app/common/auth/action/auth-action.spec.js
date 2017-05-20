@@ -248,4 +248,84 @@ describe('AuthAction', () => {
       expect(actions.closeLoginModalAction().type).to.equal('CLOSE_LOGIN_MODAL')
     })
   })
+
+  describe('openSignUpModalAction', () => {
+    it('Expect to return OPEN_SIGNIN_MODAL as action type', () => {
+      expect(actions.openSignUpModalAction().type).to.equal('OPEN_SIGNIN_MODAL')
+    })
+  })
+
+  describe('closeSignUpModalAction', () => {
+    it('Expect to return CLOSE_SIGNIN_MODAL as action type', () => {
+      expect(actions.closeSignUpModalAction().type).to.equal('CLOSE_SIGNIN_MODAL')
+    })
+  })
+
+  describe('signUserInSuccessAction', () => {
+    it('Expect to return SIGN_USER_IN_SUCCESS as action type', () => {
+      expect(actions.signUserInSuccessAction().type).to.equal('SIGN_USER_IN_SUCCESS')
+    })
+  })
+
+  describe('signUserIn', () => {
+    let mockService, mockActions, service, spy
+
+    beforeEach(() => {
+      service = new AuthService()
+      mockService = sinon.mock(service)
+      actions.authService = service
+      mockActions = sinon.mock(actions)
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to return a function', () => {
+      expect(typeof (actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr'))).to.equal('function')
+    })
+
+    it('Expect to have call signUserIn with good params', (done) => {
+      mockService.expects('signUserIn').resolves({})
+      mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
+      spy = chai.spy.on(actions.authService, 'signUserIn')
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
+        expect(spy).to.have.been.called.with('username', 'mail', 'password1', 'password2', 'captcharesponse', 'my-lang')
+        done()
+      })
+    })
+
+    it('Expect to have call dispatch with good params in case of success', (done) => {
+      mockService.expects('signUserIn').resolves({})
+      mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
+      spy = chai.spy.on(TestHelper, 'dispatch')
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
+        expect(spy).to.have.been.called.with('signUserInSuccessAction-result')
+        done()
+      })
+    })
+
+    it('Expect to have call signUserInSuccessAction with good params in case of success', (done) => {
+      mockService.expects('signUserIn').resolves({})
+      mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
+      spy = chai.spy.on(actions, 'signUserInSuccessAction')
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
+        expect(spy).to.have.been.called.once
+        done()
+      })
+    })
+
+    it('Expect to have call toastrHelper showMessage in case of success', (done) => {
+      mockService.expects('signUserIn').resolves({})
+      mockActions.expects('signUserInSuccessAction').returns('signUserInSuccessAction-result')
+      spy = chai.spy.on(actions.toastrHelper, 'showMessage')
+      actions.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse')(TestHelper.dispatch, TestHelper.getState).then(() => {
+        expect(spy).to.have.been.called()
+        done()
+      })
+    })
+  })
 })

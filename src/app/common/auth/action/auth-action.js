@@ -25,6 +25,8 @@ export default class AuthActions extends LucioleActions {
     /** @type {Function}*/
     this.logUserIn = this.logUserIn.bind(this)
     /** @type {Function}*/
+    this.signUserIn = this.signUserIn.bind(this)
+    /** @type {Function}*/
     this.disconnectUser = this.disconnectUser.bind(this)
     /** @type {Function}*/
     this.logUserInSuccessAction = this.logUserInSuccessAction.bind(this)
@@ -34,6 +36,12 @@ export default class AuthActions extends LucioleActions {
     this.openLoginModalAction = this.openLoginModalAction.bind(this)
     /** @type {Function}*/
     this.closeLoginModalAction = this.closeLoginModalAction.bind(this)
+    /** @type {Function}*/
+    this.openSignUpModalAction = this.openSignUpModalAction.bind(this)
+    /** @type {Function}*/
+    this.closeSignUpModalAction = this.closeSignUpModalAction.bind(this)
+    /** @type {Function}*/
+    this.signUserInSuccessAction = this.signUserInSuccessAction.bind(this)
   }
 
   /**
@@ -58,6 +66,28 @@ export default class AuthActions extends LucioleActions {
       .then(user => {
         user.setToken(token)
         dispatch(this.logUserInSuccessAction(user))
+      }, this.manageHttpErrors.bind(this))
+    }
+  }
+
+  /**
+   * Used to sign an user in
+   * @param  {string} username    The user's username
+   * @param  {string} mail    The user's mail
+   * @param  {string} password1    The user's password1
+   * @param  {string} password2 The user's password2
+   * @param  {string} captcharesponse The capatcha response to send
+   * @return {Object}          The action to dispatch
+   */
+  signUserIn (username, mail, password1, password2, captcharesponse) {
+    return (dispatch, getState) => {
+      const currLang = getState().i18n.locale
+      return this.authService.signUserIn(username, mail, password1, password2, captcharesponse, currLang)
+      .then(() => {
+        const title = this.i18n.t('application.auth.signupSuccessTitle')
+        const msg = this.i18n.t('application.auth.signupSuccessMessage')
+        this.toastrHelper.showMessage('success', title, msg)
+        dispatch(this.signUserInSuccessAction())
       }, this.manageHttpErrors.bind(this))
     }
   }
@@ -150,6 +180,42 @@ export default class AuthActions extends LucioleActions {
   closeLoginModalAction () {
     return {
       type: Constants.ACTIONS.AUTH.CLOSE_LOGIN_MODAL
+    }
+  }
+
+  /**
+   * Create an action with the OPEN_SIGNIN_MODAL type
+   * Accepts the new token to put in Redux store
+   * Returns a new action that can be managed by Redux
+   * @return {Object}          The action
+   */
+  openSignUpModalAction () {
+    return {
+      type: Constants.ACTIONS.AUTH.OPEN_SIGNIN_MODAL
+    }
+  }
+
+  /**
+   * Create an action with the CLOSE_SIGNIN_MODAL type
+   * Accepts the new token to put in Redux store
+   * Returns a new action that can be managed by Redux
+   * @return {Object}          The action
+   */
+  closeSignUpModalAction () {
+    return {
+      type: Constants.ACTIONS.AUTH.CLOSE_SIGNIN_MODAL
+    }
+  }
+
+  /**
+   * Create an action with the SIGN_USER_IN_SUCCESS type
+   * Accepts the new token to put in Redux store
+   * Returns a new action that can be managed by Redux
+   * @return {Object}          The action
+   */
+  signUserInSuccessAction (user) {
+    return {
+      type: Constants.ACTIONS.AUTH.SIGN_USER_IN_SUCCESS
     }
   }
 }

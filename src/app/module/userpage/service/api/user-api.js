@@ -19,6 +19,11 @@ export default class UserApi extends LucioleApi {
     })
   }
 
+  /**
+   * Decode user from json
+   * @param {string} json The json to decode
+   * @return {User}  The user decoded
+   */
   decodeUser (json) {
     return new User({
       mail: json.mail,

@@ -70,6 +70,45 @@ describe('AuthApi', () => {
     })
   })
 
+  describe('signUserIn', () => {
+    var serv, rHelper, mockService, mockRequestHelper
+
+    beforeEach(() => {
+      rHelper = new MockRequestHelper()
+      serv = new AuthApi()
+      mockRequestHelper = sinon.mock(rHelper)
+      serv.requestHelper = rHelper
+      mockService = sinon.mock(serv)
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+      mockRequestHelper.verify()
+      mockRequestHelper.restore()
+    })
+
+    it('Expect to return a promise', () => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
+      expect(serv.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').then).to.be.an.instanceof(Function)
+    })
+
+    it('Expect to have call post method', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('encodeSignUpData').returns('encodedSignUpData')
+      let response = {body: {}}
+      mockRequestHelper.expects('post').resolves(response)
+      let spy = chai.spy.on(rHelper, 'post')
+      let uri = 'endpoint/v1/users'
+      serv.signUserIn('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').then(() => {
+        expect(spy).to.have.been.called.with(uri, 'encodedSignUpData')
+        done()
+      })
+    })
+  })
+
   describe('disconnectUser', () => {
     var serv, rHelper, mockService
 
@@ -136,6 +175,37 @@ describe('AuthApi', () => {
 
     it('Expect to return valid token', () => {
       expect(serv.decodeToken({access_token: 'mytoken'})).to.equals('mytoken')
+    })
+  })
+
+  describe('encodeSignUpData', () => {
+    var serv
+    beforeEach(() => {
+      serv = new AuthApi()
+    })
+
+    it('Expect to return object with password2', () => {
+      expect(serv.encodeSignUpData('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').password2).to.equals('password2')
+    })
+
+    it('Expect to return object with password1', () => {
+      expect(serv.encodeSignUpData('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').password1).to.equals('password1')
+    })
+
+    it('Expect to return object with mail', () => {
+      expect(serv.encodeSignUpData('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').mail).to.equals('mail')
+    })
+
+    it('Expect to return object with username', () => {
+      expect(serv.encodeSignUpData('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').username).to.equals('username')
+    })
+
+    it('Expect to return object with recaptcha', () => {
+      expect(serv.encodeSignUpData('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').recaptcha).to.equals('captcharesponse')
+    })
+
+    it('Expect to return object with userLang', () => {
+      expect(serv.encodeSignUpData('username', 'mail', 'password1', 'password2', 'captcharesponse', 'fr').userLang).to.equals('fr')
     })
   })
 })

@@ -17,4 +17,11 @@ export default class MockAuthService {
     return Promise.resolve()
   }
 
+  /**
+   * A fake signUserIn method
+   */
+  signUserIn () {
+    return Promise.resolve()
+  }
+
 }

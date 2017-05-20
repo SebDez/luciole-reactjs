@@ -26,6 +26,12 @@ export default class FormHelper {
     /** @type {Function}*/
     this.isValidEmail = this.isValidEmail.bind(this)
     /** @type {Function}*/
+    this.isValidUsername = this.isValidUsername.bind(this)
+    /** @type {Function}*/
+    this.isValidPassword = this.isValidPassword.bind(this)
+    /** @type {Function}*/
+    this.isSamePassword = this.isSamePassword.bind(this)
+    /** @type {Function}*/
     this.adviceDemo = this.adviceDemo.bind(this)
   }
 
@@ -75,6 +81,48 @@ export default class FormHelper {
   }
 
   /**
+   * Check if given field is a valid username
+   * @type {string} value The value to check
+   * @return {string} The error message to show, undefined if the value is valid
+   */
+  isValidUsername (value) {
+    let regex = /^[a-zA-Z0-9\s]+$/
+    if (!value || value.length < 4 || value.length > 20) {
+      return this.i18n.t('forms.usernameLengthInvalid')
+    } else if (typeof value !== 'string' || !regex.test(value)) {
+      return this.i18n.t('forms.usernameContentInvalid')
+    }
+    return undefined
+  }
+
+  /**
+   * Check if given field is a valid password
+   * @type {string} value The value to check
+   * @return {string} The error message to show, undefined if the value is valid
+   */
+  isValidPassword (value) {
+    if (!value || value.length < 8 || value.length > 20) {
+      return this.i18n.t('forms.passwordLengthInvalid')
+    } else if (typeof value !== 'string') {
+      return this.i18n.t('forms.passwordContentInvalid')
+    }
+    return undefined
+  }
+
+  /**
+   * Check if given password2 is the same as password1
+   * @type {string} value The value to check
+   * @type {Object} form The form values
+   * @return {string} The error message to show, undefined if the value is valid
+   */
+  isSamePassword (value, form) {
+    if (value && form && form.password1 && (value !== form.password1)) {
+      return this.i18n.t('forms.passwordNotEqual')
+    }
+    return undefined
+  }
+
+  /**
    * Example for warning message, check if value equals train
    * @type {string} value The value to check
    * @return {string} The error message to show, undefined if the value is valid
@@ -85,7 +133,7 @@ export default class FormHelper {
 
   /**
    * Render the field element
-   * @type {Object} params The params for redux form
+   * @type {FormHelper} formHelper The formHelper to use
    * @type {string} input The value of the field
    * @type {string} label The label and placeholder for this field
    * @type {string} type The type of field
@@ -95,16 +143,16 @@ export default class FormHelper {
    * @type {Object} prefix The prefix object for the field {type: text or icon, value: text or icon name}
    * @return {Object} The element to render
    */
-  renderField ({ input, label, type, meta: { touched, error, warning }, prefix }) {
-    const state = this.getValidationState(touched, error, warning)
-    const elmClass = this.getFieldClass(touched, error)
+  renderField ({ formHelper, input, label, type, meta: { touched, error, warning }, prefix }) {
+    const state = formHelper.getValidationState(touched, error, warning)
+    const elmClass = formHelper.getFieldClass(touched, error)
     return (
       <div>
         <FormGroup controlId={input.name} validationState={state}>
-          {this.getControlLabel(label)}
-          {this.getInputGroup(type, input, label, prefix, elmClass)}
-          {touched && ((error && this.renderInfoField('error', error)) ||
-            (warning && this.renderInfoField('warning', warning))
+          {formHelper.getControlLabel(label)}
+          {formHelper.getInputGroup(type, input, label, prefix, elmClass)}
+          {touched && ((error && formHelper.renderInfoField('error', error)) ||
+            (warning && formHelper.renderInfoField('warning', warning))
           )}
           <FormControl.Feedback />
         </FormGroup>

@@ -37,6 +37,56 @@ describe('FormHelper', () => {
     })
   })
 
+  describe('isValidUsername', () => {
+    it('Expect to return undefined if username is valid', () => {
+      const expected = void (0)
+      expect(service.isValidUsername('username')).to.equals(expected)
+    })
+    it('Expect to return forms.usernameLengthInvalid if username is not set', () => {
+      const expected = 'forms.usernameLengthInvalid'
+      expect(service.isValidUsername(null)).to.equals(expected)
+    })
+    it('Expect to return forms.usernameLengthInvalid if username length is less than 4', () => {
+      const expected = 'forms.usernameLengthInvalid'
+      expect(service.isValidUsername('sss')).to.equals(expected)
+    })
+    it('Expect to return forms.usernameLengthInvalid if username length is more than 20', () => {
+      const expected = 'forms.usernameLengthInvalid'
+      expect(service.isValidUsername('sssssssssssssssssssssssss')).to.equals(expected)
+    })
+    it('Expect to return forms.usernameContentInvalid if username contains symbol', () => {
+      const expected = 'forms.usernameContentInvalid'
+      expect(service.isValidUsername('adfdfef!!!')).to.equals(expected)
+    })
+    it('Expect to return forms.usernameContentInvalid if username is not a string', () => {
+      const expected = 'forms.usernameContentInvalid'
+      expect(service.isValidUsername(55555555)).to.equals(expected)
+    })
+  })
+
+  describe('isValidPassword', () => {
+    it('Expect to return undefined if password is valid', () => {
+      const expected = void (0)
+      expect(service.isValidPassword('password!!!')).to.equals(expected)
+    })
+    it('Expect to return forms.passwordLengthInvalid if username is not set', () => {
+      const expected = 'forms.passwordLengthInvalid'
+      expect(service.isValidPassword(null)).to.equals(expected)
+    })
+    it('Expect to return forms.passwordLengthInvalid if username length is less than 4', () => {
+      const expected = 'forms.passwordLengthInvalid'
+      expect(service.isValidPassword('sss')).to.equals(expected)
+    })
+    it('Expect to return forms.passwordLengthInvalid if username length is more than 20', () => {
+      const expected = 'forms.passwordLengthInvalid'
+      expect(service.isValidPassword('sssssssssssssssssssssssss')).to.equals(expected)
+    })
+    it('Expect to return forms.passwordContentInvalid if username is not a string', () => {
+      const expected = 'forms.passwordContentInvalid'
+      expect(service.isValidPassword(55555555)).to.equals(expected)
+    })
+  })
+
   describe('isMoreThanMaxLength', () => {
     it('Expect to return undefined if value is under max', () => {
       const expected = void (0)
@@ -79,6 +129,38 @@ describe('FormHelper', () => {
     it('Expect to return forms.numberRequired if value is not a number', () => {
       const expected = 'forms.numberRequired'
       expect(service.isNumber('sss')).to.equals(expected)
+    })
+  })
+
+  describe('isSamePassword', () => {
+    const form = {
+      password1: 'pass1'
+    }
+
+    it('Expect to return undefined if value not given', () => {
+      const expected = void (0)
+      expect(service.isSamePassword(null, form)).to.equals(expected)
+    })
+
+    it('Expect to return undefined if form not given', () => {
+      const expected = void (0)
+      expect(service.isSamePassword('pass1', null)).to.equals(expected)
+    })
+
+    it('Expect to return undefined if password1 not given', () => {
+      const expected = void (0)
+      expect(service.isSamePassword('pass1', {})).to.equals(expected)
+    })
+
+    it('Expect to return undefined if password1 and value are equal', () => {
+      const expected = void (0)
+      expect(service.isSamePassword('pass1', form)).to.equals(expected)
+    })
+
+    it('Expect to return forms.passwordNotEqual if password1 and value are NOT equal', () => {
+      const expected = 'forms.passwordNotEqual'
+      form.password1 = 'other'
+      expect(service.isSamePassword('pass1', form)).to.equals(expected)
     })
   })
 
@@ -163,7 +245,8 @@ describe('FormHelper', () => {
           warning: true
         },
         prefix: 'prefix',
-        type: 'type'
+        type: 'type',
+        formHelper: service
       }
       mockService.expects('getValidationState').returns('success')
       mockService.expects('getFieldClass').returns('my_FieldClass')

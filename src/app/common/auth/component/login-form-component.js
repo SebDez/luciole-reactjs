@@ -14,12 +14,12 @@ export class LoginFormComponent extends FormComponent {
   render () {
     return (
       <form className='luciole-form' onSubmit={this.props.handleSubmit}>
-        <Field name='mail' type='email'
-          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.auth.username')}
+        <Field name='mail' type='email' formHelper={this.formHelper}
+          component={this.formHelper.renderField} label={this.i18n.t('application.auth.username')}
           validate={[ this.formHelper.isRequired, this.formHelper.isValidEmail ]} prefix={{type: 'icon', value: 'user'}}
         />
-        <Field name='password' type='password'
-          component={this.formHelper.renderField.bind(this.formHelper)} label={this.i18n.t('application.auth.password')}
+        <Field name='password' type='password' formHelper={this.formHelper}
+          component={this.formHelper.renderField} label={this.i18n.t('application.auth.password')}
           validate={[this.formHelper.isRequired]} prefix={{type: 'icon', value: 'key'}}
         />
         <div className='buttons'>
