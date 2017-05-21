@@ -1,6 +1,7 @@
 import Constants from './../../../common/constants'
 import { setLocale } from 'react-redux-i18n'
 import LucioleActions from './../../../common/core/abstract/luciole-actions'
+import UserLangService from './../../../module/main/service/userlang-service'
 
 /**
  * Class for MainActions
@@ -14,6 +15,8 @@ export default class MainActions extends LucioleActions {
   /* istanbul ignore next */
   constructor () {
     super()
+    /** @type {UserLangService}*/
+    this.userLangService = new UserLangService()
     /** @type {Function}*/
     this.changeLanguage = this.changeLanguage.bind(this)
     /** @type {Function}*/
@@ -31,7 +34,17 @@ export default class MainActions extends LucioleActions {
     const codeLanguage = Constants.LANGUAGE.filter(lang => {
       return lang.key === languageCode
     })[0].label
-    return this.i18nActions.setLocale(codeLanguage)
+    return (dispatch, getState) => {
+      const token = this.getTokenFromGetState(getState)
+      // If user not logged in
+      if (!token) {
+        return dispatch(this.i18nActions.setLocale(codeLanguage))
+      } else {
+        return this.userLangService.changeUserLang(token, codeLanguage).then(() => {
+          dispatch(this.i18nActions.setLocale(codeLanguage))
+        }, this.manageHttpErrors.bind(this))
+      }
+    }
   }
 
   /**

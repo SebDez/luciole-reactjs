@@ -17,4 +17,11 @@ export default class MockRequestHelper {
     return Promise.resolve()
   }
 
+  /**
+   * A fake put method
+   */
+  put () {
+    return Promise.resolve()
+  }
+
 }

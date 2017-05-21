@@ -6,7 +6,7 @@ let spies = require('chai-spies')
 chai.use(spies)
 
 describe('RequestHelper', () => {
-  var serv, httpClient, getter, query, post, send
+  var serv, httpClient, getter, query, post, send, put
   beforeEach(() => {
     query = {
       end: (cb) => {
@@ -28,12 +28,20 @@ describe('RequestHelper', () => {
         return send
       }
     }
+    put = {
+      send: () => {
+        return send
+      }
+    }
     httpClient = {
       get: () => {
         return getter
       },
       post: () => {
         return post
+      },
+      put: () => {
+        return put
       }
     }
     serv = new RequestHelper()
@@ -146,6 +154,62 @@ describe('RequestHelper', () => {
       }
       serv.httpClient = httpClient
       serv.post('uri', 'body').then(res => {
+        expect(res).to.equals('myres')
+        done()
+      })
+    })
+  })
+
+  describe('put', () => {
+    it('Expect to return a promise', () => {
+      expect(serv.put('uri', 'body')).to.be.an.instanceof(Promise)
+    })
+
+    it('Expect to have call put method', (done) => {
+      const spy = chai.spy.on(serv.httpClient, 'put')
+      serv.put('uri', 'body').then(() => {
+        expect(spy).to.have.been.called.with('uri')
+        done()
+      })
+    })
+
+    it('Expect to have call send method', (done) => {
+      const spy = chai.spy.on(put, 'send')
+      serv.put('uri', 'body').then(() => {
+        expect(spy).to.have.been.called.with('body')
+        done()
+      })
+    })
+
+    it('Expect to have call end method', (done) => {
+      const spy = chai.spy.on(send, 'end')
+      serv.put('uri', 'body').then(() => {
+        expect(spy).to.have.been.called.once
+        done()
+      })
+    })
+
+    it('Expect to reject if err', (done) => {
+      send = {
+        end: (cb) => {
+          cb('myerr', null)
+        }
+      }
+      serv.httpClient = httpClient
+      serv.put('uri', 'body').then(null, err => {
+        expect(err).to.equals('myerr')
+        done()
+      })
+    })
+
+    it('Expect to resolve if no err', (done) => {
+      send = {
+        end: (cb) => {
+          cb(null, 'myres')
+        }
+      }
+      serv.httpClient = httpClient
+      serv.put('uri', 'body').then(res => {
         expect(res).to.equals('myres')
         done()
       })
