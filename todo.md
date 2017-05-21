@@ -26,13 +26,13 @@
 
 # V0.4.0 : User account
 
- * Signup Process | signup_module | **IN_PROGRESS**
+ * Signup Process | signup_module | **DONE**
  * User Page | user_page | **DONE**
   * Design | **DONE**
   * User datas | **DONE**
- * User Lang | user_lang | **TODO**
- * Edit User Datas | edit_user | **TODO**
-   * Edit username | **TODO**
+ * User Lang | user_lang | **DONE**
+ * Edit User Datas | edit_user | **IN_PROGRESS**
+   * Edit username | **IN_PROGRESS**
    * Edit user datas | **TODO**
    * Edit user avatar | **TODO**
 
