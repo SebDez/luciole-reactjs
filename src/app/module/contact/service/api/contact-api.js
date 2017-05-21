@@ -19,7 +19,6 @@ export default class ContactApi extends LucioleApi {
 
 /**
  * Encode a message to valid JSON format
- * @type {Object} endpoint The endpoint to use
  * @type {Object} message The message object to send
  * @return {Object}  A message encoded
  */

@@ -55,6 +55,27 @@ class RequestHelper {
       })
     })
   }
+
+  /**
+   * PUT method
+   * @param  {string}  uri              The uri to consume
+   * @param  {Object}  body              The body to send
+   * @return {Object}                   A promise to resolve
+   */
+  put (uri, body) {
+    return new Promise((resolve, reject) => {
+      this.httpClient
+      .put(uri)
+      .send(body)
+      .end((err, res) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  }
 }
 
 RequestHelper.deps = []
