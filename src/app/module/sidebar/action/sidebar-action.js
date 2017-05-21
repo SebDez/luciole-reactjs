@@ -72,6 +72,7 @@ export default class SidebarActions extends LucioleActions {
    * Create an action with the GET_RESOURCES_SUCCESS type
    * Accepts the new token to put in Redux store
    * Returns a new action that can be managed by Redux
+   * @param {Object} resources The resources to use
    */
   getUserResourceSuccessAction (resources) {
     return {

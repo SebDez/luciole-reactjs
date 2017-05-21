@@ -39,4 +39,14 @@ export default class UserApi extends LucioleApi {
       avatar: json.avatar
     })
   }
+
+  /**
+   * Edit the user's username
+   * @param {string} token The user's token
+   * @param {string} username The new user's username
+   * @return {Object} A promise to resolve
+   */
+  editUsername (token, username) {
+    return Promise.reject('todo')
+  }
 }

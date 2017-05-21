@@ -86,7 +86,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is valid
    */
   isValidUsername (value) {
-    let regex = /^[a-zA-Z0-9\s]+$/
+    let regex = /^[a-zA-Z0-9]+$/
     if (!value || value.length < 4 || value.length > 20) {
       return this.i18n.t('forms.usernameLengthInvalid')
     } else if (typeof value !== 'string' || !regex.test(value)) {

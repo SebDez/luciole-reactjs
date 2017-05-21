@@ -64,7 +64,15 @@ export default {
       password: 'Change my password',
       accountTitle: 'My account datas'
     },
-    not_set: 'Not specified'
+    not_set: 'Not specified',
+    userpage: {
+      editUsername: {
+        modalTitle: 'Change your username',
+        username: 'Your username',
+        submit: 'Apply',
+        cancel: 'Cancel'
+      }
+    }
   },
   date: {
     long: 'MMMM Do, YYYY'

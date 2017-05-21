@@ -24,4 +24,14 @@ describe('UserService', () => {
       })
     })
   })
+
+  describe('editUsername', () => {
+    it('Expect to have call api editUsername', (done) => {
+      spy = chai.spy.on(service.api, 'editUsername')
+      service.editUsername('token', 'username').then(() => {
+        expect(spy).to.have.been.called.with('token', 'username')
+        done()
+      })
+    })
+  })
 })

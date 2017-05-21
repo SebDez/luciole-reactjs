@@ -1,10 +1,13 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 import UserAvatar from './../../../common/component/avatar/user-avatar-component'
 import UserDatasRead from './../component/user-datas-read-component'
 import UserAccountRead from './../component/user-account-read-component'
+import UserPageActions from './../action/userpage-action'
+import EditUsernameModal from './../component/edit-username-modal-component'
 
 /**
  * UserPage container, used to define the composition of the UserPage screen
@@ -14,29 +17,47 @@ import UserAccountRead from './../component/user-account-read-component'
  */
 export const UserPage = (props) => {
   return (
-    <Grid className='lu-grid userpage'>
-      <LuciolePageHeader title='application.sidebar.account' icon='user' />
-      <Row>
-        <Col className='sidebar-block-col' xs={12} md={4}>
-          <div className='lu-container userpage-avatar'>
-            <UserAvatar src={props.user.avatar} />
-          </div>
-        </Col>
-        <Col className='sidebar-block-col' xs={12} md={8}>
-          <div className='lu-container userpage-account'>
-            <UserAccountRead user={props.user} />
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col className='sidebar-block-col' xs={12} md={12}>
-          <div className='lu-container'>
-            <UserDatasRead user={props.user} />
-          </div>
-        </Col>
-      </Row>
-    </Grid>
+    <div>
+      <Grid className='lu-grid userpage'>
+        <LuciolePageHeader title='application.sidebar.account' icon='user' />
+        <Row>
+          <Col className='sidebar-block-col' xs={12} md={4}>
+            <div className='lu-container userpage-avatar'>
+              <UserAvatar src={props.user.avatar} />
+            </div>
+          </Col>
+          <Col className='sidebar-block-col' xs={12} md={8}>
+            <div className='lu-container userpage-account'>
+              <UserAccountRead user={props.user} openEditUsernameModal={openEditUsernameModal.bind(null, props)} />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col className='sidebar-block-col' xs={12} md={12}>
+            <div className='lu-container'>
+              <UserDatasRead user={props.user} />
+            </div>
+          </Col>
+        </Row>
+      </Grid>
+      <EditUsernameModal show={props.userPage.modals.showEditUsernameModal}
+        username={props.user.username}
+        handleEdit={editUsername.bind(null, props)}
+        handleClose={closeEditUsernameModal.bind(null, props)} />
+    </div>
   )
+}
+
+function openEditUsernameModal (props) {
+  props.userPageActions.openEditUsernameModalAction()
+}
+
+function editUsername (props, params) {
+  props.userPageActions.editUsername(params.username)
+}
+
+function closeEditUsernameModal (props) {
+  props.userPageActions.closeEditUsernameModalAction()
 }
 
 /**
@@ -46,7 +67,8 @@ export const UserPage = (props) => {
  */
 function mapStateToProps (state) {
   return {
-    user: state.application.auth.user
+    user: state.application.auth.user,
+    userPage: state.application.module.userpage
   }
 }
 
@@ -56,7 +78,9 @@ function mapStateToProps (state) {
  * @return {Object}       The container props
  */
 function mapDispatchToProps (dispatch) {
-  return {}
+  return {
+    userPageActions: bindActionCreators(new UserPageActions(), dispatch)
+  }
 }
 
 /**
@@ -64,11 +88,18 @@ function mapDispatchToProps (dispatch) {
  * @type {Object}
  */
 UserPage.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  userPage: PropTypes.object.isRequired,
+  userPageActions: PropTypes.object.isRequired
 }
 
 UserPage.mapStateToProps = mapStateToProps
 UserPage.mapDispatchToProps = mapDispatchToProps
+UserPage.__testOnly = {
+  closeEditUsernameModal,
+  editUsername,
+  openEditUsernameModal
+}
 
 /**
  * Connect the component to access global state object

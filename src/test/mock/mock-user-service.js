@@ -10,4 +10,11 @@ export default class MockUserService {
     return Promise.resolve()
   }
 
+  /**
+   * A fake editUsername method
+   */
+  editUsername () {
+    return Promise.resolve()
+  }
+
 }

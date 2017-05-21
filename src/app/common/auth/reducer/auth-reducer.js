@@ -16,6 +16,7 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_LOGIN_MODAL, closeLoginM
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.OPEN_SIGNIN_MODAL, openSignUpModalAction)
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_SIGNIN_MODAL, closeSignUpModalAction)
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.SIGN_USER_IN_SUCCESS, signUserInSuccessAction)
+AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITUSERNAME, editUsernameAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -102,6 +103,18 @@ export function closeSignUpModalAction (state) {
  */
 export function signUserInSuccessAction (state) {
   return objectAssign({}, state, {modals: {showLoginModal: false, showSignUpModal: false}})
+}
+
+/**
+ * Change state to manage username's edition
+ * @param  {Object} state The state to use
+ * @param  {Object} action The action params
+ * @return {Object}       The new state
+ */
+export function editUsernameAction (state, action) {
+  const user = objectAssign({}, state.user)
+  user.username = action.username
+  return objectAssign({}, state, {user})
 }
 
 // Export the reducer

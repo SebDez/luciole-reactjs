@@ -64,7 +64,15 @@ export default {
       password: 'Changer mon mot de passe',
       accountTitle: 'Mes informations de compte'
     },
-    not_set: 'Non renseigné'
+    not_set: 'Non renseigné',
+    userpage: {
+      editUsername: {
+        modalTitle: 'Modifier votre pseudo',
+        username: 'Votre pseudo',
+        submit: 'Sauvegarder',
+        cancel: 'Annuler'
+      }
+    }
   },
   date: {
     long: 'D MMMM YYYY'

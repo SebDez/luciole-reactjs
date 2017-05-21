@@ -12,6 +12,11 @@ export default {
             open: false
           }
         }
+      },
+      userpage: {
+        modals: {
+          showEditUsernameModal: false
+        }
       }
     },
     auth: {

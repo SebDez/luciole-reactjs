@@ -12,7 +12,8 @@ describe('AuthReducer', () => {
     state = {
       state: 'default-state-value',
       user: {
-        token: 'my-old-fashion-token'
+        token: 'my-old-fashion-token',
+        username: 'me'
       }
     }
   })
@@ -78,7 +79,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: true,
@@ -95,7 +97,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
@@ -112,7 +115,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
@@ -129,7 +133,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
@@ -146,11 +151,29 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
           showSignUpModal: false
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('editUsernameAction', () => {
+    it('Expect to return a valid state', () => {
+      action = {
+        username: 'myusername'
+      }
+      const result = AuthReducer.editUsernameAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'myusername'
         }
       }
       expect(result).to.deep.equal(expected)
