@@ -41,12 +41,24 @@ export default class UserApi extends LucioleApi {
   }
 
   /**
-   * Edit the user's username
-   * @param {string} token The user's token
-   * @param {string} username The new user's username
-   * @return {Object} A promise to resolve
-   */
+  * Edit the user's username
+  * @param {string} token The user's token
+  * @param {string} username The new user's username
+  * @return {Object} A promise to resolve
+  */
   editUsername (token, username) {
-    return Promise.reject('todo')
+    const endpoint = this.getAppEndpoint()
+    const uri = this.addTokenQueryParamToUri(`${endpoint}/v1/users/me/username`, token)
+    const body = this.encodeNewUsername(username)
+    return this.requestHelper.put(uri, body)
+  }
+
+  /**
+  * Encode a body to valid JSON format
+  * @param {string} username The new user's username to set
+  * @return {Object}  A body encoded
+  */
+  encodeNewUsername (username) {
+    return {username}
   }
 }

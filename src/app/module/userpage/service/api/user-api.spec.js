@@ -78,4 +78,50 @@ describe('UserApi', () => {
       })
     })
   })
+
+  describe('editUsername', () => {
+    var serv, rHelper, mockService, token, username
+    beforeEach(() => {
+      rHelper = new MockRequestHelper()
+      serv = new UserApi()
+      serv.requestHelper = rHelper
+      mockService = sinon.mock(serv)
+      token = 'mytoken'
+      username = 'my-username'
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+    })
+
+    it('Expect to return a promise', () => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('addTokenQueryParamToUri').returns('my-final-endpoint')
+      mockService.expects('encodeNewUsername').returns('my-body')
+      expect(serv.editUsername(token, username)).to.be.an.instanceof(Promise)
+    })
+
+    it('Expect to have call put method', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('addTokenQueryParamToUri').returns('my-final-endpoint')
+      mockService.expects('encodeNewUsername').returns('my-body')
+      let spy = chai.spy.on(rHelper, 'put')
+      serv.editUsername(token, username).then(() => {
+        expect(spy).to.have.been.called.with('my-final-endpoint', 'my-body')
+        done()
+      })
+    })
+  })
+
+  describe('encodeNewUsername', () => {
+    var serv
+    beforeEach(() => {
+      serv = new UserApi()
+    })
+
+    it('Expect to return an object with valid username', () => {
+      expect(serv.encodeNewUsername('username').username).to.equals('username')
+    })
+  })
 })
