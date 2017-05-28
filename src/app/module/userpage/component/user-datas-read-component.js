@@ -42,7 +42,7 @@ class UserDatasRead extends LucioleComponent {
             <UserFieldRead label='application.user.country' value={this.toStringHelper.countryToString(this.props.user.country)} />
           </Col>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <UserFieldRead label='application.user.city' value={this.toStringHelper.cityToString(this.props.user.city)} />
+            <UserFieldRead label='application.user.region' value={this.toStringHelper.regionToString(this.props.user.region)} />
           </Col>
         </Row>
         <Row>

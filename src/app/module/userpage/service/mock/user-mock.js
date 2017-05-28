@@ -34,7 +34,7 @@ export default class UserMockApi {
       birthDate: mockHelper.getRandomDate(new Date(1980, 5, 24), new Date(2000, 5, 24)),
       gender: mockHelper.getRandomInt(1, 2),
       country: mockHelper.getRandomCountry(),
-      city: null,
+      region: null,
       avatar: mockHelper.getRandomImgSrc()
     })
   }

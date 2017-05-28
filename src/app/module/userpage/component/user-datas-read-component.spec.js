@@ -20,7 +20,7 @@ describe('UserDatasRead', () => {
           birthDate: 'birthDate',
           gender: 'gender',
           country: 'country',
-          city: 'city',
+          region: 'region',
           signUpDate: 'signUpDate'
         }
       }
@@ -98,16 +98,16 @@ describe('UserDatasRead', () => {
       expect(spy).to.have.been.called.once
     })
 
-    it('Expect to contain 1 UserFieldRead with good label and value (city)', () => {
+    it('Expect to contain 1 UserFieldRead with good label and value (region)', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(UserFieldRead).findWhere(n => {
-        return n.prop('label') === 'application.user.city' && n.prop('value') === 'my-city'
+        return n.prop('label') === 'application.user.region' && n.prop('value') === 'my-region'
       })
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to have call toStringHelper.cityToString twice', () => {
-      spy = chai.spy.on(compo.toStringHelper, 'cityToString')
+    it('Expect to have call toStringHelper.regionToString twice', () => {
+      spy = chai.spy.on(compo.toStringHelper, 'regionToString')
       compo.render()
       expect(spy).to.have.been.called.once
     })

@@ -35,7 +35,7 @@ export default class UserApi extends LucioleApi {
       birthDate: json.birthDate,
       gender: json.gender,
       country: json.country,
-      city: json.city,
+      region: json.region,
       avatar: json.avatar
     })
   }

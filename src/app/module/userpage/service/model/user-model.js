@@ -7,7 +7,7 @@ export default class User {
    * Create a new User
    */
   constructor ({mail, password, _id, username, role, userTag, signUpDate,
-    birthDate, gender, country, city, avatar}) {
+    birthDate, gender, country, region, avatar}) {
     /** @type {string} */
     this.token = null
     /** @type {string} */
@@ -29,7 +29,7 @@ export default class User {
     /** @type {string} */
     this.country = country
     /** @type {string} */
-    this.city = city
+    this.region = region
     /** @type {string} */
     this.avatar = avatar
   }

@@ -37,12 +37,12 @@ export default class ToStringHelper {
   }
 
   /**
-   * Convert a citycode to string
-   * @param  {string} city The citycode to convert
-   * @return {string}           The city string
+   * Convert a region code to string
+   * @param  {string} region The region code to convert
+   * @return {string}           The region string
    */
-  cityToString (city) {
-    return city
+  regionToString (region) {
+    return region
   }
 
   /**

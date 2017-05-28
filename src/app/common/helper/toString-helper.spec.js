@@ -37,13 +37,13 @@ describe('ToStringHelper', () => {
     })
   })
 
-  describe('cityToString', () => {
+  describe('regionToString', () => {
     it('Expect to return a string', () => {
-      expect(typeof service.cityToString('mycity')).to.equal('string')
+      expect(typeof service.regionToString('myregion')).to.equal('string')
     })
 
     it('Expect to return entered param', () => {
-      expect(service.cityToString('mycity')).to.equal('mycity')
+      expect(service.regionToString('myregion')).to.equal('myregion')
     })
   })
 

@@ -56,7 +56,7 @@ export default {
       birthDate: 'Birth date',
       signUpDate: 'Registered since',
       country: 'Country',
-      city: 'City',
+      region: 'Region',
       datasTitle: 'My personal datas',
       mail: 'Mail',
       username: 'Username',
