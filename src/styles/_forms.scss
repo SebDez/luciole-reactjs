@@ -122,4 +122,58 @@ $form-text-color: $app-button-bg-color;
   .recaptcha {
     text-align: center;
   }
+
+  .react-datepicker__input-container{
+    position: none !important;
+  }
+
+  /****************************
+   * RADIOS
+   * ***************************/
+
+  .lu-radios-list{
+    color: $app-button-text-color;
+
+    input{
+      width: auto !important;
+      box-shadow: none !important,
+    }
+
+    span{
+      display: inline-block;
+      position: relative;
+      font-weight: 300;
+      font-size: 1.35em;
+      cursor: pointer;
+      -webkit-transition: all 0.25s;
+    }
+
+    input{
+      width: auto !important;
+      box-shadow: none !important;
+      cursor: pointer;
+    }
+
+    .lu-radio{
+      padding-left: 15px;
+      display: inline-block;
+    }
+
+    .lu-radio:not(:checked){
+      &:hover{
+        span{
+          color: $app-button-bg-color;
+        }
+      }
+    }
+
+    input:checked{
+      + span{
+        color: green;
+      }
+      + span:hover{
+        color: green !important;
+      }
+    }
+  }
 }

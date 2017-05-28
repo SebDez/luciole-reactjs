@@ -15,7 +15,8 @@ export default {
       },
       userpage: {
         modals: {
-          showEditUsernameModal: false
+          showEditUsernameModal: false,
+          showEditPersonalDatasModal: false
         }
       }
     },

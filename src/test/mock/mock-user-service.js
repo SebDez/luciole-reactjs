@@ -17,4 +17,11 @@ export default class MockUserService {
     return Promise.resolve()
   }
 
+  /**
+   * A fake editPersonalDatas method
+   */
+  editPersonalDatas () {
+    return Promise.resolve()
+  }
+
 }

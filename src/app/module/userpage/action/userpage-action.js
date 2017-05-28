@@ -24,6 +24,14 @@ export default class UserPageActions extends LucioleActions {
     this.editUsername = this.editUsername.bind(this)
     /** @type {Function}*/
     this.editUsernameAction = this.editUsernameAction.bind(this)
+    /** @type {Function}*/
+    this.openEditPersonalDatasModalAction = this.openEditPersonalDatasModalAction.bind(this)
+    /** @type {Function}*/
+    this.closeEditPersonalDatasModalAction = this.closeEditPersonalDatasModalAction.bind(this)
+    /** @type {Function}*/
+    this.editPersonalDatas = this.editPersonalDatas.bind(this)
+    /** @type {Function}*/
+    this.editPersonalDatasAction = this.editPersonalDatasAction.bind(this)
   }
 
   /**
@@ -68,6 +76,52 @@ export default class UserPageActions extends LucioleActions {
     return {
       type: Constants.ACTIONS.USERPAGE.EDITUSERNAME,
       username
+    }
+  }
+
+  /**
+   * Create an action with the OPEN_EDITPERSONALDATAS_MODAL type
+   * Returns a new action that can be managed by Redux
+   */
+  openEditPersonalDatasModalAction () {
+    return {
+      type: Constants.ACTIONS.USERPAGE.OPEN_EDITPERSONALDATAS_MODAL
+    }
+  }
+
+  /**
+  * Create an action with the CLOSE_EDITPERSONALDATAS_MODAL type
+  * Returns a new action that can be managed by Redux
+  */
+  closeEditPersonalDatasModalAction () {
+    return {
+      type: Constants.ACTIONS.USERPAGE.CLOSE_EDITPERSONALDATAS_MODAL
+    }
+  }
+
+  /**
+   * Update the user's personal datas
+   * @return {Object}  The action to dispatch with user resources
+   */
+  editPersonalDatas (birthDate, gender) {
+    return (dispatch, getState) => {
+      const token = this.getTokenFromGetState(getState)
+      return this.userService.editPersonalDatas(token, birthDate, gender).then(() => {
+        dispatch(this.editPersonalDatasAction(birthDate, gender))
+      }).catch(this.manageHttpErrors.bind(this))
+    }
+  }
+
+  /**
+  * Create an action with the EDITPERSONALDATAS type
+  * Returns a new action that can be managed by Redux
+  * @param {string} username The new username
+  */
+  editPersonalDatasAction (birthDate, gender) {
+    return {
+      type: Constants.ACTIONS.USERPAGE.EDITPERSONALDATAS,
+      birthDate,
+      gender
     }
   }
 }

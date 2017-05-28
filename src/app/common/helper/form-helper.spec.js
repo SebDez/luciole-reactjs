@@ -1,7 +1,10 @@
+import React from 'react'
 import FormHelper from './form-helper'
 import {shallow} from 'enzyme'
 import FontAwesome from 'react-fontawesome'
-import { FormGroup, ControlLabel, InputGroup, FormControl } from 'react-bootstrap'
+import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { RadioGroup, Radio } from 'react-radio-group'
+import DatePicker from 'react-bootstrap-date-picker'
 
 let chai = require('chai')
 let expect = chai.expect
@@ -545,6 +548,128 @@ describe('FormHelper', () => {
       const wrapper = shallow(service.getFormControl(type, input, 'label'))
       const actual = wrapper.props().placeholder
       expect(actual).to.equals('label')
+    })
+  })
+
+  describe('renderRadioField', () => {
+    let params = {}
+
+    beforeEach(() => {
+      params = {
+        input: {
+          value: 'myvalue',
+          name: 'myname'
+        },
+        label: 'my-label',
+        formHelper: service,
+        options: [1, 2, 3]
+      }
+      mockService.expects('getRadioGroupOptions').returns('my-getRadioGroupOptions')
+    })
+
+    it('Expect to contain 1 FormGroup with name prop controlId', () => {
+      const wrapper = shallow(service.renderRadioField(params))
+      const actual = wrapper.find(FormGroup).findWhere(n => {
+        return n.prop('controlId') === 'myname'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 label', () => {
+      const wrapper = shallow(service.renderRadioField(params))
+      const actual = wrapper.find('label')
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 RadioGroup', () => {
+      const wrapper = shallow(service.renderRadioField(params))
+      const actual = wrapper.find(RadioGroup).findWhere(n => {
+        return n.prop('className') && n.prop('className').includes('lu-radios-list')
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to have call getRadioGroupOptions with good params', () => {
+      const spy = chai.spy.on(service, 'getRadioGroupOptions')
+      service.renderRadioField(params)
+      expect(spy).to.have.been.called.with(params.options, 'myvalue')
+    })
+  })
+
+  describe('renderDatePickerField', () => {
+    let params = {}
+
+    beforeEach(() => {
+      params = {
+        input: {
+          value: 'myvalue',
+          name: 'myname'
+        },
+        label: 'my-label',
+        formHelper: service,
+        options: [1, 2, 3]
+      }
+    })
+
+    it('Expect to contain 1 FormGroup with valid prop controlId', () => {
+      const wrapper = shallow(service.renderDatePickerField(params))
+      const actual = wrapper.find(FormGroup).findWhere(n => {
+        return n.prop('controlId') === 'myname'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 ControlLabel', () => {
+      const wrapper = shallow(service.renderDatePickerField(params))
+      const actual = wrapper.find(ControlLabel)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 DatePicker', () => {
+      const wrapper = shallow(service.renderDatePickerField(params))
+      const actual = wrapper.find(DatePicker).findWhere(n => {
+        return n.prop('value') === 'myvalue' && n.prop('name') === 'myname'
+      })
+      expect(actual).to.have.length(1)
+    })
+  })
+
+  describe('getRadioGroupOptions', () => {
+    let options, selectedValue
+
+    beforeEach(() => {
+      options = [{value: 1, label: 'lab1'}, {value: 2, label: 'lab2'}]
+      selectedValue = 1
+    })
+
+    it('Expect to contain 2 div with valid props', () => {
+      const wrapper = shallow(<div>{service.getRadioGroupOptions(options, selectedValue)}</div>)
+      const actual = wrapper.find('div').findWhere(n => {
+        return n.prop('className') && n.prop('className').includes('lu-radio')
+      })
+      expect(actual).to.have.length(2)
+    })
+
+    it('Expect to contain 1 Radio checked', () => {
+      const wrapper = shallow(<div>{service.getRadioGroupOptions(options, selectedValue)}</div>)
+      const actual = wrapper.find(Radio).findWhere(n => {
+        return n.prop('checked') === true && n.prop('value') === 1
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 Radio not checked', () => {
+      const wrapper = shallow(<div>{service.getRadioGroupOptions(options, selectedValue)}</div>)
+      const actual = wrapper.find(Radio).findWhere(n => {
+        return n.prop('checked') !== true && n.prop('value') === 2
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 2 Radio', () => {
+      const wrapper = shallow(<div>{service.getRadioGroupOptions(options, selectedValue)}</div>)
+      const actual = wrapper.find(Radio)
+      expect(actual).to.have.length(2)
     })
   })
 })

@@ -34,4 +34,14 @@ describe('UserService', () => {
       })
     })
   })
+
+  describe('editPersonalDatas', () => {
+    it('Expect to have call api editPersonalDatas', (done) => {
+      spy = chai.spy.on(service.api, 'editPersonalDatas')
+      service.editPersonalDatas('token', 'birthDate', 'gender').then(() => {
+        expect(spy).to.have.been.called.with('token', 'birthDate', 'gender')
+        done()
+      })
+    })
+  })
 })

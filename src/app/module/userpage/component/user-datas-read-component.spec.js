@@ -5,6 +5,7 @@ import MockI18n from './../../../../test/mock/mock-i18n'
 import MockToStringHelper from './../../../../test/mock/mock-toString-helper'
 import { Grid, Row, Col } from 'react-bootstrap'
 import UserFieldRead from './user-field-read-component'
+import FontAwesome from 'react-fontawesome'
 
 let chai = require('chai')
 let spies = require('chai-spies')
@@ -31,8 +32,8 @@ describe('UserDatasRead', () => {
 
     it('Expect to contain a Grid', () => {
       const wrapper = shallow(compo.render())
-      const actual = wrapper.instance()
-      expect(actual).to.be.instanceOf(Grid)
+      const actual = wrapper.find(Grid)
+      expect(actual).to.have.length(1)
     })
 
     it('Expect to contain 1 h2 with good text', () => {
@@ -116,6 +117,22 @@ describe('UserDatasRead', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(UserFieldRead).findWhere(n => {
         return n.prop('label') === 'application.user.signUpDate' && n.prop('value') === 'my-date'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 div with class corner-button', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find('div').findWhere(n => {
+        return n.prop('className') && n.prop('className').includes('corner-button')
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 pencil FontAwesome', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(FontAwesome).findWhere(n => {
+        return n.prop('name') === 'pencil'
       })
       expect(actual).to.have.length(1)
     })

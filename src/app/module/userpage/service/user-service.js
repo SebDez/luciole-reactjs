@@ -32,4 +32,15 @@ export default class UserService {
   editUsername (token, username) {
     return this.api.editUsername(token, username)
   }
+
+  /**
+   * Edit the user's personal datas
+   * @param {string} token The user's token
+   * @param {Date} birthDate The new user's birthDate
+   * @param {string} gender The new user's gender
+   * @return {Object} A promise to resolve
+   */
+  editPersonalDatas (token, birthDate, gender) {
+    return this.api.editPersonalDatas(token, birthDate, gender)
+  }
 }

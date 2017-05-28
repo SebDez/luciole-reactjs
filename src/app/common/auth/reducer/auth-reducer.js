@@ -17,6 +17,7 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.OPEN_SIGNIN_MODAL, openSignUpM
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_SIGNIN_MODAL, closeSignUpModalAction)
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.SIGN_USER_IN_SUCCESS, signUserInSuccessAction)
 AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITUSERNAME, editUsernameAction)
+AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITPERSONALDATAS, editPersonalDatasAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -114,6 +115,19 @@ export function signUserInSuccessAction (state) {
 export function editUsernameAction (state, action) {
   const user = objectAssign({}, state.user)
   user.username = action.username
+  return objectAssign({}, state, {user})
+}
+
+/**
+ * Change state to manage user's personal datas' edition
+ * @param  {Object} state The state to use
+ * @param  {Object} action The action params
+ * @return {Object}       The new state
+ */
+export function editPersonalDatasAction (state, action) {
+  const user = objectAssign({}, state.user)
+  user.birthDate = action.birthDate
+  user.gender = action.gender
   return objectAssign({}, state, {user})
 }
 

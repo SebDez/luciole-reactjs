@@ -124,4 +124,63 @@ describe('UserApi', () => {
       expect(serv.encodeNewUsername('username').username).to.equals('username')
     })
   })
+
+  describe('editPersonalDatas', () => {
+    var serv, rHelper, mockService, token, birthDate, gender
+    beforeEach(() => {
+      rHelper = new MockRequestHelper()
+      serv = new UserApi()
+      serv.requestHelper = rHelper
+      mockService = sinon.mock(serv)
+      token = 'mytoken'
+      birthDate = 'my-username'
+      gender = 'my-gender'
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+    })
+
+    it('Expect to return a promise', () => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('addTokenQueryParamToUri').returns('my-final-endpoint')
+      mockService.expects('encodePersonalDatas').returns('my-body')
+      expect(serv.editPersonalDatas(token, birthDate, gender)).to.be.an.instanceof(Promise)
+    })
+
+    it('Expect to have call put method', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('addTokenQueryParamToUri').returns('my-final-endpoint')
+      mockService.expects('encodePersonalDatas').returns('my-body')
+      let spy = chai.spy.on(rHelper, 'put')
+      serv.editPersonalDatas(token, birthDate, gender).then(() => {
+        expect(spy).to.have.been.called.with('my-final-endpoint', 'my-body')
+        done()
+      })
+    })
+  })
+
+  describe('encodePersonalDatas', () => {
+    var serv
+    beforeEach(() => {
+      serv = new UserApi()
+    })
+
+    it('Expect to return an object with valid birthDate', () => {
+      expect(serv.encodePersonalDatas('my-birthDate', 'my-gender').birthDate).to.equals('my-birthDate')
+    })
+
+    it('Expect to return an object with valid genderCode', () => {
+      expect(serv.encodePersonalDatas('my-birthDate', 'my-gender').genderCode).to.equals('my-gender')
+    })
+
+    it('Expect to return an object with valid countryCode', () => {
+      expect(serv.encodePersonalDatas('my-birthDate', 'my-gender').countryCode).to.equals('NU')
+    })
+
+    it('Expect to return an object with valid regionCode', () => {
+      expect(serv.encodePersonalDatas('my-birthDate', 'my-gender').regionCode).to.equals('NUL')
+    })
+  })
 })

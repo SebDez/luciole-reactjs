@@ -12,7 +12,8 @@ describe('UserPageReducer', () => {
     state = {
       state: 'default-state-value',
       modals: {
-        showEditUsernameModal: 'something'
+        showEditUsernameModal: 'something',
+        showEditPersonalDatasModal: 'somethingelse'
       }
     }
   })
@@ -23,7 +24,8 @@ describe('UserPageReducer', () => {
       const expected = {
         state: 'default-state-value',
         modals: {
-          showEditUsernameModal: true
+          showEditUsernameModal: true,
+          showEditPersonalDatasModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -36,7 +38,8 @@ describe('UserPageReducer', () => {
       const expected = {
         state: 'default-state-value',
         modals: {
-          showEditUsernameModal: false
+          showEditUsernameModal: false,
+          showEditPersonalDatasModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -49,7 +52,50 @@ describe('UserPageReducer', () => {
       const expected = {
         state: 'default-state-value',
         modals: {
-          showEditUsernameModal: false
+          showEditUsernameModal: false,
+          showEditPersonalDatasModal: 'somethingelse'
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('openEditPersonalDatasModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = UserPageReducer.openEditPersonalDatasModalAction(state)
+      const expected = {
+        state: 'default-state-value',
+        modals: {
+          showEditUsernameModal: 'something',
+          showEditPersonalDatasModal: true
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('closeEditPersonalDatasModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = UserPageReducer.closeEditPersonalDatasModalAction(state)
+      const expected = {
+        state: 'default-state-value',
+        modals: {
+          showEditUsernameModal: 'something',
+          showEditPersonalDatasModal: false
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('editPersonalDatasAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = UserPageReducer.editPersonalDatasAction(state)
+      const expected = {
+        state: 'default-state-value',
+        modals: {
+          showEditUsernameModal: 'something',
+          showEditPersonalDatasModal: false
         }
       }
       expect(result).to.deep.equal(expected)

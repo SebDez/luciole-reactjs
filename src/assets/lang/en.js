@@ -71,6 +71,15 @@ export default {
         username: 'Your username',
         submit: 'Apply',
         cancel: 'Cancel'
+      },
+      editPersonalDatas: {
+        modalTitle: 'Update your personal datas',
+        birthDate: 'Birth date',
+        region: 'Region',
+        country: 'Country',
+        gender: 'Gender',
+        submit: 'Apply',
+        cancel: 'Cancel'
       }
     }
   },

@@ -8,6 +8,7 @@ import UserDatasRead from './../component/user-datas-read-component'
 import UserAccountRead from './../component/user-account-read-component'
 import UserPageActions from './../action/userpage-action'
 import EditUsernameModal from './../component/edit-username-modal-component'
+import EditPersonalDatasModal from './../component/edit-personaldatas-modal-component'
 
 /**
  * UserPage container, used to define the composition of the UserPage screen
@@ -35,7 +36,7 @@ export const UserPage = (props) => {
         <Row>
           <Col className='sidebar-block-col' xs={12} md={12}>
             <div className='lu-container'>
-              <UserDatasRead user={props.user} />
+              <UserDatasRead user={props.user} openEditPersonalDatasModal={openEditPersonalDatasModal.bind(null, props)} />
             </div>
           </Col>
         </Row>
@@ -44,6 +45,10 @@ export const UserPage = (props) => {
         username={props.user.username}
         handleEdit={editUsername.bind(null, props)}
         handleClose={closeEditUsernameModal.bind(null, props)} />
+      <EditPersonalDatasModal show={props.userPage.modals.showEditPersonalDatasModal}
+        user={props.user}
+        handleEdit={editPersonalDatas.bind(null, props)}
+        handleClose={closeEditPersonalDatasModal.bind(null, props)} />
     </div>
   )
 }
@@ -58,6 +63,18 @@ function editUsername (props, params) {
 
 function closeEditUsernameModal (props) {
   props.userPageActions.closeEditUsernameModalAction()
+}
+
+function openEditPersonalDatasModal (props) {
+  props.userPageActions.openEditPersonalDatasModalAction()
+}
+
+function editPersonalDatas (props, params) {
+  props.userPageActions.editPersonalDatas(params.birthDate, params.gender)
+}
+
+function closeEditPersonalDatasModal (props) {
+  props.userPageActions.closeEditPersonalDatasModalAction()
 }
 
 /**
@@ -98,7 +115,10 @@ UserPage.mapDispatchToProps = mapDispatchToProps
 UserPage.__testOnly = {
   closeEditUsernameModal,
   editUsername,
-  openEditUsernameModal
+  openEditUsernameModal,
+  closeEditPersonalDatasModal,
+  editPersonalDatas,
+  openEditPersonalDatasModal
 }
 
 /**

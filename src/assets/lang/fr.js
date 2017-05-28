@@ -71,6 +71,15 @@ export default {
         username: 'Votre pseudo',
         submit: 'Sauvegarder',
         cancel: 'Annuler'
+      },
+      editPersonalDatas: {
+        modalTitle: 'Modifier vos données personnelles',
+        submit: 'Sauvegarder',
+        cancel: 'Annuler',
+        birthDate: 'Date de naissance',
+        region: 'Région',
+        country: 'Pays',
+        gender: 'Genre'
       }
     }
   },

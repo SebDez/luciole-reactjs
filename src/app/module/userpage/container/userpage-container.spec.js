@@ -7,6 +7,7 @@ import UserDatasRead from './../component/user-datas-read-component'
 import UserAccountRead from './../component/user-account-read-component'
 import UserAvatar from './../../../common/component/avatar/user-avatar-component'
 import EditUsernameModal from './../component/edit-username-modal-component'
+import EditPersonalDatasModal from './../component/edit-personaldatas-modal-component'
 
 let chai = require('chai')
 let spies = require('chai-spies')
@@ -47,7 +48,8 @@ describe('UserPage', () => {
       },
       userPage: {
         modals: {
-          showEditUsernameModal: false
+          showEditUsernameModal: false,
+          showEditPersonalDatasModal: false
         }
       },
       userPageActions: {}
@@ -120,6 +122,12 @@ describe('UserPage', () => {
       const actual = wrapper.find(EditUsernameModal)
       expect(actual).to.have.length(1)
     })
+
+    it('Expect to contain a EditPersonalDatasModal', () => {
+      const wrapper = shallow(<UserPage {...props} />)
+      const actual = wrapper.find(EditPersonalDatasModal)
+      expect(actual).to.have.length(1)
+    })
   })
 
   describe('openEditUsernameModal', () => {
@@ -161,6 +169,48 @@ describe('UserPage', () => {
       }
       UserPage.__testOnly.editUsername(props, {username: 'me'})
       expect(spy).to.have.been.called.with('me')
+    })
+  })
+
+  describe('openEditPersonalDatasModal', () => {
+    it('Expect to have call userPageActions.openEditPersonalDatasModalAction', () => {
+      const userPageActions = {
+        openEditPersonalDatasModalAction: () => 0
+      }
+      let spy = chai.spy.on(userPageActions, 'openEditPersonalDatasModalAction')
+      const props = {
+        userPageActions
+      }
+      UserPage.__testOnly.openEditPersonalDatasModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('closeEditPersonalDatasModal', () => {
+    it('Expect to have call userPageActions.closeEditPersonalDatasModalAction', () => {
+      const userPageActions = {
+        closeEditPersonalDatasModalAction: () => 0
+      }
+      let spy = chai.spy.on(userPageActions, 'closeEditPersonalDatasModalAction')
+      const props = {
+        userPageActions
+      }
+      UserPage.__testOnly.closeEditPersonalDatasModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('editPersonalDatas', () => {
+    it('Expect to have call userPageActions.editPersonalDatas', () => {
+      const userPageActions = {
+        editPersonalDatas: () => 0
+      }
+      let spy = chai.spy.on(userPageActions, 'editPersonalDatas')
+      const props = {
+        userPageActions
+      }
+      UserPage.__testOnly.editPersonalDatas(props, {birthDate: 'my-birthDate', gender: 'my-gender'})
+      expect(spy).to.have.been.called.with('my-birthDate', 'my-gender')
     })
   })
 })
