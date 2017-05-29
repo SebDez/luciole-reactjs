@@ -128,6 +128,8 @@ export function editPersonalDatasAction (state, action) {
   const user = objectAssign({}, state.user)
   user.birthDate = action.birthDate
   user.gender = action.gender
+  user.country = action.country
+  user.region = action.region
   return objectAssign({}, state, {user})
 }
 

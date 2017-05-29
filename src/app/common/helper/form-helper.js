@@ -4,6 +4,7 @@ import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstra
 import { RadioGroup, Radio } from 'react-radio-group'
 import { I18n } from 'react-redux-i18n'
 import DatePicker from 'react-bootstrap-date-picker'
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector'
 
 /**
  * Form Helper class
@@ -340,6 +341,24 @@ export default class FormHelper {
           <DatePicker {...input} placeholder={label}
             value={input.value} id={input.name} />
         </FormGroup>
+      </div>)
+  }
+
+  /**
+   * Render a CountryDropdown and RegionDropdown fields element
+   * @type {object} fields The fields parameters
+   * @return {Object} The element to render
+   */
+  renderCountryAndRegionDropdown (fields) {
+    const countryInput = fields.country.input
+    const regionInput = fields.region.input
+    return (
+      <div>
+        <label>{fields.countryLabel}</label>
+        <CountryDropdown {...countryInput} valueType='short' />
+        <label>{fields.regionLabel}</label>
+        <RegionDropdown {...regionInput} country={countryInput.value}
+          valueType='short' countryValueType='short' />
       </div>)
   }
 }

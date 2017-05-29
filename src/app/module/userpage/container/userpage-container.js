@@ -70,7 +70,8 @@ function openEditPersonalDatasModal (props) {
 }
 
 function editPersonalDatas (props, params) {
-  props.userPageActions.editPersonalDatas(params.birthDate, params.gender)
+  props.userPageActions.editPersonalDatas(params.birthDate, params.gender,
+    params.country, params.region)
 }
 
 function closeEditPersonalDatasModal (props) {

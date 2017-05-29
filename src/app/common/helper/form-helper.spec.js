@@ -5,6 +5,7 @@ import FontAwesome from 'react-fontawesome'
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { RadioGroup, Radio } from 'react-radio-group'
 import DatePicker from 'react-bootstrap-date-picker'
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector'
 
 let chai = require('chai')
 let expect = chai.expect
@@ -670,6 +671,55 @@ describe('FormHelper', () => {
       const wrapper = shallow(<div>{service.getRadioGroupOptions(options, selectedValue)}</div>)
       const actual = wrapper.find(Radio)
       expect(actual).to.have.length(2)
+    })
+  })
+
+  describe('renderCountryAndRegionDropdown', () => {
+    let fields = {}
+
+    beforeEach(() => {
+      fields = {
+        country: {
+          input: {
+            value: 'my-country-value',
+            name: 'my-country-input'
+          }
+        },
+        region: {
+          input: {
+            value: 'my-region-value',
+            name: 'my-region-input'
+          }
+        }
+      }
+    })
+
+    it('Expect to contain 2 label', () => {
+      const wrapper = shallow(service.renderCountryAndRegionDropdown(fields))
+      const actual = wrapper.find('label')
+      expect(actual).to.have.length(2)
+    })
+
+    it('Expect to contain 1 CountryDropdown', () => {
+      const wrapper = shallow(service.renderCountryAndRegionDropdown(fields))
+      const actual = wrapper.find(CountryDropdown).findWhere(n => {
+        return n.prop('valueType') === 'short' &&
+        n.prop('value') === 'my-country-value' &&
+        n.prop('name') === 'my-country-input'
+      })
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 RegionDropdown', () => {
+      const wrapper = shallow(service.renderCountryAndRegionDropdown(fields))
+      const actual = wrapper.find(RegionDropdown).findWhere(n => {
+        return n.prop('valueType') === 'short' &&
+        n.prop('countryValueType') === 'short' &&
+        n.prop('country') === 'my-country-value' &&
+        n.prop('value') === 'my-region-value' &&
+        n.prop('name') === 'my-region-input'
+      })
+      expect(actual).to.have.length(1)
     })
   })
 })

@@ -56,11 +56,19 @@ describe('UserPageActions', () => {
     })
 
     it('Expect to return valid birthDate param', () => {
-      expect(actions.editPersonalDatasAction('birthDate1', 'gender1').birthDate).to.equal('birthDate1')
+      expect(actions.editPersonalDatasAction('birthDate1', 'gender1', 'country1', 'region1').birthDate).to.equal('birthDate1')
     })
 
     it('Expect to return valid gender param', () => {
-      expect(actions.editPersonalDatasAction('birthDate1', 'gender1').gender).to.equal('gender1')
+      expect(actions.editPersonalDatasAction('birthDate1', 'gender1', 'country1', 'region1').gender).to.equal('gender1')
+    })
+
+    it('Expect to return valid country param', () => {
+      expect(actions.editPersonalDatasAction('birthDate1', 'gender1', 'country1', 'region1').country).to.equal('country1')
+    })
+
+    it('Expect to return valid region param', () => {
+      expect(actions.editPersonalDatasAction('birthDate1', 'gender1', 'country1', 'region1').region).to.equal('region1')
     })
   })
 

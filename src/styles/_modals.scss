@@ -56,7 +56,7 @@ $modals-actions-color: #0151a7;
       border: 1px solid rgba(0,0,0,0.2);
     }
 
-    input, textarea{
+    input, textarea, select{
       background: $app-button-text-color;
 
       &:focus {
@@ -94,6 +94,7 @@ $modals-actions-color: #0151a7;
       color: $app-button-cancel-text-color !important;
       background-color: $app-button-cancel-bg-color !important;
       border: 2px solid $app-button-cancel-border-color !important;
+      vertical-align: middle !important;
 
       &:hover {
         color: $app-button-cancel-hover-text-color !important;
@@ -101,5 +102,9 @@ $modals-actions-color: #0151a7;
         border: 2px solid $app-button-cancel-hover-border-color !important;
       }
     }
+  }
+
+  label{
+    color: black !important;
   }
 }

@@ -1,4 +1,5 @@
 $form-text-size: 15px;
+$form-bigtext-size: 20px;
 $form-text-color: $app-button-bg-color;
 
 .luciole-form{
@@ -12,7 +13,7 @@ $form-text-color: $app-button-bg-color;
     margin-bottom: 10px;
   }
 
-  input, textarea{
+  input, textarea, select{
     width: 100%;
     background: #1a3951;
     opacity: 0.7;
@@ -107,12 +108,15 @@ $form-text-color: $app-button-bg-color;
     color:orange;
   }
 
-  button{
+  button, div.luciole-buttons{
     @extend .luciole-buttons;
     width : 150px;
     height: 50px;
     font-size: 20px;
     margin : 5px 5px 5px 5px;
+    line-height: 50px;
+    vertical-align: middle;
+    padding: 0px 6px !important;
   }
 
   .g-recaptcha {
@@ -175,5 +179,11 @@ $form-text-color: $app-button-bg-color;
         color: green !important;
       }
     }
+  }
+
+  select {
+    margin-bottom: 8px;
+    padding: 5px;
+    font-size: $form-bigtext-size;
   }
 }

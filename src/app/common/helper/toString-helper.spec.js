@@ -6,6 +6,7 @@ let expect = chai.expect
 let spies = require('chai-spies')
 chai.use(spies)
 chai.use(require('chai-datetime'))
+let sinon = require('sinon')
 
 describe('ToStringHelper', () => {
   let service, spy
@@ -38,21 +39,77 @@ describe('ToStringHelper', () => {
   })
 
   describe('regionToString', () => {
-    it('Expect to return a string', () => {
-      expect(typeof service.regionToString('myregion')).to.equal('string')
+    let mock
+
+    beforeEach(() => {
+      mock = sinon.mock(service)
     })
 
-    it('Expect to return entered param', () => {
-      expect(service.regionToString('myregion')).to.equal('myregion')
+    afterEach(() => {
+      mock.verify()
+      mock.restore()
+    })
+
+    it('Expect to return a string', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['mc', 'mycountry', 'reg1~code1|reg2~code2|reg3~code3'])
+      expect(typeof service.regionToString('code2', 'mycountry')).to.equal('string')
+    })
+
+    it('Expect to return null if there is no country', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(null)
+      expect(service.regionToString('code2', 'mycountry')).to.equal(null)
+    })
+
+    it('Expect to return null if there is no country', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['res1', 'res2'])
+      expect(service.regionToString('code2', 'mycountry')).to.equal(null)
+    })
+
+    it('Expect to return the region code', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['mc', 'mycountry', 'reg1~code1|reg2~code2|reg3~code3'])
+      expect(service.regionToString('code2', 'mycountry')).to.equal('reg2')
+    })
+
+    it('Expect to return null is no region found', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['mc', 'mycountry', 'reg1~code1|reg2~code2|reg3~code3'])
+      expect(service.regionToString('code23', 'mycountry')).to.equal(null)
+    })
+
+    it('Expect to return null is no region name', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['mc', 'mycountry', 'reg1~code1|code2|reg3~code3'])
+      expect(service.regionToString('code2', 'mycountry')).to.equal(null)
     })
   })
 
   describe('countryToString', () => {
-    it('Expect to return a string', () => {
+    let mock
+
+    beforeEach(() => {
+      mock = sinon.mock(service)
+    })
+
+    afterEach(() => {
+      mock.verify()
+      mock.restore()
+    })
+
+    it('Expect to return a string if countrycode if valid', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['mycountry'])
       expect(typeof service.countryToString('mycountry')).to.equal('string')
     })
 
-    it('Expect to return entered param', () => {
+    it('Expect to return null if no country name found', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns([])
+      expect(service.countryToString('mycountry')).to.equal(null)
+    })
+
+    it('Expect to return null if no country', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(null)
+      expect(service.countryToString('mycountry')).to.equal(null)
+    })
+
+    it('Expect to return the country name found', () => {
+      mock.expects('getCountryArrayFromCountryCode').returns(['mycountry'])
       expect(service.countryToString('mycountry')).to.equal('mycountry')
     })
   })
@@ -75,6 +132,20 @@ describe('ToStringHelper', () => {
 
     it('Expect to return null if given date is not a date', () => {
       expect(service.dateToString('notadate')).to.equal(null)
+    })
+  })
+
+  describe('getCountryArrayFromCountryCode', () => {
+    it('Expect to return an array of 3', () => {
+      expect(service.getCountryArrayFromCountryCode('FR').length).to.equal(3)
+    })
+
+    it('Expect to return undefined if no countey found', () => {
+      expect(service.getCountryArrayFromCountryCode('unknown')).to.equal(void (0))
+    })
+
+    it('Expect to return the country name from alphacode', () => {
+      expect(service.getCountryArrayFromCountryCode('FR')[0]).to.equal('France')
     })
   })
 })

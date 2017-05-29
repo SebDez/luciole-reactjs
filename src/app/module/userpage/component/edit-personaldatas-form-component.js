@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import FormComponent from './../../../common/component/form/form-component'
-import { Field, reduxForm } from 'redux-form'
+import { Field, Fields, reduxForm } from 'redux-form'
 
 /**
  * EditPersonalDatasFormComponent Component
@@ -22,14 +22,21 @@ export class EditPersonalDatasFormComponent extends FormComponent {
           component={this.formHelper.renderRadioField} label={this.i18n.t('application.userpage.editPersonalDatas.gender')}
           validate={[]} options={this.getOptionsForGender()}
         />
+        <Fields names={['country', 'region']} component={this.formHelper.renderCountryAndRegionDropdown}
+          countryLabel={this.i18n.t('application.userpage.editPersonalDatas.country')}
+          regionLabel={this.i18n.t('application.userpage.editPersonalDatas.region')} />
         <div className='luciole-duo-buttons'>
-          <button className='luciole-buttons lu-cancel-btn' onClick={this.props.handleCancel}>{this.i18n.t('application.userpage.editPersonalDatas.cancel')}</button>
+          <div className='luciole-buttons lu-cancel-btn' onClick={this.props.handleCancel}>{this.i18n.t('application.userpage.editPersonalDatas.cancel')}</div>
           <button className='luciole-buttons' type='submit'>{this.i18n.t('application.userpage.editPersonalDatas.submit')}</button>
         </div>
       </form>
     )
   }
 
+  /**
+   * Get the options for gender select, return an array of {value, label}
+   * @return {Array}           An array of gender options
+   */
   getOptionsForGender () {
     return [{value: '1', label: this.i18n.t('application.user.gender.male')}, {value: '2', label: this.i18n.t('application.user.gender.female')}]
   }
@@ -49,5 +56,5 @@ EditPersonalDatasFormComponent.propTypes = {
  * Export the component
  */
 export default reduxForm({
-  form: 'edit-username' // a unique name for this form
+  form: 'edit-personaldatas' // a unique name for this form
 })(EditPersonalDatasFormComponent)

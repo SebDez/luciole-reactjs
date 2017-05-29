@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
-import { Field } from 'redux-form'
+import { Field, Fields } from 'redux-form'
 import { EditPersonalDatasFormComponent } from './edit-personaldatas-form-component'
 import MockI18n from './../../../../test/mock/mock-i18n'
 
@@ -18,6 +18,7 @@ describe('EditPersonalDatasFormComponent', () => {
 
     beforeEach(() => {
       compo = new EditPersonalDatasFormComponent(props)
+      compo.i18n = new MockI18n()
       mock = sinon.mock(compo)
       mock.expects('getOptionsForGender').returns([])
     })
@@ -51,6 +52,16 @@ describe('EditPersonalDatasFormComponent', () => {
       expect(actual).to.have.length(1)
     })
 
+    it('Expect to contain 1 Fields with valid names and labels (gender)', () => {
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find(Fields).findWhere(n => {
+        return n.prop('names')[0] === 'country' && n.prop('names')[1] === 'region' &&
+        n.prop('countryLabel') === 'application.userpage.editPersonalDatas.country' &&
+        n.prop('regionLabel') === 'application.userpage.editPersonalDatas.region'
+      })
+      expect(actual).to.have.length(1)
+    })
+
     it('Expect to contain 1 div with valid className', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('div').findWhere(n => {
@@ -59,17 +70,17 @@ describe('EditPersonalDatasFormComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 button with className lu-cancel-btn', () => {
+    it('Expect to contain 1 div with className lu-cancel-btn', () => {
       const wrapper = shallow(compo.render())
-      const actual = wrapper.find('button').findWhere(n => {
+      const actual = wrapper.find('div').findWhere(n => {
         return n.prop('className') && n.prop('className').includes('lu-cancel-btn')
       })
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 2 button with className luciole-buttons', () => {
+    it('Expect to contain 2 div with className luciole-buttons', () => {
       const wrapper = shallow(compo.render())
-      const actual = wrapper.find('button').findWhere(n => {
+      const actual = wrapper.find('div').findWhere(n => {
         return n.prop('className') && n.prop('className').includes('luciole-buttons')
       })
       expect(actual).to.have.length(2)

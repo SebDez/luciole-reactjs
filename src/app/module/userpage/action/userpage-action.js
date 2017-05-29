@@ -101,27 +101,37 @@ export default class UserPageActions extends LucioleActions {
 
   /**
    * Update the user's personal datas
+   * @param {Date} birthDate The new user's birthDate
+   * @param {string} gender The new user's gender
+   * @param {string} country The new user's country alpha code
+   * @param {string} region The new user's region alpha code
    * @return {Object}  The action to dispatch with user resources
    */
-  editPersonalDatas (birthDate, gender) {
+  editPersonalDatas (birthDate, gender, country, region) {
     return (dispatch, getState) => {
       const token = this.getTokenFromGetState(getState)
-      return this.userService.editPersonalDatas(token, birthDate, gender).then(() => {
-        dispatch(this.editPersonalDatasAction(birthDate, gender))
-      }).catch(this.manageHttpErrors.bind(this))
+      return this.userService.editPersonalDatas(token, birthDate, gender,
+        country, region).then(() => {
+          dispatch(this.editPersonalDatasAction(birthDate, gender, country, region))
+        }).catch(this.manageHttpErrors.bind(this))
     }
   }
 
   /**
   * Create an action with the EDITPERSONALDATAS type
   * Returns a new action that can be managed by Redux
-  * @param {string} username The new username
+  * @param {Date} birthDate The new user's birthDate
+  * @param {string} gender The new user's gender
+  * @param {string} country The new user's country alpha code
+  * @param {string} region The new user's region alpha code
   */
-  editPersonalDatasAction (birthDate, gender) {
+  editPersonalDatasAction (birthDate, gender, country, region) {
     return {
       type: Constants.ACTIONS.USERPAGE.EDITPERSONALDATAS,
       birthDate,
-      gender
+      gender,
+      country,
+      region
     }
   }
 }

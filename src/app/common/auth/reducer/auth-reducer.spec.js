@@ -184,7 +184,9 @@ describe('AuthReducer', () => {
     it('Expect to return a valid state', () => {
       action = {
         birthDate: 'mybirthDate',
-        gender: 'mygender'
+        gender: 'mygender',
+        country: 'country',
+        region: 'region'
       }
       const result = AuthReducer.editPersonalDatasAction(state, action)
       const expected = {
@@ -193,7 +195,9 @@ describe('AuthReducer', () => {
           token: 'my-old-fashion-token',
           username: 'me',
           birthDate: 'mybirthDate',
-          gender: 'mygender'
+          gender: 'mygender',
+          country: 'country',
+          region: 'region'
         }
       }
       expect(result).to.deep.equal(expected)

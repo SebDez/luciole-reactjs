@@ -67,25 +67,31 @@ export default class UserApi extends LucioleApi {
    * @param {string} token The user's token
    * @param {Date} birthDate The new user's birthDate
    * @param {string} gender The new user's gender
+   * @param {string} country The new user's country alpha code
+   * @param {string} region The new user's region alpha code
    * @return {Object} A promise to resolve
    */
-  editPersonalDatas (token, birthDate, gender) {
+  editPersonalDatas (token, birthDate, gender, country, region) {
     const endpoint = this.getAppEndpoint()
     const uri = this.addTokenQueryParamToUri(`${endpoint}/v1/users/me/datas`, token)
-    const body = this.encodePersonalDatas(birthDate, gender)
+    const body = this.encodePersonalDatas(birthDate, gender, country, region)
     return this.requestHelper.put(uri, body)
   }
 
   /**
   * Encode a body to valid JSON format
+  * @param {Date} birthDate The new user's birthDate
+  * @param {string} gender The new user's gender
+  * @param {string} country The new user's country alpha code
+  * @param {string} region The new user's region alpha code
   * @return {Object}  A body encoded
   */
-  encodePersonalDatas (birthDate, gender) {
+  encodePersonalDatas (birthDate, gender, country, region) {
     return {
       birthDate,
       genderCode: gender,
-      countryCode: 'NU',
-      regionCode: 'NUL'
+      countryCode: country,
+      regionCode: region
     }
   }
 }

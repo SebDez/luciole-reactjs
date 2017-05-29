@@ -209,8 +209,13 @@ describe('UserPage', () => {
       const props = {
         userPageActions
       }
-      UserPage.__testOnly.editPersonalDatas(props, {birthDate: 'my-birthDate', gender: 'my-gender'})
-      expect(spy).to.have.been.called.with('my-birthDate', 'my-gender')
+      UserPage.__testOnly.editPersonalDatas(props, {
+        birthDate: 'my-birthDate',
+        gender: 'my-gender',
+        country: 'my-country',
+        region: 'my-region'
+      })
+      expect(spy).to.have.been.called.with('my-birthDate', 'my-gender', 'my-country', 'my-region')
     })
   })
 })
