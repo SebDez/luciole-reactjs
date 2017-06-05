@@ -56,7 +56,7 @@ export default {
       2: 'application.user.gender.female'
     },
     AVATAR: {
-      DEFAULT: 'https://thumbs.dreamstime.com/x/luciole-rougeoyante-5892712.jpg'
+      DEFAULT: 'luciole-rougeoyante-5892712.jpg'
     }
   }
 }

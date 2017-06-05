@@ -2,7 +2,10 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import UserAvatar from './user-avatar-component'
-import Constants from './../../constants'
+
+let chai = require('chai')
+let spies = require('chai-spies')
+chai.use(spies)
 
 describe('UserAvatar', () => {
   describe('render', () => {
@@ -23,13 +26,28 @@ describe('UserAvatar', () => {
       const expected = 'imgsrc'
       expect(actual).to.be.equal(expected)
     })
+  })
 
-    it('Expect to contain an img with default prop src if not given', () => {
-      const pp = { src: null }
-      const wrapper = shallow(<UserAvatar {...pp} />)
-      const actual = wrapper.find('img').prop('src')
-      const expected = Constants.USER.AVATAR.DEFAULT
-      expect(actual).to.be.equal(expected)
+  describe('showDefaultOnError', () => {
+    const props = {
+      src: 'imgsrc'
+    }
+    const event = {
+      target: {
+        setAttribute: () => 0
+      }
+    }
+    const compo = new UserAvatar(props)
+    compo.appConf = {
+      img: {
+        src: 'my-url'
+      }
+    }
+
+    it('Expect to have call setAttribute with good params', () => {
+      const spy = chai.spy.on(event.target, 'setAttribute')
+      compo.showDefaultOnError(event)
+      expect(spy).to.have.been.called.with('src', 'my-url/luciole-rougeoyante-5892712.jpg')
     })
   })
 })
