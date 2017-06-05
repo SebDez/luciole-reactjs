@@ -32,6 +32,10 @@ export default class UserPageActions extends LucioleActions {
     this.editPersonalDatas = this.editPersonalDatas.bind(this)
     /** @type {Function}*/
     this.editPersonalDatasAction = this.editPersonalDatasAction.bind(this)
+    /** @type {Function}*/
+    this.openEditAvatarModalAction = this.openEditAvatarModalAction.bind(this)
+    /** @type {Function}*/
+    this.closeEditAvatarModalAction = this.closeEditAvatarModalAction.bind(this)
   }
 
   /**
@@ -132,6 +136,26 @@ export default class UserPageActions extends LucioleActions {
       gender,
       country,
       region
+    }
+  }
+
+  /**
+   * Create an action with the OPEN_EDITAVATAR_MODAL type
+   * Returns a new action that can be managed by Redux
+   */
+  openEditAvatarModalAction () {
+    return {
+      type: Constants.ACTIONS.USERPAGE.OPEN_EDITAVATAR_MODAL
+    }
+  }
+
+  /**
+  * Create an action with the CLOSE_EDITUSERNAME_MODAL type
+  * Returns a new action that can be managed by Redux
+  */
+  closeEditAvatarModalAction () {
+    return {
+      type: Constants.ACTIONS.USERPAGE.CLOSE_EDITAVATAR_MODAL
     }
   }
 }

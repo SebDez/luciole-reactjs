@@ -13,7 +13,8 @@ describe('UserPageReducer', () => {
       state: 'default-state-value',
       modals: {
         showEditUsernameModal: 'something',
-        showEditPersonalDatasModal: 'somethingelse'
+        showEditPersonalDatasModal: 'somethingelse',
+        showEditAvatarModal: 'somethingelse'
       }
     }
   })
@@ -25,7 +26,8 @@ describe('UserPageReducer', () => {
         state: 'default-state-value',
         modals: {
           showEditUsernameModal: true,
-          showEditPersonalDatasModal: 'somethingelse'
+          showEditPersonalDatasModal: 'somethingelse',
+          showEditAvatarModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -39,7 +41,8 @@ describe('UserPageReducer', () => {
         state: 'default-state-value',
         modals: {
           showEditUsernameModal: false,
-          showEditPersonalDatasModal: 'somethingelse'
+          showEditPersonalDatasModal: 'somethingelse',
+          showEditAvatarModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -53,7 +56,8 @@ describe('UserPageReducer', () => {
         state: 'default-state-value',
         modals: {
           showEditUsernameModal: false,
-          showEditPersonalDatasModal: 'somethingelse'
+          showEditPersonalDatasModal: 'somethingelse',
+          showEditAvatarModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -67,7 +71,8 @@ describe('UserPageReducer', () => {
         state: 'default-state-value',
         modals: {
           showEditUsernameModal: 'something',
-          showEditPersonalDatasModal: true
+          showEditPersonalDatasModal: true,
+          showEditAvatarModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -81,7 +86,8 @@ describe('UserPageReducer', () => {
         state: 'default-state-value',
         modals: {
           showEditUsernameModal: 'something',
-          showEditPersonalDatasModal: false
+          showEditPersonalDatasModal: false,
+          showEditAvatarModal: 'somethingelse'
         }
       }
       expect(result).to.deep.equal(expected)
@@ -95,7 +101,38 @@ describe('UserPageReducer', () => {
         state: 'default-state-value',
         modals: {
           showEditUsernameModal: 'something',
-          showEditPersonalDatasModal: false
+          showEditPersonalDatasModal: false,
+          showEditAvatarModal: 'somethingelse'
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('openEditAvatarModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = UserPageReducer.openEditAvatarModalAction(state)
+      const expected = {
+        state: 'default-state-value',
+        modals: {
+          showEditUsernameModal: 'something',
+          showEditPersonalDatasModal: 'somethingelse',
+          showEditAvatarModal: true
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('closeEditAvatarModalAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = UserPageReducer.closeEditAvatarModalAction(state)
+      const expected = {
+        state: 'default-state-value',
+        modals: {
+          showEditUsernameModal: 'something',
+          showEditPersonalDatasModal: 'somethingelse',
+          showEditAvatarModal: false
         }
       }
       expect(result).to.deep.equal(expected)

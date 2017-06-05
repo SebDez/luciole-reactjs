@@ -185,4 +185,135 @@ describe('UserApi', () => {
       expect(serv.encodePersonalDatas('my-birthDate', 'my-gender', 'country', 'region').regionCode).to.equals('region')
     })
   })
+
+  describe('editAvatar', () => {
+    var serv, rHelper, mockService, token, avatar
+    beforeEach(() => {
+      rHelper = new MockRequestHelper()
+      serv = new UserApi()
+      serv.requestHelper = rHelper
+      mockService = sinon.mock(serv)
+      token = 'mytoken'
+      avatar = 'my-avatar'
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+    })
+
+    it('Expect to return a promise', () => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('addTokenQueryParamToUri').returns('my-final-endpoint')
+      mockService.expects('encodeNewAvatar').returns('my-body')
+      expect(serv.editAvatar(token, avatar)).to.be.an.instanceof(Promise)
+    })
+
+    it('Expect to have call put method', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      mockService.expects('addTokenQueryParamToUri').returns('my-final-endpoint')
+      mockService.expects('encodeNewAvatar').returns('my-body')
+      let spy = chai.spy.on(rHelper, 'put')
+      serv.editAvatar(token, avatar).then(() => {
+        expect(spy).to.have.been.called.with('my-final-endpoint', 'my-body')
+        done()
+      })
+    })
+  })
+
+  describe('encodeNewAvatar', () => {
+    var serv
+    beforeEach(() => {
+      serv = new UserApi()
+    })
+
+    it('Expect to return an object with valid avatar', () => {
+      expect(serv.encodeNewAvatar('avatar').avatar).to.equals('avatar')
+    })
+  })
+
+  describe('decodeUser', () => {
+    var serv, user
+    beforeEach(() => {
+      serv = new UserApi()
+      user = {
+        mail: 'mail',
+        _id: '_id',
+        username: 'username',
+        role: 'role',
+        userTag: 'userTag',
+        signUpDate: 'signUpDate',
+        birthDate: 'birthDate',
+        gender: 'gender',
+        country: 'country',
+        region: 'region',
+        avatar: {
+          selected: 'selected',
+          availableList: 'availableList'
+        }
+      }
+    })
+
+    it('Expect to return an User', () => {
+      expect(serv.decodeUser(user)).to.be.an.instanceof(User)
+    })
+
+    it('Expect to return an object with valid _id', () => {
+      expect(serv.decodeUser(user)._id).to.equals('_id')
+    })
+
+    it('Expect to return an object with valid mail', () => {
+      expect(serv.decodeUser(user).mail).to.equals('mail')
+    })
+
+    it('Expect to return an object with valid username', () => {
+      expect(serv.decodeUser(user).username).to.equals('username')
+    })
+
+    it('Expect to return an object with valid role', () => {
+      expect(serv.decodeUser(user).role).to.equals('role')
+    })
+
+    it('Expect to return an object with valid userTag', () => {
+      expect(serv.decodeUser(user).userTag).to.equals('userTag')
+    })
+
+    it('Expect to return an object with valid signUpDate', () => {
+      expect(serv.decodeUser(user).signUpDate).to.equals('signUpDate')
+    })
+
+    it('Expect to return an object with valid birthDate', () => {
+      expect(serv.decodeUser(user).birthDate).to.equals('birthDate')
+    })
+
+    it('Expect to return an object with valid gender', () => {
+      expect(serv.decodeUser(user).gender).to.equals('gender')
+    })
+
+    it('Expect to return an object with valid country', () => {
+      expect(serv.decodeUser(user).country).to.equals('country')
+    })
+
+    it('Expect to return an object with valid region', () => {
+      expect(serv.decodeUser(user).region).to.equals('region')
+    })
+
+    it('Expect to return an object with valid selected', () => {
+      expect(serv.decodeUser(user).avatar.selected).to.equals('selected')
+    })
+
+    it('Expect to return an object with valid availableList', () => {
+      expect(serv.decodeUser(user).avatar.availableList).to.equals('availableList')
+    })
+
+    it('Expect to return an object with default selected is not given', () => {
+      user.avatar.selected = null
+      expect(serv.decodeUser(user).avatar.selected).to.equals('default')
+    })
+
+    it('Expect to return an object with default availableList is not given', () => {
+      user.avatar.availableList = null
+      expect(serv.decodeUser(user).avatar.availableList.length).to.equals(0)
+    })
+  })
 })

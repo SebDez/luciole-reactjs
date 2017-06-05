@@ -80,6 +80,11 @@ export default {
         gender: 'Gender',
         submit: 'Apply',
         cancel: 'Cancel'
+      },
+      editAvatar: {
+        modalTitle: 'Change your avatar',
+        submit: 'Apply',
+        cancel: 'Cancel'
       }
     }
   },

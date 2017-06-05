@@ -34,6 +34,16 @@ export default class UserService {
   }
 
   /**
+   * Edit the user's avatar
+   * @param {string} token The user's token
+   * @param {string} avatar The new user's avatar
+   * @return {Object} A promise to resolve
+   */
+  editAvatar (token, avatar) {
+    return this.api.editAvatar(token, avatar)
+  }
+
+  /**
    * Edit the user's personal datas
    * @param {string} token The user's token
    * @param {Date} birthDate The new user's birthDate

@@ -36,7 +36,10 @@ export default class UserApi extends LucioleApi {
       gender: json.gender,
       country: json.country,
       region: json.region,
-      avatar: json.avatar
+      avatar: {
+        selected: (!!json.avatar && !!json.avatar.selected) ? json.avatar.selected : 'default',
+        availableList: (!!json.avatar && !!json.avatar.availableList) ? json.avatar.availableList : []
+      }
     })
   }
 
@@ -93,5 +96,27 @@ export default class UserApi extends LucioleApi {
       countryCode: country,
       regionCode: region
     }
+  }
+
+  /**
+  * Edit the user's avatar
+  * @param {string} token The user's token
+  * @param {string} avatar The new user's avatar
+  * @return {Object} A promise to resolve
+  */
+  editAvatar (token, avatar) {
+    const endpoint = this.getAppEndpoint()
+    const uri = this.addTokenQueryParamToUri(`${endpoint}/v1/users/me/avatar`, token)
+    const body = this.encodeNewAvatar(avatar)
+    return this.requestHelper.put(uri, body)
+  }
+
+  /**
+  * Encode a body to valid JSON format
+  * @param {string} avatar The new user's avatar to set
+  * @return {Object}  A body encoded
+  */
+  encodeNewAvatar (avatar) {
+    return {avatar}
   }
 }

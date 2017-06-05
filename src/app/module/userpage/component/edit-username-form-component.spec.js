@@ -40,17 +40,17 @@ describe('EditUsernameFormComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 button with className lu-cancel-btn', () => {
+    it('Expect to contain 1 div with className lu-cancel-btn', () => {
       const wrapper = shallow(compo.render())
-      const actual = wrapper.find('button').findWhere(n => {
+      const actual = wrapper.find('div').findWhere(n => {
         return n.prop('className') && n.prop('className').includes('lu-cancel-btn')
       })
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 2 button with className luciole-buttons', () => {
+    it('Expect to contain 2 div with className luciole-buttons', () => {
       const wrapper = shallow(compo.render())
-      const actual = wrapper.find('button').findWhere(n => {
+      const actual = wrapper.find('div').findWhere(n => {
         return n.prop('className') && n.prop('className').includes('luciole-buttons')
       })
       expect(actual).to.have.length(2)

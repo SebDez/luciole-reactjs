@@ -9,6 +9,8 @@ import UserAccountRead from './../component/user-account-read-component'
 import UserPageActions from './../action/userpage-action'
 import EditUsernameModal from './../component/edit-username-modal-component'
 import EditPersonalDatasModal from './../component/edit-personaldatas-modal-component'
+import EditAvatarModal from './../component/edit-avatar-modal-component'
+import FontAwesome from 'react-fontawesome'
 
 /**
  * UserPage container, used to define the composition of the UserPage screen
@@ -24,7 +26,10 @@ export const UserPage = (props) => {
         <Row>
           <Col className='sidebar-block-col' xs={12} md={4}>
             <div className='lu-container userpage-avatar'>
-              <UserAvatar src={props.user.avatar} />
+              <div className='corner-button'>
+                <FontAwesome name='pencil' onClick={openEditAvatarModal.bind(null, props)} />
+              </div>
+              <UserAvatar src={props.user.avatar.selected} />
             </div>
           </Col>
           <Col className='sidebar-block-col' xs={12} md={8}>
@@ -49,33 +54,88 @@ export const UserPage = (props) => {
         user={props.user}
         handleEdit={editPersonalDatas.bind(null, props)}
         handleClose={closeEditPersonalDatasModal.bind(null, props)} />
+      <EditAvatarModal show={props.userPage.modals.showEditAvatarModal}
+        avatar={props.user.avatar}
+        handleEdit={editAvatar.bind(null, props)}
+        handleClose={closeEditAvatarModal.bind(null, props)} />
     </div>
   )
 }
 
+/**
+ * Open the edit username modal
+ * @param  {Object} props The props to use
+ */
 function openEditUsernameModal (props) {
   props.userPageActions.openEditUsernameModalAction()
 }
 
+/**
+ * Edit the username
+ * @param  {Object} props The props to use
+ * @param  {Object} params The params to pass
+ */
 function editUsername (props, params) {
   props.userPageActions.editUsername(params.username)
 }
 
+/**
+ * Close the edit username modal
+ * @param  {Object} props The props to use
+ */
 function closeEditUsernameModal (props) {
   props.userPageActions.closeEditUsernameModalAction()
 }
 
+/**
+ * Open the edit user's personal datas modal
+ * @param  {Object} props The props to use
+ */
 function openEditPersonalDatasModal (props) {
   props.userPageActions.openEditPersonalDatasModalAction()
 }
 
+/**
+ * Edit user's personal datas modal
+ * @param  {Object} props The props to use
+ * @param  {Object} params The params to pass
+ */
 function editPersonalDatas (props, params) {
   props.userPageActions.editPersonalDatas(params.birthDate, params.gender,
     params.country, params.region)
 }
 
+/**
+ * Close the edit user's personal datas modal
+ * @param  {Object} props The props to use
+ */
 function closeEditPersonalDatasModal (props) {
   props.userPageActions.closeEditPersonalDatasModalAction()
+}
+
+/**
+ * Open the edit avatar modal
+ * @param  {Object} props The props to use
+ */
+function openEditAvatarModal (props) {
+  props.userPageActions.openEditAvatarModalAction()
+}
+
+/**
+ * Edit the avatar
+ * @param  {Object} props The props to use
+ * @param  {Object} params The params to pass
+ */
+function editAvatar (props, params) {
+  props.userPageActions.editAvatar(params.avatar)
+}
+
+/**
+ * Close the edit avatar modal
+ * @param  {Object} props The props to use
+ */
+function closeEditAvatarModal (props) {
+  props.userPageActions.closeEditAvatarModalAction()
 }
 
 /**
@@ -119,7 +179,10 @@ UserPage.__testOnly = {
   openEditUsernameModal,
   closeEditPersonalDatasModal,
   editPersonalDatas,
-  openEditPersonalDatasModal
+  openEditPersonalDatasModal,
+  openEditAvatarModal,
+  editAvatar,
+  closeEditAvatarModal
 }
 
 /**

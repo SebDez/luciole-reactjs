@@ -8,7 +8,9 @@ describe('MainPageUserCard', () => {
   describe('render', () => {
     const props = {
       user: {
-        avatar: 'avatar-src',
+        avatar: {
+          selected: 'avatar-src'
+        },
         username: 'username'
       }
     }

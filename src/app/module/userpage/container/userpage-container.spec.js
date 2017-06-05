@@ -8,6 +8,7 @@ import UserAccountRead from './../component/user-account-read-component'
 import UserAvatar from './../../../common/component/avatar/user-avatar-component'
 import EditUsernameModal from './../component/edit-username-modal-component'
 import EditPersonalDatasModal from './../component/edit-personaldatas-modal-component'
+import EditAvatarModal from './../component/edit-avatar-modal-component'
 
 let chai = require('chai')
 let spies = require('chai-spies')
@@ -44,12 +45,15 @@ describe('UserPage', () => {
     const props = {
       user: {
         name: 'name',
-        avatar: 'src'
+        avatar: {
+          selected: 'src'
+        }
       },
       userPage: {
         modals: {
           showEditUsernameModal: false,
-          showEditPersonalDatasModal: false
+          showEditPersonalDatasModal: false,
+          showEditAvatarModal: false
         }
       },
       userPageActions: {}
@@ -126,6 +130,12 @@ describe('UserPage', () => {
     it('Expect to contain a EditPersonalDatasModal', () => {
       const wrapper = shallow(<UserPage {...props} />)
       const actual = wrapper.find(EditPersonalDatasModal)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain a EditAvatarModal', () => {
+      const wrapper = shallow(<UserPage {...props} />)
+      const actual = wrapper.find(EditAvatarModal)
       expect(actual).to.have.length(1)
     })
   })
@@ -216,6 +226,50 @@ describe('UserPage', () => {
         region: 'my-region'
       })
       expect(spy).to.have.been.called.with('my-birthDate', 'my-gender', 'my-country', 'my-region')
+    })
+  })
+
+  describe('openEditAvatarModal', () => {
+    it('Expect to have call userPageActions.openEditAvatarModalAction', () => {
+      const userPageActions = {
+        openEditAvatarModalAction: () => 0
+      }
+      let spy = chai.spy.on(userPageActions, 'openEditAvatarModalAction')
+      const props = {
+        userPageActions
+      }
+      UserPage.__testOnly.openEditAvatarModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('closeEditAvatarModal', () => {
+    it('Expect to have call userPageActions.closeEditAvatarModalAction', () => {
+      const userPageActions = {
+        closeEditAvatarModalAction: () => 0
+      }
+      let spy = chai.spy.on(userPageActions, 'closeEditAvatarModalAction')
+      const props = {
+        userPageActions
+      }
+      UserPage.__testOnly.closeEditAvatarModal(props)
+      expect(spy).to.have.been.called()
+    })
+  })
+
+  describe('editAvatar', () => {
+    it('Expect to have call userPageActions.editAvatar', () => {
+      const userPageActions = {
+        editAvatar: () => 0
+      }
+      let spy = chai.spy.on(userPageActions, 'editAvatar')
+      const props = {
+        userPageActions
+      }
+      UserPage.__testOnly.editAvatar(props, {
+        avatar: 'my-avatar'
+      })
+      expect(spy).to.have.been.called.with('my-avatar')
     })
   })
 })

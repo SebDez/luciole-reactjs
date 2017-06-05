@@ -19,7 +19,7 @@ export class EditUsernameFormComponent extends FormComponent {
           validate={[ this.formHelper.isRequired, this.formHelper.isValidUsername ]} prefix={{type: 'icon', value: 'user'}}
         />
         <div className='luciole-duo-buttons'>
-          <button className='luciole-buttons lu-cancel-btn' onClick={this.props.handleCancel}>{this.i18n.t('application.userpage.editUsername.cancel')}</button>
+          <div className='luciole-buttons lu-cancel-btn' onClick={this.props.handleCancel}>{this.i18n.t('application.userpage.editUsername.cancel')}</div>
           <button className='luciole-buttons' type='submit'>{this.i18n.t('application.userpage.editUsername.submit')}</button>
         </div>
       </form>

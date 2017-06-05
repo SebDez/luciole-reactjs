@@ -44,4 +44,14 @@ describe('UserService', () => {
       })
     })
   })
+
+  describe('editAvatar', () => {
+    it('Expect to have call api editAvatar', (done) => {
+      spy = chai.spy.on(service.api, 'editAvatar')
+      service.editAvatar('token', 'avatar').then(() => {
+        expect(spy).to.have.been.called.with('token', 'avatar')
+        done()
+      })
+    })
+  })
 })

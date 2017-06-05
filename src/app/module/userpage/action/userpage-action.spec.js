@@ -50,6 +50,18 @@ describe('UserPageActions', () => {
     })
   })
 
+  describe('openEditAvatarModalAction', () => {
+    it('Expect to return OPEN_EDITAVATAR_MODAL as action type', () => {
+      expect(actions.openEditAvatarModalAction().type).to.equal('OPEN_EDITAVATAR_MODAL')
+    })
+  })
+
+  describe('closeEditAvatarModalAction', () => {
+    it('Expect to return CLOSE_EDITAVATAR_MODAL as action type', () => {
+      expect(actions.closeEditAvatarModalAction().type).to.equal('CLOSE_EDITAVATAR_MODAL')
+    })
+  })
+
   describe('editPersonalDatasAction', () => {
     it('Expect to return EDITPERSONALDATAS as action type', () => {
       expect(actions.editPersonalDatasAction().type).to.equal('EDITPERSONALDATAS')

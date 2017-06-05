@@ -90,6 +90,17 @@ $modals-actions-color: #0151a7;
       margin: 3px;
     }
 
+    .luciole-buttons:disabled {
+      background: #dddddd;
+      color: darkgray;
+      cursor:not-allowed;
+      &:hover {
+        background: #dddddd;
+        color: darkgray;
+        border: 2px solid $app-button-cancel-border-color !important;
+      }
+    }
+
     .lu-cancel-btn{
       color: $app-button-cancel-text-color !important;
       background-color: $app-button-cancel-bg-color !important;

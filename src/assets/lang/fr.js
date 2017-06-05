@@ -80,6 +80,11 @@ export default {
         region: 'Région',
         country: 'Pays',
         gender: 'Genre'
+      },
+      editAvatar: {
+        modalTitle: 'Changer votre avatar',
+        submit: 'Sauvegarder',
+        cancel: 'Annuler'
       }
     }
   },
