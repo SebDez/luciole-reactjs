@@ -266,9 +266,7 @@ describe('UserPage', () => {
       const props = {
         userPageActions
       }
-      UserPage.__testOnly.editAvatar(props, {
-        avatar: 'my-avatar'
-      })
+      UserPage.__testOnly.editAvatar(props, 'my-avatar')
       expect(spy).to.have.been.called.with('my-avatar')
     })
   })

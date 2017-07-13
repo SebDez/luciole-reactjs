@@ -23,7 +23,7 @@ class EditAvatarModal extends FormComponent {
 
           <Modal.Body>
             <EditAvatarFormComponent onSubmit={this.props.handleEdit} handleCancel={this.props.handleClose}
-              avatar={this.props.avatar} />
+              avatar={this.props.avatar} avatarList={this.props.avatarList} />
           </Modal.Body>
 
         </Modal.Dialog>
@@ -38,7 +38,7 @@ class EditAvatarModal extends FormComponent {
  */
 EditAvatarModal.propTypes = {
   show: PropTypes.bool.isRequired,
-  avatar: PropTypes.object,
+  avatar: PropTypes.object.isRequired,
   handleEdit: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired
 }

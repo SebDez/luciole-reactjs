@@ -18,6 +18,7 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.CLOSE_SIGNIN_MODAL, closeSignU
 AuthReducer.registerAction(Constants.ACTIONS.AUTH.SIGN_USER_IN_SUCCESS, signUserInSuccessAction)
 AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITUSERNAME, editUsernameAction)
 AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITPERSONALDATAS, editPersonalDatasAction)
+AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITAVATAR, editAvatarAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -130,6 +131,21 @@ export function editPersonalDatasAction (state, action) {
   user.gender = action.gender
   user.country = action.country
   user.region = action.region
+  return objectAssign({}, state, {user})
+}
+
+/**
+ * Change state to manage user's avatar edition
+ * @param  {Object} state The state to use
+ * @param  {Object} action The action params
+ * @return {Object}       The new state
+ */
+export function editAvatarAction (state, action) {
+  const user = objectAssign({}, state.user)
+  user.avatar = {
+    selected: action.avatar || '',
+    availableList: user.avatar && user.avatar.availableList ? user.avatar.availableList : []
+  }
   return objectAssign({}, state, {user})
 }
 

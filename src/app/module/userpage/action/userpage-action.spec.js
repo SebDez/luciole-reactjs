@@ -193,4 +193,69 @@ describe('UserPageActions', () => {
       })
     })
   })
+
+  describe('editAvatar', () => {
+    let mockService, mockActions, service, spy
+
+    beforeEach(() => {
+      service = new UserService()
+      mockService = sinon.mock(service)
+      actions.userService = service
+      mockActions = sinon.mock(actions)
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to return a function', () => {
+      expect(typeof (actions.editAvatar())).to.equal('function')
+    })
+
+    it('Expect to have call editAvatar', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
+      mockService.expects('editAvatar').resolves('newdatas')
+      mockActions.expects('editAvatarAction').returns('editAvatarAction-result')
+      spy = chai.spy.on(actions, 'editAvatar')
+      actions.editAvatar()(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.once()
+        done()
+      })
+    })
+
+    it('Expect to have call dispatch with good params in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
+      mockService.expects('editAvatar').resolves('newdatas')
+      mockActions.expects('editAvatarAction').returns('editAvatarAction-result')
+      spy = chai.spy.on(TestHelper, 'dispatch')
+      actions.editAvatar()(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.with('editAvatarAction-result')
+        done()
+      })
+    })
+
+    it('Expect to have call editAvatarAction in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
+      mockService.expects('editAvatar').resolves('newdatas')
+      mockActions.expects('editAvatarAction').returns('editAvatarAction-result')
+      spy = chai.spy.on(actions, 'editAvatarAction')
+      actions.editAvatar()(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.called.once()
+        done()
+      })
+    })
+  })
+
+  describe('editAvatarAction', () => {
+    it('Expect to return EDITAVATAR as action type', () => {
+      expect(actions.editAvatarAction().type).to.equal('EDITAVATAR')
+    })
+
+    it('Expect to return valid username param', () => {
+      expect(actions.editAvatarAction('avatar1').avatar).to.equal('avatar1')
+    })
+  })
 })

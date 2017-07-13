@@ -138,4 +138,19 @@ describe('UserPageReducer', () => {
       expect(result).to.deep.equal(expected)
     })
   })
+
+  describe('editAvatarAction', () => {
+    it('Expect to return a valid state', () => {
+      const result = UserPageReducer.editAvatarAction(state)
+      const expected = {
+        state: 'default-state-value',
+        modals: {
+          showEditUsernameModal: 'something',
+          showEditPersonalDatasModal: 'somethingelse',
+          showEditAvatarModal: false
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
 })

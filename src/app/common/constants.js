@@ -47,7 +47,8 @@ export default {
       CLOSE_EDITPERSONALDATAS_MODAL: 'CLOSE_EDITPERSONALDATAS_MODAL',
       EDITPERSONALDATAS: 'EDITPERSONALDATAS',
       OPEN_EDITAVATAR_MODAL: 'OPEN_EDITAVATAR_MODAL',
-      CLOSE_EDITAVATAR_MODAL: 'CLOSE_EDITAVATAR_MODAL'
+      CLOSE_EDITAVATAR_MODAL: 'CLOSE_EDITAVATAR_MODAL',
+      EDITAVATAR: 'EDITAVATAR'
     }
   },
   USER: {
@@ -56,7 +57,7 @@ export default {
       2: 'application.user.gender.female'
     },
     AVATAR: {
-      DEFAULT: 'luciole-rougeoyante-5892712.jpg'
+      DEFAULT: 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg'
     }
   }
 }

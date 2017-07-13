@@ -13,7 +13,7 @@ describe('EditAvatarFormComponent', () => {
   const props = {
     avatar: {
       selected: '1',
-      availableList: ['1', '2', '3']
+      availableList: ['1', '2', '3', '4']
     },
     handleCancel: () => 0,
     handleSubmit: () => 0
@@ -23,6 +23,12 @@ describe('EditAvatarFormComponent', () => {
 
   beforeEach(() => {
     compo = new EditAvatarFormComponent(props)
+    compo.appConf = {
+      img: {
+        src: 'my-url'
+      }
+    }
+    compo.avatarList = ['1', '2', '3']
     mockCompo = sinon.mock(compo)
   })
 
@@ -106,8 +112,8 @@ describe('EditAvatarFormComponent', () => {
   })
 
   describe('submit', () => {
-    it('Expect to have call props.handleSubmit', () => {
-      let spy = chai.spy.on(compo.props, 'handleSubmit')
+    it('Expect to have call props.onSubmit', () => {
+      let spy = chai.spy.on(compo.props, 'onSubmit')
       compo.submit()
       expect(spy).to.have.been.called()
     })
@@ -157,7 +163,7 @@ describe('EditAvatarFormComponent', () => {
       compo.selected = '2'
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('img').findWhere(n => {
-        return n.prop('className') === ' selected' && n.prop('src') === '2'
+        return n.prop('className') === ' selected' && n.prop('src') === 'my-url/2'
       })
       expect(actual).to.have.length(1)
     })
@@ -165,7 +171,16 @@ describe('EditAvatarFormComponent', () => {
       compo.selected = null
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('img').findWhere(n => {
-        return n.prop('className') === ' selected' && n.prop('src') === '1'
+        return n.prop('className') === ' selected' && n.prop('src') === 'my-url/1'
+      })
+      expect(actual).to.have.length(1)
+    })
+    it('Expect to contain 1 img with valid className (selected and choice), case no avatar selected, default selected', () => {
+      compo.avatarList = ['1', '2', '3', 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg']
+      compo.props.avatar.selected = null
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find('img').findWhere(n => {
+        return n.prop('className') === ' selected' && n.prop('src') === 'my-url/tumblr_mdj13ty0p91r4nmedo1_1280.jpg'
       })
       expect(actual).to.have.length(1)
     })

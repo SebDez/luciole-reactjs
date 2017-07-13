@@ -3,6 +3,8 @@ import FormComponent from './../../../common/component/form/form-component'
 import { reduxForm } from 'redux-form'
 import UserAvatar from './../../../common/component/avatar/user-avatar-component'
 import { Grid, Row, Col } from 'react-bootstrap'
+import Constants from './../../../common/constants'
+import config from 'config'
 
 /**
  * EditAvatarFormComponent Component
@@ -19,6 +21,11 @@ export class EditAvatarFormComponent extends FormComponent {
     super(props, context)
     /** @type {Object}*/
     this.selected = null
+    /** @type {Object}*/
+    this.appConf = config
+    this._bindThisToMethods('submit')
+    /** @type {Array}*/
+    this.avatarList = []
   }
 
   /**
@@ -26,7 +33,7 @@ export class EditAvatarFormComponent extends FormComponent {
    * @return {Object} React component tree
    */
   render () {
-    const avatarSrc = this.selected ? this.selected : this.props.avatar.selected
+    const avatarSrc = this.selected ? `${this.appConf.img.src}/${this.selected}` : `${this.appConf.img.src}/${this.props.avatar.selected}`
     return (
       <div className='luciole-form avatar-form'>
         <Grid className='lu-grid'>
@@ -60,15 +67,35 @@ export class EditAvatarFormComponent extends FormComponent {
   }
 
 /**
+ * Before rendering the component
+ * Get and set the full avatars list
+ */
+  componentWillMount () {
+    this.avatarList = [
+      'tumblr_mdj13ty0p91r4nmedo1_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo2_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo3_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo4_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo5_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo6_1280.jpg'
+    ]
+  }
+
+/**
  * Render avatar choices element
  * @return {Object} The choices element list
  */
   getChoices () {
-    return this.props.avatar.availableList.map((choice, i) => {
-      const imgClass = this.selected === choice || (!this.selected && choice === this.props.avatar.selected) ? ' selected' : null
+    return this.avatarList.map((choice, i) => {
+      const src = `${this.appConf.img.src}/${choice}`
+      let imgClass = null
+      if ((!this.props.avatar.selected && choice === Constants.USER.AVATAR.DEFAULT) ||
+      this.selected === choice || (!this.selected && choice === this.props.avatar.selected)) {
+        imgClass = ' selected'
+      }
       return (
         <Col key={i} className='sidebar-block-col lu-square-choice' xs={6} md={3}>
-          <img src={choice} className={imgClass}
+          <img src={src} className={imgClass}
             onClick={this.selectAvatar.bind(this, choice)} />
         </Col>)
     })
@@ -87,7 +114,7 @@ export class EditAvatarFormComponent extends FormComponent {
  * Submit the modifications
  */
   submit () {
-    this.props.handleSubmit(this.selected)
+    this.props.onSubmit(this.selected)
   }
 }
 
@@ -96,7 +123,7 @@ export class EditAvatarFormComponent extends FormComponent {
  * @type {Object}
  */
 EditAvatarFormComponent.propTypes = {
-  avatar: PropTypes.object,
+  avatar: PropTypes.object.isRequired,
   handleCancel: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
 }

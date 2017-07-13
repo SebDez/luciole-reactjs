@@ -36,6 +36,10 @@ export default class UserPageActions extends LucioleActions {
     this.openEditAvatarModalAction = this.openEditAvatarModalAction.bind(this)
     /** @type {Function}*/
     this.closeEditAvatarModalAction = this.closeEditAvatarModalAction.bind(this)
+    /** @type {Function}*/
+    this.editAvatar = this.editAvatar.bind(this)
+    /** @type {Function}*/
+    this.editAvatarAction = this.editAvatarAction.bind(this)
   }
 
   /**
@@ -156,6 +160,32 @@ export default class UserPageActions extends LucioleActions {
   closeEditAvatarModalAction () {
     return {
       type: Constants.ACTIONS.USERPAGE.CLOSE_EDITAVATAR_MODAL
+    }
+  }
+
+  /**
+   * Update the user's avatar
+   * @param {string} avatar The new user's avatar
+   * @return {Object}  The action to dispatch with user resources
+   */
+  editAvatar (avatar) {
+    return (dispatch, getState) => {
+      const token = this.getTokenFromGetState(getState)
+      return this.userService.editAvatar(token, avatar).then(() => {
+        dispatch(this.editAvatarAction(avatar))
+      }).catch(this.manageHttpErrors.bind(this))
+    }
+  }
+
+  /**
+  * Create an action with the EDITAVATAR type
+  * Returns a new action that can be managed by Redux
+  * @param {string} avatar The new user's avatar
+  */
+  editAvatarAction (avatar) {
+    return {
+      type: Constants.ACTIONS.USERPAGE.EDITAVATAR,
+      avatar
     }
   }
 }

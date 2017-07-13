@@ -15,6 +15,7 @@ UserPageReducer.registerAction(Constants.ACTIONS.USERPAGE.CLOSE_EDITPERSONALDATA
 UserPageReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITPERSONALDATAS, editPersonalDatasAction)
 UserPageReducer.registerAction(Constants.ACTIONS.USERPAGE.OPEN_EDITAVATAR_MODAL, openEditAvatarModalAction)
 UserPageReducer.registerAction(Constants.ACTIONS.USERPAGE.CLOSE_EDITAVATAR_MODAL, closeEditAvatarModalAction)
+UserPageReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITAVATAR, editAvatarAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -71,7 +72,7 @@ export function closeEditPersonalDatasModalAction (state) {
 }
 
 /**
- * Change state to manage username's personal datas
+ * Change state to manage user's personal datas
  * @param  {Object} state The state to use
  * @return {Object}       The new state
  */
@@ -96,6 +97,16 @@ export function openEditAvatarModalAction (state) {
  * @return {Object}       The new state
  */
 export function closeEditAvatarModalAction (state) {
+  const modals = objectAssign({}, state.modals, {showEditAvatarModal: false})
+  return objectAssign({}, state, {modals})
+}
+
+/**
+ * Change state to manage user's avatar
+ * @param  {Object} state The state to use
+ * @return {Object}       The new state
+ */
+export function editAvatarAction (state) {
   const modals = objectAssign({}, state.modals, {showEditAvatarModal: false})
   return objectAssign({}, state, {modals})
 }

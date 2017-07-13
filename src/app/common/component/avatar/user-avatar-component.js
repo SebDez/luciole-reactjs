@@ -19,6 +19,7 @@ class UserAvatar extends LucioleComponent {
     super(props, context)
     /** @type {Object}*/
     this.appConf = config
+    this._bindThisToMethods('showDefaultOnError')
   }
 
   /**
@@ -26,9 +27,10 @@ class UserAvatar extends LucioleComponent {
    * @return {Object} React component tree
    */
   render () {
+    const src = `${this.appConf.img.src}/${this.props.src}`
     return (
       <div className='user-avatar'>
-        <img src={this.props.src} onError={this.showDefaultOnError} />
+        <img src={src} onError={this.showDefaultOnError} />
       </div>)
   }
 

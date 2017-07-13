@@ -203,4 +203,109 @@ describe('AuthReducer', () => {
       expect(result).to.deep.equal(expected)
     })
   })
+
+  describe('editAvatarAction', () => {
+    it('Expect to return a valid state, no availableList case', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region',
+        avatar: 'new-one'
+      }
+
+      state = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'old-one'
+          }
+        }
+      }
+      const result = AuthReducer.editAvatarAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'new-one',
+            availableList: []
+          }
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+
+    it('Expect to return a valid state, no avatar case', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region',
+        avatar: null
+      }
+
+      state = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'old-one'
+          }
+        }
+      }
+      const result = AuthReducer.editAvatarAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: '',
+            availableList: []
+          }
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+
+    it('Expect to return a valid state, with availableList', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region',
+        avatar: 'new-one'
+      }
+
+      state = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'old-one',
+            availableList: ['1', '2']
+          }
+        }
+      }
+      const result = AuthReducer.editAvatarAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'new-one',
+            availableList: ['1', '2']
+          }
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
 })

@@ -124,10 +124,10 @@ function openEditAvatarModal (props) {
 /**
  * Edit the avatar
  * @param  {Object} props The props to use
- * @param  {Object} params The params to pass
+ * @param  {string} avatar The avatar to set
  */
-function editAvatar (props, params) {
-  props.userPageActions.editAvatar(params.avatar)
+function editAvatar (props, avatar) {
+  props.userPageActions.editAvatar(avatar)
 }
 
 /**
