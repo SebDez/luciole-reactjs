@@ -39,7 +39,7 @@ export default class UserApi extends LucioleApi {
       region: json.region,
       avatar: {
         selected: (!!json.avatar && !!json.avatar.selected) ? json.avatar.selected : 'default',
-        availableList: (!!json.avatar && !!json.avatar.availableList) ? json.avatar.availableList : [Constants.USER.AVATAR.DEFAULT]
+        availableList: (!!json.avatar && !!json.avatar.availableList && json.avatar.availableList.length > 0) ? json.avatar.availableList : [Constants.USER.AVATAR.DEFAULT]
       }
     })
   }

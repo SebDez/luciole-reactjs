@@ -311,8 +311,18 @@ describe('UserApi', () => {
       expect(serv.decodeUser(user).avatar.selected).to.equals('default')
     })
 
-    it('Expect to return an object with default availableList is not given', () => {
+    it('Expect to return an object with default availableList if availableList is not given', () => {
       user.avatar.availableList = null
+      expect(serv.decodeUser(user).avatar.availableList[0]).to.equals('tumblr_mdj13ty0p91r4nmedo1_1280.jpg')
+    })
+
+    it('Expect to return an object with default availableList if avatar is not given', () => {
+      user.avatar = null
+      expect(serv.decodeUser(user).avatar.availableList[0]).to.equals('tumblr_mdj13ty0p91r4nmedo1_1280.jpg')
+    })
+
+    it('Expect to return an object with default availableList if availableList is empty is not given', () => {
+      user.avatar.availableList = []
       expect(serv.decodeUser(user).avatar.availableList[0]).to.equals('tumblr_mdj13ty0p91r4nmedo1_1280.jpg')
     })
   })
