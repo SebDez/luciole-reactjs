@@ -38,4 +38,19 @@ export default class UserMockApi {
       avatar: mockHelper.getRandomImgSrc()
     })
   }
+
+  /**
+   * MOCK : Log an user in
+   * @return {Object} A promise to resolve
+   */
+  getAvatarList () {
+    return Promise.resolve([
+      'tumblr_mdj13ty0p91r4nmedo1_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo2_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo3_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo4_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo5_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo6_1280.jpg'
+    ])
+  }
 }

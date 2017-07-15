@@ -28,7 +28,8 @@ export default {
       modals: {
         showLoginModal: false,
         showSignUpModal: false
-      }
+      },
+      avatarList: []
     },
     app: {
     }

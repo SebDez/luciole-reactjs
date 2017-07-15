@@ -54,4 +54,14 @@ describe('UserService', () => {
       })
     })
   })
+
+  describe('getAvatarList', () => {
+    it('Expect to have call api getAvatarList', (done) => {
+      spy = chai.spy.on(service.api, 'getAvatarList')
+      service.getAvatarList().then(() => {
+        expect(spy).to.have.been.called.once()
+        done()
+      })
+    })
+  })
 })

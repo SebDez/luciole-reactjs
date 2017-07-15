@@ -316,4 +316,63 @@ describe('UserApi', () => {
       expect(serv.decodeUser(user).avatar.availableList.length).to.equals(0)
     })
   })
+
+  describe('getAvatarList', () => {
+    var serv, rHelper, mockService, mockRequestHelper
+
+    beforeEach(() => {
+      rHelper = new MockRequestHelper()
+      serv = new UserApi()
+      mockRequestHelper = sinon.mock(rHelper)
+      serv.requestHelper = rHelper
+      mockService = sinon.mock(serv)
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+      mockRequestHelper.verify()
+      mockRequestHelper.restore()
+    })
+
+    it('Expect to return a promise', () => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {list: []}}
+      mockRequestHelper.expects('get').resolves(response)
+      expect(serv.getAvatarList('mytoken')).to.be.an.instanceof(Promise)
+    })
+
+    it('Expect to have call get method', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {list: []}}
+      mockRequestHelper.expects('get').resolves(response)
+      let spy = chai.spy.on(rHelper, 'get')
+      let uri = 'endpoint/v1/avatars?access_token=mytoken'
+      serv.getAvatarList('mytoken').then(() => {
+        expect(spy).to.have.been.called.with(uri)
+        done()
+      })
+    })
+
+    it('Expect to have call addTokenQueryParamToUri', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {list: []}}
+      mockRequestHelper.expects('get').resolves(response)
+      let spy = chai.spy.on(serv, 'addTokenQueryParamToUri')
+      serv.getAvatarList('mytoken').then(() => {
+        expect(spy).to.have.been.called()
+        done()
+      })
+    })
+
+    it('Expect to resolve a list', (done) => {
+      mockService.expects('getAppEndpoint').returns('endpoint')
+      let response = {body: {list: []}}
+      mockRequestHelper.expects('get').resolves(response)
+      serv.getAvatarList('mytoken').then(res => {
+        expect(res).to.be.an.instanceof(Array)
+        done()
+      })
+    })
+  })
 })

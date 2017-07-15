@@ -55,4 +55,13 @@ export default class UserService {
   editPersonalDatas (token, birthDate, gender, country, region) {
     return this.api.editPersonalDatas(token, birthDate, gender, country, region)
   }
+
+  /**
+   * Get all avatar's list
+   * @param {string} token The user's token
+   * @return {Object} A promise to resolve
+   */
+  getAvatarList (token) {
+    return this.api.getAvatarList(token)
+  }
 }

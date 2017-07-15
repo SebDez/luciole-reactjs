@@ -39,6 +39,7 @@ class EditAvatarModal extends FormComponent {
 EditAvatarModal.propTypes = {
   show: PropTypes.bool.isRequired,
   avatar: PropTypes.object.isRequired,
+  avatarList: PropTypes.array,
   handleEdit: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired
 }

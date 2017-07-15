@@ -15,6 +15,7 @@ describe('EditAvatarFormComponent', () => {
       selected: '1',
       availableList: ['1', '2', '3', '4']
     },
+    avatarList: ['1', '2', '3'],
     handleCancel: () => 0,
     handleSubmit: () => 0
   }
@@ -28,7 +29,6 @@ describe('EditAvatarFormComponent', () => {
         src: 'my-url'
       }
     }
-    compo.avatarList = ['1', '2', '3']
     mockCompo = sinon.mock(compo)
   })
 
@@ -176,13 +176,72 @@ describe('EditAvatarFormComponent', () => {
       expect(actual).to.have.length(1)
     })
     it('Expect to contain 1 img with valid className (selected and choice), case no avatar selected, default selected', () => {
-      compo.avatarList = ['1', '2', '3', 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg']
+      compo.props.avatarList = ['1', '2', '3', 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg']
       compo.props.avatar.selected = null
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('img').findWhere(n => {
         return n.prop('className') === ' selected' && n.prop('src') === 'my-url/tumblr_mdj13ty0p91r4nmedo1_1280.jpg'
       })
       expect(actual).to.have.length(1)
+    })
+  })
+
+  describe('componentWillMount', () => {
+    let mockActions
+    beforeEach(() => {
+      compo.props.dispatch = () => 0
+      mockActions = sinon.mock(compo.userPageActions)
+      mockActions.expects('getAvatarList').returns('0')
+    })
+
+    it('Expect to have call userPageActions.getAvatarList if avatarList is not set', () => {
+      compo.props.avatarList = null
+      let spy = chai.spy.on(compo.userPageActions, 'getAvatarList')
+      compo.componentWillMount()
+      expect(spy).to.have.been.called()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to have call props.dispatch if avatarList is not set', () => {
+      compo.props.avatarList = null
+      let spy = chai.spy.on(compo.props, 'dispatch')
+      compo.componentWillMount()
+      expect(spy).to.have.been.called()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to have call userPageActions.getAvatarList if avatarList is empty', () => {
+      compo.props.avatarList = []
+      let spy = chai.spy.on(compo.userPageActions, 'getAvatarList')
+      compo.componentWillMount()
+      expect(spy).to.have.been.called()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to have call props.dispatch if avatarList is empty', () => {
+      compo.props.avatarList = []
+      let spy = chai.spy.on(compo.props, 'dispatch')
+      compo.componentWillMount()
+      expect(spy).to.have.been.called()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to not have call userPageActions.getAvatarList if avatarList is set', () => {
+      compo.props.avatarList = ['1']
+      let spy = chai.spy.on(compo.userPageActions, 'getAvatarList')
+      compo.componentWillMount()
+      expect(spy).not.to.have.been.called()
+    })
+
+    it('Expect to have call props.dispatch if all ok if avatarList is set', () => {
+      compo.props.avatarList = ['1']
+      let spy = chai.spy.on(compo.props, 'dispatch')
+      compo.componentWillMount()
+      expect(spy).not.to.have.been.called()
     })
   })
 })

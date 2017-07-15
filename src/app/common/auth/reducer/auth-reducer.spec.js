@@ -308,4 +308,40 @@ describe('AuthReducer', () => {
       expect(result).to.deep.equal(expected)
     })
   })
+
+  describe('getAvatarListAction', () => {
+    it('Expect to return a valid state, all ok case', () => {
+      action = {
+        avatarList: 'my-avatarList'
+      }
+
+      state = {
+        state: 'default-state-value',
+        avatarList: null
+      }
+      const result = AuthReducer.getAvatarListAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        avatarList: 'my-avatarList'
+      }
+      expect(result).to.deep.equal(expected)
+    })
+
+    it('Expect to return a valid state, no list case', () => {
+      action = {
+        avatarList: null
+      }
+
+      state = {
+        state: 'default-state-value',
+        avatarList: null
+      }
+      const result = AuthReducer.getAvatarListAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        avatarList: []
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
 })

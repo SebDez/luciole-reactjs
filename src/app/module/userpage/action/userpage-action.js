@@ -40,6 +40,10 @@ export default class UserPageActions extends LucioleActions {
     this.editAvatar = this.editAvatar.bind(this)
     /** @type {Function}*/
     this.editAvatarAction = this.editAvatarAction.bind(this)
+    /** @type {Function}*/
+    this.getAvatarList = this.getAvatarList.bind(this)
+    /** @type {Function}*/
+    this.getAvatarListAction = this.getAvatarListAction.bind(this)
   }
 
   /**
@@ -186,6 +190,31 @@ export default class UserPageActions extends LucioleActions {
     return {
       type: Constants.ACTIONS.USERPAGE.EDITAVATAR,
       avatar
+    }
+  }
+
+  /**
+   * Get the full avatars list
+   * @return {Object}  The action to dispatch with user resources
+   */
+  getAvatarList () {
+    return (dispatch, getState) => {
+      const token = this.getTokenFromGetState(getState)
+      return this.userService.getAvatarList(token).then(res => {
+        dispatch(this.getAvatarListAction(res))
+      }).catch(this.manageHttpErrors.bind(this))
+    }
+  }
+
+  /**
+  * Create an action with the GETAVATARLIST type
+  * @param {Array} avatarList The full avatars list
+  * Returns a new avatarList that can be managed by Redux
+  */
+  getAvatarListAction (avatarList) {
+    return {
+      type: Constants.ACTIONS.USERPAGE.GETAVATARLIST,
+      avatarList
     }
   }
 }

@@ -119,4 +119,18 @@ export default class UserApi extends LucioleApi {
   encodeNewAvatar (avatar) {
     return {avatar}
   }
+
+  /**
+  * Get all avatar's list
+  * @param {string} token The user's token
+  * @return {Array} A promise to resolve
+  */
+  getAvatarList (token) {
+    const endpoint = this.getAppEndpoint()
+    const uri = this.addTokenQueryParamToUri(`${endpoint}/v1/avatars`, token)
+    return this.requestHelper.get(uri).then(res => {
+      return res.body.list
+    })
+  }
+
 }

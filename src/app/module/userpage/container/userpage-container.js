@@ -55,7 +55,7 @@ export const UserPage = (props) => {
         handleEdit={editPersonalDatas.bind(null, props)}
         handleClose={closeEditPersonalDatasModal.bind(null, props)} />
       <EditAvatarModal show={props.userPage.modals.showEditAvatarModal}
-        avatar={props.user.avatar}
+        avatar={props.user.avatar} avatarList={props.avatarList}
         handleEdit={editAvatar.bind(null, props)}
         handleClose={closeEditAvatarModal.bind(null, props)} />
     </div>
@@ -146,7 +146,8 @@ function closeEditAvatarModal (props) {
 function mapStateToProps (state) {
   return {
     user: state.application.auth.user,
-    userPage: state.application.module.userpage
+    userPage: state.application.module.userpage,
+    avatarList: state.application.auth.avatarList || []
   }
 }
 
@@ -168,7 +169,8 @@ function mapDispatchToProps (dispatch) {
 UserPage.propTypes = {
   user: PropTypes.object.isRequired,
   userPage: PropTypes.object.isRequired,
-  userPageActions: PropTypes.object.isRequired
+  userPageActions: PropTypes.object.isRequired,
+  avatarList: PropTypes.array
 }
 
 UserPage.mapStateToProps = mapStateToProps

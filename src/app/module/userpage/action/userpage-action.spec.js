@@ -258,4 +258,69 @@ describe('UserPageActions', () => {
       expect(actions.editAvatarAction('avatar1').avatar).to.equal('avatar1')
     })
   })
+
+  describe('getAvatarList', () => {
+    let mockService, mockActions, service, spy
+
+    beforeEach(() => {
+      service = new UserService()
+      mockService = sinon.mock(service)
+      actions.userService = service
+      mockActions = sinon.mock(actions)
+    })
+
+    afterEach(() => {
+      mockService.verify()
+      mockService.restore()
+      mockActions.verify()
+      mockActions.restore()
+    })
+
+    it('Expect to return a function', () => {
+      expect(typeof (actions.getAvatarList())).to.equal('function')
+    })
+
+    it('Expect to have call getAvatarList', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
+      mockService.expects('getAvatarList').resolves('newdatas')
+      mockActions.expects('getAvatarListAction').returns('getAvatarListAction-result')
+      spy = chai.spy.on(actions, 'getAvatarList')
+      actions.getAvatarList()(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.once()
+        done()
+      })
+    })
+
+    it('Expect to have call dispatch with good params in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
+      mockService.expects('getAvatarList').resolves('newdatas')
+      mockActions.expects('getAvatarListAction').returns('getAvatarListAction-result')
+      spy = chai.spy.on(TestHelper, 'dispatch')
+      actions.getAvatarList()(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.with('getAvatarListAction-result')
+        done()
+      })
+    })
+
+    it('Expect to have call getAvatarListAction in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').resolves('mytoken')
+      mockService.expects('getAvatarList').resolves('newdatas')
+      mockActions.expects('getAvatarListAction').returns('getAvatarListAction-result')
+      spy = chai.spy.on(actions, 'getAvatarListAction')
+      actions.getAvatarList()(TestHelper.dispatch).then(() => {
+        expect(spy).to.have.been.called.called.once()
+        done()
+      })
+    })
+  })
+
+  describe('getAvatarListAction', () => {
+    it('Expect to return GETAVATARLIST as action type', () => {
+      expect(actions.getAvatarListAction().type).to.equal('GETAVATARLIST')
+    })
+
+    it('Expect to return valid username param', () => {
+      expect(actions.getAvatarListAction('avatarList1').avatarList).to.equal('avatarList1')
+    })
+  })
 })

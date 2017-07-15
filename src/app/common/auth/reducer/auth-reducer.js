@@ -19,6 +19,7 @@ AuthReducer.registerAction(Constants.ACTIONS.AUTH.SIGN_USER_IN_SUCCESS, signUser
 AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITUSERNAME, editUsernameAction)
 AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITPERSONALDATAS, editPersonalDatasAction)
 AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.EDITAVATAR, editAvatarAction)
+AuthReducer.registerAction(Constants.ACTIONS.USERPAGE.GETAVATARLIST, getAvatarListAction)
 
 /* *****************************
 * ACTION CALLBACKS
@@ -147,6 +148,17 @@ export function editAvatarAction (state, action) {
     availableList: user.avatar && user.avatar.availableList ? user.avatar.availableList : []
   }
   return objectAssign({}, state, {user})
+}
+
+/**
+ * Get the full avatars list
+ * @param  {Object} state The state to use
+ * @param  {Object} action The action params
+ * @return {Object}       The new state
+ */
+export function getAvatarListAction (state, action) {
+  const avatarList = action.avatarList || []
+  return objectAssign({}, state, {avatarList})
 }
 
 // Export the reducer
