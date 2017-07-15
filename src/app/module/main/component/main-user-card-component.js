@@ -13,7 +13,7 @@ class MainPageUserCard extends LucioleComponent {
   render () {
     return (
       <div className='hand-over main-user-card'>
-        <UserAvatar src={this.props.user.avatar} />
+        <UserAvatar src={this.props.user.avatar.selected} />
         <div className='user-card-username'>{this.props.user.username}</div>
       </div>
     )

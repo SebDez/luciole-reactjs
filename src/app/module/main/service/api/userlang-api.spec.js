@@ -49,7 +49,7 @@ describe('UserLangApi', () => {
       serv = new UserLangApi()
     })
 
-    it('Expect to return an object with valid mail', () => {
+    it('Expect to return an object with valid lang', () => {
       expect(serv.encodeNewUserLang('fr').lang).to.equals('fr')
     })
   })

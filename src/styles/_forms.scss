@@ -1,4 +1,5 @@
 $form-text-size: 15px;
+$form-bigtext-size: 20px;
 $form-text-color: $app-button-bg-color;
 
 .luciole-form{
@@ -12,13 +13,13 @@ $form-text-color: $app-button-bg-color;
     margin-bottom: 10px;
   }
 
-  input, textarea{
+  input, textarea, select{
     width: 100%;
     background: #1a3951;
     opacity: 0.7;
     border: none;
     outline: none;
-    padding: 10px;
+    // padding: 10px;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
     border: 2px solid $app-button-bg-color;
     border-radius: 4px;
@@ -107,12 +108,15 @@ $form-text-color: $app-button-bg-color;
     color:orange;
   }
 
-  button{
+  button, div.luciole-buttons{
     @extend .luciole-buttons;
     width : 150px;
     height: 50px;
     font-size: 20px;
     margin : 5px 5px 5px 5px;
+    line-height: 50px;
+    vertical-align: middle;
+    padding: 0px 6px !important;
   }
 
   .g-recaptcha {
@@ -122,66 +126,64 @@ $form-text-color: $app-button-bg-color;
   .recaptcha {
     text-align: center;
   }
-}
 
-// MODALS
-.lu-modal{
-  height: 90%;
+  .react-datepicker__input-container{
+    position: none !important;
+  }
 
-  .modal-content{
-    border: none;
-    background-color: white;
+  /****************************
+   * RADIOS
+   * ***************************/
 
-    .form-group.has-error{
-      label{
-        color: red;
+  .lu-radios-list{
+    color: $app-button-text-color;
+
+    input{
+      width: auto !important;
+      box-shadow: none !important,
+    }
+
+    span{
+      display: inline-block;
+      position: relative;
+      font-weight: 300;
+      font-size: 1.35em;
+      cursor: pointer;
+      -webkit-transition: all 0.25s;
+    }
+
+    input{
+      width: auto !important;
+      box-shadow: none !important;
+      cursor: pointer;
+    }
+
+    .lu-radio{
+      padding-left: 15px;
+      display: inline-block;
+    }
+
+    .lu-radio:not(:checked){
+      &:hover{
+        span{
+          color: $app-button-bg-color;
+        }
       }
     }
 
-    .form-group{
-      label{
-        color: black;
-      }
-    }
-
-    .form-group.has-success{
-      label{
+    input:checked{
+      + span{
         color: green;
       }
-    }
-
-    .form-group.has-warning{
-      label{
-        color: orange;
-      }
-    }
-
-    .input-group-addon{
-      background: $app-button-bg-color;
-      border: 1px solid rgba(0,0,0,0.2);
-    }
-
-    input, textarea{
-      background: $app-button-text-color;
-
-      &:focus {
-        box-shadow: inset 0 -5px 45px rgba(50,50,50,0.8), 0 1px 1px rgba(255,255,255,0.2);
+      + span:hover{
+        color: green !important;
       }
     }
   }
 
-  .modal-header{
-    background-color: $app-button-bg-color;
-    border-bottom: 2px solid $app-button-text-color;
-    color: $app-button-hover-color;
-    text-align: center;
-  }
-
-  .modal-footer{
-    border-top: none;
-  }
-
-  .cgu {
-    text-align: center;
+  select {
+    margin-bottom: 8px;
+    padding: 5px;
+    font-size: $form-bigtext-size;
   }
 }

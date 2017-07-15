@@ -56,7 +56,7 @@ export default {
       birthDate: 'Date de naissance',
       signUpDate: 'Inscrit depuis le',
       country: 'Pays',
-      city: 'Ville',
+      region: 'Région',
       datasTitle: 'Mes données personnelles',
       mail: 'E-mail',
       username: 'Pseudo',
@@ -64,7 +64,29 @@ export default {
       password: 'Changer mon mot de passe',
       accountTitle: 'Mes informations de compte'
     },
-    not_set: 'Non renseigné'
+    not_set: 'Non renseigné',
+    userpage: {
+      editUsername: {
+        modalTitle: 'Modifier votre pseudo',
+        username: 'Votre pseudo',
+        submit: 'Sauvegarder',
+        cancel: 'Annuler'
+      },
+      editPersonalDatas: {
+        modalTitle: 'Modifier vos données personnelles',
+        submit: 'Sauvegarder',
+        cancel: 'Annuler',
+        birthDate: 'Date de naissance',
+        region: 'Région',
+        country: 'Pays',
+        gender: 'Genre'
+      },
+      editAvatar: {
+        modalTitle: 'Changer votre avatar',
+        submit: 'Sauvegarder',
+        cancel: 'Annuler'
+      }
+    }
   },
   date: {
     long: 'D MMMM YYYY'

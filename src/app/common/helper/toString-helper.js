@@ -1,5 +1,6 @@
 import Constants from './../constants'
 import { I18n } from 'react-redux-i18n'
+import { CountryRegionData } from 'react-country-region-selector'
 
 /**
  * ToString Helper class
@@ -37,12 +38,19 @@ export default class ToStringHelper {
   }
 
   /**
-   * Convert a citycode to string
-   * @param  {string} city The citycode to convert
-   * @return {string}           The city string
+   * Convert a region code to string
+   * @param  {string} regionCode The region code to convert
+   * @param  {string} countrycode The countrycode of the region to convert
+   * @return {string}           The region string
    */
-  cityToString (city) {
-    return city
+  regionToString (regionCode, countrycode) {
+    const country = this.getCountryArrayFromCountryCode(countrycode)
+    if (country && country.length === 3) {
+      const regions = country[2].split('|').map(region => region.split('~'))
+      const region = regions.filter(r => r[1] === regionCode)
+      return region[0] && region[0][0] ? region[0][0] : null
+    }
+    return null
   }
 
   /**
@@ -51,6 +59,16 @@ export default class ToStringHelper {
    * @return {string}           The country string
    */
   countryToString (countrycode) {
-    return countrycode
+    const country = this.getCountryArrayFromCountryCode(countrycode)
+    return country && country[0] ? country[0] : null
+  }
+
+  /**
+   * Get the country data from src and countrycode
+   * @param  {string} countrycode The code of the country concerned
+   * @return {Array}           The country'es properties array
+   */
+  getCountryArrayFromCountryCode (countrycode) {
+    return CountryRegionData.filter(c => c[1] === countrycode)[0]
   }
 }

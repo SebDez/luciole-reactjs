@@ -12,7 +12,8 @@ describe('AuthReducer', () => {
     state = {
       state: 'default-state-value',
       user: {
-        token: 'my-old-fashion-token'
+        token: 'my-old-fashion-token',
+        username: 'me'
       }
     }
   })
@@ -78,7 +79,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: true,
@@ -95,7 +97,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
@@ -112,7 +115,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
@@ -129,7 +133,8 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
@@ -146,12 +151,195 @@ describe('AuthReducer', () => {
       const expected = {
         state: 'default-state-value',
         user: {
-          token: 'my-old-fashion-token'
+          token: 'my-old-fashion-token',
+          username: 'me'
         },
         modals: {
           showLoginModal: false,
           showSignUpModal: false
         }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('editUsernameAction', () => {
+    it('Expect to return a valid state', () => {
+      action = {
+        username: 'myusername'
+      }
+      const result = AuthReducer.editUsernameAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'myusername'
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('editPersonalDatasAction', () => {
+    it('Expect to return a valid state', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region'
+      }
+      const result = AuthReducer.editPersonalDatasAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          birthDate: 'mybirthDate',
+          gender: 'mygender',
+          country: 'country',
+          region: 'region'
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('editAvatarAction', () => {
+    it('Expect to return a valid state, no availableList case', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region',
+        avatar: 'new-one'
+      }
+
+      state = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'old-one'
+          }
+        }
+      }
+      const result = AuthReducer.editAvatarAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'new-one',
+            availableList: []
+          }
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+
+    it('Expect to return a valid state, no avatar case', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region',
+        avatar: null
+      }
+
+      state = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'old-one'
+          }
+        }
+      }
+      const result = AuthReducer.editAvatarAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: '',
+            availableList: []
+          }
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+
+    it('Expect to return a valid state, with availableList', () => {
+      action = {
+        birthDate: 'mybirthDate',
+        gender: 'mygender',
+        country: 'country',
+        region: 'region',
+        avatar: 'new-one'
+      }
+
+      state = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'old-one',
+            availableList: ['1', '2']
+          }
+        }
+      }
+      const result = AuthReducer.editAvatarAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        user: {
+          token: 'my-old-fashion-token',
+          username: 'me',
+          avatar: {
+            selected: 'new-one',
+            availableList: ['1', '2']
+          }
+        }
+      }
+      expect(result).to.deep.equal(expected)
+    })
+  })
+
+  describe('getAvatarListAction', () => {
+    it('Expect to return a valid state, all ok case', () => {
+      action = {
+        avatarList: 'my-avatarList'
+      }
+
+      state = {
+        state: 'default-state-value',
+        avatarList: null
+      }
+      const result = AuthReducer.getAvatarListAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        avatarList: 'my-avatarList'
+      }
+      expect(result).to.deep.equal(expected)
+    })
+
+    it('Expect to return a valid state, no list case', () => {
+      action = {
+        avatarList: null
+      }
+
+      state = {
+        state: 'default-state-value',
+        avatarList: null
+      }
+      const result = AuthReducer.getAvatarListAction(state, action)
+      const expected = {
+        state: 'default-state-value',
+        avatarList: []
       }
       expect(result).to.deep.equal(expected)
     })

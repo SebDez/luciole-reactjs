@@ -31,7 +31,8 @@ class UserAccountRead extends LucioleComponent {
         <h2>{this.i18n.t('application.user.accountTitle')}</h2>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>
-            <UserFieldRead label='application.user.username' value={this.props.user.username} />
+            <UserFieldRead label='application.user.username' value={this.props.user.username}
+              handleEdit={this.props.openEditUsernameModal} />
           </Col>
           <Col className='sidebar-block-col' xs={12} md={6}>
             <UserFieldRead label='application.user.usertag' value={this.props.user.userTag} />
@@ -54,7 +55,8 @@ class UserAccountRead extends LucioleComponent {
  * @type {Object}
  */
 UserAccountRead.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  openEditUsernameModal: PropTypes.func.isRequired
 }
 
 /**

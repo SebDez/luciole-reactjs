@@ -1,7 +1,10 @@
 import React from 'react'
 import FontAwesome from 'react-fontawesome'
 import { FormGroup, InputGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { RadioGroup, Radio } from 'react-radio-group'
 import { I18n } from 'react-redux-i18n'
+import DatePicker from 'react-bootstrap-date-picker'
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector'
 
 /**
  * Form Helper class
@@ -86,7 +89,7 @@ export default class FormHelper {
    * @return {string} The error message to show, undefined if the value is valid
    */
   isValidUsername (value) {
-    let regex = /^[a-zA-Z0-9\s]+$/
+    let regex = /^[a-zA-Z0-9]+$/
     if (!value || value.length < 4 || value.length > 20) {
       return this.i18n.t('forms.usernameLengthInvalid')
     } else if (typeof value !== 'string' || !regex.test(value)) {
@@ -285,6 +288,77 @@ export default class FormHelper {
       <div className={props.class}>
         <FontAwesome name={props.icon} />
         <span>{message}</span>
+      </div>)
+  }
+
+  /**
+   * Render a radio field element
+   * @type {FormHelper} formHelper The formHelper to use
+   * @type {object} input The input object
+   * @type {string} label The label for this field
+   * @type {array} options List of {value, label} for radio options
+   * @return {Object} The element to render
+   */
+  renderRadioField ({formHelper, input, label, options}) {
+    return (
+      <div>
+        <FormGroup controlId={input.name}>
+          <label>{label}</label>
+          <RadioGroup className='lu-radios-list' name={input.name}
+            selectedValue={input.value} {...input}>
+            {formHelper.getRadioGroupOptions(options, input.value)}
+          </RadioGroup>
+        </FormGroup>
+      </div>
+    )
+  }
+
+  /**
+   * Render a Radio element list according to given options
+   * @type {array} options List of {value, label} for radio options
+   * @type {string} selectedValue The current selected value
+   * @return {Object} The element to render
+   */
+  getRadioGroupOptions (options, selectedValue) {
+    return options.map((opt, i) => {
+      return (<div className='lu-radio' key={i}><Radio checked={selectedValue === opt.value}
+        value={opt.value} /> <span>{opt.label}</span></div>)
+    })
+  }
+
+  /**
+   * Render a DatePicker element
+   * @type {FormHelper} formHelper The formHelper to use
+   * @type {object} input The input object
+   * @type {string} label The label for this field
+   * @return {Object} The element to render
+   */
+  renderDatePickerField ({formHelper, input, label}) {
+    return (
+      <div>
+        <FormGroup controlId={input.name}>
+          <ControlLabel>{label}</ControlLabel>
+          <DatePicker {...input} placeholder={label}
+            value={input.value} id={input.name} />
+        </FormGroup>
+      </div>)
+  }
+
+  /**
+   * Render a CountryDropdown and RegionDropdown fields element
+   * @type {object} fields The fields parameters
+   * @return {Object} The element to render
+   */
+  renderCountryAndRegionDropdown (fields) {
+    const countryInput = fields.country.input
+    const regionInput = fields.region.input
+    return (
+      <div>
+        <label>{fields.countryLabel}</label>
+        <CountryDropdown {...countryInput} valueType='short' />
+        <label>{fields.regionLabel}</label>
+        <RegionDropdown {...regionInput} country={countryInput.value}
+          valueType='short' countryValueType='short' />
       </div>)
   }
 }

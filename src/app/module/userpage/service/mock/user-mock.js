@@ -34,8 +34,23 @@ export default class UserMockApi {
       birthDate: mockHelper.getRandomDate(new Date(1980, 5, 24), new Date(2000, 5, 24)),
       gender: mockHelper.getRandomInt(1, 2),
       country: mockHelper.getRandomCountry(),
-      city: null,
+      region: null,
       avatar: mockHelper.getRandomImgSrc()
     })
+  }
+
+  /**
+   * MOCK : Log an user in
+   * @return {Object} A promise to resolve
+   */
+  getAvatarList () {
+    return Promise.resolve([
+      'tumblr_mdj13ty0p91r4nmedo1_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo2_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo3_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo4_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo5_1280.jpg',
+      'tumblr_mdj13ty0p91r4nmedo6_1280.jpg'
+    ])
   }
 }

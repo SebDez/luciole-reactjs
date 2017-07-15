@@ -8,6 +8,7 @@ import AppReducer from './app-reducer'
 import AuthReducer from './common/auth/reducer/auth-reducer'
 import SidebarReducer from './module/sidebar/reducer/sidebar-reducer'
 import MainReducer from './module/main/reducer/main-reducer'
+import UserPageReducer from './module/userpage/reducer/userpage-reducer'
 
 /**
  * Get the root reducer object
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     auth: AuthReducer,
     module: combineReducers({
       sidebar: SidebarReducer,
-      main: MainReducer
+      main: MainReducer,
+      userpage: UserPageReducer
     })
   })
 })

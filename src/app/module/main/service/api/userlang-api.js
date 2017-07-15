@@ -19,9 +19,9 @@ export default class UserLangApi extends LucioleApi {
   }
 
 /**
- * Encode a message to valid JSON format
+ * Encode a body to valid JSON format
  * @param {string} lang The new user's lang to set
- * @return {Object}  A message encoded
+ * @return {Object}  A body encoded
  */
   encodeNewUserLang (lang) {
     return {lang}

@@ -56,7 +56,7 @@ export default {
       birthDate: 'Birth date',
       signUpDate: 'Registered since',
       country: 'Country',
-      city: 'City',
+      region: 'Region',
       datasTitle: 'My personal datas',
       mail: 'Mail',
       username: 'Username',
@@ -64,7 +64,29 @@ export default {
       password: 'Change my password',
       accountTitle: 'My account datas'
     },
-    not_set: 'Not specified'
+    not_set: 'Not specified',
+    userpage: {
+      editUsername: {
+        modalTitle: 'Change your username',
+        username: 'Your username',
+        submit: 'Apply',
+        cancel: 'Cancel'
+      },
+      editPersonalDatas: {
+        modalTitle: 'Update your personal datas',
+        birthDate: 'Birth date',
+        region: 'Region',
+        country: 'Country',
+        gender: 'Gender',
+        submit: 'Apply',
+        cancel: 'Cancel'
+      },
+      editAvatar: {
+        modalTitle: 'Change your avatar',
+        submit: 'Apply',
+        cancel: 'Cancel'
+      }
+    }
   },
   date: {
     long: 'MMMM Do, YYYY'

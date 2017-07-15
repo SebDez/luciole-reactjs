@@ -25,10 +25,10 @@ export default class MockToStringHelper {
   }
 
   /**
-   * A fake cityToString method
+   * A fake regionToString method
    */
-  cityToString () {
-    return 'my-city'
+  regionToString () {
+    return 'my-region'
   }
 
 }

@@ -12,6 +12,13 @@ export default {
             open: false
           }
         }
+      },
+      userpage: {
+        modals: {
+          showEditUsernameModal: false,
+          showEditPersonalDatasModal: false,
+          showEditAvatarModal: false
+        }
       }
     },
     auth: {
@@ -21,7 +28,8 @@ export default {
       modals: {
         showLoginModal: false,
         showSignUpModal: false
-      }
+      },
+      avatarList: []
     },
     app: {
     }
