@@ -120,44 +120,66 @@ describe('EditAvatarFormComponent', () => {
   })
 
   describe('selectAvatar', () => {
-    beforeEach(() => {
-      mockCompo.expects('forceUpdate').returns('0')
+    describe('Cases with success', () => {
+      beforeEach(() => {
+        mockCompo.expects('forceUpdate').returns('0')
+      })
+
+      afterEach(() => {
+        mockCompo.verify()
+        mockCompo.restore()
+      })
+
+      it('Expect to have call compo.forceUpdate', () => {
+        compo.props.avatar.availableList = ['mychoice']
+        let spy = chai.spy.on(compo, 'forceUpdate')
+        compo.selectAvatar('mychoice')
+        expect(spy).to.have.been.called()
+      })
+
+      it('Expect to set selected as null if choice is in avatarList', () => {
+        compo.props.avatar.availableList = ['1']
+        compo.selectAvatar('1')
+        expect(compo.selected).to.equals(null)
+      })
+
+      it('Expect to set selected as choice if is in avatarList', () => {
+        compo.props.avatar.availableList = ['mychoice']
+        compo.selectAvatar('mychoice')
+        expect(compo.selected).to.equals('mychoice')
+      })
     })
 
-    afterEach(() => {
-      mockCompo.verify()
-      mockCompo.restore()
-    })
-
-    it('Expect to have call compo.forceUpdate', () => {
-      let spy = chai.spy.on(compo, 'forceUpdate')
-      compo.selectAvatar('choice')
-      expect(spy).to.have.been.called()
-    })
-
-    it('Expect to set selected as null', () => {
-      compo.selectAvatar('1')
+    it('Expect to not set selected as choice if is not in avatarList', () => {
+      compo.props.avatar.availableList = []
+      compo.selectAvatar('mychoice')
       expect(compo.selected).to.equals(null)
     })
 
-    it('Expect to set selected as choice', () => {
+    it('Expect to not have call forceUpdate if choice is not in avatarList', () => {
+      compo.props.avatar.availableList = []
+      let spy = chai.spy.on(compo, 'forceUpdate')
       compo.selectAvatar('mychoice')
-      expect(compo.selected).to.equals('mychoice')
+      expect(spy).not.to.have.been.called()
     })
   })
 
   describe('getChoices', () => {
+    beforeEach(() => {
+      compo.props.avatar.availableList = ['1', '2', '3', '4']
+      compo.props.avatarList = ['1', '2', '3', '4']
+    })
     it('Expect to contain 3 Col with valid className', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Col).findWhere(n => {
         return n.prop('className') === 'sidebar-block-col lu-square-choice'
       })
-      expect(actual).to.have.length(3)
+      expect(actual).to.have.length(4)
     })
     it('Expect to contain 3 img', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find('img')
-      expect(actual).to.have.length(3)
+      expect(actual).to.have.length(4)
     })
     it('Expect to contain 1 img with valid className (selected and default)', () => {
       compo.selected = '2'
@@ -175,7 +197,16 @@ describe('EditAvatarFormComponent', () => {
       })
       expect(actual).to.have.length(1)
     })
+    it('Expect to contain 1 img with className disabled', () => {
+      compo.props.avatarList = ['1', '2', '3', '5']
+      const wrapper = shallow(compo.render())
+      const actual = wrapper.find('img').findWhere(n => {
+        return n.prop('className') === ' disabled'
+      })
+      expect(actual).to.have.length(1)
+    })
     it('Expect to contain 1 img with valid className (selected and choice), case no avatar selected, default selected', () => {
+      compo.props.avatar.availableList = ['1', '2', '3', 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg']
       compo.props.avatarList = ['1', '2', '3', 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg']
       compo.props.avatar.selected = null
       const wrapper = shallow(compo.render())

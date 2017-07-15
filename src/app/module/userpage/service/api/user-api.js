@@ -1,5 +1,6 @@
 import LucioleApi from './../../../../common/core/abstract/luciole-api'
 import User from './../model/user-model'
+import Constants from './../../../../common/constants'
 
 /**
  * Class for User API
@@ -38,7 +39,7 @@ export default class UserApi extends LucioleApi {
       region: json.region,
       avatar: {
         selected: (!!json.avatar && !!json.avatar.selected) ? json.avatar.selected : 'default',
-        availableList: (!!json.avatar && !!json.avatar.availableList) ? json.avatar.availableList : []
+        availableList: (!!json.avatar && !!json.avatar.availableList) ? json.avatar.availableList : [Constants.USER.AVATAR.DEFAULT]
       }
     })
   }

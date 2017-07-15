@@ -263,4 +263,9 @@ h2{
   img.selected{
     border: 2px solid red;
   }
+
+  img.disabled{
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+  }
 }

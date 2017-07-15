@@ -88,7 +88,9 @@ export class EditAvatarFormComponent extends FormComponent {
     return this.props.avatarList.map((choice, i) => {
       const src = `${this.appConf.img.src}/${choice}`
       let imgClass = null
-      if ((!this.props.avatar.selected && choice === Constants.USER.AVATAR.DEFAULT) ||
+      if (this.props.avatar.availableList.indexOf(choice) === -1) {
+        imgClass = ' disabled'
+      } else if ((!this.props.avatar.selected && choice === Constants.USER.AVATAR.DEFAULT) ||
       this.selected === choice || (!this.selected && choice === this.props.avatar.selected)) {
         imgClass = ' selected'
       }
@@ -105,8 +107,10 @@ export class EditAvatarFormComponent extends FormComponent {
  * @param {string} choice The avatar choice string
  */
   selectAvatar (choice) {
-    this.selected = choice === this.props.avatar.selected ? null : choice
-    this.forceUpdate()
+    if (this.props.avatar.availableList.indexOf(choice) > -1) {
+      this.selected = choice === this.props.avatar.selected ? null : choice
+      this.forceUpdate()
+    }
   }
 
 /**

@@ -313,7 +313,7 @@ describe('UserApi', () => {
 
     it('Expect to return an object with default availableList is not given', () => {
       user.avatar.availableList = null
-      expect(serv.decodeUser(user).avatar.availableList.length).to.equals(0)
+      expect(serv.decodeUser(user).avatar.availableList[0]).to.equals('tumblr_mdj13ty0p91r4nmedo1_1280.jpg')
     })
   })
 
