@@ -37,7 +37,8 @@ export default {
       cgu: 'CGU',
       about: 'About',
       refresh: 'Refresh',
-      play: 'Play'
+      play: 'Play',
+      detail: 'Detail'
     },
     contact: {
       toast_success_title: 'Let\'s go !',

@@ -11,26 +11,17 @@ export default class ResourceMockApi {
    * @return {Object} A promise to resolve
    */
   getUserResources () {
-    return Promise.resolve({
-      data: {
-        gold: this.getRandomResource(),
-        food: this.getRandomResource(),
-        wood: this.getRandomResource()
-      }
-    })
-  }
-
-  /**
-   * MOCK : Mock for getting random resource
-   * @return {Object} A promise to resolve
-   */
-  getRandomResource () {
+    const result = {data: {}}
     const mockHelper = new MockHelper()
-    return {
-      amount: mockHelper.getRandomInt(0, 999999),
-      production: mockHelper.getRandomInt(0, 999999),
-      storage: mockHelper.getRandomInt(0, 999999)
-    }
+    const historyGenerator = () => mockHelper.getRandomInt(0, 999999)
+    const resources = ['goldIngot', 'food', 'wood', 'planks']
+    resources.forEach(resource => {
+      result.data[`${resource}Amount`] = mockHelper.getRandomInt(0, 999999)
+      result.data[`latest${resource}Harvest`] = mockHelper.getRandomDate(new Date(2001, 1, 1), new Date(2016, 1, 1))
+      result.data[`${resource}ProductionHistory`] = mockHelper.getRandomArray(10, historyGenerator)
+      result.data[`${resource}StorageHistory`] = mockHelper.getRandomArray(10, historyGenerator)
+    })
+    return Promise.resolve(result)
   }
 
 }

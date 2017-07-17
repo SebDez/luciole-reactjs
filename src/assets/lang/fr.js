@@ -37,7 +37,8 @@ export default {
       cgu: 'CGU',
       about: 'A propos',
       refresh: 'Rafraichir',
-      play: 'Jouer'
+      play: 'Jouer',
+      detail: 'Détail'
     },
     contact: {
       toast_success_title: 'C\'est parti !',

@@ -4,6 +4,7 @@ import SidebarBlockResources from './sidebar-block-resources-component'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import FontAwesome from 'react-fontawesome'
 import LuI18n from './../../../common/component/i18n/luciole-i18n-component'
+import {Link} from 'react-router'
 
 /**
  * SidebarLoggedIn Component
@@ -19,12 +20,16 @@ class SidebarLoggedIn extends LucioleComponent {
     return (
       <div>
         <SidebarLink text={'application.sidebar.home'} icon={'home'} link={'/'} lang={lang} />
-        <SidebarLink text={'application.sidebar.kingdom'} icon={'flag'} link={'/'} lang={lang} />
+        <SidebarLink text={'application.sidebar.kingdom'} icon={'flag'} link={'/kingdom'} lang={lang} />
         <div className='sidebar-content'>
-          <SidebarBlockResources userResource={this.props.userResource} reloadResources={this.props.reloadResources} />
-          <div className='sidebar-block-reload' onClick={this.props.reloadResources}><FontAwesome name='refresh' />
+          <div className='sidebar-block-reload' onClick={this.props.reloadResources}>
+            <FontAwesome name='refresh' />
             <LuI18n value='application.sidebar.refresh' lang={this.props.lang} />
           </div>
+          <SidebarBlockResources userResource={this.props.userResource} reloadResources={this.props.reloadResources} />
+          <Link to='/kingdom' className='sidebar-button-light'>
+            <LuI18n value='application.sidebar.detail' lang={this.props.lang} />
+          </Link>
         </div>
         <SidebarLink text={'application.sidebar.buildings'} icon={'cubes'} link={'/buildings'} lang={lang} />
         <SidebarLink text={'application.sidebar.specialists'} icon={'users'} link={'/'} lang={lang} />

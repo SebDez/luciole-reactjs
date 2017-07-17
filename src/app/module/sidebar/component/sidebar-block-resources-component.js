@@ -28,10 +28,15 @@ class SidebarBlockResources extends LucioleComponent {
       <Grid className='sidebar-block-grid'>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('wood')}</Col>
-          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('gold')}</Col>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('wood')}</Col>
         </Row>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>
+        </Row>
+        <Row>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('goldIngot')}</Col>
         </Row>
       </Grid>)
   }
@@ -42,11 +47,9 @@ class SidebarBlockResources extends LucioleComponent {
    * @return {Object}          The element to render
    */
   getLineElementForResource (resource) {
-    const value = this.props.userResource[resource]
-    if (value) {
-      return (<SidebarLineResources resourceName={resource} amount={value.amount} storage={value.storage} />)
-    }
-    return null
+    const amount = this.props.userResource[`${resource}Amount`] || 0
+    const storage = this.props.userResource[`${resource}StorageHistory`] && this.props.userResource[`${resource}StorageHistory`].length > 0 ? this.props.userResource[`${resource}StorageHistory`].slice(-1)[0] : 0
+    return (<SidebarLineResources resourceName={resource} amount={amount} storage={storage} />)
   }
 }
 
