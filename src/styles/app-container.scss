@@ -33,6 +33,7 @@ $app-text-font: 'Play', serif;
 @import "contact-container";
 @import "auth-container";
 @import "userpage-container";
+@import "kingdompage-container";
 
 // font-family: 'PT Sans', sans-serif;
 // font-family: 'Maitree', serif;
@@ -268,4 +269,50 @@ h2{
     opacity: 0.4;
     filter: alpha(opacity=40);
   }
+}
+
+
+/******************************
+* ARROWS
+* *****************************/
+
+.fa-lu-arrows{
+  margin-left: 3px;
+}
+
+.fa-long-arrow-right{
+  @extend .fa-lu-arrows;
+  color: #f9d998;
+}
+
+.fa-long-arrow-down{
+  @extend .fa-lu-arrows;
+  color: #cc1414;
+}
+
+.fa-long-arrow-up{
+  @extend .fa-lu-arrows;
+  color: #0f9e0b;
+}
+
+
+/******************************
+* TEXT
+* *****************************/
+
+.lu-content-text{
+  opacity: 0.9;
+  color: #edece6;
+}
+
+
+/******************************
+* PROGRESS BAR
+* *****************************/
+
+.lu-progress-bar{
+  background-color: #1a3951;
+  background-image: none;
+  overflow-x:visible;
+  white-space:nowrap;
 }

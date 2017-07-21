@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
 import { Grid } from 'react-bootstrap'
+import ResourcesComponent from './../component/resources-component'
 
 /**
  * KingdomPage container, used to define the composition of the KingdomPage screen
@@ -12,8 +13,11 @@ import { Grid } from 'react-bootstrap'
 export const KingdomPage = (props) => {
   return (
     <div>
-      <Grid className='lu-grid'>
+      <Grid className='lu-grid kingdompage'>
         <LuciolePageHeader title='application.sidebar.kingdom' icon='flag' />
+        <div>
+          <ResourcesComponent />
+        </div>
       </Grid>
     </div>
   )
