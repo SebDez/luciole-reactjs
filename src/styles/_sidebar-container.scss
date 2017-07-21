@@ -16,6 +16,10 @@ $sidebar-padding-borders: 10px;
   text-align: center;
   padding-left: $sidebar-padding-borders;
   padding-right: $sidebar-padding-borders;
+
+  a{
+    text-decoration: none
+  }
 }
 
 $logo-url: url('../assets/img/luciole_logo.png');

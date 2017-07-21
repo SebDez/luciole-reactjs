@@ -28,11 +28,7 @@ class SidebarBlockResources extends LucioleComponent {
       <Grid className='sidebar-block-grid'>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('wood')}</Col>
-          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('wood')}</Col>
-        </Row>
-        <Row>
-          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>
-          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>
+          <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('planks')}</Col>
         </Row>
         <Row>
           <Col className='sidebar-block-col' xs={12} md={6}>{this.getLineElementForResource('food')}</Col>

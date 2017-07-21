@@ -20,6 +20,7 @@ export default class ResourceMockApi {
       result.data[`latest${resource}Harvest`] = mockHelper.getRandomDate(new Date(2001, 1, 1), new Date(2016, 1, 1))
       result.data[`${resource}ProductionHistory`] = mockHelper.getRandomArray(10, historyGenerator)
       result.data[`${resource}StorageHistory`] = mockHelper.getRandomArray(10, historyGenerator)
+      result.data[`${resource}HarvestInterval`] = mockHelper.getRandomInt(10000, 473040000) * 1000
     })
     return Promise.resolve(result)
   }

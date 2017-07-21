@@ -46,7 +46,7 @@ class LuProgressBar extends LucioleComponent {
       )
   }
 
-  componentDidMount () {
+  componentWillReceiveProps () {
     if (this.props.counter) {
       let timer = setInterval(this.tick, this.interval)
       this.setState({timer, counter: this.props.initialValue})

@@ -16,7 +16,7 @@ export const KingdomPage = (props) => {
       <Grid className='lu-grid kingdompage'>
         <LuciolePageHeader title='application.sidebar.kingdom' icon='flag' />
         <div>
-          <ResourcesComponent lang={props.currentLang} />
+          <ResourcesComponent lang={props.currentLang} resources={props.userResource} />
         </div>
       </Grid>
     </div>
@@ -30,7 +30,8 @@ export const KingdomPage = (props) => {
  */
 function mapStateToProps (state) {
   return {
-    currentLang: state.i18n.locale
+    currentLang: state.i18n.locale,
+    userResource: state.application.module.sidebar.userResource
   }
 }
 
@@ -48,7 +49,8 @@ function mapDispatchToProps (dispatch) {
  * @type {Object}
  */
 KingdomPage.propTypes = {
-  currentLang: PropTypes.string
+  currentLang: PropTypes.string,
+  userResource: PropTypes.object.isRequired
 }
 
 KingdomPage.mapStateToProps = mapStateToProps

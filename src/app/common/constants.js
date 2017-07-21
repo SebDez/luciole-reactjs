@@ -60,5 +60,8 @@ export default {
     AVATAR: {
       DEFAULT: 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg'
     }
+  },
+  RESOURCES: {
+    list: ['wood', 'planks', 'food', 'goldIngot']
   }
 }

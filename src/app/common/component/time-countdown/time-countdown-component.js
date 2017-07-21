@@ -31,7 +31,7 @@ class LuTimeCountDown extends LucioleComponent {
     return (
       <div>
         <LuProgressBar initialValue={initialValue} goalValue={goalValue}
-          counter={this.counter} withDates active />
+          counter={this.counter} lang={this.props.lang} withDates active />
       </div>)
   }
 
@@ -50,6 +50,7 @@ class LuTimeCountDown extends LucioleComponent {
  * @type {Object}
  */
 LuTimeCountDown.propTypes = {
+  lang: PropTypes.string.isRequired,
   beginDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired
 }

@@ -6,6 +6,8 @@ import Moment from 'react-moment'
 import FontAwesome from 'react-fontawesome'
 import ToStringHelper from './../../../common/helper/toString-helper'
 import LuTimeCountDown from './../../../common/component/time-countdown/time-countdown-component'
+import { I18n } from 'react-redux-i18n'
+import Constants from './../../../common/constants'
 
 /**
  * ResourceDetailComponent Component
@@ -22,6 +24,8 @@ class ResourceDetailComponent extends LucioleComponent {
     super(props, context)
     /** @type {ToStringHelper}*/
     this.toStringHelper = new ToStringHelper()
+    /** @type {I18n}*/
+    this.i18n = I18n
     this._bindThisToMethods('getActualResourceContent',
     'getResourceCategoryContent', 'getResourceLastHarvestContent',
     'getResourceNextHarvestContent', 'getTrendArrow')
@@ -34,7 +38,10 @@ class ResourceDetailComponent extends LucioleComponent {
   render () {
     return (
       <Grid className='lu-grid lu-container lu-res-dtl'>
-        <div className='res-dtl-title'><ResourceIcon withCircle resourceName='goldIngot' /> Lingots d or</div>
+        <div className='res-dtl-title'>
+          <ResourceIcon withCircle resourceName={this.props.resource} />
+          <span>{this.i18n.t(`kingdom.resources.${this.props.resource}`)}</span>
+        </div>
         <Row>
           <Col xs={12} md={12}>
             {this.getActualResourceContent()}
@@ -56,23 +63,24 @@ class ResourceDetailComponent extends LucioleComponent {
   }
 
   getActualResourceContent () {
-    const sto = 1000000
-    const percentage = sto > 0 ? Math.floor((800000 * 100) / sto) : 100
-    const amount = this.toStringHelper.getNumberFormatted(800000)
-    const storage = this.toStringHelper.getNumberFormatted(1000000)
+    const amount = this.props.amount
+    const storage = this.props.storageHistory && this.props.storageHistory.length > 0 ? this.props.storageHistory.slice(-1)[0] : 0
+    const percentage = storage > 0 ? Math.floor((amount * 100) / storage) : 100
+    const amountTxt = this.toStringHelper.getNumberFormatted(amount)
+    const storageTxt = this.toStringHelper.getNumberFormatted(storage)
     return (
       <div className='r-dtl-actual'>
-        <span className='number'>{amount}</span>
+        <span className='number'>{amountTxt}</span>
         <span className='no-number'>/</span>
-        <span className='number'>{storage}</span>
+        <span className='number'>{storageTxt}</span>
         <span className='no-number'>({percentage} %)</span>
       </div>)
   }
 
   getResourceCategoryContent (category) {
-    const history = [20, 100]
-    const current = history.slice(-1)[0]
-    const last = history.slice(-2)[0]
+    const history = category === 'Production' ? this.props.prodHistory : this.props.storageHistory
+    const current = history && history.length > 0 ? history.slice(-1)[0] : 0
+    const last = history && history.length > 1 ? history.slice(-2)[0] : 0
     return (
       <div className='r-prod'>
         <span className='title'>{category}</span>
@@ -84,7 +92,7 @@ class ResourceDetailComponent extends LucioleComponent {
   }
 
   getResourceLastHarvestContent () {
-    const last = new Date(2017, 4, 4)
+    const last = this.props.lastHarvest
     return (
       <div className='r-last-hrv'>
         <span className='title'>Last harvest</span>
@@ -93,13 +101,14 @@ class ResourceDetailComponent extends LucioleComponent {
   }
 
   getResourceNextHarvestContent () {
-    const lastHarvest = new Date(2017, 6, 21)
-    const interval = 86400000
+    const lastHarvest = this.props.lastHarvest
+    const interval = this.props.resourceHarvestInterval
     const date = new Date(lastHarvest.getTime() + interval).toISOString()
     return (
       <div className='r-next-hrv'>
         <span className='title'>Next Harvest</span>
-        <LuTimeCountDown beginDate={lastHarvest.toISOString()} endDate={date} />
+        <LuTimeCountDown beginDate={lastHarvest.toISOString()}
+          lang={this.props.lang} endDate={date} />
       </div>)
   }
 
@@ -119,7 +128,13 @@ class ResourceDetailComponent extends LucioleComponent {
  * @type {Object}
  */
 ResourceDetailComponent.propTypes = {
-  lang: PropTypes.string
+  resource: PropTypes.oneOf(Constants.RESOURCES.list),
+  amount: PropTypes.number.isRequired,
+  lastHarvest: PropTypes.instanceOf(Date).isRequired,
+  prodHistory: PropTypes.array.isRequired,
+  storageHistory: PropTypes.array.isRequired,
+  resourceHarvestInterval: PropTypes.number.isRequired,
+  lang: PropTypes.string.isRequired
 }
 
 /**
