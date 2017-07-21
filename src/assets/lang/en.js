@@ -122,5 +122,15 @@ export default {
       title: 'Aie, a problem occured',
       message: 'The action has been ignored.'
     }
+  },
+  progressBar: {
+    day_singular: 'day',
+    day_plural: 'days',
+    hour_singular: 'hour',
+    hour_plural: 'hours',
+    min_singular: 'minute',
+    min_plural: 'minutes',
+    sec_singular: 'second',
+    sec_plural: 'seconds'
   }
 }

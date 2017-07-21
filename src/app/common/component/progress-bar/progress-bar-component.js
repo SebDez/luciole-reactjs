@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import LucioleComponent from './../../core/abstract/luciole-component'
 import { ProgressBar } from 'react-bootstrap'
+import { I18n } from 'react-redux-i18n'
 
 /**
  * LuProgressBar Component
@@ -24,6 +25,8 @@ class LuProgressBar extends LucioleComponent {
   constructor (props, context) {
     super(props, context)
     this.interval = this.props.updateInterval || 1000
+    /** @type {I18n}*/
+    this.i18n = I18n
     this._bindThisToMethods('tick', 'getPercentageValue', 'endTick', 'getLabel', 'dateBetween')
   }
 
@@ -92,11 +95,16 @@ class LuProgressBar extends LucioleComponent {
     let minutes = Math.floor((distance % hour) / minute)
     let seconds = Math.floor((distance % minute) / second)
 
+    const dayLabel = days <= 1 ? 'progressBar.day_singular' : 'progressBar.day_plural'
+    const hourLabel = hours <= 1 ? 'progressBar.hour_singular' : 'progressBar.hour_plural'
+    const minLabel = minutes <= 1 ? 'progressBar.min_singular' : 'progressBar.min_plural'
+    const secLabel = seconds <= 1 ? 'progressBar.sec_singular' : 'progressBar.sec_plural'
+
     let between = []
-    days > 0 ? between.push(`${days} day${days > 1 ? 's' : ''}`) : false
-    hours > 0 ? between.push(`${hours} hour${hours > 1 ? 's' : ''}`) : false
-    days <= 0 && minutes > 0 ? between.push(`${minutes} minute${minutes > 1 ? 's' : ''}`) : false
-    days <= 0 && hours <= 0 && seconds > 0 ? between.push(`${seconds} second${seconds > 1 ? 's' : ''}`) : false
+    days > 0 ? between.push(`${days} ${this.i18n.t(dayLabel)}`) : false
+    hours > 0 ? between.push(`${hours} ${this.i18n.t(hourLabel)}`) : false
+    days <= 0 && minutes > 0 ? between.push(`${minutes} ${this.i18n.t(minLabel)}`) : false
+    days <= 0 && hours <= 0 && seconds > 0 ? between.push(`${seconds} ${this.i18n.t(secLabel)}`) : false
 
     return between.join(' ')
   }
@@ -126,7 +134,8 @@ LuProgressBar.propTypes = {
   updateInterval: PropTypes.number,
   counter: PropTypes.func,
   noLabel: PropTypes.bool,
-  withDates: PropTypes.bool
+  withDates: PropTypes.bool,
+  lang: PropTypes.string.isRequired
 }
 
 /**

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import LuciolePageHeader from './../../../common/component/page-header/page-header-component'
 import { Grid } from 'react-bootstrap'
@@ -16,7 +16,7 @@ export const KingdomPage = (props) => {
       <Grid className='lu-grid kingdompage'>
         <LuciolePageHeader title='application.sidebar.kingdom' icon='flag' />
         <div>
-          <ResourcesComponent />
+          <ResourcesComponent lang={props.currentLang} />
         </div>
       </Grid>
     </div>
@@ -29,7 +29,9 @@ export const KingdomPage = (props) => {
  * @return {Object}       The container props
  */
 function mapStateToProps (state) {
-  return {}
+  return {
+    currentLang: state.i18n.locale
+  }
 }
 
 /**
@@ -45,7 +47,9 @@ function mapDispatchToProps (dispatch) {
  * The container properties' types
  * @type {Object}
  */
-KingdomPage.propTypes = {}
+KingdomPage.propTypes = {
+  currentLang: PropTypes.string
+}
 
 KingdomPage.mapStateToProps = mapStateToProps
 KingdomPage.mapDispatchToProps = mapDispatchToProps

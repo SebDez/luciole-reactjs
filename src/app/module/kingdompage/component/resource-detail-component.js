@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 import ResourceIcon from './../../../common/component/resource/resource-icon-component'
@@ -88,7 +88,7 @@ class ResourceDetailComponent extends LucioleComponent {
     return (
       <div className='r-last-hrv'>
         <span className='title'>Last harvest</span>
-        <span className='value'><Moment fromNow>{last}</Moment></span>
+        <span className='value'><Moment locale={this.props.lang} fromNow>{last}</Moment></span>
       </div>)
   }
 
@@ -118,7 +118,9 @@ class ResourceDetailComponent extends LucioleComponent {
  * The component properties' types
  * @type {Object}
  */
-ResourceDetailComponent.propTypes = {}
+ResourceDetailComponent.propTypes = {
+  lang: PropTypes.string
+}
 
 /**
  * Export the component

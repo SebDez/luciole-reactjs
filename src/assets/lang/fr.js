@@ -122,5 +122,15 @@ export default {
       title: 'Aie, un problème est survenu',
       message: 'L\'action n\'a pas été prise en compte.'
     }
+  },
+  progressBar: {
+    day_singular: 'jour',
+    day_plural: 'jours',
+    hour_singular: 'heure',
+    hour_plural: 'heures',
+    min_singular: 'minute',
+    min_plural: 'minutes',
+    sec_singular: 'seconde',
+    sec_plural: 'secondes'
   }
 }

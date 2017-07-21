@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 import ResourceDetailComponent from './resource-detail-component'
@@ -13,30 +13,31 @@ class ResourcesComponent extends LucioleComponent {
    * @return {Object} React component tree
    */
   render () {
+    const lang = this.props.lang
     return (
       <Grid className='lu-grid'>
         <h2>Mes ressources</h2>
         <Row>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
           <Col xs={12} md={3} className='res-elm'>
-            <ResourceDetailComponent />
+            <ResourceDetailComponent lang={lang} />
           </Col>
         </Row>
       </Grid>)
@@ -47,7 +48,9 @@ class ResourcesComponent extends LucioleComponent {
  * The component properties' types
  * @type {Object}
  */
-ResourcesComponent.propTypes = {}
+ResourcesComponent.propTypes = {
+  lang: PropTypes.string
+}
 
 /**
  * Export the component
