@@ -26,6 +26,10 @@ class ResourceDetailComponent extends LucioleComponent {
     this.toStringHelper = new ToStringHelper()
     /** @type {I18n}*/
     this.i18n = I18n
+    /** @type {string}*/
+    this.PRODUCTION = 'Production'
+    /** @type {string}*/
+    this.STORAGE = 'Storage'
     this._bindThisToMethods('getActualResourceContent',
     'getResourceCategoryContent', 'getResourceLastHarvestContent',
     'getResourceNextHarvestContent', 'getTrendArrow')
@@ -47,10 +51,10 @@ class ResourceDetailComponent extends LucioleComponent {
             {this.getActualResourceContent()}
           </Col>
           <Col xs={12} md={6}>
-            {this.getResourceCategoryContent('Production')}
+            {this.getResourceCategoryContent(this.PRODUCTION)}
           </Col>
           <Col xs={12} md={6}>
-            {this.getResourceCategoryContent('Storage')}
+            {this.getResourceCategoryContent(this.STORAGE)}
           </Col>
           <Col xs={12} md={6}>
             {this.getResourceLastHarvestContent()}
@@ -62,6 +66,10 @@ class ResourceDetailComponent extends LucioleComponent {
       </Grid>)
   }
 
+/**
+ * Get current resource element
+ * @return {Object} The current resource element
+ */
   getActualResourceContent () {
     const amount = this.props.amount
     const storage = this.props.storageHistory && this.props.storageHistory.length > 0 ? this.props.storageHistory.slice(-1)[0] : 0
@@ -77,8 +85,13 @@ class ResourceDetailComponent extends LucioleComponent {
       </div>)
   }
 
+  /**
+  * Get resource history element
+  * @param {string} category The current category : production or storage
+  * @return {Object} The resource history element
+  */
   getResourceCategoryContent (category) {
-    const history = category === 'Production' ? this.props.prodHistory : this.props.storageHistory
+    const history = category === this.PRODUCTION ? this.props.prodHistory : this.props.storageHistory
     const current = history && history.length > 0 ? history.slice(-1)[0] : 0
     const last = history && history.length > 1 ? history.slice(-2)[0] : 0
     return (
@@ -91,15 +104,25 @@ class ResourceDetailComponent extends LucioleComponent {
       </div>)
   }
 
+  /**
+  * Get resource lastharvest element
+  * @return {Object} The resource lastharvest element
+  */
   getResourceLastHarvestContent () {
     const last = this.props.lastHarvest
     return (
       <div className='r-last-hrv'>
         <span className='title'>Last harvest</span>
-        <span className='value'><Moment locale={this.props.lang} fromNow>{last}</Moment></span>
+        <span className='value'>
+          <Moment locale={this.props.lang} fromNow>{last.toString()}</Moment>
+        </span>
       </div>)
   }
 
+  /**
+  * Get resource next harvest element
+  * @return {Object} The resource next harvest element
+  */
   getResourceNextHarvestContent () {
     const lastHarvest = this.props.lastHarvest
     const interval = this.props.resourceHarvestInterval
@@ -112,6 +135,12 @@ class ResourceDetailComponent extends LucioleComponent {
       </div>)
   }
 
+/**
+ * Get trend arrow after comparing last and current value
+ * @param {integer} lastValue The last value to compare
+ * @param {integer} currentValue The current value to compare
+ * @return {string} The arrow up string if last < current, else return arrow down
+ */
   getTrendArrow (lastValue, currentValue) {
     if (lastValue === currentValue) {
       return 'long-arrow-right'

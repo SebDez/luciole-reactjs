@@ -90,24 +90,24 @@ describe('SidebarBlockResources', () => {
       expect(actual).to.be.instanceOf(Grid)
     })
 
-    it('Expect to contain 3 Row', () => {
+    it('Expect to contain 2 Row', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Row)
-      expect(actual).to.have.length(3)
+      expect(actual).to.have.length(2)
     })
 
-    it('Expect to contain 6 Col', () => {
+    it('Expect to contain 4 Col', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Col).findWhere(n => {
         return n.prop('className') === 'sidebar-block-col'
       })
-      expect(actual).to.have.length(6)
+      expect(actual).to.have.length(4)
     })
 
-    it('Expect to have getLineElementForResource 3 times', () => {
+    it('Expect to have getLineElementForResource 4 times', () => {
       const spy = chai.spy.on(compo, 'getLineElementForResource')
       compo.render()
-      expect(spy).to.have.been.called.exactly(6)
+      expect(spy).to.have.been.called.exactly(4)
     })
   })
 })

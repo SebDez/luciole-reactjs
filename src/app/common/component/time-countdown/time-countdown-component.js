@@ -35,12 +35,13 @@ class LuTimeCountDown extends LucioleComponent {
       </div>)
   }
 
+  /**
+   * Time countdown counter
+   * @param {integer} value The actual value
+   * @return {integer} The new counter value
+   */
   counter (value) {
     return value + 1000
-  }
-
-  counter2 (value) {
-    return value + 1
   }
 
 }

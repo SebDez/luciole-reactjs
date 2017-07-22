@@ -24,10 +24,12 @@ class LuProgressBar extends LucioleComponent {
   /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
+    /** @type {integer}*/
     this.interval = this.props.updateInterval || 1000
     /** @type {I18n}*/
     this.i18n = I18n
-    this._bindThisToMethods('tick', 'getPercentageValue', 'endTick', 'getLabel', 'dateBetween')
+    this._bindThisToMethods('tick', 'getPercentageValue', 'endTick',
+      'getLabel', 'getTimeBetweenDates')
   }
 
   /**
@@ -46,6 +48,9 @@ class LuProgressBar extends LucioleComponent {
       )
   }
 
+/**
+ * On component update props, reset counter if there is one
+ */
   componentWillReceiveProps () {
     if (this.props.counter) {
       let timer = setInterval(this.tick, this.interval)
@@ -53,33 +58,53 @@ class LuProgressBar extends LucioleComponent {
     }
   }
 
+/**
+ * On component unmount, clear counter if there is one
+ */
   componentWillUnmount () {
     if (this.props.counter) {
       this.endTick()
     }
   }
 
+/**
+ * Clear interval for counter
+ */
   endTick () {
     clearInterval(this.state.timer)
   }
 
+/**
+ * Get percentage value for progress bar
+ * @return {string} The percentage to show
+ */
   getPercentageValue () {
     const counter = this.state && this.state.counter ? this.state.counter : this.props.initialValue
     const percentage = this.props.goalValue > 0 ? Math.floor((counter / this.props.goalValue) * 100) : 0
     return percentage >= 100 ? 100 : percentage
   }
 
+/**
+ * Get label for progress bar
+ * @return {string} The label to show (can be empty)
+ */
   getLabel () {
     const counter = this.state && this.state.counter ? this.state.counter : this.props.initialValue
     if (this.props.withDates) {
       const goalDate = this.props.goalValue - (counter - new Date().getTime())
-      const between = this.dateBetween(new Date(), new Date(goalDate))
+      const between = this.getTimeBetweenDates(new Date(), new Date(goalDate))
       return between || 'Terminé'
     }
     return counter
   }
 
-  dateBetween (startDate, endDate) {
+/**
+ * Get time between two dates
+ * @param {Date} startDate The startDate to compare
+ * @param {Date} endDate The endDate to compare
+ * @return {string} string time if there is one, or false
+ */
+  getTimeBetweenDates (startDate, endDate) {
     let second = 1000
     let minute = second * 60
     let hour = minute * 60
@@ -109,6 +134,9 @@ class LuProgressBar extends LucioleComponent {
     return between.join(' ')
   }
 
+/**
+ * Set interval for counter
+ */
   tick () {
     const count = this.state && this.state.counter ? this.state.counter : this.props.initialValue
     if (count < this.props.goalValue) {

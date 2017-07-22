@@ -23,12 +23,22 @@ class ResourcesComponent extends LucioleComponent {
       </Grid>)
   }
 
+  /**
+   * Get detail element for all resources
+   * @return {Array} Details elements
+   */
   getAllResourcesDetailElement () {
     return Constants.RESOURCES.list.map((resource, id) => {
       return this.getResourceDetailElement(resource, id)
     })
   }
 
+  /**
+   * Get resource detail element for a resource
+   * @param {resource} resource The resource concerned
+   * @param {integer} id The element id
+   * @return {Object} The resource detail element
+   */
   getResourceDetailElement (resource, id) {
     const lang = this.props.lang
     const resources = this.props.resources
