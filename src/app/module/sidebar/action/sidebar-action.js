@@ -61,9 +61,10 @@ export default class SidebarActions extends LucioleActions {
    * @return {Object}  The action to dispatch with user resources
    */
   getUserResources () {
-    return dispatch => {
-      return this.resourceService.getUserResources().then(res => {
-        dispatch(this.getUserResourceSuccessAction(res.data))
+    return (dispatch, getState) => {
+      const token = this.getTokenFromGetState(getState)
+      return this.resourceService.getUserResources(token).then(res => {
+        dispatch(this.getUserResourceSuccessAction(res))
       }).catch(this.manageHttpErrors.bind(this))
     }
   }

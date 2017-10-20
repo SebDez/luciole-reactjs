@@ -72,7 +72,7 @@ class ResourceDetailComponent extends LucioleComponent {
  */
   getActualResourceContent () {
     const amount = this.props.amount
-    const storage = this.props.storageHistory && this.props.storageHistory.length > 0 ? this.props.storageHistory.slice(-1)[0] : 0
+    const storage = this.props.storage.slice(-1)[0]
     const percentage = storage > 0 ? Math.floor((amount * 100) / storage) : 100
     const amountTxt = this.toStringHelper.getNumberFormatted(amount)
     const storageTxt = this.toStringHelper.getNumberFormatted(storage)
@@ -91,7 +91,7 @@ class ResourceDetailComponent extends LucioleComponent {
   * @return {Object} The resource history element
   */
   getResourceCategoryContent (category) {
-    const history = category === this.PRODUCTION ? this.props.prodHistory : this.props.storageHistory
+    const history = category === 'production' ? this.props.production : this.props.storage
     const current = history && history.length > 0 ? history.slice(-1)[0] : 0
     const last = history && history.length > 1 ? history.slice(-2)[0] : 0
     return (
@@ -124,8 +124,8 @@ class ResourceDetailComponent extends LucioleComponent {
   * @return {Object} The resource next harvest element
   */
   getResourceNextHarvestContent () {
-    const lastHarvest = this.props.lastHarvest
-    const interval = this.props.resourceHarvestInterval
+    const lastHarvest = this.props.latestHarvest
+    const interval = this.props.harvestInterval
     const date = new Date(lastHarvest.getTime() + interval).toISOString()
     return (
       <div className='r-next-hrv'>
@@ -158,12 +158,11 @@ class ResourceDetailComponent extends LucioleComponent {
  */
 ResourceDetailComponent.propTypes = {
   resource: PropTypes.oneOf(Constants.RESOURCES.list),
+  production: PropTypes.array.isRequired,
+  storage: PropTypes.array.isRequired,
+  latestHarvest: PropTypes.instanceOf(Date).isRequired,
   amount: PropTypes.number.isRequired,
-  lastHarvest: PropTypes.instanceOf(Date).isRequired,
-  prodHistory: PropTypes.array.isRequired,
-  storageHistory: PropTypes.array.isRequired,
-  resourceHarvestInterval: PropTypes.number.isRequired,
-  lang: PropTypes.string.isRequired
+  harvestInterval: PropTypes.number.isRequired
 }
 
 /**

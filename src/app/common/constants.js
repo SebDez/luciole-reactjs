@@ -61,7 +61,28 @@ export default {
       DEFAULT: 'tumblr_mdj13ty0p91r4nmedo1_1280.jpg'
     }
   },
+  KINGDOM: {
+    RESOURCES: {
+      FOOD: 'food',
+      WOOD: 'wood',
+      PLANKS: 'planks',
+      STONE: 'stone',
+      CHIPPED_STONE: 'chippedStone',
+      IRON_ORE: 'ironOre',
+      IRON_INGOT: 'ironIngot',
+      GOLD_ORE: 'goldOre',
+      GOLD_INGOT: 'goldIngot',
+      PELT: 'pelt',
+      LEATHER: 'leather',
+      HORSE: 'horse'
+    }
+  },
   RESOURCES: {
-    list: ['wood', 'planks', 'food', 'goldIngot']
+    AMOUNT: 'Amount',
+    PRODUCTION: 'ProductionHistory',
+    STORAGE: 'StorageHistory',
+    INTERVAL: 'HarvestInterval',
+    LATEST: 'latest',
+    HARVEST: 'Harvest'
   }
 }

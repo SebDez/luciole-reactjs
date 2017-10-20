@@ -10,47 +10,43 @@ import Constants from './../../../common/constants'
 class ResourcesComponent extends LucioleComponent {
 
   /**
+   * Create a new ResourcesComponent component
+   * @param  {Object} props The component properties
+   * @param  {Object} context The app context
+   */
+  /* istanbul ignore next */
+  constructor (props, context) {
+    super(props, context)
+    this._bindThisToMethods('getResourceDetailElements')
+  }
+
+  /**
    * Render the component
    * @return {Object} React component tree
    */
   render () {
+    const resources = this.getResourceDetailElements()
     return (
       <Grid className='lu-grid'>
         <h2>{this.i18n.t('application.kingdompage.resources.title')}</h2>
         <Row>
-          {this.getAllResourcesDetailElement()}
+          {resources}
         </Row>
       </Grid>)
   }
 
-  /**
-   * Get detail element for all resources
-   * @return {Array} Details elements
-   */
-  getAllResourcesDetailElement () {
-    return Constants.RESOURCES.list.map((resource, id) => {
-      return this.getResourceDetailElement(resource, id)
+  getResourceDetailElements () {
+    return Object.values(Constants.KINGDOM.RESOURCES).map((res, i) => {
+      return (
+        <Col xs={12} md={3} className='res-elm' key={i} >
+          <ResourceDetailComponent lang={this.props.lang} resource={res}
+            production={this.props.resources[`${res}${Constants.RESOURCES.PRODUCTION}`]}
+            storage={this.props.resources[`${res}${Constants.RESOURCES.STORAGE}`]}
+            latestHarvest={this.props.resources[`${Constants.RESOURCES.LATEST}${res}${Constants.RESOURCES.HARVEST}`]}
+            amount={this.props.resources[`${res}${Constants.RESOURCES.AMOUNT}`]}
+            harvestInterval={this.props.resources[`${res}${Constants.RESOURCES.INTERVAL}`]} />
+        </Col>)
     })
-  }
-
-  /**
-   * Get resource detail element for a resource
-   * @param {resource} resource The resource concerned
-   * @param {integer} id The element id
-   * @return {Object} The resource detail element
-   */
-  getResourceDetailElement (resource, id) {
-    const lang = this.props.lang
-    const resources = this.props.resources
-    return (
-      <Col key={id} xs={12} md={3} className='res-elm'>
-        <ResourceDetailComponent lang={lang} amount={resources[`${resource}Amount`]}
-          lastHarvest={resources[`latest${resource}Harvest`]}
-          prodHistory={resources[`${resource}ProductionHistory`]}
-          storageHistory={resources[`${resource}StorageHistory`]}
-          resourceHarvestInterval={resources[`${resource}HarvestInterval`]}
-          resource={resource} />
-      </Col>)
   }
 }
 
@@ -59,7 +55,7 @@ class ResourcesComponent extends LucioleComponent {
  * @type {Object}
  */
 ResourcesComponent.propTypes = {
-  lang: PropTypes.string.isRequired,
+  lang: PropTypes.string,
   resources: PropTypes.object.isRequired
 }
 

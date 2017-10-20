@@ -76,15 +76,15 @@ export default {
         food: 'Food',
         wood: 'Wood',
         planks: 'Planks',
-        stone: 'Stone',
-        chippedStone: 'Chipped Stone',
-        ironOre: 'Iron Ore',
-        ironIngot: 'Iron Ingot',
-        goldOre: 'Gold Ore',
-        goldIngot: 'Gold Ingot',
-        pelt: 'Pelt',
+        stone: 'Stones',
+        chippedStone: 'Chipped Stones',
+        ironOre: 'Iron Ores',
+        ironIngot: 'Iron Ingots',
+        goldOre: 'Gold Ores',
+        goldIngot: 'Gold Ingots',
+        pelt: 'Pelts',
         leather: 'Leather',
-        horse: 'Horse'
+        horse: 'Horses'
       }
     },
     not_set: 'Not specified',

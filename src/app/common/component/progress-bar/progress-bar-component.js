@@ -162,8 +162,7 @@ LuProgressBar.propTypes = {
   updateInterval: PropTypes.number,
   counter: PropTypes.func,
   noLabel: PropTypes.bool,
-  withDates: PropTypes.bool,
-  lang: PropTypes.string.isRequired
+  withDates: PropTypes.bool
 }
 
 /**

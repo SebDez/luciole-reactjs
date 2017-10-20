@@ -3,6 +3,9 @@
 * *****************************/
 .kingdompage{
 
+  overflow: auto;
+  height:100%;
+
   .lu-res-dtl{
   }
 
@@ -59,11 +62,15 @@
 
   .r-last-hrv{
     @extend .r-dtl;
+    text-align: center;
+    white-space: nowrap;
 
   }
 
   .r-next-hrv{
     @extend .r-dtl;
-
+    text-align: center;
+    white-space: nowrap;
+    margin: 0 !important;
   }
 }

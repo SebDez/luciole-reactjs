@@ -41,7 +41,7 @@ class SidebarLineResources extends LucioleComponent {
    * @return {object}  Tooltip format object
    */
   getToolTipDataFromResource () {
-    const percentage = Math.floor((this.props.amount * 100) / this.props.storage)
+    const percentage = this.props.storage > 0 ? Math.floor((this.props.amount * 100) / this.props.storage) : 100
     const amount = this.toStringHelper.getNumberFormatted(this.props.amount)
     const storage = this.toStringHelper.getNumberFormatted(this.props.storage)
     const text = `(${percentage}%) ${amount}/${storage}`
