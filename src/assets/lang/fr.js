@@ -67,7 +67,7 @@ export default {
     },
     kingdompage: {
       resources: {
-        title: 'My resources',
+        title: 'Mes ressources',
         nextHarvest: 'Prochaine récolte',
         lastHarvest: 'Dernière récolte',
         harvestEnded: 'Terminé',

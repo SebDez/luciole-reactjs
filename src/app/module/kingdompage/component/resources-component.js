@@ -3,6 +3,7 @@ import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 import ResourceDetailComponent from './resource-detail-component'
 import Constants from './../../../common/constants'
+import LucioleScrollbar from './../../../common/component/lu-scrollbar/lu-scrollbar-component'
 
 /**
  * ResourcesComponent Component
@@ -26,12 +27,17 @@ class ResourcesComponent extends LucioleComponent {
    */
   render () {
     const resources = this.getResourceDetailElements()
+    const scrollBarStyle = {
+      'height': '70vh'
+    }
     return (
       <Grid className='lu-grid'>
         <h2>{this.i18n.t('application.kingdompage.resources.title')}</h2>
-        <Row>
-          {resources}
-        </Row>
+        <LucioleScrollbar style={scrollBarStyle}>
+          <Row className='lu-resources'>
+            {resources}
+          </Row>
+        </LucioleScrollbar>
       </Grid>)
   }
 

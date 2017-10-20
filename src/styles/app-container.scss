@@ -208,6 +208,9 @@ $app-text-font: 'Play', serif;
 
  .lu-grid{
    width: 95%;
+   h2{
+    margin-top: 5px !important;
+  }
  }
 
  .corner-button{
@@ -350,4 +353,14 @@ h2{
   background-image: none;
   overflow-x:visible;
   white-space:nowrap;
+}
+
+
+/******************************
+* SCROLL BAR
+* *****************************/
+
+.lu-scroll-content{
+  padding-left: 10px;
+  padding-right: 10px;
 }

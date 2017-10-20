@@ -2,9 +2,7 @@
 * KINGDOMPAGE CONTAINER
 * *****************************/
 .kingdompage{
-
-  overflow: auto;
-  height:100%;
+  overflow-x: hidden;
 
   .lu-res-dtl{
   }
@@ -73,4 +71,5 @@
     white-space: nowrap;
     margin: 0 !important;
   }
+
 }

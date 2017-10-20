@@ -15,9 +15,7 @@ export const KingdomPage = (props) => {
     <div>
       <Grid className='lu-grid kingdompage'>
         <LuciolePageHeader title='application.sidebar.kingdom' icon='flag' />
-        <div>
-          <ResourcesComponent lang={props.currentLang} resources={props.userResource} />
-        </div>
+        <ResourcesComponent lang={props.currentLang} resources={props.userResource} />
       </Grid>
     </div>
   )
