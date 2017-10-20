@@ -26,7 +26,7 @@ export default class ResourceApi extends LucioleApi {
       resources[`${Constants.RESOURCES.LATEST}${res}${Constants.RESOURCES.HARVEST}`] = new Date(data[`${Constants.RESOURCES.LATEST}${res}${Constants.RESOURCES.HARVEST}`])
       resources[`${res}${Constants.RESOURCES.PRODUCTION}`] = data[`${res}${Constants.RESOURCES.PRODUCTION}`] || []
       resources[`${res}${Constants.RESOURCES.STORAGE}`] = data[`${res}${Constants.RESOURCES.STORAGE}`] || []
-      resources[`${res}${Constants.RESOURCES.INTERVAL}`] = data[`${res}${Constants.RESOURCES.INTERVAL}`] * 100 || 1
+      resources[`${res}${Constants.RESOURCES.INTERVAL}`] = data[`${res}${Constants.RESOURCES.INTERVAL}`] * 1000 || 1
     })
     return resources
   }

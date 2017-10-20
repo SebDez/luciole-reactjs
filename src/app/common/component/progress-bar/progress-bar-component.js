@@ -51,7 +51,7 @@ class LuProgressBar extends LucioleComponent {
 /**
  * On component update props, reset counter if there is one
  */
-  componentWillReceiveProps () {
+  componentDidMount () {
     if (this.props.counter) {
       let timer = setInterval(this.tick, this.interval)
       this.setState({timer, counter: this.props.initialValue})
@@ -155,6 +155,7 @@ class LuProgressBar extends LucioleComponent {
  * @type {Object}
  */
 LuProgressBar.propTypes = {
+  lang: PropTypes.string.isRequired,
   initialValue: PropTypes.number.isRequired,
   goalValue: PropTypes.number.isRequired,
   bsStyle: PropTypes.string,

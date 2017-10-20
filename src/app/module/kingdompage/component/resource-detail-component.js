@@ -109,12 +109,12 @@ class ResourceDetailComponent extends LucioleComponent {
   * @return {Object} The resource lastharvest element
   */
   getResourceLastHarvestContent () {
-    const last = this.props.lastHarvest
+    const last = this.props.latestHarvest
     return (
       <div className='r-last-hrv'>
         <span className='title'>{this.i18n.t('application.kingdompage.resources.lastHarvest')}</span>
         <span className='value'>
-          <Moment locale={this.props.lang} fromNow>{last.toString()}</Moment>
+          <Moment locale={this.props.lang} fromNow>{last.toISOString()}</Moment>
         </span>
       </div>)
   }
@@ -157,7 +157,8 @@ class ResourceDetailComponent extends LucioleComponent {
  * @type {Object}
  */
 ResourceDetailComponent.propTypes = {
-  resource: PropTypes.oneOf(Constants.RESOURCES.list),
+  lang: PropTypes.string,
+  resource: PropTypes.oneOf(Object.values(Constants.KINGDOM.RESOURCES)),
   production: PropTypes.array.isRequired,
   storage: PropTypes.array.isRequired,
   latestHarvest: PropTypes.instanceOf(Date).isRequired,
