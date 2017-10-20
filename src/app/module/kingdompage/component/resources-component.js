@@ -41,6 +41,11 @@ class ResourcesComponent extends LucioleComponent {
       </Grid>)
   }
 
+  /**
+   * Get the resource's detail element list to show
+   * @returns {Object} React component tree
+   * @memberof ResourcesComponent
+   */
   getResourceDetailElements () {
     return Object.values(Constants.KINGDOM.RESOURCES).map((res, i) => {
       return (

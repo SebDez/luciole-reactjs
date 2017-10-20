@@ -19,6 +19,12 @@ export default class ResourceApi extends LucioleApi {
     })
   }
 
+  /**
+   * Decode resources object received from backend
+   * @param {any} data The data to decode
+   * @returns {Object} The resources decoded
+   * @memberof ResourceApi
+   */
   decodeResources (data) {
     let resources = {}
     Object.values(Constants.KINGDOM.RESOURCES).forEach(res => {
