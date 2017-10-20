@@ -93,7 +93,7 @@ class LuProgressBar extends LucioleComponent {
     if (this.props.withDates) {
       const goalDate = this.props.goalValue - (counter - new Date().getTime())
       const between = this.getTimeBetweenDates(new Date(), new Date(goalDate))
-      return between || 'Terminé'
+      return between || this.i18n.t('application.kingdompage.resources.harvestEnded')
     }
     return counter
   }

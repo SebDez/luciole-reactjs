@@ -65,6 +65,28 @@ export default {
       password: 'Changer mon mot de passe',
       accountTitle: 'Mes informations de compte'
     },
+    kingdompage: {
+      resources: {
+        title: 'My resources',
+        nextHarvest: 'Prochaine récolte',
+        lastHarvest: 'Dernière récolte',
+        harvestEnded: 'Terminé',
+        production: 'Production',
+        storage: 'Stockage',
+        food: 'Nourriture',
+        wood: 'Bois',
+        planks: 'Planches',
+        stone: 'Pierre',
+        chippedStone: 'Pierre Taillée',
+        ironOre: 'Minerai de fer',
+        ironIngot: 'Lingot de fer',
+        goldOre: 'Minerai d\'or',
+        goldIngot: 'Lingot d\'or',
+        pelt: 'Peaux',
+        leather: 'Cuir',
+        horse: 'Chevaux'
+      }
+    },
     not_set: 'Non renseigné',
     userpage: {
       editUsername: {

@@ -65,6 +65,28 @@ export default {
       password: 'Change my password',
       accountTitle: 'My account datas'
     },
+    kingdompage: {
+      resources: {
+        title: 'My resources',
+        nextHarvest: 'Next harvest',
+        lastHarvest: 'Last Harvest',
+        harvestEnded: 'Done',
+        production: 'Production',
+        storage: 'Storage',
+        food: 'Food',
+        wood: 'Wood',
+        planks: 'Planks',
+        stone: 'Stone',
+        chippedStone: 'Chipped Stone',
+        ironOre: 'Iron Ore',
+        ironIngot: 'Iron Ingot',
+        goldOre: 'Gold Ore',
+        goldIngot: 'Gold Ingot',
+        pelt: 'Pelt',
+        leather: 'Leather',
+        horse: 'Horse'
+      }
+    },
     not_set: 'Not specified',
     userpage: {
       editUsername: {

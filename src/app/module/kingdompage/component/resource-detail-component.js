@@ -27,9 +27,9 @@ class ResourceDetailComponent extends LucioleComponent {
     /** @type {I18n}*/
     this.i18n = I18n
     /** @type {string}*/
-    this.PRODUCTION = 'Production'
+    this.PRODUCTION = 'production'
     /** @type {string}*/
-    this.STORAGE = 'Storage'
+    this.STORAGE = 'storage'
     this._bindThisToMethods('getActualResourceContent',
     'getResourceCategoryContent', 'getResourceLastHarvestContent',
     'getResourceNextHarvestContent', 'getTrendArrow')
@@ -96,7 +96,7 @@ class ResourceDetailComponent extends LucioleComponent {
     const last = history && history.length > 1 ? history.slice(-2)[0] : 0
     return (
       <div className='r-prod'>
-        <span className='title'>{category}</span>
+        <span className='title'>{this.i18n.t(`application.kingdompage.resources.${category}`)}</span>
         <span className='value'>
           {current}
           <FontAwesome name={this.getTrendArrow(last, current)} />
@@ -112,7 +112,7 @@ class ResourceDetailComponent extends LucioleComponent {
     const last = this.props.lastHarvest
     return (
       <div className='r-last-hrv'>
-        <span className='title'>Last harvest</span>
+        <span className='title'>{this.i18n.t('application.kingdompage.resources.lastHarvest')}</span>
         <span className='value'>
           <Moment locale={this.props.lang} fromNow>{last.toString()}</Moment>
         </span>
@@ -129,7 +129,7 @@ class ResourceDetailComponent extends LucioleComponent {
     const date = new Date(lastHarvest.getTime() + interval).toISOString()
     return (
       <div className='r-next-hrv'>
-        <span className='title'>Next Harvest</span>
+        <span className='title'>{this.i18n.t('application.kingdompage.resources.nextHarvest')}</span>
         <LuTimeCountDown beginDate={lastHarvest.toISOString()}
           lang={this.props.lang} endDate={date} />
       </div>)

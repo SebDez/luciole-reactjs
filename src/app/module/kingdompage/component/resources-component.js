@@ -16,7 +16,7 @@ class ResourcesComponent extends LucioleComponent {
   render () {
     return (
       <Grid className='lu-grid'>
-        <h2>Mes ressources</h2>
+        <h2>{this.i18n.t('application.kingdompage.resources.title')}</h2>
         <Row>
           {this.getAllResourcesDetailElement()}
         </Row>
