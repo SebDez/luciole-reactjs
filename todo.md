@@ -38,10 +38,11 @@
 
 # V0.5.0 : Resources Management
 
- * Manage Resources | manage_resources | **TODO**
-  * Design | **TODO**
-  * Resources datas | **TODO**
-  * Refresh datas | **TODO**
+ * Manage Resources | manage_resources | **DONE**
+  * Design | **DONE**
+  * Resources datas | **DONE**
+  * Refresh datas | **DONE**
+  * Unit tests | **IN_PROGRESS**
 
 # V0.6.0 : Buildings
 
