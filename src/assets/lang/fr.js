@@ -154,13 +154,5 @@ export default {
     min_plural: 'minutes',
     sec_singular: 'seconde',
     sec_plural: 'secondes'
-  },
-  kingdom: {
-    resources: {
-      goldIngot: 'Lingots d\'or',
-      wood: 'Bois',
-      food: 'Nourriture',
-      planks: 'Planches'
-    }
   }
 }

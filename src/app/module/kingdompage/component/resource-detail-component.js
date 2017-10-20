@@ -44,7 +44,7 @@ class ResourceDetailComponent extends LucioleComponent {
       <Grid className='lu-grid lu-container lu-res-dtl'>
         <div className='res-dtl-title'>
           <ResourceIcon withCircle resourceName={this.props.resource} />
-          <span>{this.i18n.t(`kingdom.resources.${this.props.resource}`)}</span>
+          <span>{this.i18n.t(`application.kingdompage.resources.${this.props.resource}`)}</span>
         </div>
         <Row>
           <Col xs={12} md={12}>
