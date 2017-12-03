@@ -16,6 +16,11 @@ $sidebar-padding-borders: 10px;
   text-align: center;
   padding-left: $sidebar-padding-borders;
   padding-right: $sidebar-padding-borders;
+
+  a{
+    text-decoration: none
+  }
+  overflow-x: hidden;
 }
 
 $logo-url: url('../assets/img/luciole_logo.png');
@@ -130,11 +135,46 @@ $logo-url: url('../assets/img/luciole_logo.png');
     }
   }
 
+  .sidebar-button-light{
+    background-color: $app-button-bg-color;
+    width : 100px;
+    height: 25px;
+    margin-bottom: -25px;
+    display: inline-block;
+    border-radius: 5px 5px 5px 5px;
+    vertical-align: middle;
+    line-height: 25px;
+    font-size: 15px;
+    color:$app-button-text-color;
+    text-transform: uppercase;
+
+    &:hover{
+      cursor:pointer;
+      cursor:hand;
+      border: 2px solid $app-button-bg-color;
+      background-color: $app-button-hover-color;
+      color: $app-button-bg-color;
+      text-decoration: none;
+    }
+  }
+
   .sidebar-block-reload{
     text-align: right;
     font-size: 10px;
     padding-top: 5px;
     padding-right: 5px;
+    margin-top: -20px;
+    &:hover{
+      cursor:pointer;
+      cursor:hand;
+    }
+  }
+
+  .sidebar-block-detail{
+    text-align: left;
+    font-size: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
     margin-bottom: -20px;
     &:hover{
       cursor:pointer;

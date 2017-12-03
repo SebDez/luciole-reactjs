@@ -10,6 +10,12 @@ $background-url: url(../assets/img/luciole_background.png);
   height: 100%;
   background:linear-gradient(0deg, $background-color, $background-color), $background-url;
   background-size:cover;
+
+  a{
+    color:$app-text-primary-color;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
 }
 
 .sidebar-burger{

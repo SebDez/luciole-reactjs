@@ -39,9 +39,7 @@ describe('SidebarActions', () => {
 
   describe('getUserResources', () => {
     let mockService, mockActions, service, spy
-    const data = {
-      data: 'my-resources'
-    }
+    const data = 'my-resources'
 
     beforeEach(() => {
       service = new ResourceService()
@@ -62,30 +60,33 @@ describe('SidebarActions', () => {
     })
 
     it('Expect to have call getUserResources with good params', (done) => {
+      mockActions.expects('getTokenFromGetState').returns(null)
       mockService.expects('getUserResources').resolves(data)
       mockActions.expects('getUserResourceSuccessAction').returns('getUserResourceSuccessAction-result')
       spy = chai.spy.on(actions.resourceService, 'getUserResources')
-      actions.getUserResources()(TestHelper.dispatch).then(() => {
+      actions.getUserResources()(TestHelper.dispatch, TestHelper.getState).then(() => {
         expect(spy).to.have.been.called.once()
         done()
       })
     })
 
     it('Expect to have call dispatch with good params in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').returns(null)
       mockService.expects('getUserResources').resolves(data)
       mockActions.expects('getUserResourceSuccessAction').returns('getUserResourceSuccessAction-result')
       spy = chai.spy.on(TestHelper, 'dispatch')
-      actions.getUserResources()(TestHelper.dispatch).then(() => {
+      actions.getUserResources()(TestHelper.dispatch, TestHelper.getState).then(() => {
         expect(spy).to.have.been.called.with('getUserResourceSuccessAction-result')
         done()
       })
     })
 
     it('Expect to have call getUserResourceSuccessAction with good params in case of success', (done) => {
+      mockActions.expects('getTokenFromGetState').returns(null)
       mockService.expects('getUserResources').resolves(data)
       mockActions.expects('getUserResourceSuccessAction').returns('getUserResourceSuccessAction-result')
       spy = chai.spy.on(actions, 'getUserResourceSuccessAction')
-      actions.getUserResources()(TestHelper.dispatch).then(() => {
+      actions.getUserResources()(TestHelper.dispatch, TestHelper.getState).then(() => {
         expect(spy).to.have.been.called.with('my-resources')
         done()
       })

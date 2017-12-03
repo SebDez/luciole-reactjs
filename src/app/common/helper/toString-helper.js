@@ -71,4 +71,13 @@ export default class ToStringHelper {
   getCountryArrayFromCountryCode (countrycode) {
     return CountryRegionData.filter(c => c[1] === countrycode)[0]
   }
+
+  /**
+   * Get a number in local format
+   * @param  {integer} amount The amount to format
+   * @return {string}        The amount formatted
+   */
+  getNumberFormatted (amount) {
+    return amount.toLocaleString()
+  }
 }

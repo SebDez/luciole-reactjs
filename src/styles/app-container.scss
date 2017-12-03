@@ -33,6 +33,7 @@ $app-text-font: 'Play', serif;
 @import "contact-container";
 @import "auth-container";
 @import "userpage-container";
+@import "kingdompage-container";
 
 // font-family: 'PT Sans', sans-serif;
 // font-family: 'Maitree', serif;
@@ -65,15 +66,50 @@ $app-text-font: 'Play', serif;
 }
 
 .resource-wood{
-  fill: #D2691E
+  fill: #9C521D
 }
 
-.resource-gold{
+.resource-planks{
+  @extend .resource-wood
+}
+
+.resource-goldOre{
   fill: #FFD700
+}
+
+.resource-goldIngot{
+  @extend .resource-goldOre
+}
+.resource-ironOre{
+  fill: #D5F8F3
+}
+
+.resource-ironIngot{
+  @extend .resource-ironOre
+}
+
+.resource-stone{
+  fill: #AFAFAE
+}
+
+.resource-chippedStone{
+  @extend .resource-stone
+}
+
+.resource-pelt{
+  fill: #865C00
+}
+
+.resource-leather{
+  @extend .resource-pelt
 }
 
 .resource-food{
   fill: #ADFF2F
+}
+
+.resource-horse{
+  fill: #FFFFFF
 }
 
 .svg{
@@ -172,6 +208,9 @@ $app-text-font: 'Play', serif;
 
  .lu-grid{
    width: 95%;
+   h2{
+    margin-top: 5px !important;
+  }
  }
 
  .corner-button{
@@ -268,4 +307,60 @@ h2{
     opacity: 0.4;
     filter: alpha(opacity=40);
   }
+}
+
+
+/******************************
+* ARROWS
+* *****************************/
+
+.fa-lu-arrows{
+  margin-left: 3px;
+}
+
+.fa-long-arrow-right{
+  @extend .fa-lu-arrows;
+  color: #f9d998;
+}
+
+.fa-long-arrow-down{
+  @extend .fa-lu-arrows;
+  color: #cc1414;
+}
+
+.fa-long-arrow-up{
+  @extend .fa-lu-arrows;
+  color: #0f9e0b;
+}
+
+
+/******************************
+* TEXT
+* *****************************/
+
+.lu-content-text{
+  opacity: 0.9;
+  color: #edece6;
+}
+
+
+/******************************
+* PROGRESS BAR
+* *****************************/
+
+.lu-progress-bar{
+  background-color: #1a3951;
+  background-image: none;
+  overflow-x:visible;
+  white-space:nowrap;
+}
+
+
+/******************************
+* SCROLL BAR
+* *****************************/
+
+.lu-scroll-content{
+  padding-left: 10px;
+  padding-right: 10px;
 }

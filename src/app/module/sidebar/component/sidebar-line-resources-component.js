@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import ResourceIcon from './../../../common/component/resource/resource-icon-component'
 import LucioleComponent from './../../../common/core/abstract/luciole-component'
 import ReactTooltip from 'react-tooltip'
+import ToStringHelper from './../../../common/helper/toString-helper'
 
 /**
  * SidebarLineResources Component
@@ -16,7 +17,9 @@ class SidebarLineResources extends LucioleComponent {
   /* istanbul ignore next */
   constructor (props, context) {
     super(props, context)
-    this._bindThisToMethods('getNumberFormatted', 'getToolTipDataFromResource')
+    /** @type {ToStringHelper}*/
+    this.toStringHelper = new ToStringHelper()
+    this._bindThisToMethods('getToolTipDataFromResource')
   }
 
   /**
@@ -28,18 +31,9 @@ class SidebarLineResources extends LucioleComponent {
     return (
       <div className='resource-line' data-tip={toolTip.text} data-place='top' data-type={toolTip.style}>
         <ResourceIcon withCircle resourceName={this.props.resourceName} />
-        <div className={`resource-line-text resource-${toolTip.style}`}>{this.getNumberFormatted(this.props.amount)}</div>
+        <div className={`resource-line-text resource-${toolTip.style}`}>{this.toStringHelper.getNumberFormatted(this.props.amount)}</div>
         <ReactTooltip />
       </div>)
-  }
-
-  /**
-   * Get a number in local format
-   * @param  {integer} amount The amount to format
-   * @return {string}        The amount formatted
-   */
-  getNumberFormatted (amount) {
-    return amount.toLocaleString()
   }
 
   /**
@@ -47,9 +41,9 @@ class SidebarLineResources extends LucioleComponent {
    * @return {object}  Tooltip format object
    */
   getToolTipDataFromResource () {
-    const percentage = Math.floor((this.props.amount * 100) / this.props.storage)
-    const amount = this.getNumberFormatted(this.props.amount)
-    const storage = this.getNumberFormatted(this.props.storage)
+    const percentage = this.props.storage > 0 ? Math.floor((this.props.amount * 100) / this.props.storage) : 100
+    const amount = this.toStringHelper.getNumberFormatted(this.props.amount)
+    const storage = this.toStringHelper.getNumberFormatted(this.props.storage)
     const text = `(${percentage}%) ${amount}/${storage}`
     if (percentage <= 60) {
       return {style: 'success', text}

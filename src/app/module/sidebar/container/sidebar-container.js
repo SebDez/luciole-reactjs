@@ -159,6 +159,7 @@ function mapDispatchToProps (dispatch) {
  */
 Sidebar.propTypes = {
   auth: PropTypes.object.isRequired,
+  userResource: PropTypes.object,
   authActions: PropTypes.object.isRequired,
   currentLang: PropTypes.string
 }

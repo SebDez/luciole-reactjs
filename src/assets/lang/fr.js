@@ -37,7 +37,8 @@ export default {
       cgu: 'CGU',
       about: 'A propos',
       refresh: 'Rafraichir',
-      play: 'Jouer'
+      play: 'Jouer',
+      detail: 'Détail'
     },
     contact: {
       toast_success_title: 'C\'est parti !',
@@ -63,6 +64,28 @@ export default {
       usertag: 'Usertag',
       password: 'Changer mon mot de passe',
       accountTitle: 'Mes informations de compte'
+    },
+    kingdompage: {
+      resources: {
+        title: 'Mes ressources',
+        nextHarvest: 'Prochaine récolte',
+        lastHarvest: 'Dernière récolte',
+        harvestEnded: 'Terminé',
+        production: 'Production',
+        storage: 'Stockage',
+        food: 'Nourriture',
+        wood: 'Bois',
+        planks: 'Planches',
+        stone: 'Pierres',
+        chippedStone: 'Pierres Taillées',
+        ironOre: 'Minerais de fer',
+        ironIngot: 'Lingots de fer',
+        goldOre: 'Minerais d\'or',
+        goldIngot: 'Lingots d\'or',
+        pelt: 'Peaux',
+        leather: 'Cuir',
+        horse: 'Chevaux'
+      }
     },
     not_set: 'Non renseigné',
     userpage: {
@@ -121,5 +144,15 @@ export default {
       title: 'Aie, un problème est survenu',
       message: 'L\'action n\'a pas été prise en compte.'
     }
+  },
+  progressBar: {
+    day_singular: 'jour',
+    day_plural: 'jours',
+    hour_singular: 'heure',
+    hour_plural: 'heures',
+    min_singular: 'minute',
+    min_plural: 'minutes',
+    sec_singular: 'seconde',
+    sec_plural: 'secondes'
   }
 }
