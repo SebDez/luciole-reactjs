@@ -72,40 +72,6 @@ describe('LuProgressBar', () => {
     })
   })
 
-  describe('componentWillReceiveProps', () => {
-    let compo = null
-    let props = null
-
-    beforeEach(() => {
-      props = {
-        counter: true,
-        initialValue: 100
-      }
-      compo = new LuProgressBar(props)
-      compo.setState = () => 0
-      compo.tick = () => 1
-    })
-
-    it('Expect to call setState is there is counter', () => {
-      const spy = chai.spy.on(compo, 'setState')
-      compo.componentWillReceiveProps()
-      expect(spy).to.have.been.called.exactly(1)
-    })
-
-    it('Expect not to call setState is there is no counter', () => {
-      props.counter = false
-      const spy = chai.spy.on(compo, 'setState')
-      compo.componentWillReceiveProps()
-      expect(spy).not.to.have.been.called
-    })
-
-    it('Expect to call setInterval', () => {
-      const spy = chai.spy.on(global, 'setInterval')
-      compo.componentWillReceiveProps()
-      expect(spy).to.have.been.called.exactly(1)
-    })
-  })
-
   describe('componentWillUnmount', () => {
     let compo = null
     let props = null
@@ -287,7 +253,7 @@ describe('LuProgressBar', () => {
     it('Expect to return ended, counter given and withDates but no difference between dates', () => {
       compo.props.withDates = true
       compo.getTimeBetweenDates = () => false
-      expect(compo.getLabel()).to.equal('Terminé')
+      expect(compo.getLabel()).to.equal('Harvest Ended')
     })
   })
 

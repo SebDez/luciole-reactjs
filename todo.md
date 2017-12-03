@@ -42,7 +42,7 @@
   * Design | **DONE**
   * Resources datas | **DONE**
   * Refresh datas | **DONE**
-  * Unit tests | **IN_PROGRESS**
+  * Unit tests | **DONE**
 
 # V0.6.0 : Buildings
 

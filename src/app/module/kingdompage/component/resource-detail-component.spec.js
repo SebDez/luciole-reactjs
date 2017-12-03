@@ -1,6 +1,6 @@
 import React from 'react'
-import {shallow} from 'enzyme'
-import {expect} from 'chai'
+import { shallow } from 'enzyme'
+import { expect } from 'chai'
 import { Grid, Row, Col } from 'react-bootstrap'
 import ResourceDetailComponent from './resource-detail-component'
 import FontAwesome from 'react-fontawesome'
@@ -20,10 +20,10 @@ describe('ResourceDetailComponent', () => {
       const props = {
         resource: 'goldIngot',
         amount: 100,
-        lastHarvest: new Date(),
-        prodHistory: [100],
-        storageHistory: [200],
-        resourceHarvestInterval: 1000,
+        lastestHarvest: new Date(),
+        production: [100],
+        storage: [200],
+        harvestInterval: 1000,
         lang: 'fr'
       }
       compo = new ResourceDetailComponent(props)
@@ -115,10 +115,10 @@ describe('ResourceDetailComponent', () => {
       const props = {
         resource: 'goldIngot',
         amount: 100,
-        lastHarvest: new Date(),
-        prodHistory: [100],
-        storageHistory: [200],
-        resourceHarvestInterval: 1000,
+        lastestHarvest: new Date(),
+        production: [100],
+        storage: [200],
+        harvestInterval: 1000,
         lang: 'fr'
       }
       compo = new ResourceDetailComponent(props)
@@ -154,8 +154,8 @@ describe('ResourceDetailComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 span for storage, no storageHistory case', () => {
-      compo.props.storageHistory = null
+    it('Expect to contain 1 span for storage, no storage case', () => {
+      compo.props.storage = null
       const wrapper = shallow(compo.getActualResourceContent())
       const actual = wrapper.find('span').findWhere(n => {
         return n.prop('className') === 'number' &&
@@ -164,8 +164,8 @@ describe('ResourceDetailComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 span for storage, empty storageHistory case', () => {
-      compo.props.storageHistory = []
+    it('Expect to contain 1 span for storage, empty storage case', () => {
+      compo.props.storage = []
       const wrapper = shallow(compo.getActualResourceContent())
       const actual = wrapper.find('span').findWhere(n => {
         return n.prop('className') === 'number' &&
@@ -183,8 +183,8 @@ describe('ResourceDetailComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 span for percentage, no storageHistory case', () => {
-      compo.props.storageHistory = null
+    it('Expect to contain 1 span for percentage, no storage case', () => {
+      compo.props.storage = null
       const wrapper = shallow(compo.getActualResourceContent())
       const actual = wrapper.find('span').findWhere(n => {
         return n.prop('className') === 'no-number' &&
@@ -193,8 +193,8 @@ describe('ResourceDetailComponent', () => {
       expect(actual).to.have.length(1)
     })
 
-    it('Expect to contain 1 span for percentage, empty storageHistory case', () => {
-      compo.props.storageHistory = []
+    it('Expect to contain 1 span for percentage, empty storage case', () => {
+      compo.props.storage = []
       const wrapper = shallow(compo.getActualResourceContent())
       const actual = wrapper.find('span').findWhere(n => {
         return n.prop('className') === 'no-number' &&
@@ -211,10 +211,10 @@ describe('ResourceDetailComponent', () => {
       const props = {
         resource: 'goldIngot',
         amount: 100,
-        lastHarvest: new Date(),
-        prodHistory: [50, 100],
-        storageHistory: [100, 200],
-        resourceHarvestInterval: 1000,
+        lastestHarvest: new Date(),
+        production: [50, 100],
+        storage: [100, 200],
+        harvestInterval: 1000,
         lang: 'fr'
       }
       compo = new ResourceDetailComponent(props)
@@ -222,19 +222,19 @@ describe('ResourceDetailComponent', () => {
     })
 
     it('Expect to return a div', () => {
-      const wrapper = shallow(compo.getResourceCategoryContent('Production'))
+      const wrapper = shallow(compo.getResourceCategoryContent('production'))
       const actual = wrapper.find('div')
       expect(actual).to.have.length(1)
     })
 
     it('Expect to return 2 span', () => {
-      const wrapper = shallow(compo.getResourceCategoryContent('Production'))
+      const wrapper = shallow(compo.getResourceCategoryContent('production'))
       const actual = wrapper.find('span')
       expect(actual).to.have.length(2)
     })
 
     it('Expect to contain one FontAwesome with valid props', () => {
-      const wrapper = shallow(compo.getResourceCategoryContent('Production'))
+      const wrapper = shallow(compo.getResourceCategoryContent('production'))
       const actual = wrapper.find(FontAwesome).findWhere(n => {
         return n.prop('name') === 'res-getTrendArrow'
       })
@@ -243,55 +243,55 @@ describe('ResourceDetailComponent', () => {
 
     it('Expect to have call getTrendArrow with good params, case success with production category', () => {
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Production')
+      compo.getResourceCategoryContent('production')
       expect(spy).to.have.been.called.with(50, 100)
     })
 
-    it('Expect to have call getTrendArrow with good params, case no prodHistory with production category', () => {
-      compo.props.prodHistory = null
+    it('Expect to have call getTrendArrow with good params, case no production with production category', () => {
+      compo.props.production = null
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Production')
+      compo.getResourceCategoryContent('production')
       expect(spy).to.have.been.called.with(0, '0')
     })
 
-    it('Expect to have call getTrendArrow with good params, case empty prodHistory with production category', () => {
-      compo.props.prodHistory = []
+    it('Expect to have call getTrendArrow with good params, case empty production with production category', () => {
+      compo.props.production = []
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Production')
+      compo.getResourceCategoryContent('production')
       expect(spy).to.have.been.called.with(0, '0')
     })
 
-    it('Expect to have call getTrendArrow with good params, case one prodHistory with production category', () => {
-      compo.props.prodHistory = [50]
+    it('Expect to have call getTrendArrow with good params, case one production with production category', () => {
+      compo.props.production = [50]
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Production')
+      compo.getResourceCategoryContent('production')
       expect(spy).to.have.been.called.with(0, 50)
     })
 
     it('Expect to have call getTrendArrow with good params, case success with storage category', () => {
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Storage')
+      compo.getResourceCategoryContent('storage')
       expect(spy).to.have.been.called.with(100, 200)
     })
 
-    it('Expect to have call getTrendArrow with good params, case no storageHistory with storage category', () => {
-      compo.props.storageHistory = null
+    it('Expect to have call getTrendArrow with good params, case no storage with storage category', () => {
+      compo.props.storage = null
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Storage')
+      compo.getResourceCategoryContent('storage')
       expect(spy).to.have.been.called.with(0, '0')
     })
 
-    it('Expect to have call getTrendArrow with good params, case empty storageHistory with storage category', () => {
-      compo.props.storageHistory = []
+    it('Expect to have call getTrendArrow with good params, case empty storage with storage category', () => {
+      compo.props.storage = []
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Storage')
+      compo.getResourceCategoryContent('storage')
       expect(spy).to.have.been.called.with(0, '0')
     })
 
-    it('Expect to have call getTrendArrow with good params, case one storageHistory with storage category', () => {
-      compo.props.storageHistory = [50]
+    it('Expect to have call getTrendArrow with good params, case one storage with storage category', () => {
+      compo.props.storage = [50]
       const spy = chai.spy.on(compo, 'getTrendArrow')
-      compo.getResourceCategoryContent('Storage')
+      compo.getResourceCategoryContent('storage')
       expect(spy).to.have.been.called.with(0, 50)
     })
   })
@@ -303,10 +303,10 @@ describe('ResourceDetailComponent', () => {
       const props = {
         resource: 'goldIngot',
         amount: 100,
-        lastHarvest: new Date(),
-        prodHistory: [50, 100],
-        storageHistory: [100, 200],
-        resourceHarvestInterval: 1000,
+        latestHarvest: new Date(),
+        production: [50, 100],
+        storage: [100, 200],
+        harvestInterval: 1000,
         lang: 'fr'
       }
       compo = new ResourceDetailComponent(props)
@@ -335,10 +335,10 @@ describe('ResourceDetailComponent', () => {
       props = {
         resource: 'goldIngot',
         amount: 100,
-        lastHarvest: new Date(),
-        prodHistory: [50, 100],
-        storageHistory: [100, 200],
-        resourceHarvestInterval: 1000,
+        latestHarvest: new Date(),
+        production: [50, 100],
+        storage: [100, 200],
+        harvestInterval: 1000,
         lang: 'fr'
       }
       compo = new ResourceDetailComponent(props)
@@ -357,7 +357,7 @@ describe('ResourceDetailComponent', () => {
     it('Expect to contain 1 LuTimeCountDown with good props', () => {
       const wrapper = shallow(compo.getResourceNextHarvestContent())
       const actual = wrapper.find(LuTimeCountDown).findWhere(n => {
-        return n.prop('beginDate') === props.lastHarvest.toISOString() &&
+        return n.prop('beginDate') === props.latestHarvest.toISOString() &&
           n.prop('lang') === 'fr' &&
           n.prop('endDate') === '2000-02-01T23:00:01.000Z'
       })

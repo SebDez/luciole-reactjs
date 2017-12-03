@@ -62,6 +62,8 @@ export default {
     }
   },
   KINGDOM: {
+    RESOURCES_LIST: ['food', 'wood', 'planks', 'stone', 'chippedStone',
+      'ironOre', 'ironIngot', 'goldOre', 'goldIngot', 'pelt', 'leather', 'horse'],
     RESOURCES: {
       FOOD: 'food',
       WOOD: 'wood',

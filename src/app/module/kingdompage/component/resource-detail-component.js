@@ -31,8 +31,8 @@ class ResourceDetailComponent extends LucioleComponent {
     /** @type {string}*/
     this.STORAGE = 'storage'
     this._bindThisToMethods('getActualResourceContent',
-    'getResourceCategoryContent', 'getResourceLastHarvestContent',
-    'getResourceNextHarvestContent', 'getTrendArrow')
+      'getResourceCategoryContent', 'getResourceLastHarvestContent',
+      'getResourceNextHarvestContent', 'getTrendArrow')
   }
 
   /**
@@ -48,31 +48,31 @@ class ResourceDetailComponent extends LucioleComponent {
         </div>
         <Row>
           <Col xs={12} md={12}>
-            {this.getActualResourceContent()}
+          {this.getActualResourceContent()}
           </Col>
           <Col xs={12} md={6}>
-            {this.getResourceCategoryContent(this.PRODUCTION)}
+          {this.getResourceCategoryContent(this.PRODUCTION)}
           </Col>
           <Col xs={12} md={6}>
-            {this.getResourceCategoryContent(this.STORAGE)}
+          {this.getResourceCategoryContent(this.STORAGE)}
           </Col>
           <Col xs={12} md={6}>
-            {this.getResourceLastHarvestContent()}
+          {this.getResourceLastHarvestContent()}
           </Col>
           <Col xs={12} md={6}>
-            {this.getResourceNextHarvestContent()}
+          {this.getResourceNextHarvestContent()}
           </Col>
         </Row>
       </Grid>)
   }
 
-/**
- * Get current resource element
- * @return {Object} The current resource element
- */
+  /**
+   * Get current resource element
+   * @return {Object} The current resource element
+   */
   getActualResourceContent () {
     const amount = this.props.amount
-    const storage = this.props.storage.slice(-1)[0]
+    const storage = this.props.storage && this.props.storage.slice(-1)[0] || 0
     const percentage = storage > 0 ? Math.floor((amount * 100) / storage) : 100
     const amountTxt = this.toStringHelper.getNumberFormatted(amount)
     const storageTxt = this.toStringHelper.getNumberFormatted(storage)
@@ -97,10 +97,7 @@ class ResourceDetailComponent extends LucioleComponent {
     return (
       <div className='r-prod'>
         <span className='title'>{this.i18n.t(`application.kingdompage.resources.${category}`)}</span>
-        <span className='value'>
-          {current}
-          <FontAwesome name={this.getTrendArrow(last, current)} />
-        </span>
+        <span className='value'>{current} <FontAwesome name={this.getTrendArrow(last, current)} /></span>
       </div>)
   }
 
@@ -113,9 +110,7 @@ class ResourceDetailComponent extends LucioleComponent {
     return (
       <div className='r-last-hrv'>
         <span className='title'>{this.i18n.t('application.kingdompage.resources.lastHarvest')}</span>
-        <span className='value'>
-          <Moment locale={this.props.lang} fromNow>{last.toISOString()}</Moment>
-        </span>
+        <span className='value'><Moment locale={this.props.lang} fromNow> {last.toISOString()} </Moment></span>
       </div>)
   }
 
@@ -130,17 +125,16 @@ class ResourceDetailComponent extends LucioleComponent {
     return (
       <div className='r-next-hrv'>
         <span className='title'>{this.i18n.t('application.kingdompage.resources.nextHarvest')}</span>
-        <LuTimeCountDown beginDate={lastHarvest.toISOString()}
-          lang={this.props.lang} endDate={date} />
+        <LuTimeCountDown beginDate={lastHarvest.toISOString()} lang={this.props.lang} endDate={date} />
       </div>)
   }
 
-/**
- * Get trend arrow after comparing last and current value
- * @param {integer} lastValue The last value to compare
- * @param {integer} currentValue The current value to compare
- * @return {string} The arrow up string if last < current, else return arrow down
- */
+  /**
+   * Get trend arrow after comparing last and current value
+   * @param {integer} lastValue The last value to compare
+   * @param {integer} currentValue The current value to compare
+   * @return {string} The arrow up string if last < current, else return arrow down
+   */
   getTrendArrow (lastValue, currentValue) {
     if (lastValue === currentValue) {
       return 'long-arrow-right'
@@ -158,7 +152,7 @@ class ResourceDetailComponent extends LucioleComponent {
  */
 ResourceDetailComponent.propTypes = {
   lang: PropTypes.string,
-  resource: PropTypes.oneOf(Object.values(Constants.KINGDOM.RESOURCES)),
+  resource: PropTypes.oneOf(Constants.KINGDOM.RESOURCES_LIST),
   production: PropTypes.array.isRequired,
   storage: PropTypes.array.isRequired,
   latestHarvest: PropTypes.instanceOf(Date).isRequired,

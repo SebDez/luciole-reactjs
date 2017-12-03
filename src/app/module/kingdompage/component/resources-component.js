@@ -47,7 +47,7 @@ class ResourcesComponent extends LucioleComponent {
    * @memberof ResourcesComponent
    */
   getResourceDetailElements () {
-    return Object.values(Constants.KINGDOM.RESOURCES).map((res, i) => {
+    return Constants.KINGDOM.RESOURCES_LIST.map((res, i) => {
       return (
         <Col xs={12} md={3} className='res-elm' key={i} >
           <ResourceDetailComponent lang={this.props.lang} resource={res}

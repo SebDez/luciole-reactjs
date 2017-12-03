@@ -1,4 +1,4 @@
-import {shallow} from 'enzyme'
+import { shallow } from 'enzyme'
 import SidebarBlockResources from './sidebar-block-resources-component'
 import { Grid, Row, Col } from 'react-bootstrap'
 
@@ -90,24 +90,24 @@ describe('SidebarBlockResources', () => {
       expect(actual).to.be.instanceOf(Grid)
     })
 
-    it('Expect to contain 2 Row', () => {
+    it('Expect to contain 3 Row', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Row)
-      expect(actual).to.have.length(2)
+      expect(actual).to.have.length(3)
     })
 
-    it('Expect to contain 4 Col', () => {
+    it('Expect to contain 6 Col', () => {
       const wrapper = shallow(compo.render())
       const actual = wrapper.find(Col).findWhere(n => {
         return n.prop('className') === 'sidebar-block-col'
       })
-      expect(actual).to.have.length(4)
+      expect(actual).to.have.length(6)
     })
 
-    it('Expect to have getLineElementForResource 4 times', () => {
+    it('Expect to have getLineElementForResource 6 times', () => {
       const spy = chai.spy.on(compo, 'getLineElementForResource')
       compo.render()
-      expect(spy).to.have.been.called.exactly(4)
+      expect(spy).to.have.been.called.exactly(6)
     })
   })
 })
