@@ -1,6 +1,6 @@
 {
   "name": "luciole-reactjs",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "The reactjs frontend for luciole game",
   "engines": {
     "npm": ">=3"
@@ -43,6 +43,7 @@
     "react-dom": "15.2.1",
     "react-fontawesome": "^1.2.0",
     "react-google-recaptcha": "0.8.0",
+    "react-moment": "0.6.0",
     "react-radio-group": "3.0.1",
     "react-redux": "4.4.5",
     "react-redux-i18n": "0.0.3",
@@ -50,6 +51,7 @@
     "react-redux-toastr": "4.4.6",
     "react-router": "2.6.0",
     "react-router-redux": "4.0.5",
+    "react-scrollbar-js": "1.0.1",
     "react-sidebar": "2.2.1",
     "react-svg": "1.1.5",
     "react-tooltip": "3.2.2",

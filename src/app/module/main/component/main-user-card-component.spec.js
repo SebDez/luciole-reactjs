@@ -3,6 +3,7 @@ import {shallow} from 'enzyme'
 import {expect} from 'chai'
 import MainPageUserCard from './main-user-card-component'
 import UserAvatar from './../../../common/component/avatar/user-avatar-component'
+import {Link} from 'react-router'
 
 describe('MainPageUserCard', () => {
   describe('render', () => {
@@ -44,6 +45,19 @@ describe('MainPageUserCard', () => {
         return n.type() === 'div' && n.text() === 'username'
       })
       expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain 1 Link', () => {
+      const wrapper = shallow(<MainPageUserCard {...props} />)
+      const actual = wrapper.find(Link)
+      expect(actual).to.have.length(1)
+    })
+
+    it('Expect to contain a Link with good prop src', () => {
+      const wrapper = shallow(<MainPageUserCard {...props} />)
+      const actual = wrapper.find(Link).props().to
+      const expected = '/user'
+      expect(actual).to.be.equal(expected)
     })
   })
 })

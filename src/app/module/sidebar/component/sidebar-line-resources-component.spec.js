@@ -134,7 +134,7 @@ describe('SidebarLineResources', () => {
 
     it('Expect to have call getNumberFormatted once', () => {
       mockCompo.expects('getToolTipDataFromResource').returns({style: 'success', text: 'text'})
-      spy = chai.spy.on(compo, 'getNumberFormatted')
+      spy = chai.spy.on(compo.toStringHelper, 'getNumberFormatted')
       compo.render()
       expect(spy).to.have.been.called.once()
     })
