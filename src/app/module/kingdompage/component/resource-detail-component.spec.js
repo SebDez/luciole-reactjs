@@ -356,10 +356,11 @@ describe('ResourceDetailComponent', () => {
 
     it('Expect to contain 1 LuTimeCountDown with good props', () => {
       const wrapper = shallow(compo.getResourceNextHarvestContent())
+      const expectedDate = new Date(new Date(2000, 1, 2).getTime() + 1000).toISOString()
       const actual = wrapper.find(LuTimeCountDown).findWhere(n => {
         return n.prop('beginDate') === props.latestHarvest.toISOString() &&
           n.prop('lang') === 'fr' &&
-          n.prop('endDate') === '2000-02-01T23:00:01.000Z'
+          n.prop('endDate') === expectedDate
       })
       expect(actual).to.have.length(1)
     })
